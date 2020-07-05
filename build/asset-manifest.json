@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6249bfcc.chunk.css",
+    "main.js": "/static/js/main.d5bac936.chunk.js",
+    "main.js.map": "/static/js/main.d5bac936.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.8c40394c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.8c40394c.js.map",
+    "static/css/2.150375df.chunk.css": "/static/css/2.150375df.chunk.css",
+    "static/js/2.8e949a4e.chunk.js": "/static/js/2.8e949a4e.chunk.js",
+    "static/js/2.8e949a4e.chunk.js.map": "/static/js/2.8e949a4e.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.13390a2e8a624fb2863f8cf3d851765d.js": "/precache-manifest.13390a2e8a624fb2863f8cf3d851765d.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.150375df.chunk.css.map": "/static/css/2.150375df.chunk.css.map",
+    "static/css/main.6249bfcc.chunk.css.map": "/static/css/main.6249bfcc.chunk.css.map",
+    "static/js/2.8e949a4e.chunk.js.LICENSE.txt": "/static/js/2.8e949a4e.chunk.js.LICENSE.txt",
+    "static/media/stylesheet.css": "/static/media/atariclassic-regular-webfont.6e2f7cd7.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8c40394c.js",
+    "static/css/2.150375df.chunk.css",
+    "static/js/2.8e949a4e.chunk.js",
+    "static/css/main.6249bfcc.chunk.css",
+    "static/js/main.d5bac936.chunk.js"
+  ]
+}

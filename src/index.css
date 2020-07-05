@@ -1,0 +1,152 @@
+body {
+    font-family: 'atari_classicchunky' !important;
+    word-break: break-all;
+} 
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    font-family: inherit;
+}
+
+input {
+    font-family: inherit;
+}
+
+input[type="text"]{
+    font-family: inherit;
+}
+
+input[type="password"]{
+    font-family: inherit;
+}
+
+.terminal,
+.terminal-output > :not(.raw),
+.cmd {
+    font-family: 'atari_classicchunky' !important;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+#main {
+    margin: 50px;
+    text-align: center;
+}
+
+#console {
+    width: 600px;
+    height: 300px;
+    overflow: auto; 
+    text-align:justify; 
+}
+
+#jterminal {
+    height: 100%;
+}
+
+#room_container {
+    text-align: center;
+}
+
+#chatbox_container {
+    width: 600px;
+    height: 600px;
+    margin: 24px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#messages_container {
+    height: 75%;
+    width: 100%;
+    overflow: auto;
+    text-align: justify;
+}
+
+#new_message_form {
+    height: 20%;
+    /* width: 300px; */
+    width: 528px;
+    margin: auto;
+    position: absolute;
+    bottom: 24px;
+    left: 32px;
+}
+
+.nes-balloon.tight-balloon {
+    padding: 10px;
+}
+
+#textarea_field {
+    margin-bottom: 10px;
+}
+
+#game_container {
+    margin: 24px;
+    vertical-align: top;
+    display: inline-block;
+    text-align: justify;
+}
+
+.board_user {
+    margin: 8px 0px;
+}
+
+.board_user_chips {
+    font-size: 10px;
+    color: #006400;
+}
+
+#phase {
+    font-size: 18px;
+    padding: 8px;
+    text-align: center;
+    /* margin: 8px auto */
+    
+}
+
+.user_item {
+    display: inline;
+}
+
+.room_li {
+    padding: 8px;
+}
+
+
+.room_container{
+    text-align: center;
+    width: 250px;
+    padding: 8px !important;
+    margin: 14px auto !important;
+}
+
+
+.lock_img {
+    width: 18px;
+}
+
+.nes-btn.smaller-btn {
+    padding: 2px;
+}
+
+
+.room_li_desc{
+    font-size: 12px;
+}
+
+#checkout_form{
+    width: 500px;
+    margin: auto;
+    text-align: justify;
+}
+
+#checkout_form .label {
+    font-size: 10px;
+}
+
