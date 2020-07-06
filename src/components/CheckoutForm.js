@@ -1,6 +1,6 @@
 import React from 'react';
 // import CheckoutForm from './Checkout'
-import { useStripe, useElements, CardElement, CardNumberElement, CardExpiryElement, CardCvcElement } from '@stripe/react-stripe-js';
+import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import '../fonts/stylesheet.css';
 import '../CardSectionStyles.css'
 

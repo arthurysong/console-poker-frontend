@@ -17,7 +17,7 @@ class GameBoard extends React.Component {
         if (user.playing === true) {
             if (user.username === this.props.user.username || !this.props.round.is_playing) {
                 return (this.styleCards(user.cards))
-            } {
+            } else {
                 return "Xx Xx"
             }
         } else {

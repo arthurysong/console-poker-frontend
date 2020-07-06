@@ -1,12 +1,11 @@
 import React from 'react';
-import handleAuthRedirect from '../redux/handleAuthRedirect';
 
 class Home extends React.Component {
     componentDidMount(){
         this.props.setLogin(this.props.history); // can i pass in the history here? and have the action redirect?
         
         const { history } = this.props;
-    
+        //disable back button
         history.listen((newLocation, action) => {
             if (action === "PUSH") {
             if (
