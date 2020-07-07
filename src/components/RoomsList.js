@@ -2,6 +2,7 @@ import React from 'react';
 import RoomListItem from './RoomListItem';
 import Cable from 'actioncable';
 import { NavLink } from 'react-router-dom';
+import { WS_URL } from '../utilities/BASE_URL'
 
 class RoomsList extends React.Component {
     state = {
@@ -25,7 +26,7 @@ class RoomsList extends React.Component {
 
     // lifecycle hooks
     componentDidMount(){
-        this.cable = Cable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
+        this.cable = Cable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
 
         this.subscription = this.cable.subscriptions.create({
             channel: 'RoomsListChannel'
@@ -58,13 +59,9 @@ class RoomsList extends React.Component {
     renderUser = () => {
         if (this.props.user) {
             return (
-                // <a href="#" id="user_badge" className="nes-badge">
-                    /* <span className="is-primary"> */
-                    <>
-                        {this.props.user.username} ({this.props.user.chips})
-                    </>
-                    /* </span> */
-                // </a>
+                <>
+                    {this.props.user.username} ({this.props.user.chips})
+                </>
             )
         }
     }

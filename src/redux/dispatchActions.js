@@ -1,5 +1,6 @@
 import handleAuthRedirect from './handleAuthRedirect';
 import { fetchWithToken } from '../utilities/fetchWithToken';
+import BASE_URL from '../utilities/BASE_URL';
 
 const authenticate_user = (state, history, dispatch) => { // abstracted this out because I also need in my register action
     const body = JSON.stringify(state)
@@ -12,7 +13,7 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
         body
     }
     dispatch({type: 'AUTH_REQUEST'})
-    fetch(`http://localhost:3001/authenticate`, options)
+    fetch(`${BASE_URL}/authenticate`, options)
         .then(resp => resp.json())
         .then(json => {
             console.log("in loginUser action", json);
@@ -39,7 +40,7 @@ export const setLogin = history => {
         console.log('in setlogin');
         if (token) {
             dispatch({type: 'AUTH_REQUEST'});
-            fetch(`http://localhost:3001/set_login`, {
+            fetch(`${BASE_URL}/set_login`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -88,7 +89,7 @@ export const register = (state, history) => {
             },
             body
         }
-        fetch(`http://localhost:3001/users`, options)
+        fetch(`${BASE_URL}/users`, options)
             .then(resp => resp.json())
             .then(json => {
                 console.log("in register action ", json);
@@ -112,7 +113,7 @@ export const addChips = (amount, userId) => {
             },
             body
         }
-        fetchWithToken(`http://localhost:3001/users/${userId}/add_chips`, options)
+        fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
             .then(resp => resp.json())
             .then(json => {
                 console.log(json)
@@ -123,7 +124,7 @@ export const addChips = (amount, userId) => {
 
 export const fetchChips = userId => {
     return dispatch => {
-        fetchWithToken(`http://localhost:3001/users/${userId}/get_chips`)
+        fetchWithToken(`${BASE_URL}/users/${userId}/get_chips`)
             .then(resp => resp.json())
             .then(json => {
                 console.log(json)

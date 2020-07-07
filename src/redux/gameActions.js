@@ -1,4 +1,5 @@
 import {fetchWithToken} from '../utilities/fetchWithToken'
+import BASE_URL from '../utilities/BASE_URL';
 
 export const startGame = gameId => {
     return dispatch => {
@@ -9,7 +10,7 @@ export const startGame = gameId => {
                 'Content-Type': 'application/json'
             }
         }
-        fetchWithToken(`http://localhost:3001/games/${gameId}/start`, options )
+        fetchWithToken(`${BASE_URL}/games/${gameId}/start`, options )
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);

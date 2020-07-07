@@ -33,8 +33,6 @@ class Home extends React.Component {
         return (
             <div>
                 {console.log(this.props.history.action)}
-                {/* {this.refresh()} */}
-                {/* Home Component! */}
             </div>
         )
     }

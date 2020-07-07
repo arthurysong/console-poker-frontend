@@ -1,3 +1,5 @@
+import BASE_URL from './BASE_URL';
+
 export function fetchWithToken(url, options = {}){
     const token = localStorage.getItem("token");
     return fetch(url, {
@@ -19,7 +21,7 @@ export function postMoveWithToken(commandObj, userId) {
         },
         body
     }
-    fetchWithToken(`http://localhost:3001/users/${userId}/make_move`, options);
+    fetchWithToken(`${BASE_URL}/users/${userId}/make_move`, options);
 }
 
 export function startNewRound(gameId) {
@@ -31,5 +33,5 @@ export function startNewRound(gameId) {
         }
     }
 
-    fetchWithToken(`http://localhost:3001/games/${gameId}/start`, options);
+    fetchWithToken(`${BASE_URL}/games/${gameId}/start`, options);
 }

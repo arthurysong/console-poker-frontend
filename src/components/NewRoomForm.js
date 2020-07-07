@@ -1,4 +1,5 @@
 import React from 'react';
+import BASE_URL from '../utilities/BASE_URL';
 
 class NewRoomForm extends React.Component {
     state = {
@@ -24,7 +25,7 @@ class NewRoomForm extends React.Component {
             },
             body
         }
-        return fetch(`http://localhost:3001/rooms`, options)
+        return fetch(`${BASE_URL}/rooms`, options)
     }
 
     submitHandler = event => {
