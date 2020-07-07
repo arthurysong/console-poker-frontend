@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import Register from './Register';
 import CheckoutContainer from './CheckoutContainer';
+import TermsAndConditions from './TermsAndConditions';
 
 class App extends React.Component {
   render() {
@@ -19,6 +20,7 @@ class App extends React.Component {
         <Route path="/" render={routerProps => <Home {...routerProps} isLoggedin={this.props.isLoggedIn} setLogin={this.props.setLogin}/>}/>
         
         <Switch>
+          <Route path="/terms" render={() => <TermsAndConditions/>}/>
           <Route path="/users/:id/deposit" render={routerProps => <CheckoutContainer {...routerProps} user={this.props.user}/>}/> 
           <Route path="/login" render={routerProps => <LoginForm {...routerProps}/>}/>
           <Route path="/rooms/new" render={routerProps => 
