@@ -46,6 +46,7 @@ class LoginForm extends React.Component {
                     {this.renderRegister()}
                     <p>Log In via <Link to="/auth/google_oauth2">Google</Link></p>
                 </form>
+                <Link to="/terms">Terms &#38; Conditions</Link>
             </div>
         )
     }
