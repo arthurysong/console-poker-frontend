@@ -11,8 +11,6 @@ import Register from './Register';
 import CheckoutContainer from './CheckoutContainer';
 
 class App extends React.Component {
-  
-
   render() {
     return (
       <div id="main">
