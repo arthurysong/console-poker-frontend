@@ -3,7 +3,7 @@ import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 import '../fonts/stylesheet.css';
 import '../CardSectionStyles.css'
-import BASE_URL from '../utilities/BASE_URL';
+import { BASE_URL } from '../utilities/BASE_URL';
 
 const CARD_ELEMENT_OPTIONS = {
     style: {

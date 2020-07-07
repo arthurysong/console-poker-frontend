@@ -1,5 +1,5 @@
 import {fetchWithToken} from '../utilities/fetchWithToken'
-import BASE_URL from '../utilities/BASE_URL';
+import { BASE_URL } from '../utilities/BASE_URL';
 
 export const startGame = gameId => {
     return dispatch => {

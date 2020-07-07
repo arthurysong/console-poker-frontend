@@ -2,7 +2,7 @@ import React from 'react';
 import lock from '../lock-icon.png';
 import lock2 from '../lock-icon-dark.png';
 import { fetchWithToken } from '../utilities/fetchWithToken';
-import BASE_URL from '../utilities/BASE_URL';
+import { BASE_URL } from '../utilities/BASE_URL';
 
 class RoomListItem extends React.Component {
     state = {

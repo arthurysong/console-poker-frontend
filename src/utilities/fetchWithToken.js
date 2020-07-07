@@ -1,4 +1,4 @@
-import BASE_URL from './BASE_URL';
+import { BASE_URL } from './BASE_URL';
 
 export function fetchWithToken(url, options = {}){
     const token = localStorage.getItem("token");
