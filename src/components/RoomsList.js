@@ -62,7 +62,7 @@ class RoomsList extends React.Component {
         if (this.props.user) {
             return (
                 <>
-                    HELLO, {this.props.user.username} {this.props.chips}<img className="coin" src={coin} alt="coin_img" />
+                    HELLO, {this.props.user.username} <span className="chips">{this.props.chips}</span><img className="coin" src={coin} alt="coin_img" />
                 </>
             )
         }

@@ -53,7 +53,7 @@ class CheckoutContainer extends React.Component{
         if (this.props.user) {
             return (
                 <>
-                    <p>{this.props.user.username} {this.props.chips}<img className="coin" src={coin} alt="coin_img" /></p>
+                    <p>{this.props.user.username} <span className="chips">{this.props.chips}</span><img className="coin" src={coin} alt="coin_img" /></p>
                 </>
             )
         }
