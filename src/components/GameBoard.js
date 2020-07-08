@@ -22,14 +22,40 @@ class GameBoard extends React.Component {
     }
 
     renderPlayerCards = user => {
+        // if (user.playing === true) {
+        //     if (user.username === this.props.user.username || !this.props.round.is_playing) {
+        //         return (this.styleCards(user.cards))
+        //     } else {
+        //         return "Xx Xx"
+        //     }
+        // } else {
+        //     return "*FOLD*"
+        // }
         if (user.playing === true) {
             if (user.username === this.props.user.username || !this.props.round.is_playing) {
-                return (this.styleCards(user.cards))
+                return (
+                    <>
+                        {console.log(user.cards.split(" "))}
+                        {console.log(user.cards)}
+                        {user.cards.map(c => {
+                            console.log(c);
+                        })}
+                        {/* <img className="cards" src={this.images[`1C.png`]} /> */}
+
+                    </>
+                )
             } else {
-                return "Xx Xx"
+                return (
+                    <>
+                    </>
+                )
             }
         } else {
-            return "*FOLD*"
+            return (
+                <>
+                    *FOLD*
+                </>
+            )
         }
     }
     
@@ -49,7 +75,7 @@ class GameBoard extends React.Component {
                         <span className="board_user_chips">({user.chips})
                         </span>&nbsp;
                         {/* <img src={images['doggy.png']} /> */}
-                        <img className="cards" src={this.images['1C.png']} />
+                        {/* <img className="cards" src={this.images['1C.png']} /> */}
 
                         {this.renderPlayerCards(user)}{this.renderDealerButton(user)}</li>)}
             </>
