@@ -32,6 +32,7 @@ class App extends React.Component {
             <Room {...routerProps}/>}/>
           <Route path="/rooms" render={routerProps => 
             <RoomsList {...routerProps}
+              chips={this.props.chips}
               user={this.props.user} 
               logOut={this.props.logOut} 
               isLoggedIn={this.props.isLoggedIn}
@@ -59,6 +60,7 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
+    chips: state.chips,
     isLoggedIn: state.isLoggedIn,
     user: state.user,
     successMessage: state.successMessage

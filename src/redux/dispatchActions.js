@@ -19,6 +19,8 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
             console.log("in loginUser action", json);
             if (json.user) {
                 dispatch({type: 'AUTH_SUCCESS', user: json.user})
+                // dispatch setchips use state.chips to display chips...
+                dispatch({type: 'SET_CHIPS', chips: json.user.chips })
                 localStorage.setItem("token", json.auth_token);
                 history.push(`/rooms`);
             } else if (json.errors) {
