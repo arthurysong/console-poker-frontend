@@ -3,6 +3,7 @@ import RoomListItem from './RoomListItem';
 import Cable from 'actioncable';
 import { NavLink } from 'react-router-dom';
 import { WS_URL } from '../utilities/BASE_URL'
+import coin from '../pictures/COIN.png';
 
 class RoomsList extends React.Component {
     state = {
@@ -61,7 +62,7 @@ class RoomsList extends React.Component {
         if (this.props.user) {
             return (
                 <>
-                    HELLO, {this.props.user.username} ({this.props.chips})
+                    HELLO, {this.props.user.username} {this.props.chips}<img className="coin" src={coin} alt="coin_img" />
                 </>
             )
         }

@@ -3,6 +3,7 @@ import CheckoutForm from './CheckoutForm'
 import CurrencyInput from 'react-currency-input';
 import { connect } from 'react-redux';
 import { addChips, fetchChips, unsetChips, setSuccess  } from '../redux/dispatchActions';
+import coin from '../pictures/COIN.png'
 // import { fetchWithToken } from '../utilities/fetchWithToken';
 
 class CheckoutContainer extends React.Component{
@@ -17,10 +18,6 @@ class CheckoutContainer extends React.Component{
     componentDidMount() {
         this.props.fetchChips();
     }
-
-    // componentWillUnmount(){
-    //     this.props.unsetChips();
-    // }
 
     changeHandler = event => {
         this.setState({
@@ -56,7 +53,7 @@ class CheckoutContainer extends React.Component{
         if (this.props.user) {
             return (
                 <>
-                    <h4>{this.props.user.username}, ({this.props.chips})</h4>
+                    <p>{this.props.user.username} {this.props.chips}<img className="coin" src={coin} alt="coin_img" /></p>
                 </>
             )
         }
