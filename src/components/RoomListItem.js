@@ -25,7 +25,7 @@ class RoomListItem extends React.Component {
             body
         }
 
-        fetchWithToken(`${BASE_URL}/${this.props.room.id}/authenticate`, options)
+        fetchWithToken(`${BASE_URL}/rooms/${this.props.room.id}/authenticate`, options)
             .then(resp => resp.json())
             .then(json => {
                 // console.log(json);

@@ -60,7 +60,7 @@ class RoomsList extends React.Component {
         if (this.props.user) {
             return (
                 <>
-                    {this.props.user.username} ({this.props.user.chips})
+                    HELLO, {this.props.user.username} ({this.props.user.chips})
                 </>
             )
         }
