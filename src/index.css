@@ -150,3 +150,10 @@ input[type="password"]{
     font-size: 10px;
 }
 
+.back_button {
+    position: fixed;
+    top: 0px !important;
+    left: 0px !important;
+    padding: 10px;
+}
+
