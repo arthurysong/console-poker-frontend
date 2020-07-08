@@ -68,7 +68,7 @@ export const logOut = history => {
     return dispatch => {
         localStorage.clear();
         dispatch({type: 'LOGOUT'})
-        history.push(`/login`);
+        history.replace(`/login`);
     }
 }
 
