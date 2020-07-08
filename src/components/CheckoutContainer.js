@@ -56,7 +56,7 @@ class CheckoutContainer extends React.Component{
         if (this.props.user) {
             return (
                 <>
-                    {this.props.user.username} ({this.props.chips})
+                    <h4>{this.props.user.username}, ({this.props.chips})</h4>
                 </>
             )
         }
@@ -109,6 +109,7 @@ class CheckoutContainer extends React.Component{
     render(){
         return(
             <div id="checkout_form">
+                <h1 className="nes-text is-success">Buy More Chips!</h1> 
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 {this.renderUser()}<br/><br/>
                 {/* {this.props.user.username} ({this.props.chips})<br/><br/> */}
@@ -134,7 +135,8 @@ class CheckoutContainer extends React.Component{
                 <div>
                     <label>
                         {/* name must not be blank. */}
-                        <span className="label">Full Name *</span><br/>
+                        {/* <span className="label">Full Name *</span><br/> */}
+                        <span>Full Name *</span><br/>
                         <input 
                         className="nes-input" 
                         placeholder="Pacman"
@@ -144,7 +146,8 @@ class CheckoutContainer extends React.Component{
                         onChange={this.changeHandler}/>
                     </label><br/>
                     <label>
-                        <span className="label">Card Details</span><br/>
+                        {/* <span className="label">Card Details</span><br/> */}
+                        <span>Card Details</span><br/>
                     <CheckoutForm 
                     
                         clearMessages={this.clearMessages}
@@ -155,6 +158,7 @@ class CheckoutContainer extends React.Component{
                         user={this.props.user} 
                         addChips={this.props.addChips}/>
                     </label>
+                    <p id="checkout_agreement" className="nes-text is-disabled">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
                 </div>
             </div>
         )

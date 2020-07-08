@@ -146,9 +146,9 @@ input[type="password"]{
     text-align: justify;
 }
 
-#checkout_form .label {
+/* #checkout_form .label {
     font-size: 10px;
-}
+} */
 
 .back_button {
     position: fixed;
@@ -161,4 +161,8 @@ input[type="password"]{
     width: 800px;
     margin: auto;
     text-align: left;
+}
+
+#checkout_agreement {
+    font-size: 10px;
 }
