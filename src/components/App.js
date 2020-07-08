@@ -12,6 +12,8 @@ import CheckoutContainer from './CheckoutContainer';
 import TermsAndConditions from './TermsAndConditions';
 
 class App extends React.Component {
+  hash = Math.floor(1000 + Math.random() * 9000);
+
   render() {
     return (
       <div id="main">
@@ -29,9 +31,11 @@ class App extends React.Component {
               />}/>
 
           <Route path={`/rooms/:id`} render={routerProps => 
-            <Room {...routerProps}/>}/>
+            <Room {...routerProps}
+              hash={this.hash}/>}/>
           <Route path="/rooms" render={routerProps => 
             <RoomsList {...routerProps}
+              hash={this.hash}
               chips={this.props.chips}
               user={this.props.user} 
               logOut={this.props.logOut} 

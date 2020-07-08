@@ -9,7 +9,7 @@ class Room extends React.Component {
     state = {
         newMessage: ""
     }
-    hash = Math.floor(1000 + Math.random() * 9000);
+    // hash = Math.floor(1000 + Math.random() * 9000);
 
     componentDidMount() {
         this.subscription = this.props.subscribeRoom(this.props.match.params.id);
@@ -35,7 +35,7 @@ class Room extends React.Component {
                         <h1>{this.props.room.name}</h1>
                     </div>
                     <ul id="user_list">
-                        {this.props.room.users.map((user, index) => <li className="user_item" style={{color: `${hashStringToColor(user.username, this.hash)}`}} key={index}>{user.username} </li>)}
+                        {this.props.room.users.map((user, index) => <li className="user_item" style={{color: `${hashStringToColor(user.username, this.props.hash)}`}} key={index}>{user.username} </li>)}
                     </ul>
                 </>
             )
@@ -45,7 +45,7 @@ class Room extends React.Component {
 
     renderGameComp = () => {
         if (this.props.room) {
-            return (<Game gameId={this.props.room.game.id} players={this.props.room.no_users} colorHash={this.hash}/>)
+            return (<Game gameId={this.props.room.game.id} players={this.props.room.no_users} colorHash={this.props.hash}/>)
         }
     }
 
@@ -54,7 +54,7 @@ class Room extends React.Component {
             // <div id="room_container">
             <div>
                 {this.renderRoom()}
-                <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.hash}/>
+                <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/>
                 {this.renderGameComp()}
             </div>
         )

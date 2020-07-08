@@ -4,6 +4,7 @@ import Cable from 'actioncable';
 import { NavLink } from 'react-router-dom';
 import { WS_URL } from '../utilities/BASE_URL'
 import coin from '../pictures/COIN.png';
+import { hashStringToColor } from '../utilities/colorHash';
 
 class RoomsList extends React.Component {
     state = {
@@ -62,7 +63,9 @@ class RoomsList extends React.Component {
         if (this.props.user) {
             return (
                 <>
-                    HELLO, {this.props.user.username} <span className="chips">{this.props.chips}</span><img className="coin" src={coin} alt="coin_img" />
+                    HELLO,&nbsp;
+                    <span style={{color: `${hashStringToColor(this.props.user.username, this.props.hash)}`}}>{this.props.user.username}</span>&nbsp;
+                    <span className="chips">{this.props.chips}</span><img className="coin" src={coin} alt="coin_img" />
                 </>
             )
         }

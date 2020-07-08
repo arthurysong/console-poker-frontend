@@ -52,15 +52,17 @@ class NewRoomForm extends React.Component {
                     name="name" 
                     className="nes-input"
                     onChange={this.changeHandler} 
+                    placeholder="Escape Room"
                     value={this.state.name} />
                     </label><br/>
                     <label>
-                        Password&nbsp;
+                        Password (optional)&nbsp;
                     <input 
                     type="password" 
                     name="password" 
                     className="nes-input"
                     onChange={this.changeHandler} 
+                    placeholder="Password is Optional"
                     value={this.state.password} />
                     </label><br/>
                     <button type="submit" className="nes-btn is-primary smaller-btn" >Create</button>

@@ -11,6 +11,9 @@ Forms required places put asterisks
 Think about presenting your application and why you made certain features...
 Maybe make a button like a README.md that shows how to use your website?
 
+Color hash should be set in RoomsList and passed down to Game and GameBoard??
+Add Coin icon to Pot chips count.
+
 How can I make the game state more accessible...
 
 Are you sure you want to leave the room?
