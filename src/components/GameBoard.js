@@ -37,11 +37,12 @@ class GameBoard extends React.Component {
                     <>
                         {console.log(user.cards.split(" "))}
                         {console.log(user.cards)}
-                        {user.cards.map(c => {
+                        {user.cards.split(" ").map(c => {
                             console.log(c);
-                        })}
-                        {/* <img className="cards" src={this.images[`1C.png`]} /> */}
-
+                            return <img className="cards" alt={c} src={this.images[`${c}.png`]}/>
+                            })}
+                        {/* <img className="cards" src={this.images[`1c.png`]}/> */}
+                        {/* <img className="cards" src={this.images['1C.png']} /> */}
                     </>
                 )
             } else {
@@ -83,7 +84,8 @@ class GameBoard extends React.Component {
     }
 
     renderBoardCards = () => {
-        return (this.styleCards(this.props.round.access_community_cards))
+        // return (this.styleCards(this.props.round.access_community_cards))
+        return (this.props.round.access_community_cards.split(" ").map(c => <img className="cards" alt={c} src={this.images[`${c}.png`]}/>))
     }
 
     renderCardsAndPot = () => {
