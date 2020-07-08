@@ -25,10 +25,7 @@ class GameBoard extends React.Component {
             if (user.username === this.props.user.username || !this.props.round.is_playing) {
                 return (
                     <>
-                        {console.log(user.cards.split(" "))}
-                        {console.log(user.cards)}
                         {user.cards.split(" ").map((c, index) => {
-                            console.log(c);
                             return <img key={index} className="cards" alt={c} src={this.images[`${c}.png`]}/>
                             })}
                     </>
