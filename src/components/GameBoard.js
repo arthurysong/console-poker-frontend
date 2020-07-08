@@ -61,7 +61,8 @@ class GameBoard extends React.Component {
                     <li className="board_user" key={index}>
                         <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
                         </span>&nbsp;
-                        <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" />
+                        {/* <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" /> */}
+                        <span className="board_user_chips">{user.chips} <i class="nes-icon coin is-small"></i>
                         </span>&nbsp;
 
                         {this.renderPlayerCards(user)}{this.renderDealerButton(user)}</li>)}

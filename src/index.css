@@ -103,10 +103,14 @@ input[type="password"]{
 }
 
 .coin {
-    width: 30px;
+    position: relative;
+    top: 2px !important;
+    right: 5px !important;
+
+    /* width: 30px;
     position: relative;
     bottom: 3px;
-    image-rendering: pixelated;
+    image-rendering: pixelated; */
 }
 
 .board_user {
