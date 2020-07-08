@@ -33,6 +33,7 @@ class LoginForm extends React.Component {
         return(
             <div className="user_form">
                 <h1>Console-Poker!</h1>
+                <p>Chat and Play Holdem with Your Friends!</p>
                 <Errors />
                 <form onSubmit={this.submitHandler}>
                     <label>

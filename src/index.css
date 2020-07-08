@@ -1,6 +1,6 @@
 body {
     font-family: 'atari_classicchunky' !important;
-    word-break: break-all;
+    /* word-break: break-all; */
 } 
 
 ul {
@@ -76,6 +76,10 @@ input[type="password"]{
     position: absolute;
     bottom: 24px;
     left: 32px;
+}
+
+.user_message {
+    word-break: break-all;
 }
 
 .nes-balloon.tight-balloon {

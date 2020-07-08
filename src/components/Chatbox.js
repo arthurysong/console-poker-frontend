@@ -51,7 +51,7 @@ class Chatbox extends React.Component {
             return (
                 <div style={{textAlign: 'right'}}>
                     <div className={`nes-balloon ${ bubble.username === this.props.user.username ? 'from-right' : 'from-left'} tight-balloon`}>
-                        {bubble.messages.map((message, index2) => <div key={index2}>{message.payload}<br/></div>)}
+                        {bubble.messages.map((message, index2) => <div className="user_message" key={index2}>{message.payload}<br/></div>)}
                     </div>&nbsp;
                     <span style={{color: `${hashStringToColor(bubble.username, this.props.colorHash)}`}}>{bubble.username}</span>
                 </div>
@@ -61,7 +61,7 @@ class Chatbox extends React.Component {
                 <>
                     <span style={{color: `${hashStringToColor(bubble.username, this.props.colorHash)}`}}>{bubble.username}</span>&nbsp;
                     <div className={`nes-balloon ${ bubble.username === this.props.user.username ? 'from-right' : 'from-left'} tight-balloon`}>
-                        {bubble.messages.map((message, index2) => <div key={index2}>{message.payload}<br/></div>)}
+                        {bubble.messages.map((message, index2) => <div className="user_message" key={index2}>{message.payload}<br/></div>)}
                     </div>
                 </>
             )
