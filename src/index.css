@@ -113,8 +113,12 @@ input[type="password"]{
     margin: 8px 0px;
 }
 
+.chips {
+    color: #006400;
+}
+
 .board_user_chips {
-    font-size: 10px;
+    font-size: 12px;
     color: #006400;
 }
 

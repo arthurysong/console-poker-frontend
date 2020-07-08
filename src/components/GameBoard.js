@@ -1,5 +1,6 @@
 import React from 'react';
 import { hashStringToColor } from '../utilities/colorHash'
+import coin from '../pictures/COIN.png'
 
 class GameBoard extends React.Component {
     componentWillUnmount() {
@@ -59,8 +60,8 @@ class GameBoard extends React.Component {
                 {this.props.round.ordered_users.map((user,index) => 
                     <li className="board_user" key={index}>
                         <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
-                        </span>
-                        <span className="board_user_chips">({user.chips})
+                        </span>&nbsp;
+                        <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" />
                         </span>&nbsp;
 
                         {this.renderPlayerCards(user)}{this.renderDealerButton(user)}</li>)}
