@@ -75,10 +75,11 @@ class RoomsList extends React.Component {
             <div id="rooms_component">
                 {this.renderUser()}<br/>
                 <button className="nes-btn smaller-btn is-error" id="test" onClick={this.clickHandler}>Log Out</button>&nbsp;
-                <button className="nes-btn is-success smaller-btn" onClick={this.redirectToDeposits}>Deposit</button><br/><br/><br/><br/>
+                <button className="nes-btn is-success smaller-btn" onClick={this.redirectToDeposits}>Deposit</button><br/><br/>
                 {/* <div className="ne"></div> */}
                 
                 <h1>Join a Room!</h1>
+                {/* <p>(Make sure you have money first)</p> */}
                 <NavLink to="/rooms/new" className="nes-btn is-primary smaller-btn">Create Room</NavLink>
                 <ul id="rooms_ul">
                     {this.renderRooms()}

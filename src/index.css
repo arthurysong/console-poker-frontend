@@ -97,6 +97,11 @@ input[type="password"]{
     text-align: justify;
 }
 
+.cards {
+    width: 50px;
+    image-rendering: pixelated;
+}
+
 .board_user {
     margin: 8px 0px;
 }

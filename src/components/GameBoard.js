@@ -3,6 +3,14 @@ import { hashStringToColor } from '../utilities/colorHash'
 import { colorCard } from '../utilities/colorCards'
 
 class GameBoard extends React.Component {
+    importAll = r => {
+        let images = {};
+        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+        return images;
+      }
+      
+    images = this.importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
+
     styleCards = (cards) => {
         const arr = cards.split(" ");
         console.log(arr);
@@ -40,6 +48,9 @@ class GameBoard extends React.Component {
                         </span>
                         <span className="board_user_chips">({user.chips})
                         </span>&nbsp;
+                        {/* <img src={images['doggy.png']} /> */}
+                        <img className="cards" src={this.images['1C.png']} />
+
                         {this.renderPlayerCards(user)}{this.renderDealerButton(user)}</li>)}
             </>
         )
