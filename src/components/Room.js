@@ -19,8 +19,8 @@ class Room extends React.Component {
         this.props.unsubscribeRoom(this.props.match.params.id);
     }
 
-    leaveRoom = () => {
-        this.props.history.push(`/rooms`);
+    goBack = () => {
+        this.props.history.goBack();
     }
 
     renderRoom(){
@@ -28,7 +28,7 @@ class Room extends React.Component {
             return (
                 <>
                     <div>
-                    <button className="nes-btn is-error" onClick={this.leaveRoom}>{'<'}</button><br/><br/>
+                    <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                     {this.props.room.name} 
                     </div>
                     <ul id="user_list">

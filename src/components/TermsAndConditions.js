@@ -2,7 +2,7 @@ import React from 'react';
 
 function TermsAndConditions ({ history }) {
     function goBack() {
-        history.push(`/login`)
+        history.goBack();
     }
 
     return (
