@@ -55,7 +55,7 @@ class RoomsList extends React.Component {
     }
 
     clickHandler = () => {
-        this.props.logOut(this.props.history)
+        this.props.logOut(this.props.history, window)
     }
 
     renderRooms = () => (this.state.rooms.map((room,index) => <RoomListItem key={index} index={index} room={room} wsSubscribeRoom={this.props.wsSubscribeRoom} history={this.props.history}/>))
