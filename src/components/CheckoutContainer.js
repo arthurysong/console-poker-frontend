@@ -2,7 +2,7 @@ import React from 'react';
 import CheckoutForm from './CheckoutForm'
 import CurrencyInput from 'react-currency-input';
 import { connect } from 'react-redux';
-import { addChips, fetchChips, unsetChips } from '../redux/dispatchActions';
+import { addChips, fetchChips, unsetChips, setSuccess  } from '../redux/dispatchActions';
 // import { fetchWithToken } from '../utilities/fetchWithToken';
 
 class CheckoutContainer extends React.Component{
@@ -79,21 +79,21 @@ class CheckoutContainer extends React.Component{
         }
     }
 
-    handleSuccess = () => {
-        this.setState({
-            success: "Deposit Successful!"
-        })
-    }
+    // handleSuccess = () => {
+    //     this.setState({
+    //         success: "Deposit Successful!"
+    //     })
+    // }
 
-    renderSuccess = () => {
-        if (this.state.success) {
-            return(
-                <span className="nes-text is-success">
-                    {this.state.success}<br/>
-                </span>
-            )
-        }
-    }
+    // renderSuccess = () => {
+    //     if (this.state.success) {
+    //         return(
+    //             <span className="nes-text is-success">
+    //                 {this.state.success}<br/>
+    //             </span>
+    //         )
+    //     }
+    // }
 
     clearMessages = () => {
         this.setState({
@@ -115,7 +115,7 @@ class CheckoutContainer extends React.Component{
                 {/* {this.props.user.username} ({this.props.chips})<br/><br/> */}
 
                 {this.renderErrors()}
-                {this.renderSuccess()}
+                {/* {this.renderSuccess()} */}
 
                 1 USD = 10000 Chips<br/>
                 <label> 
@@ -149,7 +149,8 @@ class CheckoutContainer extends React.Component{
                         {/* <span className="label">Card Details</span><br/> */}
                         <span>Card Details</span><br/>
                     <CheckoutForm 
-                    
+                        history={this.props.history}
+                        setSuccess={this.props.setSuccess}
                         clearMessages={this.clearMessages}
                         handleErrors={this.handleErrors} 
                         handleSuccess={this.handleSuccess}
@@ -175,7 +176,8 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchChips: userId => dispatch(fetchChips(userId)),
         addChips: (amount, userId) => dispatch(addChips(amount, userId)),
-        unsetChips: () => dispatch(unsetChips())
+        unsetChips: () => dispatch(unsetChips()),
+        setSuccess: () => dispatch(setSuccess())
     }
 }
 

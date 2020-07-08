@@ -134,3 +134,5 @@ export const fetchChips = userId => {
 }
 
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
+export const setSuccess = () => ({ type: 'SET_SUCCESS' })
+export const clearSuccess = () => ({ type: 'CLEAR_SUCCESS' })

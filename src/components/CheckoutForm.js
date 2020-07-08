@@ -80,8 +80,11 @@ const CheckoutForm = props => {
             // execution. Set up a webhook or plugin to listen for the
             // payment_intent.succeeded event that handles any business critical
             // post-payment actions.
-          props.handleSuccess();
+          // props.handleSuccess();
           console.log("PAYMENT SUCCESS");
+          props.setSuccess();
+          props.history.push(`/rooms`)
+          //payment success message in /rooms
             // send post request to add chips to person's account.
         }
         }

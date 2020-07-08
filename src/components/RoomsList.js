@@ -42,6 +42,7 @@ class RoomsList extends React.Component {
 
     componentWillUnmount(){
         this.cable.subscriptions.remove(this.subscription);
+        this.props.clearSuccess();
     }
     
     //component handlers
@@ -70,9 +71,20 @@ class RoomsList extends React.Component {
         this.props.history.push(`/users/${this.props.user.id}/deposit`); // should i have route to something like /users/:id/deposit??
     }
     
+    renderSuccess = () => {
+        if (this.props.successMessage) {
+            return (
+                <span className="nes-text is-success">
+                    {this.props.successMessage}<br/>
+                </span>
+            )
+        }
+    }
+
     render () {
         return (
             <div id="rooms_component">
+                {this.renderSuccess()}
                 {this.renderUser()}<br/>
                 <button className="nes-btn smaller-btn is-error" id="test" onClick={this.clickHandler}>Log Out</button>&nbsp;
                 <button className="nes-btn is-success smaller-btn" onClick={this.redirectToDeposits}>Deposit</button><br/><br/>

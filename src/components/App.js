@@ -4,7 +4,7 @@ import RoomsList from './RoomsList';
 import NewRoomForm from './NewRoomForm';
 import Room from './Room';
 import { connect } from 'react-redux';
-import { setLogin, logOut, register } from '../redux/dispatchActions';
+import { setLogin, logOut, register, clearSuccess } from '../redux/dispatchActions';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import Register from './Register';
@@ -35,6 +35,8 @@ class App extends React.Component {
               user={this.props.user} 
               logOut={this.props.logOut} 
               isLoggedIn={this.props.isLoggedIn}
+              successMessage={this.props.successMessage}
+              clearSuccess={this.props.clearSuccess}
               />}/>
 
           <Route path="/register" render={routerProps => <Register {...routerProps} register={this.props.register}/>}/>
@@ -50,6 +52,7 @@ const mapDispatchToProps = dispatch => {
     register: (state,history) => dispatch(register(state,history)),
     setLogin: history => dispatch(setLogin(history)),
     logOut: history => dispatch(logOut(history)),
+    clearSuccess: () => dispatch(clearSuccess())
     // createRoom: state => dispatch(createRoom(state))
   }
 }
@@ -57,7 +60,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     isLoggedIn: state.isLoggedIn,
-    user: state.user
+    user: state.user,
+    successMessage: state.successMessage
   }
 }
 
