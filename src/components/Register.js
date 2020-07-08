@@ -1,5 +1,6 @@
 import React from 'react';
 import Errors from './Errors';
+import { Link } from 'react-router-dom';
 
 class Register extends React.Component {
     state = {
@@ -21,7 +22,7 @@ class Register extends React.Component {
     }
     
     goBack = () => {
-        this.props.history.push(`/login`);
+        this.props.history.goBack();
     }
 
     render() {
@@ -48,7 +49,7 @@ class Register extends React.Component {
                     </label><br/>
                     <button className="nes-btn is-primary" type="submit" value="Create Account">Register!</button><br/>
                 </form>
-                <p>By registering, you agree to Console-Poker's <button>Terms &#38; Conditions</button></p>
+                <p>By registering, you agree to Console-Poker's <Link to="/terms">Terms &#38; Conditions</Link></p>
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
             </div>
         )
