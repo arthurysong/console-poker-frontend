@@ -62,10 +62,12 @@ class GameBoard extends React.Component {
                         <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
                         </span>&nbsp;
                         {/* <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" /> */}
-                        <span className="board_user_chips">{user.chips} <i class="nes-icon coin is-small"></i>
+                        <span className="board_user_chips">{user.chips} <i className="nes-icon coin is-small"></i>
                         </span>&nbsp;
 
-                        {this.renderPlayerCards(user)}{this.renderDealerButton(user)}</li>)}
+                        {this.renderPlayerCards(user)}{this.renderDealerButton(user)}
+                        &nbsp;<span className="chips">{user.round_bet === 0 ? '' : user.round_bet}</span>
+                    </li>)}
             </>
         )
     }
@@ -80,7 +82,7 @@ class GameBoard extends React.Component {
             <div id="board">
                 {/* <div id="phase">{this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}</div><br/> */}
                 {this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}<br/><br/>
-                <span className="chips">{this.props.round.pot}</span> <i class="nes-icon coin is-small"></i>
+                <span className="chips">{this.props.round.pot}</span> <i className="nes-icon coin is-small"></i>
                 {/* Bet {this.props.round.highest_bet_for_phase}<br/> */}
             </div>
         )
