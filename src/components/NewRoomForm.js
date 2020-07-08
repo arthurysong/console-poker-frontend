@@ -46,7 +46,7 @@ class NewRoomForm extends React.Component {
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 <form onSubmit={this.submitHandler}>
                     <label>
-                        Name&nbsp;
+                        Name*
                     <input 
                     type="text" 
                     name="name" 
@@ -62,7 +62,7 @@ class NewRoomForm extends React.Component {
                     name="password" 
                     className="nes-input"
                     onChange={this.changeHandler} 
-                    placeholder="Password is Optional"
+                    placeholder="(Optional)"
                     value={this.state.password} />
                     </label><br/>
                     <button type="submit" className="nes-btn is-primary smaller-btn" >Create</button>

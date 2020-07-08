@@ -32,19 +32,19 @@ class Register extends React.Component {
                 <h1>Registration!</h1>
                 <form onSubmit={this.submitHandler} >
                     <label>
-                        Username
+                        Username*
                     <input className="nes-input" type="text" name="username" value={this.state.username} onChange={this.changeHandler}/>
                     </label><br/>
                     <label>
-                        Email
+                        Email*
                     <input className="nes-input" type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
                     </label><br/>
                     <label>
-                        Password
+                        Password*
                     <input className="nes-input" type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
                     </label><br/>
                     <label>
-                        Password Confirmation
+                        Password Confirmation*
                     <input className="nes-input" type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.changeHandler}/>
                     </label><br/>
                     <button className="nes-btn is-primary" type="submit" value="Create Account">Register!</button><br/>

@@ -76,22 +76,6 @@ class CheckoutContainer extends React.Component{
         }
     }
 
-    // handleSuccess = () => {
-    //     this.setState({
-    //         success: "Deposit Successful!"
-    //     })
-    // }
-
-    // renderSuccess = () => {
-    //     if (this.state.success) {
-    //         return(
-    //             <span className="nes-text is-success">
-    //                 {this.state.success}<br/>
-    //             </span>
-    //         )
-    //     }
-    // }
-
     clearMessages = () => {
         this.setState({
             success: "",
@@ -114,7 +98,7 @@ class CheckoutContainer extends React.Component{
                 {this.renderErrors()}
                 {/* {this.renderSuccess()} */}
 
-                1 USD = 10000 Chips<br/>
+                1 USD = 10000 Chips*<br/>
                 <label> 
                     {/* input must be at least .50 */}
                     {/* amount must be no more than 999,999.99 */}
@@ -133,7 +117,7 @@ class CheckoutContainer extends React.Component{
                     <label>
                         {/* name must not be blank. */}
                         {/* <span className="label">Full Name *</span><br/> */}
-                        <span>Full Name *</span><br/>
+                        <span>Full Name*</span><br/>
                         <input 
                         className="nes-input" 
                         placeholder="Pacman"
@@ -144,7 +128,7 @@ class CheckoutContainer extends React.Component{
                     </label><br/>
                     <label>
                         {/* <span className="label">Card Details</span><br/> */}
-                        <span>Card Details</span><br/>
+                        <span>Card Details*</span><br/>
                     <CheckoutForm 
                         history={this.props.history}
                         setSuccess={this.props.setSuccess}

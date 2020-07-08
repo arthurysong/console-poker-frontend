@@ -37,11 +37,11 @@ class LoginForm extends React.Component {
                 <Errors />
                 <form onSubmit={this.submitHandler}>
                     <label>
-                        Email&nbsp;
+                        Email*
                     <input className="nes-input" onChange={this.changeHandler} type="text" name="email" value={this.state.email}/>
                     </label><br/>
                     <label>
-                        Password&nbsp;
+                        Password*
                     <input className="nes-input" onChange={this.changeHandler} type="password" name="password" value={this.state.password}/>
                     </label><br/>
                     <button className="nes-btn" type="submit" value="login">Log In</button><br/>
