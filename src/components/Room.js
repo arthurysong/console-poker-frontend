@@ -17,17 +17,20 @@ class Room extends React.Component {
 
     componentWillUnmount() {
         this.props.unsubscribeRoom(this.props.match.params.id);
+        //should update users chips...
     }
 
-    goBack = () => {
-        this.props.history.goBack();
+
+
+    leaveRoom = () => {
+        this.props.history.push(`/rooms`);
     }
 
     renderRoom(){
         if (this.props.room !== undefined) {
             return (
                 <>
-                    <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
+                    <div className="back_button"><button className="nes-btn is-error" onClick={this.leaveRoom}>{'<'}</button></div>
                     <div>
                         <h1>{this.props.room.name}</h1>
                     </div>

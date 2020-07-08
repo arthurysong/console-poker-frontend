@@ -3,6 +3,7 @@ import GameBoard from './GameBoard';
 import GameConsole from './GameConsole'
 import { connect } from 'react-redux';
 import { startGame, subscribeGame, unsubscribeGame, clearGameErrors } from '../redux/gameActions';
+import { setChips } from '../redux/dispatchActions';
 
 class Game extends React.Component {
     componentDidMount() {
@@ -11,6 +12,7 @@ class Game extends React.Component {
 
     componentWillUnmount(){
         this.props.unsubscribeGame(this.props.gameId);
+        //update chips here.
     }
 
     startGame = () => {
@@ -31,7 +33,11 @@ class Game extends React.Component {
             console.log(this.props.game.active_round.status)
             return (
                 <>
-                    <GameBoard round={this.props.game.active_round} user={this.props.user} colorHash={this.props.colorHash}/>
+                    <GameBoard 
+                        round={this.props.game.active_round} 
+                        user={this.props.user} 
+                        colorHash={this.props.colorHash}
+                        setChips={this.props.setChips}/>
                     <GameConsole 
                         gameId={this.props.game.id}
                         user={this.props.user}
@@ -68,7 +74,8 @@ const mapDispatchToProps = dispatch => {
         startGame: roomId => dispatch(startGame(roomId)),
         subscribeGame: gameId => dispatch(subscribeGame(gameId)),
         unsubscribeGame: gameId => dispatch(unsubscribeGame(gameId)),
-        clearGameErrors: () => dispatch(clearGameErrors())
+        clearGameErrors: () => dispatch(clearGameErrors()),
+        setChips: chips => dispatch(setChips(chips))
     }
 }
 // export default Game;

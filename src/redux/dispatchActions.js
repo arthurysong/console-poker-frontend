@@ -52,6 +52,7 @@ export const setLogin = history => {
                     console.log("in setLogin action", json);
                     if (json.user) {
                         dispatch({type: 'AUTH_SUCCESS', user: json.user})
+                        dispatch({type: 'SET_CHIPS', chips: json.user.chips })
                         
                         handleAuthRedirect(true, history);  // created function to control for different routes for redirects
                     } else if (json.error) {
@@ -135,6 +136,7 @@ export const fetchChips = userId => {
     }
 }
 
+export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 export const setSuccess = () => ({ type: 'SET_SUCCESS' })
 export const clearSuccess = () => ({ type: 'CLEAR_SUCCESS' })

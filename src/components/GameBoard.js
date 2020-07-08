@@ -2,6 +2,16 @@ import React from 'react';
 import { hashStringToColor } from '../utilities/colorHash'
 
 class GameBoard extends React.Component {
+    componentWillUnmount() {
+        this.updateChips();
+    }
+
+    updateChips = () => {
+        const user = this.props.round.ordered_users.find(u => u.id === this.props.user.id)
+        console.log(user.chips);
+        this.props.setChips(user.chips);
+    }
+
     importAll = r => {
         let images = {};
         r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
@@ -10,16 +20,6 @@ class GameBoard extends React.Component {
       
     images = this.importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
-    // styleCards = (cards) => {
-    //     const arr = cards.split(" ");
-    //     console.log(arr);
-    //     return (
-    //         <>
-    //         {arr.map((c,index) => (<span key={index} style={{color: colorCard(c)}}>{c}&nbsp;</span>))}
-    //         </>
-    //     )
-    // }
-
     renderPlayerCards = user => {
         if (user.playing === true) {
             if (user.username === this.props.user.username || !this.props.round.is_playing) {
@@ -27,9 +27,9 @@ class GameBoard extends React.Component {
                     <>
                         {console.log(user.cards.split(" "))}
                         {console.log(user.cards)}
-                        {user.cards.split(" ").map(c => {
+                        {user.cards.split(" ").map((c, index) => {
                             console.log(c);
-                            return <img className="cards" alt={c} src={this.images[`${c}.png`]}/>
+                            return <img key={index} className="cards" alt={c} src={this.images[`${c}.png`]}/>
                             })}
                     </>
                 )
@@ -65,8 +65,6 @@ class GameBoard extends React.Component {
                         </span>
                         <span className="board_user_chips">({user.chips})
                         </span>&nbsp;
-                        {/* <img src={images['doggy.png']} /> */}
-                        {/* <img className="cards" src={this.images['1C.png']} /> */}
 
                         {this.renderPlayerCards(user)}{this.renderDealerButton(user)}</li>)}
             </>
@@ -75,7 +73,7 @@ class GameBoard extends React.Component {
 
     renderBoardCards = () => {
         // return (this.styleCards(this.props.round.access_community_cards))
-        return (this.props.round.access_community_cards.split(" ").map(c => <img className="cards" alt={c} src={this.images[`${c}.png`]}/>))
+        return (this.props.round.access_community_cards.split(" ").map((c, index) => <img key={index} className="cards" alt={c} src={this.images[`${c}.png`]}/>))
     }
 
     renderCardsAndPot = () => {
