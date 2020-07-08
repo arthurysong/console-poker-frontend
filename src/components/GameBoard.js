@@ -1,6 +1,5 @@
 import React from 'react';
 import { hashStringToColor } from '../utilities/colorHash'
-import { colorCard } from '../utilities/colorCards'
 
 class GameBoard extends React.Component {
     importAll = r => {
@@ -11,26 +10,17 @@ class GameBoard extends React.Component {
       
     images = this.importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
-    styleCards = (cards) => {
-        const arr = cards.split(" ");
-        console.log(arr);
-        return (
-            <>
-            {arr.map((c,index) => (<span key={index} style={{color: colorCard(c)}}>{c}&nbsp;</span>))}
-            </>
-        )
-    }
+    // styleCards = (cards) => {
+    //     const arr = cards.split(" ");
+    //     console.log(arr);
+    //     return (
+    //         <>
+    //         {arr.map((c,index) => (<span key={index} style={{color: colorCard(c)}}>{c}&nbsp;</span>))}
+    //         </>
+    //     )
+    // }
 
     renderPlayerCards = user => {
-        // if (user.playing === true) {
-        //     if (user.username === this.props.user.username || !this.props.round.is_playing) {
-        //         return (this.styleCards(user.cards))
-        //     } else {
-        //         return "Xx Xx"
-        //     }
-        // } else {
-        //     return "*FOLD*"
-        // }
         if (user.playing === true) {
             if (user.username === this.props.user.username || !this.props.round.is_playing) {
                 return (
@@ -41,13 +31,12 @@ class GameBoard extends React.Component {
                             console.log(c);
                             return <img className="cards" alt={c} src={this.images[`${c}.png`]}/>
                             })}
-                        {/* <img className="cards" src={this.images[`1c.png`]}/> */}
-                        {/* <img className="cards" src={this.images['1C.png']} /> */}
                     </>
                 )
             } else {
                 return (
                     <>
+                    {/* return faced down cards */}
                     </>
                 )
             }
@@ -63,6 +52,7 @@ class GameBoard extends React.Component {
     renderDealerButton = user => {
         if (user.dealer) {
             return "(D)"
+            // need dealer img
         }
     }
 
