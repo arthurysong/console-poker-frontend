@@ -103,13 +103,13 @@ class CheckoutContainer extends React.Component{
     }
 
     goBack = () => {
-        this.props.history.push(`/rooms`)
+        this.props.history.goBack()
     }
 
     render(){
         return(
             <div id="checkout_form">
-                <button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button><br/><br/>
+                <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 {this.renderUser()}<br/><br/>
                 {/* {this.props.user.username} ({this.props.chips})<br/><br/> */}
 
