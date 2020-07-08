@@ -126,12 +126,15 @@ input[type="password"]{
     color: #006400;
 }
 
-#phase {
+/* #phase {
     font-size: 18px;
     padding: 8px;
     text-align: center;
     /* margin: 8px auto */
     
+/* } */ 
+#board {
+    text-align: center;
 }
 
 .user_item {

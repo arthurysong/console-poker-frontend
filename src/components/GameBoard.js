@@ -77,11 +77,12 @@ class GameBoard extends React.Component {
 
     renderCardsAndPot = () => {
         return (
-            <>
-                <div id="phase">{this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}</div><br/>
-                Pot {this.props.round.pot}<br/>
-                Bet {this.props.round.highest_bet_for_phase}<br/>
-            </>
+            <div id="board">
+                {/* <div id="phase">{this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}</div><br/> */}
+                {this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}<br/><br/>
+                <span className="chips">{this.props.round.pot}</span> <i class="nes-icon coin is-small"></i>
+                {/* Bet {this.props.round.highest_bet_for_phase}<br/> */}
+            </div>
         )
     }
 
