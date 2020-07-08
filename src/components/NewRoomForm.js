@@ -41,7 +41,8 @@ class NewRoomForm extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="user_form">
+                <h1>Enter New Room!</h1>
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 <form onSubmit={this.submitHandler}>
                     <label>
@@ -52,7 +53,7 @@ class NewRoomForm extends React.Component {
                     className="nes-input"
                     onChange={this.changeHandler} 
                     value={this.state.name} />
-                    </label>&nbsp;
+                    </label><br/>
                     <label>
                         Password&nbsp;
                     <input 
@@ -61,7 +62,7 @@ class NewRoomForm extends React.Component {
                     className="nes-input"
                     onChange={this.changeHandler} 
                     value={this.state.password} />
-                    </label>&nbsp;
+                    </label><br/>
                     <button type="submit" className="nes-btn is-primary smaller-btn" >Create</button>
                 </form>
             </div>

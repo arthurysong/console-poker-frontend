@@ -27,9 +27,9 @@ class Room extends React.Component {
         if (this.props.room !== undefined) {
             return (
                 <>
-                    <div>
                     <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
-                    {this.props.room.name} 
+                    <div>
+                        <h1>{this.props.room.name}</h1>
                     </div>
                     <ul id="user_list">
                         {this.props.room.users.map((user, index) => <li className="user_item" style={{color: `${hashStringToColor(user.username, this.hash)}`}} key={index}>{user.username} </li>)}
