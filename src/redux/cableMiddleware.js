@@ -3,7 +3,7 @@ import { WS_URL } from '../utilities/BASE_URL';
 
 export default function cableMiddleware() {
   // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
-  const cable = ActionCable.createConsumer(`${WS_URL}`);
+  const cable = ActionCable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
 
   return ({ dispatch, getState }) => next => (action) => {
     if (typeof(action) === 'function') {
