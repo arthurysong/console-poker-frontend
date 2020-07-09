@@ -53,6 +53,7 @@ class Room extends React.Component {
         return(
             // <div id="room_container">
             <div>
+                {console.log(this.props.user)}
                 {this.renderRoom()}
                 <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/>
                 {this.renderGameComp()}
