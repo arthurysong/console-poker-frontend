@@ -46,11 +46,12 @@ class GameConsole extends React.Component {
     
             },
         (cmd, t) => {
-            t.echo('Invalid Command: help for options');
+            t.echo("[[;red;black]Invalid Command: help for options]");
             scrollable.scrollTop = scrollable.scrollHeight;
         }
     ], {
-            greetings: 'Game Terminal:'
+            greetings: '[[gb;teal;black]Game Terminal]' + '[[gb;red;]\nhelp] for commands\n[[gb;yellow;]Enter your move in the console!]\n'
+            
         })
         // if (this.props.playing) {this.props.status.forEach(s => this.term.echo(s))}
         this.props.status.forEach(s => this.term.echo(s))
@@ -60,6 +61,8 @@ class GameConsole extends React.Component {
         
 
         if (this.props.roundId !== nextProps.roundId) {
+            this.term.clear();
+            this.term.echo('[[gb;teal;black]Game Terminal]' + '[[gb;red;]\nhelp] for commands\n[[gb;yellow;]Enter your move in the console!]\n');
             nextProps.status.forEach(s => this.term.echo(s));
         } else if (nextProps.gameErrors) {
             this.term.echo(nextProps.gameErrors);
