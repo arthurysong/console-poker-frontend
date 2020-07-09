@@ -46,7 +46,7 @@ class GameConsole extends React.Component {
     
             },
         (cmd, t) => {
-            t.echo("[[;red;black]Invalid Command: help for options]");
+            t.echo("[[;red;black]Invalid Command: help for options]\n");
             scrollable.scrollTop = scrollable.scrollHeight;
         }
     ], {
