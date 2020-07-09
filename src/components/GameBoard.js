@@ -1,6 +1,7 @@
 import React from 'react';
 import { hashStringToColor } from '../utilities/colorHash'
-import coin from '../pictures/COIN.png'
+import dealerChip from '../pictures/DEALER.png';
+// import coin from '../pictures/COIN.png'
 
 class GameBoard extends React.Component {
     componentWillUnmount() {
@@ -15,7 +16,7 @@ class GameBoard extends React.Component {
 
     importAll = r => {
         let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
+        r.keys().map((item) => { return images[item.replace('./', '')] = r(item); });
         return images;
       }
       
@@ -34,7 +35,8 @@ class GameBoard extends React.Component {
             } else {
                 return (
                     <>
-                    {/* return faced down cards */}
+                        <img className="cards" alt='facedown_card' src={this.images[`CARD.png`]}/>
+                        <img className="cards" alt='facedown_card' src={this.images[`CARD.png`]}/>
                     </>
                 )
             }
@@ -49,7 +51,8 @@ class GameBoard extends React.Component {
     
     renderDealerButton = user => {
         if (user.dealer) {
-            return "(D)"
+            return <img className="dealer_chip" alt='dealerChip' src={dealerChip}/>
+
             // need dealer img
         }
     }
@@ -65,7 +68,7 @@ class GameBoard extends React.Component {
                         <span className="board_user_chips">{user.chips} <i className="nes-icon coin is-small"></i>
                         </span>&nbsp;
 
-                        {this.renderPlayerCards(user)}{this.renderDealerButton(user)}
+                        {this.renderPlayerCards(user)} {this.renderDealerButton(user)}
                         &nbsp;<span className="chips">{user.round_bet === 0 ? '' : user.round_bet}</span>
                     </li>)}
             </>
@@ -81,7 +84,7 @@ class GameBoard extends React.Component {
         return (
             <div id="board">
                 {/* <div id="phase">{this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}</div><br/> */}
-                {this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}<br/><br/>
+                {this.props.round.access_community_cards === "" ? "" : this.renderBoardCards()}<br/><br/>
                 <span className="chips">{this.props.round.pot}</span> <i className="nes-icon coin is-small"></i>
                 {/* Bet {this.props.round.highest_bet_for_phase}<br/> */}
             </div>

@@ -1,17 +1,17 @@
 Copyright?
-Change the Title of the Application (To Change the title in the Tab Browser)
-Style the CheckoutForm
+Style the Stripe Elements with Font.
 
-Adding coin image next to the pot
-Withdrawing money
+Withdrawing money**
+Fix back button, need to use replace feature so that when user log's out ths history is blank.**
 
-Think about presenting your application and why you made certain features...
 Maybe make a button like a README.md that shows how to use your website?
 Sound Icon for when turn is changed? or when It's your turn?
 Sound Icon for when game is over?
-
-Add Coin icon to Pot chips count.
+Add Turn icon for user's turn?
 
 How can I make the game state more accessible...
 
 Are you sure you want to leave the room?
+
+Think about presenting your application and why you made certain features...
+Think about why you added features you did, your thought process.

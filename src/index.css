@@ -102,6 +102,12 @@ input[type="password"]{
     image-rendering: pixelated;
 }
 
+.dealer_chip {
+    width: 40px;
+    image-rendering: pixelated;
+    /* position: relative; */
+}
+
 .coin {
     position: relative;
     top: 2px !important;
