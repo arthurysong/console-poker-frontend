@@ -24,7 +24,7 @@ class GameBoard extends React.Component {
 
     renderPlayerCards = user => {
         if (user.playing === true) {
-            if (user.username === this.props.user.username || !this.props.round.is_playing) {
+            if (user.username === this.props.user.username || (this.props.round.phase === 3 && this.props.round.is_playing === false)) {
                 return (
                     <>
                         {user.cards.split(" ").map((c, index) => {

@@ -3,6 +3,7 @@ Style the Stripe Elements with Font.
 
 Withdrawing money**
 Fix back button, need to use replace feature so that when user log's out ths history is blank.**
+Only show cards when phase is 3.
 
 Maybe make a button like a README.md that shows how to use your website?
 Sound Icon for when turn is changed? or when It's your turn?
