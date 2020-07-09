@@ -40,7 +40,7 @@ class GameConsole extends React.Component {
                     scrollable.scrollTop = scrollable.scrollHeight;
                 },
                 help: function() {
-                    this.echo('Available Commands: fold | check | call | raise <amount> | allin | start')
+                    this.echo('\nAvailable Commands: [[;yellow;]\nfold] | fold your hand [[;yellow;]\ncheck] | pass betting action to next player [[;yellow;]\ncall] | match the current bet [[;yellow;]\nraise <amount>] | raise the current bet to <amount> [[;yellow;]\nallin] | raise the maximum amount of chips you have (or that other players can afford [[;yellow;]\nstart] | start new game (round must be over)\n')
                     scrollable.scrollTop = scrollable.scrollHeight;
                 }
     
