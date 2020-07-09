@@ -66,13 +66,13 @@ export const setLogin = history => {
     }
 }
 
-export const logOut = (history, window) => {
+export const logOut = (history) => {
     // I don't need to send anything to database.
     return dispatch => {
         localStorage.clear();
         dispatch({type: 'LOGOUT'})
         history.replace(`/login`);
-        window.location.reload();
+        // window.location.reload();
     }
 }
 

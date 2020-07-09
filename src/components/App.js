@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => {
   return {
     register: (state,history) => dispatch(register(state,history)),
     setLogin: history => dispatch(setLogin(history)),
-    logOut: (history, window) => dispatch(logOut(history, window)),
+    logOut: (history) => dispatch(logOut(history)),
     clearSuccess: () => dispatch(clearSuccess())
     // createRoom: state => dispatch(createRoom(state))
   }
