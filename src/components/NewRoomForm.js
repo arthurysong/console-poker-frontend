@@ -32,7 +32,7 @@ class NewRoomForm extends React.Component {
         event.preventDefault();
         this.createRoom(this.state)
             .then(resp => resp.json())
-            .then(json => this.props.history.push(`/rooms/${json.id}`));
+            .then(json => this.props.history.replace(`/rooms/${json.id}`));
     }
 
     goBack = () => {

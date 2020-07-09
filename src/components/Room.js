@@ -23,7 +23,7 @@ class Room extends React.Component {
 
 
     leaveRoom = () => {
-        this.props.history.push(`/rooms`);
+        this.props.history.goBack();
     }
 
     renderRoom(){

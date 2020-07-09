@@ -32,7 +32,7 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                {console.log(this.props.history.action)}
+                {/* {console.log(this.props.history.action)} */}
             </div>
         )
     }

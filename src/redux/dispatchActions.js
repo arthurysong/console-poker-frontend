@@ -22,7 +22,7 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
                 // dispatch setchips use state.chips to display chips...
                 dispatch({type: 'SET_CHIPS', chips: json.user.chips })
                 localStorage.setItem("token", json.auth_token);
-                history.push(`/rooms`);
+                history.replace(`/rooms`);
             } else if (json.errors) {
                 dispatch({type: 'AUTH_FAIL'});
                 dispatch({type: 'ADD_ERRORS', errors: json.errors })
