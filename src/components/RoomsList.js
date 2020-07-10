@@ -97,7 +97,7 @@ class RoomsList extends React.Component {
                 {/* <div className="ne"></div> */}
                 
                 <h1>Join a Room!</h1>
-                {/* <p>(Make sure you have money first)</p> */}
+                <p>Make sure you have enough chips!</p>
                 <NavLink to="/rooms/new" className="nes-btn is-primary smaller-btn">Create Room</NavLink>
                 <ul id="rooms_ul">
                     {this.renderRooms()}
