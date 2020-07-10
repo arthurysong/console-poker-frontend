@@ -73,8 +73,8 @@ class RoomsList extends React.Component {
         }
     }
 
-    redirectToDeposits = () => {
-        this.props.history.push(`/users/${this.props.user.id}/deposit`); // should i have route to something like /users/:id/deposit??
+    redirectToBank = () => {
+        this.props.history.push(`/users/${this.props.user.id}/bank`); // should i have route to something like /users/:id/deposit??
     }
     
     renderSuccess = () => {
@@ -93,7 +93,7 @@ class RoomsList extends React.Component {
                 {this.renderSuccess()}
                 {this.renderUser()}<br/>
                 <button className="nes-btn smaller-btn is-error" id="test" onClick={this.clickHandler}>Log Out</button>&nbsp;
-                <button className="nes-btn is-success smaller-btn" onClick={this.redirectToDeposits}>Deposit</button>&nbsp;
+                <button className="nes-btn is-success smaller-btn" onClick={this.redirectToBank}>Bank</button>&nbsp;
                 <NavLink to="/rooms/new" className="nes-btn is-primary smaller-btn">New Room</NavLink><br/><br/><br/>
                 {/* <div className="ne"></div> */}
                 

@@ -167,7 +167,12 @@ export const connectAccount = (params, history) => {
     return dispatch => {
         fetchWithToken(`${BASE_URL}/connect/oauth${params}`)
             .then(resp => resp.json())
-            .then(json => console.log(json))
+            .then(json => {
+                console.log(json);
+                if (json.success){
+                    history.replace(`/users/${json.user.id}/deposit`)
+                }
+            })
     }
 }
 // export const fetchStripeState = () => {
