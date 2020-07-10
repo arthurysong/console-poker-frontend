@@ -173,7 +173,7 @@ input[type="password"]{
     font-size: 12px;
 }
 
-#checkout_form{
+.checkout_form{
     width: 500px;
     margin: auto;
     text-align: justify;

@@ -84,16 +84,19 @@ class CheckoutContainer extends React.Component{
         })
     }
 
-    goBack = () => {
-        this.props.history.goBack()
+
+    
+    goToWithdraw = () => {
+        this.props.history.replace(`/users/${this.props.user.id}/bank/withdraw`)
     }
 
     render(){
         return(
-            <div id="checkout_form">
-                
+            <div className="checkout_form">
+                {console.log(this.props)}
+                <button onClick={this.goToWithdraw} className='nes-btn is-primary smaller-btn'>Withdraw</button>&nbsp;
+                <button className='nes-btn is-primary smaller-btn'>Deposit</button><br/><br/>
                 <h1 className="nes-text is-success">Buy More Chips!</h1> 
-                <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 {this.renderUser()}<br/><br/>
                 {/* {this.props.user.username} ({this.props.chips})<br/><br/> */}
 

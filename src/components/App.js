@@ -25,7 +25,7 @@ class App extends React.Component {
         
         <Switch>
           <Route path="/terms" render={(routerProps) => <TermsAndConditions {...routerProps}/>}/>
-          <Route path="/users/:id/bank" render={routerProps => <Bank />}/>
+          <Route path="/users/:id/bank" render={routerProps => <Bank {...routerProps}/>}/>
           {/*  <Route path="/users/:id/deposit" render={routerProps => <CheckoutContainer {...routerProps} user={this.props.user}/>}/>  */}
           <Route path="/login" render={routerProps => <LoginForm {...routerProps}/>}/>
           <Route path="/connect/oauth" render={routerProps => <Connecting {...routerProps}/>}/>
