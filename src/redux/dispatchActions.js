@@ -30,14 +30,27 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
         })
 }
 
-export const authenticateViaGoogle = () => {
+export const authenticateViaGoogle = (email, name, history) => {
     return dispatch => {
-        console.log(`${BASE_URL}/auth/google`);
-        fetch(`${BASE_URL}/auth/google`)
+        const body = JSON.stringify({ email, username: name })
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body
+        }
+
+        fetch(`${BASE_URL}/auth/google`, options)
+        // fetch(`${DOMAIN}/auth/google_oauth2`)
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);
-                console.log('hello?');
+                dispatch({type: 'AUTH_SUCCESS', user: json.user})
+                dispatch({type: 'SET_CHIPS', chips: json.user.chips })
+                localStorage.setItem("token", json.auth_token);
+                history.replace(`/rooms`);
             })
             .catch(err => console.log(err))
     }

@@ -63,6 +63,7 @@ class RoomsList extends React.Component {
         if (this.props.user) {
             return (
                 <>
+                {console.log(this.props.user)}
                     HELLO,&nbsp;
                     <span style={{color: `${hashStringToColor(this.props.user.username, this.props.hash)}`}}>{this.props.user.username}</span>&nbsp;
                     {/* <span className="chips">{this.props.chips}</span><img className="coin" src={coin} alt="coin_img" /> */}

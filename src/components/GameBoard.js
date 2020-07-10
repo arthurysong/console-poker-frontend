@@ -9,9 +9,11 @@ class GameBoard extends React.Component {
     }
 
     updateChips = () => {
-        const user = this.props.round.ordered_users.find(u => u.id === this.props.user.id)
-        console.log(user.chips);
-        this.props.setChips(user.chips);
+        const user = this.props.round.ordered_users.find(u => u.id === this.props.user.id);
+        if (user) {
+            console.log(user.chips);
+            this.props.setChips(user.chips);
+        }
     }
 
     importAll = r => {
