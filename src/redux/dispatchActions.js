@@ -1,6 +1,6 @@
 import handleAuthRedirect from './handleAuthRedirect';
 import { fetchWithToken } from '../utilities/fetchWithToken';
-import { BASE_URL } from '../utilities/BASE_URL';
+import { BASE_URL, DOMAIN } from '../utilities/BASE_URL';
 
 const authenticate_user = (state, history, dispatch) => { // abstracted this out because I also need in my register action
     const body = JSON.stringify(state)
@@ -28,6 +28,19 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
                 dispatch({type: 'ADD_ERRORS', errors: json.errors })
             }
         })
+}
+
+export const authenticateViaGoogle = () => {
+    return dispatch => {
+        console.log(`${DOMAIN}/auth/google_oauth2`);
+        fetch(`${DOMAIN}/auth/google_oauth2`)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+                console.log('hello?');
+            })
+            .catch(err => console.log(err))
+    }
 }
 
 export const loginUser = (state, history) => {

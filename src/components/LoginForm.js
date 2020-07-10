@@ -1,5 +1,5 @@
 import React from 'react';
-import { loginUser } from '../redux/dispatchActions';
+import { loginUser, authenticateViaGoogle } from '../redux/dispatchActions';
 import { connect } from 'react-redux';
 import Errors from './Errors';
 import { Link } from 'react-router-dom';
@@ -29,6 +29,7 @@ class LoginForm extends React.Component {
             </>
         )
     }
+
     render() {
         return(
             <div className="user_form">
@@ -46,8 +47,8 @@ class LoginForm extends React.Component {
                     </label><br/>
                     <button className="nes-btn" type="submit" value="login">Log In</button><br/>
                     {this.renderRegister()}
-                    <p>Log In via <Link to="/auth/google_oauth2">Google</Link></p>
                 </form>
+                <p>Log In via <button onClick={this.props.authenticateViaGoogle}>Google</button></p>
                 <Link to="/terms">Terms &#38; Conditions</Link>
             </div>
         )
@@ -56,7 +57,8 @@ class LoginForm extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loginUser: (state, history) => dispatch(loginUser(state, history))
+        loginUser: (state, history) => dispatch(loginUser(state, history)),
+        authenticateViaGoogle: () => dispatch(authenticateViaGoogle())
     }
 }
 
