@@ -163,6 +163,13 @@ export const fetchChips = userId => {
     }
 }
 
+export const connectAccount = (params, history) => {
+    return dispatch => {
+        fetchWithToken(`${BASE_URL}/connect/oauth${params}`)
+            .then(resp => resp.json())
+            .then(json => console.log(json))
+    }
+}
 // export const fetchStripeState = () => {
 //     return dispatch => {
 //         fetch(`${BASE_URL}/stripe_state`)

@@ -10,6 +10,7 @@ import LoginForm from './LoginForm';
 import Register from './Register';
 import CheckoutContainer from './CheckoutContainer';
 import TermsAndConditions from './TermsAndConditions';
+import Connecting from './Connecting';
 
 class App extends React.Component {
   hash = Math.floor(1000 + Math.random() * 9000);
@@ -25,6 +26,7 @@ class App extends React.Component {
           <Route path="/terms" render={(routerProps) => <TermsAndConditions {...routerProps}/>}/>
           <Route path="/users/:id/deposit" render={routerProps => <CheckoutContainer {...routerProps} user={this.props.user}/>}/> 
           <Route path="/login" render={routerProps => <LoginForm {...routerProps}/>}/>
+          <Route path="/connect/oauth" render={routerProps => <Connecting {...routerProps}/>}/>
           <Route path="/rooms/new" render={routerProps => 
             <NewRoomForm 
               {...routerProps}

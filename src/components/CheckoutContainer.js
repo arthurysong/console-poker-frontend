@@ -91,7 +91,9 @@ class CheckoutContainer extends React.Component{
     render(){
         return(
             <div id="checkout_form">
-                <ConnectBank />
+                <ConnectBank 
+                user={this.props.user} 
+                history={this.props.history} />
                 <h1 className="nes-text is-success">Buy More Chips!</h1> 
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 {this.renderUser()}<br/><br/>
@@ -151,6 +153,7 @@ class CheckoutContainer extends React.Component{
 
 const mapStateToProps = state => {
     return {
+        user: state.user,
         chips: state.chips
     }
 }

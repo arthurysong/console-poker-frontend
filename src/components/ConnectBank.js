@@ -18,18 +18,24 @@ class ConnectBank extends React.Component {
         });
         // console.log(this.state);
         // console.log(json);
+
     }
 
     redirect = () => {
-        this.props.history.push("https://connect.stripe.com/express/oauth/authorize?client_id=ca_HchUekElUVgyyKljmwfv4DjBMT7NEfT3&state={STATE_VALUE}&suggested_capabilities[]=transfers&stripe_user[email]=user@example.com")
+        console.log(this.state.stripeState);
+        window.location.href=`https://connect.stripe.com/express/oauth/authorize?client_id=ca_HchUekElUVgyyKljmwfv4DjBMT7NEfT3&suggested_capabilities[]=transfers&state=${this.state.stripeState}&stripe_user[email]=${this.props.user.email}`
     }
 
     render() {
         return (
             <>
                 {/* hi */}
-                <button className={`nes-btn ${this.state.stripeState === "" ? 'is-disabled' : 'is-primary'} smaller-btn`} onClick={this.redirect}>
-                    Connect with Stripe!</button>
+                {console.log(this.props.user)}
+                <button 
+                className={`nes-btn ${this.state.stripeState === "" ? 'is-disabled' : 'is-primary'} smaller-btn`} 
+                onClick={this.redirect}>
+                    Connect with Stripe!
+                </button>
             </>
         )
     }
