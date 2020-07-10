@@ -163,6 +163,14 @@ export const fetchChips = userId => {
     }
 }
 
+export const fetchStripeState = () => {
+    return dispatch => {
+        fetch(`${BASE_URL}/stripe_state`)
+            .then(resp => resp.json())
+            .then(json => console.log(json))
+    }
+}
+
 export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 export const setSuccess = () => ({ type: 'SET_SUCCESS' })
