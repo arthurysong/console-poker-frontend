@@ -32,8 +32,8 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
 
 export const authenticateViaGoogle = () => {
     return dispatch => {
-        console.log(`${DOMAIN}/auth/google_oauth2`);
-        fetch(`${DOMAIN}/auth/google_oauth2`)
+        console.log(`${BASE_URL}/auth/google`);
+        fetch(`${BASE_URL}/auth/google`)
             .then(resp => resp.json())
             .then(json => {
                 console.log(json);
