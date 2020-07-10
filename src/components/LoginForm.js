@@ -76,7 +76,7 @@ class LoginForm extends React.Component {
     render() {
         return(
             <div className="user_form">
-                <h1>Console-Poker!</h1>
+                <h1 id="login_header"><i className="nes-octocat animate" id="octocat"></i>Console-Poker!</h1>
                 <p>Chat and Play Holdem with Your Friends!</p><br/>
                 CONTINUE WITH &nbsp;
                 <GoogleLogin

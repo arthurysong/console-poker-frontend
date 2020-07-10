@@ -190,6 +190,17 @@ input[type="password"]{
     padding: 10px;
 }
 
+#login_header {
+    position: relative;
+}
+
+#octocat {
+    position: absolute;
+    left: -120px;
+    /* right: 10px; */
+    /* top: px; */
+    
+}
 .user_form {
     width: 500px;
     margin: auto;

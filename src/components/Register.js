@@ -49,7 +49,7 @@ class Register extends React.Component {
                     </label><br/>
                     <button className="nes-btn is-primary" type="submit" value="Create Account">Register!</button><br/>
                 </form>
-                <p>By registering, you agree to Console-Poker's <Link to="/terms">Terms &#38; Conditions</Link></p>
+                <p><span className="nes-text is-disabled">By registering, you agree to Console-Poker's <Link to="/terms">Terms &#38; Conditions</Link></span></p>
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
             </div>
         )
