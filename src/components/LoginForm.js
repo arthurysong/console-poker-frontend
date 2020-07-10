@@ -77,20 +77,8 @@ class LoginForm extends React.Component {
         return(
             <div className="user_form">
                 <h1>Console-Poker!</h1>
-                <p>Chat and Play Holdem with Your Friends!</p>
-                <Errors />
-                <form onSubmit={this.submitHandler}>
-                    <label>
-                        Email*
-                    <input className="nes-input" onChange={this.changeHandler} type="text" name="email" value={this.state.email}/>
-                    </label><br/>
-                    <label>
-                        Password*
-                    <input className="nes-input" onChange={this.changeHandler} type="password" name="password" value={this.state.password}/>
-                    </label><br/>
-                    <button className="nes-btn" type="submit" value="login">Log In</button><br/>
-                    {this.renderRegister()}
-                </form>
+                <p>Chat and Play Holdem with Your Friends!</p><br/>
+                CONTINUE WITH &nbsp;
                 <GoogleLogin
                     clientId="785982233290-7m6jlqskqg3e7v93hg2a0t3fil69o19l.apps.googleusercontent.com"
                     buttonText="Login"
@@ -101,12 +89,23 @@ class LoginForm extends React.Component {
                     onSuccess={googleAuth => this.responseGoogle(googleAuth)}
                     onFailure={this.responseGoogle}
                     cookiePolicy={'single_host_origin'}
-                />
-                {/* <div id="my-signin2"></div> */}
-                {/* <div class="customGPlusSignIn" data-onsuccess="onSignIn">hi</div> */}
-                {/* <p>Log In via <a className="customGPlusSignIn" data-onsuccess={user => this.onSignIn(user)} href="#"><i  className="nes-icon google is-medium"></i></a></p> */}
-                {/* <p>Log In via <a data-onsuccess={user => this.onSignIn(user)} onClick={this.props.authenticateViaGoogle} href="#"><i  className="nes-icon google is-medium"></i></a></p> */}
-                <Link to="/terms">Terms &#38; Conditions</Link>
+                /><br/>
+                <br/><br/>
+                <Errors />
+                <form onSubmit={this.submitHandler}>
+                    <label>
+                        Email*<br/>
+                    <input className="nes-input form_input" onChange={this.changeHandler} type="text" name="email" value={this.state.email}/>
+                    </label>
+                    <label>
+                        Password*<br/>
+                    <input className="nes-input" onChange={this.changeHandler} type="password" name="password" value={this.state.password}/>
+                    </label><br/>
+                    <button className="nes-btn" type="submit" value="login">Log In</button><br/>
+                    {this.renderRegister()}
+                </form>
+                <br/><br/>
+                <span className="nes-text is-disabled">By continuing, you agree to our <Link to="/terms">Terms &#38; Conditions</Link></span>
             </div>
         )
     }

@@ -196,6 +196,10 @@ input[type="password"]{
     text-align: left;
 }
 
+.user_form input{
+    width: 400px;
+}
+
 #checkout_agreement {
     font-size: 10px;
 }
