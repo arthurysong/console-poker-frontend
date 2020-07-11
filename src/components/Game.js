@@ -1,6 +1,7 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 import GameConsole from './GameConsole'
+import GameButtons from './GameButtons';
 import { connect } from 'react-redux';
 import { startGame, subscribeGame, unsubscribeGame, clearGameErrors } from '../redux/gameActions';
 import { setChips } from '../redux/dispatchActions';
@@ -38,14 +39,18 @@ class Game extends React.Component {
                         user={this.props.user} 
                         colorHash={this.props.colorHash}
                         setChips={this.props.setChips}/>
-                    <GameConsole 
+                    <GameButtons 
+                        gameId={this.props.game.id}
+                        round={this.props.game.active_round}
+                        startGame={this.props.startGame}/>
+                    {/* <GameConsole 
                         gameId={this.props.game.id}
                         user={this.props.user}
                         roundId={this.props.game.active_round.id} 
                         playing={this.props.game.active_round.is_playing}
                         status={this.props.game.active_round.status} 
                         gameErrors={this.props.gameErrors}
-                        clearGameErrors={this.props.clearGameErrors}/>
+                        clearGameErrors={this.props.clearGameErrors}/> */}
                 </>
             )
         }
