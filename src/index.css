@@ -121,6 +121,18 @@ input[type="password"]{
     image-rendering: pixelated; */
 }
 
+.move_button {
+    display: inline-block;
+    margin: 0px 5px;
+}
+#raise_input {
+    width: 150px;
+    /* margin-top: px !important; */
+    position: relative;
+    top: 5px;
+    height: 40px;
+}
+
 .board_user {
     margin: 8px 0px;
 }
