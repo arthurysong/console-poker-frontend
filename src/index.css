@@ -51,6 +51,8 @@ input[type="password"]{
 
 #room_container {
     text-align: center;
+    /* display: inline-block; */
+    /* width: 400px; */
 }
 
 #chatbox_container {
@@ -155,8 +157,9 @@ input[type="password"]{
 .room_container{
     text-align: center;
     width: 250px;
+    display: inline-block;
     padding: 8px !important;
-    margin: 14px auto !important;
+    margin: 14px 14px !important;
 }
 
 
