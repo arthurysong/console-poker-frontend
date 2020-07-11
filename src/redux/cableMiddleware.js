@@ -28,7 +28,6 @@ export default function cableMiddleware() {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, rooms, token }))
         cable.subscriptions.remove(subscription);
-        // dispatch clear rooms
         console.log('clear_rooms');
         dispatch({ type: 'CLEAR_ROOMS' })
         return;
@@ -40,14 +39,9 @@ export default function cableMiddleware() {
         console.log(result);
         switch(result.type) {
           case 'current_rooms':
-            //set rooms in state
-            // rooms: data.rooms
             dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
             break;
           case 'new_rooms':
-            // add to state.rooms
-            // rooms: [...prevState.rooms, data.room]
-            //
             dispatch({ type: 'ADD_ROOM', room: result.room })
             break;
           default:
@@ -56,7 +50,7 @@ export default function cableMiddleware() {
       }
 
       return cable.subscriptions.create( identifier, { received });
-      
+
     } else if (room) {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, room, token }))

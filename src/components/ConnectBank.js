@@ -1,7 +1,7 @@
 import React from 'react';
 // import { connect } from 'react-redux';
 // import { fetchStripeState } from '../redux/dispatchActions';
-import { BASE_URL, CLIENT_ID } from '../utilities/BASE_URL';
+import { BASE_URL, CLIENT_ID, REDIRECT_URL } from '../utilities/BASE_URL';
 
 class ConnectBank extends React.Component {
     state = {
@@ -20,7 +20,7 @@ class ConnectBank extends React.Component {
 
     redirect = () => {
         console.log(this.state.stripeState);
-        window.location.href=`https://connect.stripe.com/express/oauth/authorize?client_id=${CLIENT_ID}&suggested_capabilities[]=transfers&state=${this.state.stripeState}&stripe_user[email]=${this.props.user.email}`
+        window.location.href=`https://connect.stripe.com/express/oauth/authorize?client_id=${CLIENT_ID}${REDIRECT_URL}&suggested_capabilities[]=transfers&state=${this.state.stripeState}&stripe_user[email]=${this.props.user.email}`
     }
 
     render() {
