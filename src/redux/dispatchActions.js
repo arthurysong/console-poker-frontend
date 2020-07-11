@@ -102,11 +102,7 @@ export const logOut = (history) => {
     }
 }
 
-export const clearErrors = () => {
-    return dispatch => {
-        dispatch({type: 'CLEAR_ERRORS'});
-    }
-}
+export const clearErrors = () => ({type: 'CLEAR_ERRORS'})
 
 export const register = (state, history) => {
     return dispatch => {
@@ -178,7 +174,7 @@ export const connectAccount = (params, history) => {
     }
 }
 
-export const makeWithdrawal = (cents, history) => {
+export const makeWithdrawal = (cents) => {
     return dispatch => {
         fetchWithToken(`${BASE_URL}/transfer_secret/${cents.toString()}`)
             .then(resp => resp.json())
@@ -186,7 +182,7 @@ export const makeWithdrawal = (cents, history) => {
                 console.log(json);
                 if (json.error){
                     dispatch({type: 'ADD_ERRORS', errors: [json.error] })
-                    console.log(json.error);
+                    // console.log(json.error);
                 } else {
                     dispatch({ type: 'SET_USER', user: json.user });
                     dispatch({ type: 'SET_CHIPS', chips: json.user.chips })

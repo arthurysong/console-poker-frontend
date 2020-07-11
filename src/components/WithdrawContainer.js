@@ -2,15 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ConnectBank from './ConnectBank';
 import CurrencyInput from 'react-currency-input';
-import { makeWithdrawal, clearSuccess } from '../redux/dispatchActions';
+import { makeWithdrawal, clearSuccess, clearErrors } from '../redux/dispatchActions';
 import Errors from './Errors';
 
 class WithdrawContainer extends React.Component{
     state = {
         amount: "",
-        amountError: "",
-        error: "",
-        success: ""
+        amountError: ""
     }
 
     componentWillUnmount(){
@@ -57,6 +55,8 @@ class WithdrawContainer extends React.Component{
 
     submitHandler = async (event) => {
         event.preventDefault();
+        this.props.clearSuccess();
+        this.props.clearErrors();
         const cents = parseFloat(this.state.amount.replace(/,/g, ''))*100
         this.props.makeWithdrawal(cents, this.props.history);
     }
@@ -135,8 +135,9 @@ const mapSP = state => {
 
 const mapDP = dispatch => {
     return {
-        makeWithdrawal: (cents, history) => dispatch(makeWithdrawal(cents, history)),
-        clearSuccess: () => dispatch(clearSuccess)
+        makeWithdrawal: cents => dispatch(makeWithdrawal(cents)),
+        clearSuccess: () => dispatch(clearSuccess()),
+        clearErrors: () => dispatch(clearErrors())
     }
 }
 
