@@ -27,6 +27,14 @@ class Game extends React.Component {
             return <button className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`} onClick={this.startGame}>Start Game</button>
         }
     }
+    
+    renderResult = () => {
+        if (!this.props.game.active_round.is_playing) {
+            return (
+                <p className='nes-text'>{this.props.game.active_round.result.map(r => `${r}\n`)}</p>
+            )
+        }
+    }
 
     renderGame = () => {
         if (this.props.game.active_round && this.props.user) {
@@ -39,6 +47,7 @@ class Game extends React.Component {
                         user={this.props.user} 
                         colorHash={this.props.colorHash}
                         setChips={this.props.setChips}/>
+                    {this.renderResult()}
                     <GameButtons 
                         gameId={this.props.game.id}
                         round={this.props.game.active_round}

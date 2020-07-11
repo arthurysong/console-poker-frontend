@@ -93,6 +93,7 @@ input[type="password"]{
 }
 
 #game_container {
+    width: 620px;
     margin: 24px;
     vertical-align: top;
     display: inline-block;
@@ -127,7 +128,7 @@ input[type="password"]{
 
 .move_button {
     display: inline-block;
-    margin: 0px 5px;
+    margin: 0px 2px;
 }
 
 #raise_input {

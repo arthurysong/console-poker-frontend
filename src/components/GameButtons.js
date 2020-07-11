@@ -31,6 +31,8 @@ class GameButtons extends React.Component {
             </form></div>)
         } else if (move === "Call") {
             return (<div key={index} className="move_button"><button className='nes-btn is-primary' onClick={() => postMoveWithToken({ command: 'call' }, this.props.user.id)}>{move}</button></div>)
+        } else if (move === "All In") {
+            return (<div key={index} className="move_button"><button className='nes-btn is-error' onClick={() => postMoveWithToken({ command: 'allin' }, this.props.user.id)}>{move}</button></div>)
         }
     }
 
