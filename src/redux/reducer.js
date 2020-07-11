@@ -124,7 +124,7 @@ switch (action.type) {
     case 'SET_SUCCESS':
         return {
             ...state,
-            successMessage: "Deposit Successful!"
+            successMessage: action.success
         }
     case 'CLEAR_SUCCESS':
         return {

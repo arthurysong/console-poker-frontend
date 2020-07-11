@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ConnectBank from './ConnectBank';
 import CurrencyInput from 'react-currency-input';
-import { BASE_URL } from '../utilities/BASE_URL';
+import { makeWithdrawal, clearSuccess } from '../redux/dispatchActions';
+import Errors from './Errors';
 
 class WithdrawContainer extends React.Component{
     state = {
@@ -10,6 +11,10 @@ class WithdrawContainer extends React.Component{
         amountError: "",
         error: "",
         success: ""
+    }
+
+    componentWillUnmount(){
+        this.props.clearSuccess();
     }
 
     goToDeposit = () => {
@@ -50,20 +55,20 @@ class WithdrawContainer extends React.Component{
         }
     }
 
-    // validateAmount = amount => {
-    //     const cents = parseFloat(amount.replace(/,/g, ''))*100
-    //     if (cents >= 50 || cents <= 99999999){
-    //     return true
-    //     }
-    //     return false    
-    // }
-
     submitHandler = async (event) => {
         event.preventDefault();
-        const cents = parseFloat(this.props.amount.replace(/,/g, ''))*100
-        const resp = await fetch(`${BASE_URL}/transfer_secret/${cents}`)
-        const json = await resp.json()
-        console.log(json);
+        const cents = parseFloat(this.state.amount.replace(/,/g, ''))*100
+        this.props.makeWithdrawal(cents, this.props.history);
+    }
+
+    renderSuccess = () => {
+        if (this.props.successMessage) {
+            return (
+                <span className="nes-text is-success">
+                    {this.props.successMessage}<br/>
+                </span>
+            )
+        }
     }
 
     renderConnect = () => {
@@ -80,6 +85,9 @@ class WithdrawContainer extends React.Component{
                     <h1 className="nes-text is-success">Withdraw Money</h1> 
                     {this.renderUser()}<br/><br/>
                     {/* {this.renderErrors()} */}
+                    <Errors />
+                    {this.renderSuccess()}
+
                     <form onSubmit={this.submitHandler}>
                         1 USD = 10000 Chips*<br/>
                         <label> 
@@ -120,8 +128,16 @@ class WithdrawContainer extends React.Component{
 const mapSP = state => {
     return {
         user: state.user,
-        chips: state.chips
+        chips: state.chips,
+        successMessage: state.successMessage
     }
 }
 
-export default connect(mapSP)(WithdrawContainer);
+const mapDP = dispatch => {
+    return {
+        makeWithdrawal: (cents, history) => dispatch(makeWithdrawal(cents, history)),
+        clearSuccess: () => dispatch(clearSuccess)
+    }
+}
+
+export default connect(mapSP, mapDP)(WithdrawContainer);

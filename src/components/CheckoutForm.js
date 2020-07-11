@@ -82,7 +82,7 @@ const CheckoutForm = props => {
             // post-payment actions.
           // props.handleSuccess();
           console.log("PAYMENT SUCCESS");
-          props.setSuccess();
+          // props.setSuccess();
           props.history.replace(`/rooms`)
           //payment success message in /rooms
             // send post request to add chips to person's account.

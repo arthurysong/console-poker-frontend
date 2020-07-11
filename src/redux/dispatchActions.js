@@ -148,6 +148,7 @@ export const addChips = (amount, userId) => {
             .then(json => {
                 console.log(json)
                 dispatch({ type: 'SET_CHIPS', chips: json.chips })
+                dispatch(setSuccess("Deposit Successful!"))
             });
     }
 }
@@ -176,6 +177,26 @@ export const connectAccount = (params, history) => {
             })
     }
 }
+
+export const makeWithdrawal = (cents, history) => {
+    return dispatch => {
+        fetchWithToken(`${BASE_URL}/transfer_secret/${cents.toString()}`)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+                if (json.error){
+                    dispatch({type: 'ADD_ERRORS', errors: [json.error] })
+                    console.log(json.error);
+                } else {
+                    dispatch({ type: 'SET_USER', user: json.user });
+                    dispatch({ type: 'SET_CHIPS', chips: json.user.chips })
+                    dispatch(setSuccess(json.message))
+                }
+            })
+
+        
+    }
+}
 // export const fetchStripeState = () => {
 //     return dispatch => {
 //         fetch(`${BASE_URL}/stripe_state`)
@@ -188,5 +209,5 @@ export const connectAccount = (params, history) => {
 
 export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
-export const setSuccess = () => ({ type: 'SET_SUCCESS' })
+export const setSuccess = success => ({ type: 'SET_SUCCESS', success })
 export const clearSuccess = () => ({ type: 'CLEAR_SUCCESS' })

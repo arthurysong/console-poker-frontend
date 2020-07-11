@@ -136,7 +136,7 @@ class CheckoutContainer extends React.Component{
                         <span>Card Details*</span><br/>
                     <CheckoutForm 
                         history={this.props.history}
-                        setSuccess={this.props.setSuccess}
+                        // setSuccess={this.props.setSuccess}
                         clearMessages={this.clearMessages}
                         handleErrors={this.handleErrors} 
                         handleSuccess={this.handleSuccess}
@@ -163,8 +163,8 @@ const mapDispatchToProps = dispatch => {
     return {
         fetchChips: userId => dispatch(fetchChips(userId)),
         addChips: (amount, userId) => dispatch(addChips(amount, userId)),
-        unsetChips: () => dispatch(unsetChips()),
-        setSuccess: () => dispatch(setSuccess())
+        unsetChips: () => dispatch(unsetChips())
+        // setSuccess: () => dispatch(setSuccess())
     }
 }
 

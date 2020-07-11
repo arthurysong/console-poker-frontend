@@ -6,6 +6,8 @@ Validate cents amount for withdrawals and Make successful transfer
 Make Room LI elements float left
 When you join a room, you first are only in the room? Then if you want to play you can sit in a seat?
 Make sure to configure going back when connecting stripe account.
+Do I even need chips state, why don't I just use chips in user?
+Make withdrawal button disabled unless valid amount
 
 Maybe make a button like a README.md that shows how to use your website?
 
