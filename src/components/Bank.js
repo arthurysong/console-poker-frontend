@@ -5,11 +5,13 @@ import { Switch, Route } from 'react-router-dom';
 
 class Bank extends React.Component {
     componentDidMount() {
-        this.props.history.replace(`/users/${this.props.match.params.id}/bank/deposit`)
+        if (this.props.history.location.pathname === `/users/${this.props.match.params.id}/bank`) {
+            this.props.history.replace(`/users/${this.props.match.params.id}/bank/deposit`)
+        }
     }
 
     goBack = () => {
-        this.props.history.goBack()
+        this.props.history.replace(`/rooms`)
     }
 
     render (){

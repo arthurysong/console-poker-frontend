@@ -39,6 +39,11 @@ switch (action.type) {
             isLoggedIn: false,
             user: {}
         }
+    case 'SET_USER':
+        return {
+            ...state,
+            user: action.user
+        }
     case 'ADD_ERRORS':
         return {
             ...state,
