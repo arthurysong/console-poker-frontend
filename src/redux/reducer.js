@@ -5,6 +5,7 @@ export default function resourceReducer (state = {
     errors: [],
     successMessage: "", //for ddisplaying success message when deposit is successful.
     room: undefined,
+    rooms: [],
     messages: [],
     game: {},
     gameErrors: undefined, //this will be used by gameboard
@@ -53,6 +54,21 @@ switch (action.type) {
         return {
             ...state,
             errors: []
+        }
+    case 'SET_ROOMS':
+        return {
+            ...state,
+            rooms: action.rooms
+        }
+    case 'ADD_ROOM':
+        return {
+            ...state,
+            rooms: [...state.rooms, action.room]
+        }
+    case 'CLEAR_ROOMS':
+        return {
+            ...state,
+            rooms: []
         }
     case 'SET_ROOM':
         return {

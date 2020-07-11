@@ -14,6 +14,7 @@ export default function cableMiddleware() {
       channel,
       room,
       game,
+      rooms,
       leave
     } = action;
     const token = localStorage.getItem('token')
@@ -23,7 +24,40 @@ export default function cableMiddleware() {
       return next(action);
     }
 
-    if (room) {
+    if (rooms) {
+      if(leave) {
+        const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, rooms, token }))
+        cable.subscriptions.remove(subscription);
+        // dispatch clear rooms
+        console.log('clear_rooms');
+        dispatch({ type: 'CLEAR_ROOMS' })
+        return;
+
+        
+      }
+
+      const received = result => {
+        console.log(result);
+        switch(result.type) {
+          case 'current_rooms':
+            //set rooms in state
+            // rooms: data.rooms
+            dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
+            break;
+          case 'new_rooms':
+            // add to state.rooms
+            // rooms: [...prevState.rooms, data.room]
+            //
+            dispatch({ type: 'ADD_ROOM', room: result.room })
+            break;
+          default:
+            break;
+        }
+      }
+
+      return cable.subscriptions.create( identifier, { received });
+      
+    } else if (room) {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, room, token }))
         cable.subscriptions.remove(subscription);

@@ -25,7 +25,7 @@ class GameBoard extends React.Component {
     images = this.importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
     renderPlayerCards = user => {
-        if (user.playing === true) {
+        if (user.playing === true && this.props.user) {
             if (user.username === this.props.user.username || (this.props.round.phase === 3 && this.props.round.is_playing === false)) {
                 return (
                     <>

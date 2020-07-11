@@ -5,45 +5,22 @@ import { NavLink } from 'react-router-dom';
 import { WS_URL } from '../utilities/BASE_URL'
 // import coin from '../pictures/COIN.png';
 import { hashStringToColor } from '../utilities/colorHash';
+import { connect } from 'react-redux';
+import { subscribeRooms, unsubscribeRooms, unsubscribeRoom } from '../redux/roomActions';
 
 class RoomsList extends React.Component {
     state = {
-        rooms: [],
         newForm: false
-    }
-
-    //websockets handlers
-    handleData(data){
-        if (data.type === 'current_rooms'){
-            this.setState({
-                rooms: data.rooms
-            })
-        } else if (data.type === 'new_room'){
-            this.setState(prevState => ({
-                rooms: [...prevState.rooms, data.room]
-            }))
-        }
-        
     }
 
     // lifecycle hooks
     componentDidMount(){
-        this.cable = Cable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
-
-        this.subscription = this.cable.subscriptions.create({
-            channel: 'RoomsListChannel'
-          }, {
-            connected: () => {},
-            disconnected: () => {},
-            received: (data) => {
-                console.log(data);
-                this.handleData(data);
-            }
-        });
+        // this.cable = Cable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
+        this.props.subscribeRooms();
     }
 
     componentWillUnmount(){
-        this.cable.subscriptions.remove(this.subscription);
+        this.props.unsubscribeRooms();
         this.props.clearSuccess();
     }
     
@@ -58,7 +35,7 @@ class RoomsList extends React.Component {
         this.props.logOut(this.props.history)
     }
 
-    renderRooms = () => (this.state.rooms.map((room,index) => <RoomListItem key={index} index={index} room={room} wsSubscribeRoom={this.props.wsSubscribeRoom} history={this.props.history}/>))
+    renderRooms = () => (this.props.rooms.map((room,index) => <RoomListItem key={index} index={index} room={room} wsSubscribeRoom={this.props.wsSubscribeRoom} history={this.props.history}/>))
     renderUser = () => {
         if (this.props.user) {
             return (
@@ -109,4 +86,16 @@ class RoomsList extends React.Component {
     }
 }
 
-export default RoomsList;
+const mapSP = state => {
+    return {
+        rooms: state.rooms
+    }
+}
+
+const mapDP = dispatch => {
+    return {
+        subscribeRooms: () => dispatch(subscribeRooms()),
+        unsubscribeRooms: () => dispatch(unsubscribeRooms())
+    }
+}
+export default connect(mapSP, mapDP)(RoomsList);

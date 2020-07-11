@@ -14,3 +14,17 @@ export function subscribeRoom(roomId) {
     }
   }
   
+  export function subscribeRooms() {
+    return {
+      channel: 'RoomsListChannel',
+      rooms: true
+    }
+  }
+
+  export function unsubscribeRooms() {
+    return {
+      channel: 'RoomsListChannel',
+      rooms: true,
+      leave: true
+    }
+  }
