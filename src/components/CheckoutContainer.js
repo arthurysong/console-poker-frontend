@@ -162,7 +162,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchChips: userId => dispatch(fetchChips(userId)),
-        addChips: (amount, userId) => dispatch(addChips(amount, userId)),
+        addChips: (amount, userId, history) => dispatch(addChips(amount, userId, history)),
         unsetChips: () => dispatch(unsetChips())
         // setSuccess: () => dispatch(setSuccess())
     }

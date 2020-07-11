@@ -128,7 +128,7 @@ export const register = (state, history) => {
     }
 }
 
-export const addChips = (amount, userId) => {
+export const addChips = (amount, userId, history) => {
     return dispatch => {
         const body = JSON.stringify({ amount })
         const options = {
@@ -145,6 +145,7 @@ export const addChips = (amount, userId) => {
                 console.log(json)
                 dispatch({ type: 'SET_CHIPS', chips: json.chips })
                 dispatch(setSuccess("Deposit Successful!"))
+                history.replace(`/rooms`)
             });
     }
 }
