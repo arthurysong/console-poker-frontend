@@ -37,11 +37,12 @@ class GameButtons extends React.Component {
     }
 
     renderButtons = () => {
+        console.log(this.props.user);
         if (!this.props.round.is_playing) {
             return (
                 <button className={`nes-btn is-primary`} onClick={() => startNewRound(this.props.gameId)}>New Round</button>
             )
-        } else if (this.props.round.turn.id === this.props.user.id) {
+        } else if (this.props.round.turn && this.props.round.turn.id === this.props.user.id) {
             return (this.props.round.turn.possible_moves.map((move, index) => (
                 this.renderMoveButton(move, index)
             )))
