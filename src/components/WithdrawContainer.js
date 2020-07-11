@@ -43,6 +43,14 @@ class WithdrawContainer extends React.Component{
         }
     }
 
+    disableButton = amount => {
+        const cents = parseFloat(amount.replace(/,/g, ''))*100
+        if (cents >= 50 && cents <= 99999999){
+            return false
+        } 
+        return true
+    }
+
     renderUser = () => {
         if (this.props.user) {
             return (
@@ -104,7 +112,7 @@ class WithdrawContainer extends React.Component{
                         </label><br/>
                         <div className="nes-text is-error">{this.state.amountError}</div>
                         <br/>
-                        <button className={`nes-btn is-primary`}>Withdraw Money!</button>
+                        <button className={`nes-btn ${this.disableButton(this.state.amount) ? 'is-disabled' : 'is-primary'}`}>Withdraw Money!</button>
                     </form>
                     <p id="withdraw_statement" className="checkout_agreement nes-text is-disabled">By clicking the "Withdraw Money!" button above, you are agreeing to our Terms of Service.</p>
                 </>

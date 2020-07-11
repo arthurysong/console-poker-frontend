@@ -32,7 +32,7 @@ const CheckoutForm = props => {
     const elements = useElements();
     const validateAmount = amount => {
       const cents = parseFloat(amount.replace(/,/g, ''))*100
-      if (cents >= 50 || cents <= 99999999){
+      if (cents >= 50 && cents <= 99999999){
         return true
       }
       return false
