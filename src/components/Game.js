@@ -1,6 +1,6 @@
 import React from 'react';
 import GameBoard from './GameBoard';
-import GameConsole from './GameConsole'
+// import GameConsole from './GameConsole'
 import GameButtons from './GameButtons';
 import { connect } from 'react-redux';
 import { startGame, subscribeGame, unsubscribeGame, clearGameErrors } from '../redux/gameActions';
@@ -51,7 +51,6 @@ class Game extends React.Component {
                     <GameButtons 
                         gameId={this.props.game.id}
                         round={this.props.game.active_round}
-                        startGame={this.props.startGame}
                         user={this.props.user}/>
                     {/* <GameConsole 
                         gameId={this.props.game.id}

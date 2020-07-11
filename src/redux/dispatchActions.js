@@ -1,6 +1,6 @@
 import handleAuthRedirect from './handleAuthRedirect';
 import { fetchWithToken } from '../utilities/fetchWithToken';
-import { BASE_URL, DOMAIN } from '../utilities/BASE_URL';
+import { BASE_URL } from '../utilities/BASE_URL';
 
 const authenticate_user = (state, history, dispatch) => { // abstracted this out because I also need in my register action
     const body = JSON.stringify(state)

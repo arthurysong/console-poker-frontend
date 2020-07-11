@@ -93,7 +93,7 @@ input[type="password"]{
 }
 
 #game_container {
-    width: 620px;
+    width: 640px;
     margin: 24px;
     vertical-align: top;
     display: inline-block;

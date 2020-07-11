@@ -2,7 +2,7 @@ import React from 'react';
 import CheckoutForm from './CheckoutForm'
 import CurrencyInput from 'react-currency-input';
 import { connect } from 'react-redux';
-import { addChips, fetchChips, unsetChips, setSuccess  } from '../redux/dispatchActions';
+import { addChips, fetchChips, unsetChips  } from '../redux/dispatchActions';
 // import ConnectBank from './ConnectBank';
 // import coin from '../pictures/COIN.png'
 // import { fetchWithToken } from '../utilities/fetchWithToken';
