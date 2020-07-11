@@ -52,6 +52,7 @@ class GameButtons extends React.Component {
         return(
             <div id="buttons">
                 {console.log(this.props.round)}
+                {console.log('hello?')}
                 {this.renderButtons()}
             </div>
         )
