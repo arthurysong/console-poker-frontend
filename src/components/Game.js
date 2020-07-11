@@ -37,7 +37,7 @@ class Game extends React.Component {
     }
 
     renderGame = () => {
-        if (this.props.game.active_round && this.props.user) {
+        if (this.props.game.active_round && this.props.user !== null) {
             console.log(this.props.game);
             console.log(this.props.game.active_round.status)
             return (
