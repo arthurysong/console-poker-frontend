@@ -93,7 +93,7 @@ class CheckoutContainer extends React.Component{
     render(){
         return(
             <div className="checkout_form">
-                {console.log(this.props)}
+                {/* {console.log(this.props)} */}
                 <button onClick={this.goToWithdraw} className='nes-btn is-primary smaller-btn'>Withdraw</button>&nbsp;
                 <button className='nes-btn is-primary smaller-btn'>Deposit</button><br/><br/>
                 <h1 className="nes-text is-success">Buy More Chips!</h1> 
@@ -145,7 +145,7 @@ class CheckoutContainer extends React.Component{
                         user={this.props.user} 
                         addChips={this.props.addChips}/>
                     </label>
-                    <p id="checkout_agreement" className="nes-text is-disabled">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
+                    <p className="nes-text is-disabled checkout_agreement">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
                 </div>
             </div>
         )

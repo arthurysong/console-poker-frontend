@@ -211,6 +211,10 @@ input[type="password"]{
     width: 400px;
 }
 
-#checkout_agreement {
+.checkout_agreement {
     font-size: 10px;
+}
+
+#withdraw_statement {
+    margin-top: 8px;
 }
