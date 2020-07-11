@@ -121,10 +121,15 @@ input[type="password"]{
     image-rendering: pixelated; */
 }
 
+#buttons{
+    text-align: center;
+}
+
 .move_button {
     display: inline-block;
     margin: 0px 5px;
 }
+
 #raise_input {
     width: 150px;
     /* margin-top: px !important; */
