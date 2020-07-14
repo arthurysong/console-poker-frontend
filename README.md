@@ -4,7 +4,7 @@ Console-poker is a web application that allows users to chat and play poker real
 
 This repository contains the Front End part of the stack (React Based Client)!  
 For the Back End, see: https://github.com/atribecalledarty/console-poker-api  
-To see the fully Deployed Application, Visit: https://console-poker.herokuapp.com/login
+To see the fully Deployed Application, Visit: https://console-poker.herokuapp.com
 
 Test User:  
 email: fudge@gmail.com  
