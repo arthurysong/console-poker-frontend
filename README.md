@@ -19,6 +19,6 @@ Zip Code: Any Zipcode
 
 ## Set Up
 
-1. Clone the application: git clone
-2. Install the packages: npm install
-3. Start the server: npm start
+1. Clone the application: `git clone`
+2. Install the packages: `npm install`
+3. Start the server: `npm start`
