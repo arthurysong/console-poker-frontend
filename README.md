@@ -7,8 +7,8 @@ For the Back End, see: https://github.com/atribecalledarty/console-poker-api
 To see the fully Deployed Application, Visit: https://console-poker.herokuapp.com
 
 Test User:  
-email: fudge@gmail.com  
-password: 123456
+Email: fudge@gmail.com  
+Password: 123456
 
 Card Details:   
 Name: Any Name  
