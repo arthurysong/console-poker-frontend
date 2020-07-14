@@ -1,6 +1,7 @@
 import React from 'react';
 import { hashStringToColor } from '../utilities/colorHash'
 import dealerChip from '../pictures/DEALER.png';
+import blank from '../pictures/blank.png';
 // import coin from '../pictures/COIN.png'
 
 class GameBoard extends React.Component {
@@ -27,8 +28,17 @@ class GameBoard extends React.Component {
     images = this.importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
     renderPlayerCards = user => {
-        if (user.playing === true && this.props.user) {
-            if (user.username === this.props.user.username || (this.props.round.phase === 3 && this.props.round.is_playing === false)) {
+
+        console.log(this.props.user)
+        console.log(user);
+        console.log(user.playing)
+        console.log(user.cards);
+        console.log(user.username);
+        console.log(this.props.user.username);
+        if (user.cards === "" || !user.playing) {
+            return <img style={{height: "53.7px"}} src={blank}/>
+        } else {
+            if (user.username === this.props.user.username || (this.props.round.phase === 3 && this.props.round.is_playing === false)){
                 return (
                     <>
                         {user.cards.split(" ").map((c, index) => {
@@ -43,15 +53,7 @@ class GameBoard extends React.Component {
                         <img className="cards" alt='facedown_card' src={this.images[`CARD.png`]}/>
                     </>
                 )
-            }
-        } else {
-            if (user.cards !== "") {
-                return (
-                    <>
-                        *FOLD*
-                    </>
-                )
-            }
+            } 
         }
     }
     
@@ -69,6 +71,7 @@ class GameBoard extends React.Component {
                 <>
                     {this.props.game.ordered_users.map((user,index) => 
                         <li className="board_user" key={index}>
+                            {console.log(user)}
                             <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
                             </span>&nbsp;
                             {/* <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" /> */}
@@ -104,7 +107,7 @@ class GameBoard extends React.Component {
     }
 
     renderSitButton = () => {
-        if (this.props.game.users && this.props.user &&
+        if (this.props.game.users &&
         (!this.props.game.users.count || this.props.game.users.count < 8)) {
             if (!this.props.game.users.find(u => u.username === this.props.user.username)){
                 return (
@@ -117,14 +120,25 @@ class GameBoard extends React.Component {
             }
         } 
     }
+
+
+    renderBoard = () => {
+        if (this.props.user) {
+            return ( 
+                <>
+                    <ul>
+                    {this.renderPlayers()}<br/>
+                    {this.renderSitButton()}<br/>
+                    </ul>
+                    {this.renderCardsAndPot()}<br/>
+                </>
+            )
+        }
+    }
     render() {
-        return(
+        return (
             <>
-                <ul>
-                {this.renderPlayers()}<br/>
-                {this.renderSitButton()}<br/>
-                </ul>
-                {this.renderCardsAndPot()}<br/>
+                {this.renderBoard()}
             </>
         )
     }
