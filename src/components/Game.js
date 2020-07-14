@@ -65,6 +65,7 @@ class Game extends React.Component {
                     {this.renderResult()}
                     <GameButtons 
                         gameId={this.props.game.id}
+                        game={this.props.game}
                         round={this.props.game.active_round}
                         user={this.props.user}/>
                     {/* <GameConsole 
