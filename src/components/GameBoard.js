@@ -28,13 +28,6 @@ class GameBoard extends React.Component {
     images = this.importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
     renderPlayerCards = user => {
-
-        console.log(this.props.user)
-        console.log(user);
-        console.log(user.playing)
-        console.log(user.cards);
-        console.log(user.username);
-        console.log(this.props.user.username);
         if (user.cards === "" || !user.playing) {
             return <img style={{height: "53.7px"}} src={blank}/>
         } else {
@@ -60,18 +53,23 @@ class GameBoard extends React.Component {
     renderDealerButton = user => {
         if (user.dealer) {
             return <img className="dealer_chip" alt='dealerChip' src={dealerChip}/>
+        }
+    }
 
-            // need dealer img
+    renderLeave = (user) => {
+        if (user.username === this.props.user.username) {
+            return <button id="leave_button" onClick={() => this.props.leaveTable(this.props.game.id)} className="nes-btn is-error">Leave</button>
         }
     }
 
     renderPlayers = () => {
         if (this.props.game.ordered_users) {
             return (
-                <>
+                <div style={{position: "relative"}}>
                     {this.props.game.ordered_users.map((user,index) => 
                         <li className="board_user" key={index}>
                             {console.log(user)}
+                            {this.renderLeave(user)}
                             <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
                             </span>&nbsp;
                             {/* <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" /> */}
@@ -81,7 +79,7 @@ class GameBoard extends React.Component {
                             {this.renderPlayerCards(user)} {this.renderDealerButton(user)}
                             &nbsp;<span className="chips">{user.round_bet === 0 ? '' : user.round_bet}</span>
                         </li>)}
-                </>
+                </div>
             )
         }
     }
@@ -113,14 +111,9 @@ class GameBoard extends React.Component {
                 return (
                     <button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button>
                 )
-            } else {
-                return (
-                    <button onClick={() => this.props.leaveTable(this.props.game.id)} className="nes-btn is-primary">Leave</button>
-                )
             }
         } 
     }
-
 
     renderBoard = () => {
         if (this.props.user) {

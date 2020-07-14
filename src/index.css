@@ -145,6 +145,11 @@ input[type="password"]{
     /* padding: 22px 0px; */
 }
 
+#leave_button {
+    position: absolute;
+    left: -140px;
+}
+
 .chips {
     color: #006400;
 }
