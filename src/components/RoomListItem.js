@@ -67,7 +67,7 @@ class RoomListItem extends React.Component {
 
     render() {
         return (
-            <div className={`nes-container room_container is-rounded ${this.props.index % 2 === 0 ? 'is-dark' : ''}`}>
+            <div className={`nes-container roomli_container is-rounded ${this.props.index % 2 === 0 ? 'is-dark' : ''}`}>
                 {console.log(this.props.index)}
             <li className="room_li">{this.props.room.name}<br/>{this.renderLock()} <span className="room_li_desc">{this.props.room.no_users}/8 {this.renderJoinButton()}</span>
             </li>

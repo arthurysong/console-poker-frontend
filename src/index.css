@@ -51,6 +51,9 @@ input[type="password"]{
 
 #room_container {
     text-align: center;
+    width: 1000px;
+    margin: auto;
+    padding: 50px 150px; 
     /* display: inline-block; */
     /* width: 400px; */
 }
@@ -159,6 +162,7 @@ input[type="password"]{
     color: #006400;
 }
 
+
 /* #phase {
     font-size: 18px;
     padding: 8px;
@@ -184,7 +188,7 @@ input[type="password"]{
 }
 
 
-.room_container{
+.roomli_container{
     text-align: center;
     width: 250px;
     display: inline-block;

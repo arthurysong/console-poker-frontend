@@ -2,6 +2,7 @@ import React from 'react';
 import GameBoard from './GameBoard';
 // import GameConsole from './GameConsole'
 import GameButtons from './GameButtons';
+import Lobby from './Lobby';
 import { connect } from 'react-redux';
 import { startGame, subscribeGame, unsubscribeGame, clearGameErrors } from '../redux/gameActions';
 import { setChips, sitDown, leaveTable, resetUser } from '../redux/dispatchActions';
@@ -32,7 +33,8 @@ class Game extends React.Component {
     renderResult = () => {
         if (!this.props.game.active_round.is_playing) {
             return (
-                <p className='nes-text'>{this.props.game.active_round.result.map(r => `${r}\n`)}</p>
+                <p className='nes-text'><span className="nes-text is-error">Not Playing</span><br/>
+                {this.props.game.active_round.result.map(r => `${r}\n`)}</p>
             )
         }
     }
@@ -40,7 +42,11 @@ class Game extends React.Component {
     // I should always render board...
     renderBoard = () => {
         return (
-            <>
+            <>  
+                <Lobby 
+                    room={this.props.room}
+                    game={this.props.game}
+                    colorHash={this.props.colorHash}/>
                 <GameBoard
                     sitDown={this.props.sitDown}
                     leaveTable={this.props.leaveTable}

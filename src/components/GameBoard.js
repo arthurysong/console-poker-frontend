@@ -79,6 +79,7 @@ class GameBoard extends React.Component {
                             {this.renderPlayerCards(user)} {this.renderDealerButton(user)}
                             &nbsp;<span className="chips">{user.round_bet === 0 ? '' : user.round_bet}</span>
                         </li>)}
+                    {this.renderSitButton()}
                 </div>
             )
         }
@@ -109,7 +110,7 @@ class GameBoard extends React.Component {
         (!this.props.game.users.count || this.props.game.users.count < 8)) {
             if (!this.props.game.users.find(u => u.username === this.props.user.username)){
                 return (
-                    <button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button>
+                    <li className="board_user"><button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button></li>
                 )
             }
         } 
@@ -121,7 +122,7 @@ class GameBoard extends React.Component {
                 <>
                     <ul>
                     {this.renderPlayers()}<br/>
-                    {this.renderSitButton()}<br/>
+                    {/* {this.renderSitButton()}<br/> */}
                     </ul>
                     {this.renderCardsAndPot()}<br/>
                 </>

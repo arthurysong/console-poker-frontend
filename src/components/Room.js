@@ -32,11 +32,8 @@ class Room extends React.Component {
                 <>
                     <div className="back_button"><button className="nes-btn is-error" onClick={this.leaveRoom}>{'<'}</button></div>
                     <div>
-                        <h1>{this.props.room.name}</h1>
+                        <h1 className="title">{this.props.room.name}</h1>
                     </div>
-                    <ul id="user_list">
-                        {this.props.room.users.map((user, index) => <li className="user_item" style={{color: `${hashStringToColor(user.username, this.props.hash)}`}} key={index}>{user.username} </li>)}
-                    </ul>
                 </>
             )
         }
@@ -45,7 +42,7 @@ class Room extends React.Component {
 
     renderGameComp = () => {
         if (this.props.room) {
-            return (<Game gameId={this.props.room.game.id} players={this.props.room.no_users} colorHash={this.props.hash}/>)
+            return (<Game gameId={this.props.room.game.id} room={this.props.room} players={this.props.room.no_users} colorHash={this.props.hash}/>)
         }
     }
 
@@ -53,10 +50,14 @@ class Room extends React.Component {
         return(
             // <div id="room_container">
             <div>
+            {/* <div className="nes-container is-rounded with-title" id="room_container"> */}
+                {/* <p className="title">Fuck</p> */}
+                
                 {console.log(this.props.user)}
                 {this.renderRoom()}
                 {/* <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/> */}
                 {this.renderGameComp()}
+            {/* </div> */}
             </div>
         )
     }
