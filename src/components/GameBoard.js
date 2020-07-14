@@ -9,10 +9,12 @@ class GameBoard extends React.Component {
     }
 
     updateChips = () => {
-        const user = this.props.round.ordered_users.find(u => u.id === this.props.user.id);
-        if (user) {
-            console.log(user.chips);
-            this.props.setChips(user.chips);
+        if (this.props.round) {
+            const user = this.props.round.ordered_users.find(u => u.id === this.props.user.id);
+            if (user) {
+                console.log(user.chips);
+                this.props.setChips(user.chips);
+            }
         }
     }
 
@@ -43,11 +45,13 @@ class GameBoard extends React.Component {
                 )
             }
         } else {
-            return (
-                <>
-                    *FOLD*
-                </>
-            )
+            if (user.cards !== "") {
+                return (
+                    <>
+                        *FOLD*
+                    </>
+                )
+            }
         }
     }
     
@@ -100,11 +104,18 @@ class GameBoard extends React.Component {
     }
 
     renderSitButton = () => {
-        if (this.props.game.users && (!this.props.game.users.count || this.props.game.users.count < 8)) {
-            return (
-                <button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button>
-            )
-        }
+        if (this.props.game.users && this.props.user &&
+        (!this.props.game.users.count || this.props.game.users.count < 8)) {
+            if (!this.props.game.users.find(u => u.username === this.props.user.username)){
+                return (
+                    <button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button>
+                )
+            } else {
+                return (
+                    <button onClick={() => this.props.leaveTable(this.props.game.id)} className="nes-btn is-primary">Leave</button>
+                )
+            }
+        } 
     }
     render() {
         return(

@@ -212,6 +212,41 @@ export const sitDown = gameId => {
     }
 }
 
+export const leaveTable = gameId => {
+    return dispatch => {
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+        fetchWithToken(`${BASE_URL}/games/${gameId}/leave`, options)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+            })
+    }
+}
+
+export const resetUser = (userId) => {
+    return dispatch => {
+        const options= {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+        fetchWithToken(`${BASE_URL}/users/${userId}/reset_user`, options)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+                dispatch({ type: 'SET_USER', user: json.user });
+            })
+    }
+}
+
 export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 export const setSuccess = success => ({ type: 'SET_SUCCESS', success })

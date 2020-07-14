@@ -4,7 +4,7 @@ import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
 import { connect } from 'react-redux';
 import { startGame, subscribeGame, unsubscribeGame, clearGameErrors } from '../redux/gameActions';
-import { setChips, sitDown } from '../redux/dispatchActions';
+import { setChips, sitDown, leaveTable, resetUser } from '../redux/dispatchActions';
 
 class Game extends React.Component {
     componentDidMount() {
@@ -13,6 +13,7 @@ class Game extends React.Component {
 
     componentWillUnmount(){
         this.props.unsubscribeGame(this.props.gameId);
+        this.props.resetUser();
         //update chips here.
     }
 
@@ -42,6 +43,7 @@ class Game extends React.Component {
             <>
                 <GameBoard
                     sitDown={this.props.sitDown}
+                    leaveTable={this.props.leaveTable}
                     game={this.props.game}
                     round={this.props.game.active_round} 
                     user={this.props.user} 
@@ -104,7 +106,9 @@ const mapDispatchToProps = dispatch => {
         unsubscribeGame: gameId => dispatch(unsubscribeGame(gameId)),
         clearGameErrors: () => dispatch(clearGameErrors()),
         setChips: chips => dispatch(setChips(chips)),
-        sitDown: gameId => dispatch(sitDown(gameId))
+        sitDown: gameId => dispatch(sitDown(gameId)),
+        leaveTable: gameId =>  dispatch(leaveTable(gameId)),
+        resetUser: userId => dispatch(resetUser(userId))
     }
 }
 // export default Game;
