@@ -4,7 +4,7 @@ import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
 import { connect } from 'react-redux';
 import { startGame, subscribeGame, unsubscribeGame, clearGameErrors } from '../redux/gameActions';
-import { setChips } from '../redux/dispatchActions';
+import { setChips, sitDown } from '../redux/dispatchActions';
 
 class Game extends React.Component {
     componentDidMount() {
@@ -36,19 +36,30 @@ class Game extends React.Component {
         }
     }
 
+    // I should always render board...
+    renderBoard = () => {
+        return (
+            <>
+                <GameBoard
+                    sitDown={this.props.sitDown}
+                    game={this.props.game}
+                    round={this.props.game.active_round} 
+                    user={this.props.user} 
+                    colorHash={this.props.colorHash}
+                    setChips={this.props.setChips}/>
+            </>
+        )
+    }
+
     renderGame = () => {
-        if (this.props.game.active_round && this.props.user !== null) {
-            console.log(this.props.game);
-            console.log(this.props.game.active_round.status)
-            console.log('hello i am here');
-            console.log(this.props.user);
+        if (this.props.game.active_round && this.props.user) {
             return (
                 <>
-                    <GameBoard 
+                    {/* <GameBoard 
                         round={this.props.game.active_round} 
                         user={this.props.user} 
                         colorHash={this.props.colorHash}
-                        setChips={this.props.setChips}/>
+                        setChips={this.props.setChips}/> */}
                     {this.renderResult()}
                     <GameButtons 
                         gameId={this.props.game.id}
@@ -70,6 +81,7 @@ class Game extends React.Component {
     render() {
         return (
             <div id="game_container">
+                {this.renderBoard()}
                 {this.renderGame()}
                 {this.renderButton()}
             </div>
@@ -91,7 +103,8 @@ const mapDispatchToProps = dispatch => {
         subscribeGame: gameId => dispatch(subscribeGame(gameId)),
         unsubscribeGame: gameId => dispatch(unsubscribeGame(gameId)),
         clearGameErrors: () => dispatch(clearGameErrors()),
-        setChips: chips => dispatch(setChips(chips))
+        setChips: chips => dispatch(setChips(chips)),
+        sitDown: gameId => dispatch(sitDown(gameId))
     }
 }
 // export default Game;

@@ -55,7 +55,7 @@ class Room extends React.Component {
             <div>
                 {console.log(this.props.user)}
                 {this.renderRoom()}
-                <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/>
+                {/* <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/> */}
                 {this.renderGameComp()}
             </div>
         )

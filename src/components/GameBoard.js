@@ -60,47 +60,60 @@ class GameBoard extends React.Component {
     }
 
     renderPlayers = () => {
-        return (
-            <>
-                {this.props.round.ordered_users.map((user,index) => 
-                    <li className="board_user" key={index}>
-                        <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
-                        </span>&nbsp;
-                        {/* <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" /> */}
-                        <span className="board_user_chips">{user.chips} <i className="nes-icon coin is-small"></i>
-                        </span>&nbsp;
+        if (this.props.game.ordered_users) {
+            return (
+                <>
+                    {this.props.game.ordered_users.map((user,index) => 
+                        <li className="board_user" key={index}>
+                            <span style={{color: `${hashStringToColor(user.username, this.props.colorHash)}`}}>{user.username}
+                            </span>&nbsp;
+                            {/* <span className="board_user_chips">{user.chips}<img className="coin" src={coin} alt="coin_img" /> */}
+                            <span className="board_user_chips">{user.chips} <i className="nes-icon coin is-small"></i>
+                            </span>&nbsp;
 
-                        {this.renderPlayerCards(user)} {this.renderDealerButton(user)}
-                        &nbsp;<span className="chips">{user.round_bet === 0 ? '' : user.round_bet}</span>
-                    </li>)}
-            </>
-        )
+                            {this.renderPlayerCards(user)} {this.renderDealerButton(user)}
+                            &nbsp;<span className="chips">{user.round_bet === 0 ? '' : user.round_bet}</span>
+                        </li>)}
+                </>
+            )
+        }
     }
 
     renderBoardCards = () => {
+        if (this.props.round) {
         // return (this.styleCards(this.props.round.access_community_cards))
-        return (this.props.round.access_community_cards.split(" ").map((c, index) => <img key={index} className="cards" alt={c} src={this.images[`${c}.png`]}/>))
+            return (this.props.round.access_community_cards.split(" ").map((c, index) => <img key={index} className="cards" alt={c} src={this.images[`${c}.png`]}/>))
+        }
     }
 
     renderCardsAndPot = () => {
-        return (
-            <div id="board">
-                {/* <div id="phase">{this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}</div><br/> */}
-                {this.props.round.access_community_cards === "" ? "" : this.renderBoardCards()}<br/><br/>
-                <span className="chips">{this.props.round.pot}</span> <i className="nes-icon coin is-small"></i>
-                {/* Bet {this.props.round.highest_bet_for_phase}<br/> */}
-            </div>
-        )
+        if (this.props.round) {
+            return (
+                <div id="board">
+                    {/* <div id="phase">{this.props.round.access_community_cards === "" ? "<PREFLOP>" : this.renderBoardCards()}</div><br/> */}
+                    {this.props.round.access_community_cards === "" ? "" : this.renderBoardCards()}<br/><br/>
+                    <span className="chips">{this.props.round.pot}</span> <i className="nes-icon coin is-small"></i>
+                    {/* Bet {this.props.round.highest_bet_for_phase}<br/> */}
+                </div>
+            )
+        }
     }
 
+    renderSitButton = () => {
+        if (this.props.game.users && (!this.props.game.users.count || this.props.game.users.count < 8)) {
+            return (
+                <button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button>
+            )
+        }
+    }
     render() {
         return(
             <>
-                {/* Players: */}
                 <ul>
-                    {this.renderPlayers()}<br/>
-                    {this.renderCardsAndPot()}<br/>
+                {this.renderPlayers()}<br/>
+                {this.renderSitButton()}<br/>
                 </ul>
+                {this.renderCardsAndPot()}<br/>
             </>
         )
     }

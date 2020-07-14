@@ -171,6 +171,11 @@ input[type="password"]{
     padding: 8px;
 }
 
+#rooms_ul {
+    width: 1200px;
+    margin: auto;
+}
+
 
 .room_container{
     text-align: center;

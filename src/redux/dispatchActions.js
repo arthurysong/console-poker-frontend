@@ -194,15 +194,23 @@ export const makeWithdrawal = (cents) => {
         
     }
 }
-// export const fetchStripeState = () => {
-//     return dispatch => {
-//         fetch(`${BASE_URL}/stripe_state`)
-//             .then(resp => resp.json())
-//             .then(json => {console.log(json)
-//                 return json
-//             })
-//     }
-// }
+
+export const sitDown = gameId => {
+    return dispatch => {
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+        fetchWithToken(`${BASE_URL}/games/${gameId}/join`, options)
+            .then(resp => resp.json())
+            .then(json => {
+                console.log(json);
+            })
+    }
+}
 
 export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
