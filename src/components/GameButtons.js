@@ -11,6 +11,7 @@ class GameButtons extends React.Component {
         console.log('raise')
         const x = parseInt(this.state.raiseAmount);
         postMoveWithToken({ command: 'raise', amount: x }, this.props.user.id)
+        this.setState({ raiseAmount: "" })
     }
 
     changeHandler = event => {

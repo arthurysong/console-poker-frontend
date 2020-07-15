@@ -6,7 +6,7 @@ function Lobby ({ room, game, colorHash }) {
         const users = room.users.filter(el => game.users.findIndex(u => u.username === el.username) < 0);
         
         return (
-            <><span>Lobby</span>
+            <><span>Lobby </span>
             <ul id="user_list">
                 {users.map((user, index) => 
                 <li className="user_item" style={{color: `${hashStringToColor(user.username, colorHash)}`}} key={index}>{user.username} </li>)}

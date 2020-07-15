@@ -58,7 +58,7 @@ class GameBoard extends React.Component {
 
     renderLeave = (user) => {
         if (user.username === this.props.user.username) {
-            return <button id="leave_button" onClick={() => this.props.leaveTable(this.props.game.id)} className="nes-btn is-error">Leave</button>
+            return <button id="leave_button" onClick={() => this.props.leaveTable(this.props.game.id)} className="nes-btn is-error smaller-btn">Leave</button>
         }
     }
 
@@ -110,7 +110,7 @@ class GameBoard extends React.Component {
         (!this.props.game.users.count || this.props.game.users.count < 8)) {
             if (!this.props.game.users.find(u => u.username === this.props.user.username)){
                 return (
-                    <li className="board_user"><button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary">Sit</button></li>
+                    <li className="board_user"><button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary smaller-btn">Sit</button></li>
                 )
             }
         } 

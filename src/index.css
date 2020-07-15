@@ -93,6 +93,10 @@ input[type="password"]{
     word-break: break-all;
 }
 
+#user_list {
+    display: inline-block;
+}
+
 .nes-balloon.tight-balloon {
     padding: 10px;
 }
