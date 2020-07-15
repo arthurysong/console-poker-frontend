@@ -92,12 +92,12 @@ export const setLogin = history => {
     }
 }
 
-export const logOut = (history) => {
+export const logOut =  (history) => {
     // I don't need to send anything to database.
-    return dispatch => {
+    return async dispatch => {
+        await history.replace(`/login`); // need to make sure component unmounts before clearing the local storage!
         localStorage.clear();
         dispatch({type: 'LOGOUT'})
-        history.replace(`/login`);
         // window.location.reload();
     }
 }
