@@ -27,13 +27,20 @@ class Room extends React.Component {
         this.props.history.goBack();
     }
 
+    renderMarleyMessage = () =>  {
+        if (this.props.room && this.props.room.id === 1){
+            return (<>Marley is a good doge and always calls. Good luck!</>)
+        }
+    }
+
     renderRoom(){
-        if (this.props.room !== undefined) {
+        if (this.props.room) {
             return (
                 <>
                     <div className="back_button"><button className="nes-btn is-error" onClick={this.leaveRoom}>{'<'}</button></div>
                     <div>
                         <h1 className="title">{this.props.room.name}</h1>
+                        {this.renderMarleyMessage()}
                     </div>
                 </>
             )

@@ -25,6 +25,17 @@ export function postMoveWithToken(commandObj, userId) {
     fetchWithToken(`${BASE_URL}/users/${userId}/make_move`, options);
 }
 
+export const postMarleyMove = () => {
+    const options= {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }
+    fetchWithToken(`${BASE_URL}/users/marley_call`, options)
+}
+
 export function startNewRound(gameId) {
     const options = {
         method: "POST",

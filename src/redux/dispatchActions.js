@@ -247,6 +247,8 @@ export const resetUser = (userId) => {
     }
 }
 
+
+
 export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 export const setSuccess = success => ({ type: 'SET_SUCCESS', success })

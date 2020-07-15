@@ -1,5 +1,5 @@
 import React from 'react';
-import { postMoveWithToken, startNewRound } from '../utilities/fetchWithToken';
+import { postMoveWithToken, startNewRound, postMarleyMove } from '../utilities/fetchWithToken';
 
 class GameButtons extends React.Component {
     state = {
@@ -18,6 +18,13 @@ class GameButtons extends React.Component {
         this.setState({
             raiseAmount: event.target.value
         })
+    }
+
+    componentDidUpdate(prevProps){
+        if (this.props.round.turn && this.props.round.is_playing && this.props.round.turn.id === 1) {
+            console.log('marleys turn!');
+            setTimeout(() => postMarleyMove(), 1500);
+        }
     }
 
     renderMoveButton = (move, index) => {
