@@ -94,7 +94,7 @@ input[type="password"]{
 }
 
 #user_list {
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 .nes-balloon.tight-balloon {
@@ -106,6 +106,8 @@ input[type="password"]{
 }
 
 #game_container {
+    position: relative; 
+    /* so that lobby can float to the right of it */
     width: 640px;
     margin: 24px;
     vertical-align: top;
@@ -161,6 +163,11 @@ input[type="password"]{
 #leave_button {
     position: absolute;
     left: -140px;
+}
+
+#lobby {
+    position: absolute;
+    right: -200px;
 }
 
 .chips {

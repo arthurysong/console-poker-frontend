@@ -26,12 +26,12 @@ export default function cableMiddleware() {
 
     if (rooms) {
       if(leave) {
-        console.log(cable.subscriptions);
+        // console.log(cable.subscriptions);
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, rooms, token }))
-        console.log(JSON.stringify({ channel, rooms, token }))
-        console.log(subscription);
+        // console.log(JSON.stringify({ channel, rooms, token }))
+        // console.log(subscription);
         cable.subscriptions.remove(subscription);
-        console.log('clear_rooms');
+        // console.log('clear_rooms');
         dispatch({ type: 'CLEAR_ROOMS' })
         return;
 
