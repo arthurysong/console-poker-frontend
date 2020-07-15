@@ -59,18 +59,24 @@ input[type="password"]{
 }
 
 #chatbox_container {
-    width: 600px;
+    /* width: 600px;
     height: 600px;
     margin: 24px;
     display: inline-block;
-    vertical-align: top;
+    vertical-align: top; */
+    width: 640px;
+    margin: auto;
 }
 
 #messages_container {
-    height: 75%;
+    height: 150px;
     width: 100%;
     overflow: auto;
     text-align: justify;
+}
+
+.hide {
+    display: none !important;
 }
 
 #new_message_form {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Chatbox from './Chatbox';
+import Chatbox2 from './Chatbox2';
 import Game from './Game';
 import { connect } from 'react-redux';
 import { subscribeRoom, unsubscribeRoom } from '../redux/roomActions';
@@ -55,8 +56,15 @@ class Room extends React.Component {
                 
                 {console.log(this.props.user)}
                 {this.renderRoom()}
+                
+
                 {/* <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/> */}
                 {this.renderGameComp()}
+                <Chatbox2 
+                    // user={this.props.user} 
+                    messages={this.props.messages} 
+                    subscription={this.subscription} 
+                    colorHash={this.props.hash}/>
             {/* </div> */}
             </div>
         )
