@@ -1,5 +1,5 @@
 import React from 'react';
-import { postMoveWithToken, startNewRound, postMarleyMove } from '../utilities/fetchWithToken';
+import { postMoveWithToken, startNewRound, postMarleyMove } from '../../utilities/fetchWithToken';
 
 class GameButtons extends React.Component {
     state = {
@@ -45,7 +45,7 @@ class GameButtons extends React.Component {
     }
 
     renderButtons = () => {
-        console.log(this.props.user);
+        // console.log(this.props.user);
         if (!this.props.round.is_playing) {
             return (
                 <button className={`nes-btn ${this.props.game.startable ? 'is-primary' : 'is-disabled'}`} onClick={() => startNewRound(this.props.gameId)}>New Round</button>
@@ -60,8 +60,8 @@ class GameButtons extends React.Component {
     render() {
         return(
             <div id="buttons">
-                {console.log(this.props.round)}
-                {console.log('hello?')}
+                {/* {console.log(this.props.round)} */}
+                {/* {console.log('hello?')} */}
                 {this.renderButtons()}
             </div>
         )

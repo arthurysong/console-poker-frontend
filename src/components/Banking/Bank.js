@@ -19,10 +19,10 @@ class Bank extends React.Component {
             <div>
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
                 <Switch>
-                    <Route path={`/users/${this.props.match.params.id}/bank/deposit`}
-                    render={routerProps => <CheckoutContainer {...routerProps}/>}/>
-                    <Route path={`/users/${this.props.match.params.id}/bank/withdraw`}
-                    render={routerProps => <WithdrawContainer {...routerProps}/>}/>
+                    <Route path={`/users/${this.props.match.params.id}/bank/deposit`} render={routerProps => 
+                        <CheckoutContainer {...routerProps}/>}/>
+                    <Route path={`/users/${this.props.match.params.id}/bank/withdraw`}render={routerProps => 
+                        <WithdrawContainer {...routerProps}/>}/>
                 </Switch>
             </div>
         )

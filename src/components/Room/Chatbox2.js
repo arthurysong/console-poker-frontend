@@ -1,5 +1,5 @@
 import React from 'react';
-import { hashStringToColor } from '../utilities/colorHash';
+import { hashStringToColor } from '../../utilities/colorHash';
 
 class Chatbox2 extends React.Component {
     state = {

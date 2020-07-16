@@ -3,7 +3,7 @@ import { findDOMNode } from 'react-dom';
 import $ from 'jquery';
 import terminal from 'jquery.terminal';
 import 'jquery.terminal/css/jquery.terminal.css';
-import { postMoveWithToken, startNewRound } from '../utilities/fetchWithToken';
+import { postMoveWithToken, startNewRound } from '../../utilities/fetchWithToken';
 
 
 class GameConsole extends React.Component {

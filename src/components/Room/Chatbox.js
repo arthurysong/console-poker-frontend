@@ -1,6 +1,6 @@
 import React from 'react';
 import "nes.css/css/nes.min.css";
-import { hashStringToColor } from '../utilities/colorHash'
+import { hashStringToColor } from '../../utilities/colorHash'
 
 
 class Chatbox extends React.Component {

@@ -1,7 +1,10 @@
 import React from 'react';
 import { hashStringToColor } from '../utilities/colorHash';
+import { useSelector } from 'react-redux';
 
-function Lobby ({ room, game, colorHash }) {
+function Lobby ({ room, game }) {
+    const colorHash = useSelector(state => state.colorHash);
+
     if (game.users) {
         const users = room.users.filter(el => game.users.findIndex(u => u.username === el.username) < 0);
         

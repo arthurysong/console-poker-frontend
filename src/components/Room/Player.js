@@ -1,9 +1,9 @@
 import React from 'react';
-import { hashStringToColor } from '../utilities/colorHash'
-import dealerChip from '../pictures/DEALER.png';
-import blank from '../pictures/blank.png';
+import { hashStringToColor } from '../../utilities/colorHash'
+import dealerChip from '../../pictures/DEALER.png';
+import blank from '../../pictures/blank.png';
 import { useSelector, useDispatch } from 'react-redux';
-import { leaveTable } from '../redux/gameActions';
+import { leaveTable } from '../../redux/gameActions';
 
 function Player(props) {
     //redux hooks

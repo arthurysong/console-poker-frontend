@@ -1,16 +1,14 @@
 import React from 'react';
-import Chatbox from './Chatbox';
+// import Chatbox from './Chatbox';
 import Chatbox2 from './Chatbox2';
 import Game from './Game';
 import { connect } from 'react-redux';
-import { subscribeRoom, unsubscribeRoom } from '../redux/roomActions';
-import { hashStringToColor } from '../utilities/colorHash'
+import { subscribeRoom, unsubscribeRoom } from '../../redux/roomActions';
 
 class Room extends React.Component {
     state = {
         newMessage: ""
     }
-    // hash = Math.floor(1000 + Math.random() * 9000);
 
     componentDidMount() {
         this.subscription = this.props.subscribeRoom(this.props.match.params.id);
@@ -18,10 +16,7 @@ class Room extends React.Component {
 
     componentWillUnmount() {
         this.props.unsubscribeRoom(this.props.match.params.id);
-        //should update users chips...
     }
-
-
 
     leaveRoom = () => {
         this.props.history.goBack();

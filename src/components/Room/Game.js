@@ -1,7 +1,7 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
-import Lobby from './Lobby';
+import Lobby from '../Lobby';
 import { connect } from 'react-redux';
 import { 
     startGame, 
@@ -9,8 +9,8 @@ import {
     unsubscribeGame, 
     sitDown, 
     leaveTable, 
-    resetUser } from '../redux/gameActions';
-import { setChips } from '../redux/dispatchActions';
+    resetUser } from '../../redux/gameActions';
+import { setChips } from '../../redux/dispatchActions';
 
 class Game extends React.Component {
     componentDidMount() {
@@ -25,7 +25,8 @@ class Game extends React.Component {
     renderButton = () => {
         if (!this.props.game.active_round) {
             return <button 
-                className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`} 
+                className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`}
+                disabled={this.props.players <= 1}
                 onClick={() => this.props.startGame(this.props.game.id)}>
                     Start Game
                 </button>
@@ -41,21 +42,17 @@ class Game extends React.Component {
         }
     }
 
-    // I should always render board...
     renderBoard = () => {
         return (
             <>  
                 <Lobby 
                     room={this.props.room}
-                    game={this.props.game}
-                    colorHash={this.props.colorHash}/>
+                    game={this.props.game}/>
                 <GameBoard
                     sitDown={this.props.sitDown}
-                    leaveTable={this.props.leaveTable}
                     game={this.props.game}
                     round={this.props.game.active_round} 
                     user={this.props.user} 
-                    colorHash={this.props.colorHash}
                     setChips={this.props.setChips}/>
             </>
         )

@@ -1,7 +1,5 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import { fetchStripeState } from '../redux/dispatchActions';
-import { BASE_URL, CLIENT_ID, REDIRECT_URL } from '../utilities/BASE_URL';
+import { BASE_URL, CLIENT_ID, REDIRECT_URL } from '../../utilities/BASE_URL';
 
 class ConnectBank extends React.Component {
     state = {

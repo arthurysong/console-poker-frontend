@@ -1,11 +1,11 @@
 import React from 'react';
 import RoomListItem from './RoomListItem';
-import SuccessMessage from './SuccessMessage';
+import SuccessMessage from '../SuccessMessage';
 import { NavLink } from 'react-router-dom';
-import { hashStringToColor } from '../utilities/colorHash';
+import { hashStringToColor } from '../../utilities/colorHash';
 import { connect } from 'react-redux';
-import { logOut, clearSuccess } from '../redux/dispatchActions';
-import { subscribeRooms, unsubscribeRooms } from '../redux/roomActions';
+import { logOut, clearSuccess } from '../../redux/dispatchActions';
+import { subscribeRooms, unsubscribeRooms, authenticateRoomPassword } from '../../redux/roomActions';
 
 class RoomsList extends React.Component {
     state = {
@@ -25,7 +25,7 @@ class RoomsList extends React.Component {
             key={index} 
             index={index} 
             room={room} 
-            wsSubscribeRoom={this.props.wsSubscribeRoom} 
+            authenticateRoomPassword={this.props.authenticateRoomPassword}
             history={this.props.history}/>))
 
     renderUser = () => {
@@ -33,7 +33,7 @@ class RoomsList extends React.Component {
             return (
                 <>
                     HELLO,&nbsp;
-                    <span style={{color: `${hashStringToColor(this.props.user.username, this.props.hash)}`}}>{this.props.user.username}</span>&nbsp;
+                    <span style={{color: `${hashStringToColor(this.props.user.username, this.props.colorHash)}`}}>{this.props.user.username}</span>&nbsp;
                     <span className="chips">{this.props.chips}</span> <i className="nes-icon coin is-small"></i>
                 </>
             )
@@ -76,7 +76,8 @@ const mapSP = state => {
         rooms: state.rooms,
         successMessage: state.successMessage,
         user: state.user,
-        chips: state.chips
+        chips: state.chips,
+        colorHash: state.colorHash
     }
 }
 
@@ -85,7 +86,8 @@ const mapDP = dispatch => {
         subscribeRooms: () => dispatch(subscribeRooms()),
         unsubscribeRooms: () => dispatch(unsubscribeRooms()),
         logOut: history => dispatch(logOut(history)),
-        clearSuccess: () => dispatch(clearSuccess())
+        clearSuccess: () => dispatch(clearSuccess()),
+        authenticateRoomPassword: (state, roomId, history) => dispatch(authenticateRoomPassword(state, roomId, history))
     }
 }
 export default connect(mapSP, mapDP)(RoomsList);

@@ -1,7 +1,7 @@
 import React from 'react';
 
-class Home extends React.Component {
-    // Home will set login and redirect the user
+class SetLogin extends React.Component {
+    // SetLogin will set login and redirect the user
     componentDidMount(){
         this.props.setLogin(this.props.history);
     }
@@ -15,4 +15,4 @@ class Home extends React.Component {
 
 }
 
-export default Home
+export default SetLogin

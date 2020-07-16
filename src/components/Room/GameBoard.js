@@ -7,7 +7,8 @@ const importAll = r => {
     return images;
 }
 
-const images = importAll(require.context('../pictures/cards', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg)$/));
+
 
 class GameBoard extends React.Component {
     componentWillUnmount() {
@@ -61,6 +62,7 @@ class GameBoard extends React.Component {
             )
         }
     }
+
     render() {
         return (
             <>

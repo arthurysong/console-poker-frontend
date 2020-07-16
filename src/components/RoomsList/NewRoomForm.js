@@ -1,5 +1,5 @@
 import React from 'react';
-import { BASE_URL } from '../utilities/BASE_URL';
+import { BASE_URL } from '../../utilities/BASE_URL';
 
 class NewRoomForm extends React.Component {
     state = {

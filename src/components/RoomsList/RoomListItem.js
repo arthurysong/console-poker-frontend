@@ -1,8 +1,6 @@
 import React from 'react';
-import lock from '../pictures/lock-icon.png';
-import lock2 from '../pictures/lock-icon-dark.png';
-import { fetchWithToken } from '../utilities/fetchWithToken';
-import { BASE_URL } from '../utilities/BASE_URL';
+import lock from '../../pictures/lock-icon.png';
+import lock2 from '../../pictures/lock-icon-dark.png';
 
 class RoomListItem extends React.Component {
     state = {
@@ -12,29 +10,6 @@ class RoomListItem extends React.Component {
     showDialog = () => {
         // console.log(this.props.room.id);
         document.getElementById(`dialog-dark-rounded-${this.props.room.id}`).showModal();
-    }
-
-    authenticatePassword = () => {
-        const body = JSON.stringify(this.state);
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body
-        }
-
-        fetchWithToken(`${BASE_URL}/rooms/${this.props.room.id}/authenticate`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json);
-                if (json.error) {
-                    document.getElementById(`dialog-dark-rounded-alert`).showModal();
-                } else {
-                    this.props.history.push(`/rooms/${this.props.room.id}`)
-                }
-            })
     }
 
     redirect = () =>  {
@@ -72,7 +47,7 @@ class RoomListItem extends React.Component {
             <li className="room_li">{this.props.room.name}<br/>{this.renderLock()} <span className="room_li_desc">{this.props.room.no_users}/8 {this.renderJoinButton()}</span>
             </li>
                 <dialog  className="nes-dialog is-dark is-rounded" id={`dialog-dark-rounded-${this.props.room.id}`}>
-                    <form onSubmit={this.authenticatePassword} method="dialog">
+                    <form onSubmit={() => this.props.authenticateRoomPassword(this.state, this.props.room.id, this.props.history)} method="dialog">
                     {/* <p class="title">Dark dialog</p> */}
                         <p>Please enter password!</p>
                         <menu className="dialog-menu">

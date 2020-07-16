@@ -1,9 +1,8 @@
 import React from 'react';
-// import CheckoutForm from './Checkout'
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-import '../fonts/stylesheet.css';
-import '../CardSectionStyles.css'
-import { BASE_URL } from '../utilities/BASE_URL';
+// import '../../fonts/stylesheet.css';
+import '../../CardSectionStyles.css'
+import { BASE_URL } from '../../utilities/BASE_URL';
 
 const CARD_ELEMENT_OPTIONS = {
     style: {
