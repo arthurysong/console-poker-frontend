@@ -1,4 +1,5 @@
 export default function resourceReducer (state = {
+    colorHash: '',
     processingAuth: false,
     isLoggedIn: false,
     user: undefined,
@@ -14,6 +15,11 @@ export default function resourceReducer (state = {
 }, action
 ) {
 switch (action.type) {
+    case 'SET_RAND_COLORHASH':
+        return {
+            ...state,
+            colorHash: Math.floor(1000 + Math.random() * 9000)
+        }
     //auth
     case 'AUTH_REQUEST':
         return {

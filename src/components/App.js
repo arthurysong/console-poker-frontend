@@ -4,7 +4,7 @@ import RoomsList from './RoomsList';
 import NewRoomForm from './NewRoomForm';
 import Room from './Room';
 import { connect } from 'react-redux';
-import { setLogin, logOut, register, clearSuccess } from '../redux/dispatchActions';
+import { setLogin, logOut, register, clearSuccess, setChips } from '../redux/dispatchActions';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import Register from './Register';
@@ -14,7 +14,10 @@ import Connecting from './Connecting';
 import Bank from './Bank';
 
 class App extends React.Component {
-  hash = Math.floor(1000 + Math.random() * 9000);
+  // hash = Math.floor(1000 + Math.random() * 9000);
+  componentDidMount() {
+    this.props.setColorHash();
+  }
 
   render() {
     return (
@@ -59,7 +62,8 @@ const mapDispatchToProps = dispatch => {
     register: (state,history) => dispatch(register(state,history)),
     setLogin: history => dispatch(setLogin(history)),
     logOut: (history) => dispatch(logOut(history)),
-    clearSuccess: () => dispatch(clearSuccess())
+    clearSuccess: () => dispatch(clearSuccess()),
+    setColorHash: () => dispatch({ type: 'SET_RAND_COLORHASH' })
     // createRoom: state => dispatch(createRoom(state))
   }
 }

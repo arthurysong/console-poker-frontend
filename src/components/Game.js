@@ -24,7 +24,6 @@ class Game extends React.Component {
 
     renderButton = () => {
         if (!this.props.game.active_round) {
-            // console.log(this.props.players > 1);
             return <button 
                 className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`} 
                 onClick={() => this.props.startGame(this.props.game.id)}>
@@ -92,7 +91,6 @@ const mapStateToProps = state => {
     return {
         game: state.game,
         user: state.user,
-        // gameErrors: state.gameErrors
     }
 }
 
@@ -101,12 +99,11 @@ const mapDispatchToProps = dispatch => {
         startGame: roomId => dispatch(startGame(roomId)),
         subscribeGame: gameId => dispatch(subscribeGame(gameId)),
         unsubscribeGame: gameId => dispatch(unsubscribeGame(gameId)),
-        // clearGameErrors: () => dispatch(clearGameErrors()),
         setChips: chips => dispatch(setChips(chips)),
         sitDown: gameId => dispatch(sitDown(gameId)),
         leaveTable: gameId =>  dispatch(leaveTable(gameId)),
         resetUser: userId => dispatch(resetUser(userId))
     }
 }
-// export default Game;
+
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
