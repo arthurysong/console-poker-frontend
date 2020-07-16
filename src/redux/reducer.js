@@ -115,16 +115,17 @@ switch (action.type) {
                 active_round: action.round
             }
         }
-    case 'GAME_ERRORS':
-        return {
-            ...state,
-            gameErrors: action.error
-        }
-    case 'CLEAR_GAME_ERRORS':
-        return {
-            ...state,
-            gameErrors: undefined
-        }
+    // was using this for console...
+    // case 'GAME_ERRORS':
+    //     return {
+    //         ...state,
+    //         gameErrors: action.error
+    //     }
+    // case 'CLEAR_GAME_ERRORS':
+    //     return {
+    //         ...state,
+    //         gameErrors: undefined
+    //     }
 
     case 'SET_CHIPS': // only for use on deposit page.
         return {

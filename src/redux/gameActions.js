@@ -13,7 +13,7 @@ export const startGame = gameId => {
         fetchWithToken(`${BASE_URL}/games/${gameId}/start`, options )
             .then(resp => resp.json())
             .then(json => {
-                console.log(json);
+                // console.log(json);
                 // set game
                 // set status
                 dispatch({ type: 'SET_GAME', game: json })
@@ -21,6 +21,58 @@ export const startGame = gameId => {
     }
 }
 
+export const sitDown = gameId => {
+    return dispatch => {
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+        fetchWithToken(`${BASE_URL}/games/${gameId}/join`, options)
+            .then(resp => resp.json())
+            .then(json => {
+                // console.log(json);
+            })
+    }
+}
+
+export const leaveTable = gameId => {
+    return dispatch => {
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+        fetchWithToken(`${BASE_URL}/games/${gameId}/leave`, options)
+            .then(resp => resp.json())
+            .then(json => {
+                // console.log(json);
+            })
+    }
+}
+
+// reset user game info once they leave or stand up
+export const resetUser = (userId) => {
+    return dispatch => {
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }
+        fetchWithToken(`${BASE_URL}/users/${userId}/reset_user`, options)
+            .then(resp => resp.json())
+            .then(json => {
+                // console.log(json);
+                dispatch({ type: 'SET_USER', user: json.user });
+            })
+    }
+}
 
 export function subscribeGame(gameId) {
     return {

@@ -2,6 +2,7 @@ import handleAuthRedirect from './handleAuthRedirect';
 import { fetchWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
+//authenticating...
 const authenticate_user = (state, history, dispatch) => { // abstracted this out because I also need in my register action
     const body = JSON.stringify(state)
     const options = {
@@ -75,7 +76,7 @@ export const setLogin = history => {
             })
                 .then(resp => resp.json())
                 .then(json => {
-                    console.log("in setLogin action", json);
+                    // console.log("in setLogin action", json);
                     if (json.user) {
                         dispatch({type: 'AUTH_SUCCESS', user: json.user})
                         dispatch({type: 'SET_CHIPS', chips: json.user.chips })
@@ -102,8 +103,6 @@ export const logOut =  (history) => {
     }
 }
 
-export const clearErrors = () => ({type: 'CLEAR_ERRORS'})
-
 export const register = (state, history) => {
     return dispatch => {
         const body = JSON.stringify(state);
@@ -118,7 +117,7 @@ export const register = (state, history) => {
         fetch(`${BASE_URL}/users`, options)
             .then(resp => resp.json())
             .then(json => {
-                console.log("in register action ", json);
+                // console.log("in register action ", json);
                 if (json.user) {
                     authenticate_user(state, history, dispatch);
                 } else {
@@ -128,6 +127,9 @@ export const register = (state, history) => {
     }
 }
 
+export const clearErrors = () => ({type: 'CLEAR_ERRORS'})
+
+// chips
 export const addChips = (amount, userId, history) => {
     return dispatch => {
         const body = JSON.stringify({ amount })
@@ -142,7 +144,7 @@ export const addChips = (amount, userId, history) => {
         fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
             .then(resp => resp.json())
             .then(json => {
-                console.log(json)
+                // console.log(json)
                 dispatch({ type: 'SET_CHIPS', chips: json.chips })
                 dispatch(setSuccess("Deposit Successful!"))
                 history.replace(`/rooms`)
@@ -161,6 +163,10 @@ export const fetchChips = userId => {
     }
 }
 
+export const setChips = chips => ({ type: 'SET_CHIPS', chips })
+export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
+
+// withdrawals
 export const connectAccount = (params, history) => {
     return dispatch => {
         fetchWithToken(`${BASE_URL}/connect/oauth${params}`)
@@ -195,61 +201,6 @@ export const makeWithdrawal = (cents) => {
     }
 }
 
-export const sitDown = gameId => {
-    return dispatch => {
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/games/${gameId}/join`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                console.log(json);
-            })
-    }
-}
-
-export const leaveTable = gameId => {
-    return dispatch => {
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/games/${gameId}/leave`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                console.log(json);
-            })
-    }
-}
-
-export const resetUser = (userId) => {
-    return dispatch => {
-        const options= {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/users/${userId}/reset_user`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                console.log(json);
-                dispatch({ type: 'SET_USER', user: json.user });
-            })
-    }
-}
-
-
-
-export const setChips = chips => ({ type: 'SET_CHIPS', chips })
-export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
+// setting and clearing successful messages from withdrawals/deposit?
 export const setSuccess = success => ({ type: 'SET_SUCCESS', success })
 export const clearSuccess = () => ({ type: 'CLEAR_SUCCESS' })

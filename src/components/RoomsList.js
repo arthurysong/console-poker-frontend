@@ -18,7 +18,6 @@ class RoomsList extends React.Component {
 
     componentWillUnmount(){
         this.props.unsubscribeRooms();
-        // this.props.clearSuccess();
     }
 
     renderRooms = () => (this.props.rooms.map((room,index) => 
