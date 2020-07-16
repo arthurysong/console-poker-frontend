@@ -1,5 +1,5 @@
 import React from 'react';
-import Player from './Player';
+import Players from './Players';
 
 const importAll = r => {
     let images = {};
@@ -24,27 +24,7 @@ class GameBoard extends React.Component {
         }
     }
 
-    renderPlayers = () => {
-        if (this.props.game.ordered_users) {
-            return (
-                <div style={{position: "relative"}}>
-                    {this.props.game.ordered_users.map((user,index) => 
-                        <Player 
-                            key={index} 
-                            colorHash={this.props.colorHash}
-                            user={user} 
-                            images={images}/>)}
-                    {this.renderSitButton()}
-                </div>
-            )
-        }
-    }
-
-    renderBoardCards = () => {
-        if (this.props.round) {
-            return (this.props.round.access_community_cards.split(" ").map((c, index) => <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>))
-        }
-    }
+    renderBoardCards = () => (this.props.round.access_community_cards.split(" ").map((c, index) => <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>))
 
     renderCardsAndPot = () => {
         if (this.props.round) {
@@ -64,7 +44,7 @@ class GameBoard extends React.Component {
         (!this.props.game.users.count || this.props.game.users.count < 8)) {
             if (!this.props.game.users.find(u => u.username === this.props.user.username)){
                 return (
-                    <li className="board_user"><button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary smaller-btn">Sit</button></li>
+                    <div className="board_user"><button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary smaller-btn">Sit</button></div>
                 )
             }
         } 
@@ -74,9 +54,8 @@ class GameBoard extends React.Component {
         if (this.props.user) {
             return ( 
                 <>
-                    <ul>
-                    {this.renderPlayers()}<br/>
-                    </ul>
+                    <Players images={images}/>
+                    {this.renderSitButton()}
                     {this.renderCardsAndPot()}<br/>
                 </>
             )
