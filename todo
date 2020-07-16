@@ -2,7 +2,9 @@ Copyright?
 Style the Stripe Elements with Font.
 
 When a person leaves their cards should be blanked out.
+state.chips
 Create POSTwithToken?
+Style the UL in RoomsList so it stays centered when browser width decreases..
 Justify center board_user so center of height
 Error when logging out, subscription not found...
 Validate cents amount for withdrawals and Make successful transfer

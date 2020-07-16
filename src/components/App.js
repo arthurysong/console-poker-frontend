@@ -20,8 +20,11 @@ class App extends React.Component {
     return (
       <div id="main">
       <Router>
-        {console.log(this.props.user)}
-        <Route path="/" render={routerProps => <Home {...routerProps} isLoggedin={this.props.isLoggedIn} setLogin={this.props.setLogin}/>}/>
+        {/* {console.log(this.props.user)} */}
+        <Route path="/" render={routerProps => 
+          <Home {...routerProps} 
+          isLoggedin={this.props.isLoggedIn} 
+          setLogin={this.props.setLogin}/>}/>
         
         <Switch>
           <Route path="/terms" render={(routerProps) => <TermsAndConditions {...routerProps}/>}/>
@@ -40,15 +43,10 @@ class App extends React.Component {
           <Route path="/rooms" render={routerProps => 
             <RoomsList {...routerProps}
               hash={this.hash}
-              chips={this.props.chips}
-              user={this.props.user} 
-              logOut={this.props.logOut} 
-              isLoggedIn={this.props.isLoggedIn}
-              successMessage={this.props.successMessage}
-              clearSuccess={this.props.clearSuccess}
               />}/>
 
-          <Route path="/register" render={routerProps => <Register {...routerProps} register={this.props.register}/>}/>
+          <Route path="/register" render={routerProps => 
+            <Register {...routerProps} register={this.props.register}/>}/>
         </Switch>
       </Router>
       </div>
