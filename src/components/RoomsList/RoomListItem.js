@@ -8,7 +8,6 @@ class RoomListItem extends React.Component {
     }
 
     showDialog = () => {
-        // console.log(this.props.room.id);
         document.getElementById(`dialog-dark-rounded-${this.props.room.id}`).showModal();
     }
 

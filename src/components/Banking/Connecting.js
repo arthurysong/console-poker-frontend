@@ -5,11 +5,7 @@ import { connect } from 'react-redux';
 
 class Connecting extends React.Component {
     componentDidMount(){
-        // let params = queryString.parse(this.props.location.search)
-
         this.props.connectAccount(this.props.location.search, this.props.history)
-        console.log('send code and state to API')
-        // console.log(this.props.location.search);
     }
 
     render() {

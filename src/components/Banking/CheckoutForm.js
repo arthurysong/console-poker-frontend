@@ -9,10 +9,6 @@ const CARD_ELEMENT_OPTIONS = {
       base: {
         color: "#32325d",
         fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        // fontFamily: 'Times New Roman',
-        // fontFamily: "atari_classicchunky",
-        // fontFamily: 'Times New Roman',
-        // fontFamily: 'Atari',
         fontSmoothing: "antialiased",
         fontSize: "16px",
         "::placeholder": {

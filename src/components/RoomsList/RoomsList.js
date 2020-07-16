@@ -87,7 +87,8 @@ const mapDP = dispatch => {
         unsubscribeRooms: () => dispatch(unsubscribeRooms()),
         logOut: history => dispatch(logOut(history)),
         clearSuccess: () => dispatch(clearSuccess()),
-        authenticateRoomPassword: (state, roomId, history) => dispatch(authenticateRoomPassword(state, roomId, history))
+        authenticateRoomPassword: (state, roomId, history) => dispatch(authenticateRoomPassword(state, roomId, history)),
+        // createRoom: (state,history) => dispatch(createRoom(state,history))
     }
 }
 export default connect(mapSP, mapDP)(RoomsList);

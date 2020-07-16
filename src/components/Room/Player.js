@@ -15,7 +15,7 @@ function Player(props) {
 
     const renderPlayerCards = user => {
         if (user.cards === "" || !user.playing) {
-            return <img style={{height: "53.7px"}} src={blank}/>
+            return <img alt="blank_image" style={{height: "53.7px"}} src={blank}/>
         } else {
             if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return (

@@ -56,3 +56,20 @@ export function subscribeRoom(roomId) {
           })
     }
   }
+
+  export const createRoom = (state, history) => dispatch => {
+    const body = JSON.stringify(state)
+        const token = localStorage.getItem('token');
+        const options = {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body
+        }
+    fetch(`${BASE_URL}/rooms`, options)
+      .then(resp => resp.json())
+      .then(json => history.replace(`/rooms/${json.id}`));
+  }

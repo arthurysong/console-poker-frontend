@@ -1,5 +1,4 @@
 import React from 'react';
-import { BASE_URL } from '../../utilities/BASE_URL';
 
 class NewRoomForm extends React.Component {
     state = {
@@ -13,26 +12,9 @@ class NewRoomForm extends React.Component {
         })
     }
 
-    createRoom = () => {
-        const body = JSON.stringify(this.state)
-        const token = localStorage.getItem('token');
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body
-        }
-        return fetch(`${BASE_URL}/rooms`, options)
-    }
-
     submitHandler = event => {
         event.preventDefault();
-        this.createRoom(this.state)
-            .then(resp => resp.json())
-            .then(json => this.props.history.replace(`/rooms/${json.id}`));
+        this.props.createRoom(this.state, this.props.history);
     }
 
     goBack = () => {
@@ -71,5 +53,6 @@ class NewRoomForm extends React.Component {
         )
     }
 }
+
 
 export default NewRoomForm;
