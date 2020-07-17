@@ -51,6 +51,10 @@ function Player(props) {
 
     return (
         <div className="board_user">
+            {renderDealerButton(props.user)}
+            <span className="round_bet chips">
+                {props.user.round_bet === 0 ? '' : props.user.round_bet}
+            </span>
             {/* {console.log(loggedInUser)} */}
             {renderPlayerCards(props.user)}<br/>
             <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}>
@@ -62,8 +66,6 @@ function Player(props) {
             </span><br/>
             {/* {renderLeave(props.user)}  */}
 
-             {renderDealerButton(props.user)}
-            &nbsp;<span className="chips">{props.user.round_bet === 0 ? '' : props.user.round_bet}</span>
         </div>
     )
 }

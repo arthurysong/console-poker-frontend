@@ -123,6 +123,10 @@ input[type="password"]{
 .dealer_chip {
     width: 40px;
     image-rendering: pixelated;
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    /* position: relative; */
     /* position: relative; */
 }
 
@@ -141,14 +145,13 @@ input[type="password"]{
     image-rendering: pixelated; */
 }
 
-#sit_btn {
+/* #sit_btn { */
     /* position: absolute; */
-
-}
+/* } */
 
 #players_container {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 120px;
 }
 
 #buttons{
@@ -171,8 +174,9 @@ input[type="password"]{
 
 .board_user {
     display: inline-block !important;
+    position: relative;
     /* float: left; */
-    margin: 0px 10px;
+    margin: 0px 20px;
     /* margin: 8px 0px; */
     /* height: 55px; */
     /* padding: 22px 0px; */
@@ -200,6 +204,15 @@ input[type="password"]{
 
 .chips {
     color: #006400;
+}
+
+.round_bet {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .board_user_chips {
