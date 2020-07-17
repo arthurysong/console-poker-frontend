@@ -2,16 +2,16 @@ import React from 'react';
 import { hashStringToColor } from '../../utilities/colorHash'
 import dealerChip from '../../pictures/DEALER.png';
 import blank from '../../pictures/blank.png';
-import { useSelector, useDispatch } from 'react-redux';
-import { leaveTable } from '../../redux/gameActions';
+import { useSelector } from 'react-redux';
+// import { leaveTable } from '../../redux/gameActions';
 
 function Player(props) {
     //redux hooks
     const loggedInUser = useSelector(state => state.user);
     const round = useSelector(state => state.round);
-    const gameId = useSelector(state => state.game.id);
+    // const gameId = useSelector(state => state.game.id);
     const colorHash = useSelector(state => state.colorHash);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
 
     const renderPlayerCards = user => {
         if (user.cards === "" || !user.playing) {
@@ -42,28 +42,29 @@ function Player(props) {
         }
     }
 
-    const renderLeave = (user) => {
-        if (user.username === loggedInUser.username) {
-            return <button id="leave_button" onClick={() => dispatch(leaveTable(gameId))} className="nes-btn is-error smaller-btn">Leave</button>
-        }
-    }
+    // const renderLeave = (user) => {
+        // if (user.username === loggedInUser.username) {
+            // return <button id="leave_button" onClick={() => dispatch(leaveTable(gameId))} className="nes-btn is-error smaller-btn">Leave</button>
+            // return <button onClick={() => dispatch(leaveTable(gameId))} className="nes-btn is-error smaller-btn">Leave</button>
+        // }
+    // }
 
     return (
-        <li className="board_user">
+        <div className="board_user">
             {/* {console.log(loggedInUser)} */}
-            {renderLeave(props.user)} 
-
+            {renderPlayerCards(props.user)}<br/>
             <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}>
                 {props.user.username}
-            </span>&nbsp;
+            </span><br/>
 
             <span className="board_user_chips">
                 {props.user.chips} <i className="nes-icon coin is-small"></i>
-            </span>&nbsp;
+            </span><br/>
+            {/* {renderLeave(props.user)}  */}
 
-            {renderPlayerCards(props.user)} {renderDealerButton(props.user)}
+             {renderDealerButton(props.user)}
             &nbsp;<span className="chips">{props.user.round_bet === 0 ? '' : props.user.round_bet}</span>
-        </li>
+        </div>
     )
 }
 

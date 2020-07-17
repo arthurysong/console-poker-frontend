@@ -47,7 +47,8 @@ class Game extends React.Component {
             <>  
                 <Lobby 
                     room={this.props.room}
-                    game={this.props.game}/>
+                    game={this.props.game}
+                    user={this.props.user}/>
                 <GameBoard
                     sitDown={this.props.sitDown}
                     game={this.props.game}

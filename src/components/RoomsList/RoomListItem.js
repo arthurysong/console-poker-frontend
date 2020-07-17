@@ -27,9 +27,9 @@ class RoomListItem extends React.Component {
     renderLock = () => {
         if (this.props.room.has_password) {
             if (this.props.index % 2 === 0) {
-                return (<img className="lock_img" src={lock} alt="Lock" />)
+                return (<img className="lock_img pixelated" src={lock} alt="Lock" />)
             }
-            return (<img className="lock_img" src={lock2} alt="Lock2" />)
+            return (<img className="lock_img pixelated" src={lock2} alt="Lock2" />)
         }
     }
     

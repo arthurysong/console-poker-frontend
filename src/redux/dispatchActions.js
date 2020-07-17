@@ -157,7 +157,7 @@ export const fetchChips = userId => {
         fetchWithToken(`${BASE_URL}/users/${userId}/get_chips`)
             .then(resp => resp.json())
             .then(json => {
-                console.log(json)
+                // console.log(json)
                 dispatch({ type: 'SET_CHIPS', chips: json.chips })
             })
     }
@@ -172,7 +172,7 @@ export const connectAccount = (params, history) => {
         fetchWithToken(`${BASE_URL}/connect/oauth${params}`)
             .then(resp => resp.json())
             .then(json => {
-                console.log(json);
+                // console.log(json);
                 if (json.success){
                     dispatch({ type: 'SET_USER', user: json.user })
                     history.replace(`/users/${json.user.id}/bank/withdraw`)

@@ -34,6 +34,8 @@ export const sitDown = gameId => {
             .then(resp => resp.json())
             .then(json => {
                 // console.log(json);
+                console.log(json);
+                dispatch({ type: 'SET_USER', user: json.user })
             })
     }
 }
@@ -50,7 +52,9 @@ export const leaveTable = gameId => {
         fetchWithToken(`${BASE_URL}/games/${gameId}/leave`, options)
             .then(resp => resp.json())
             .then(json => {
-                // console.log(json);
+
+                console.log(json);
+                dispatch({ type: 'SET_USER', user: json.user })
             })
     }
 }

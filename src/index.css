@@ -112,7 +112,7 @@ input[type="password"]{
     margin: 24px;
     vertical-align: top;
     display: inline-block;
-    text-align: justify;
+    text-align: center;
 }
 
 .cards {
@@ -126,6 +126,10 @@ input[type="password"]{
     /* position: relative; */
 }
 
+.pixelated {
+    image-rendering: pixelated;
+}
+
 .coin {
     position: relative;
     top: 2px !important;
@@ -137,8 +141,13 @@ input[type="password"]{
     image-rendering: pixelated; */
 }
 
+#players_container {
+    text-align: center;
+}
+
 #buttons{
     text-align: center;
+    /* clear: left; */
 }
 
 .move_button {
@@ -155,14 +164,26 @@ input[type="password"]{
 }
 
 .board_user {
-    margin: 8px 0px;
-    height: 55px;
+    display: inline-block !important;
+    /* float: left; */
+    margin: 0px 10px;
+    /* margin: 8px 0px; */
+    /* height: 55px; */
     /* padding: 22px 0px; */
+}
+#poker_table {
+    height: 314px;
+    width: 512px;
+    margin: auto;
+    background-image: url(./pictures/poker-table-cropped.png);    
+    background-repeat: no-repeat;
 }
 
 #leave_button {
     position: absolute;
-    left: -140px;
+    /* bottom: -25px; */
+    /* position: relative; */
+    /* bottom: -20px; */
 }
 
 #lobby {
@@ -189,6 +210,8 @@ input[type="password"]{
 /* } */ 
 #board {
     text-align: center;
+    position: relative;
+    top: 100px;
 }
 
 .user_item {

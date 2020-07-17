@@ -125,7 +125,7 @@ class WithdrawContainer extends React.Component{
             <div className="checkout_form">
                 <button className='nes-btn is-primary smaller-btn'>Withdraw</button>&nbsp;
                 <button onClick={this.goToDeposit}className='nes-btn is-primary smaller-btn'>Deposit</button><br/><br/>
-                {console.log(this.props.user)}
+                {/* {console.log(this.props.user)} */}
                 {this.renderConnect()}
                 
             </div>

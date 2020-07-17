@@ -1,5 +1,7 @@
 import React from 'react';
 import Players from './Players';
+// import board from '../../pictures/table.png'
+// import pokerTable from '../../pictures/poker-table.png'
 
 const importAll = r => {
     let images = {};
@@ -55,9 +57,12 @@ class GameBoard extends React.Component {
         if (this.props.user) {
             return ( 
                 <>
+                    <div id="poker_table">
+                        {this.renderCardsAndPot()}<br/>
+                    </div>
+                    {/* <img className="pixelated" src={pokerTable} /> */}
                     <Players images={images}/>
                     {this.renderSitButton()}
-                    {this.renderCardsAndPot()}<br/>
                 </>
             )
         }
