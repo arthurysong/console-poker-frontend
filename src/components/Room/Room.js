@@ -45,17 +45,13 @@ class Room extends React.Component {
 
     renderGameComp = () => {
         if (this.props.room) {
-            return (<Game gameId={this.props.room.game.id} room={this.props.room} players={this.props.room.no_users} colorHash={this.props.hash}/>)
+            return (<Game gameId={this.props.room.game.id} room={this.props.room} players={this.props.room.no_users}/>)
         }
     }
 
     render(){
         return(
-            // <div id="room_container">
             <div>
-            {/* <div className="nes-container is-rounded with-title" id="room_container"> */}
-                {/* <p className="title">Fuck</p> */}
-                
                 {console.log(this.props.user)}
                 {this.renderRoom()}
                 
@@ -66,7 +62,7 @@ class Room extends React.Component {
                     // user={this.props.user} 
                     messages={this.props.messages} 
                     subscription={this.subscription} 
-                    colorHash={this.props.hash}/>
+                    colorHash={this.props.colorHash}/>
             {/* </div> */}
             </div>
         )
@@ -77,7 +73,8 @@ const mapStateToProps = state => {
     return {
         room: state.room,
         user: state.user,
-        messages: state.messages
+        messages: state.messages,
+        colorHash: state.colorHash
     }
 }
 

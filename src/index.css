@@ -50,10 +50,11 @@ input[type="password"]{
 }
 
 #room_container {
-    text-align: center;
-    width: 1000px;
-    margin: auto;
-    padding: 50px 150px; 
+    /* position: relative; */
+    /* text-align: center; */
+    /* width: 1000px; */
+    /* margin: auto; */
+    /* padding: 50px 150px;  */
     /* display: inline-block; */
     /* width: 400px; */
 }
@@ -64,8 +65,12 @@ input[type="password"]{
     margin: 24px;
     display: inline-block;
     vertical-align: top; */
-    width: 640px;
-    margin: auto;
+    position: absolute;
+    /* top: 0px; */
+    bottom: 50px;
+    /* position: absolute; */
+    /* width: 640px; */
+    /* margin: auto; */
 }
 
 #messages_container {
