@@ -10,7 +10,7 @@ function Lobby ({ room, game, user }) {
 
     const renderSit = () => {
         if (user.game_id) {
-            return <button onClick={() => dispatch(leaveTable(game.id))} className="nes-btn is-error smaller-btn">Sit</button>
+            return <button onClick={() => dispatch(leaveTable(game.id))} className="nes-btn is-primary smaller-btn">Sit</button>
         }
     }
 

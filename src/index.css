@@ -93,9 +93,9 @@ input[type="password"]{
     word-break: break-all;
 }
 
-#user_list {
+/* #user_list { */
     /* display: inline-block; */
-}
+/* } */
 
 .nes-balloon.tight-balloon {
     padding: 10px;
@@ -108,8 +108,8 @@ input[type="password"]{
 #game_container {
     position: relative; 
     /* so that lobby can float to the right of it */
-    width: 640px;
-    margin: 24px;
+    width: 900px;
+    margin: 0 auto;
     vertical-align: top;
     display: inline-block;
     text-align: center;
@@ -133,7 +133,7 @@ input[type="password"]{
 .coin {
     position: relative;
     top: 2px !important;
-    right: 5px !important;
+    right: -2px !important;
 
     /* width: 30px;
     position: relative;
@@ -141,8 +141,14 @@ input[type="password"]{
     image-rendering: pixelated; */
 }
 
+#sit_btn {
+    /* position: absolute; */
+
+}
+
 #players_container {
     text-align: center;
+    margin-top: 60px;
 }
 
 #buttons{
@@ -172,10 +178,11 @@ input[type="password"]{
     /* padding: 22px 0px; */
 }
 #poker_table {
-    height: 314px;
-    width: 512px;
-    margin: auto;
-    background-image: url(./pictures/poker-table-cropped.png);    
+    height: 552px;
+    width: 900px;
+    /* margin: 0 auto; */
+    background-image: url(./pictures/poker-table-resized.png);    
+    image-rendering: pixelated;
     background-repeat: no-repeat;
 }
 
@@ -208,8 +215,13 @@ input[type="password"]{
     /* margin: 8px auto */
     
 /* } */ 
-#board {
-    text-align: center;
+/* #board { */
+    /* text-align: center; */
+    /* position: relative; */
+    /* top: 100px; */
+/* } */
+
+#community_and_players {
     position: relative;
     top: 100px;
 }

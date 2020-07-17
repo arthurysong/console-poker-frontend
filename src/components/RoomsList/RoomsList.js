@@ -34,7 +34,7 @@ class RoomsList extends React.Component {
                 <>
                     HELLO,&nbsp;
                     <span style={{color: `${hashStringToColor(this.props.user.username, this.props.colorHash)}`}}>{this.props.user.username}</span>&nbsp;
-                    <span className="chips">{this.props.chips}</span> <i className="nes-icon coin is-small"></i>
+                    <span className="chips">{this.props.chips}</span><i className="nes-icon coin is-small"></i>
                 </>
             )
         }

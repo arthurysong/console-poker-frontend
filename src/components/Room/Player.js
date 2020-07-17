@@ -15,7 +15,7 @@ function Player(props) {
 
     const renderPlayerCards = user => {
         if (user.cards === "" || !user.playing) {
-            return <img alt="blank_image" style={{height: "53.7px"}} src={blank}/>
+            return <span style={{height: "53.7px"}} />
         } else {
             if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return (
@@ -58,7 +58,7 @@ function Player(props) {
             </span><br/>
 
             <span className="board_user_chips">
-                {props.user.chips} <i className="nes-icon coin is-small"></i>
+                {props.user.chips}<i className="nes-icon coin is-small"></i>
             </span><br/>
             {/* {renderLeave(props.user)}  */}
 

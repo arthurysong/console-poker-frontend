@@ -8,7 +8,8 @@ function Players (props) {
     const renderPlayers = () => {
         if (game.ordered_users) {
             return (
-                <div id="players_container" style={{position: "relative"}}>
+                // <div id="players_container" style={{position: "relative"}}>
+                <div id="players_container">
                 {/* <div> */}
                     {game.ordered_users.map((user,index) => 
                         <Player 

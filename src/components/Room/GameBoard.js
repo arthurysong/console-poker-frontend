@@ -32,12 +32,14 @@ class GameBoard extends React.Component {
     renderCardsAndPot = () => {
         if (this.props.round) {
             return (
-                <div id="board">
+                // <div id="board">
+                <>
                     {this.props.round.access_community_cards === "" ? "" : this.renderBoardCards()}<br/><br/>
                     <span className="chips">
                         {this.props.round.pot}
-                    </span> <i className="nes-icon coin is-small"></i>
-                </div>
+                    </span><i className="nes-icon coin is-small"></i>
+                </>
+                // </div>
             )
         }
     }
@@ -47,7 +49,11 @@ class GameBoard extends React.Component {
         (!this.props.game.users.count || this.props.game.users.count < 8)) {
             if (!this.props.game.users.find(u => u.username === this.props.user.username)){
                 return (
-                    <div className="board_user"><button onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary smaller-btn">Sit</button></div>
+                    // <div>
+                        <button id="sit_btn" onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary smaller-btn">
+                            Sit
+                        </button>
+                    // </div>
                 )
             }
         } 
@@ -58,11 +64,13 @@ class GameBoard extends React.Component {
             return ( 
                 <>
                     <div id="poker_table">
+                        <div id="community_and_players">
                         {this.renderCardsAndPot()}<br/>
+                        <Players images={images}/>
+                        {this.renderSitButton()}
+                        </div>
                     </div>
                     {/* <img className="pixelated" src={pokerTable} /> */}
-                    <Players images={images}/>
-                    {this.renderSitButton()}
                 </>
             )
         }
