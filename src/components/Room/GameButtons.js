@@ -1,5 +1,7 @@
 import React from 'react';
 import { postMoveWithToken, startNewRound, postMarleyMove } from '../../utilities/fetchWithToken';
+// import SoundButton from '../SoundButton';
+import NewRoundButton from './NewRoundButton';
 
 class GameButtons extends React.Component {
     state = {
@@ -48,7 +50,15 @@ class GameButtons extends React.Component {
         // console.log(this.props.user);
         if (!this.props.round.is_playing) {
             return (
-                <button className={`nes-btn ${this.props.game.startable ? 'is-primary' : 'is-disabled'}`} onClick={() => startNewRound(this.props.gameId)}>New Round</button>
+                <NewRoundButton 
+                    clickHandler={() => startNewRound(this.props.gameId)}
+                    startable={this.props.game.startable}/>
+                // <button className={`nes-btn ${this.props.game.startable ? 'is-primary' : 'is-disabled'}`} onClick={() => startNewRound(this.props.gameId)}>New Round</button>
+                // <SoundButton 
+                    // className={`nes-btn ${this.props.game.startable ? 'is-primary' : 'is-disabled'}`} 
+                    // clickHandler={() => startNewRound(this.props.gameId)}
+                    // value="New Round" 
+                    // sound="shuffle"/>
             )
         } else if (this.props.round.turn && this.props.round.turn.id === this.props.user.id) {
             return (this.props.round.turn.possible_moves.map((move, index) => (

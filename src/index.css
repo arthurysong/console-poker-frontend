@@ -49,7 +49,7 @@ input[type="password"]{
     height: 100%;
 }
 
-#room_container {
+/* #room_container { */
     /* position: relative; */
     /* text-align: center; */
     /* width: 1000px; */
@@ -57,7 +57,7 @@ input[type="password"]{
     /* padding: 50px 150px;  */
     /* display: inline-block; */
     /* width: 400px; */
-}
+/* } */
 
 #chatbox_container {
     /* width: 600px;
@@ -244,9 +244,9 @@ input[type="password"]{
     top: 100px;
 }
 
-.user_item {
-    display: inline;
-}
+/* .user_item { */
+    /* display: inline; */
+/* } */
 
 .room_li {
     padding: 8px;

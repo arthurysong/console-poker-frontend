@@ -1,5 +1,8 @@
 import React from 'react';
 import Players from './Players';
+// import useSound from 'use-sound';
+// import click from '../../sounds/click.wav';
+import SoundButton from '../SoundButton';
 // import board from '../../pictures/table.png'
 // import pokerTable from '../../pictures/poker-table.png'
 
@@ -13,6 +16,8 @@ const images = importAll(require.context('../../pictures/cards', false, /\.(png|
 
 
 class GameBoard extends React.Component {
+    // play = useSound(click);
+    
     componentWillUnmount() {
         this.updateChips();
     }
@@ -44,16 +49,27 @@ class GameBoard extends React.Component {
         }
     }
 
+    // handleSitClick = () => {
+        // this.props.sitDown(this.props.game.id);
+        // this.play[0]();
+    // }
+
     renderSitButton = () => {
         if (this.props.game.users &&
         (!this.props.game.users.count || this.props.game.users.count < 8)) {
             if (!this.props.game.users.find(u => u.username === this.props.user.username)){
                 return (
                     // <div>
-                        <button id="sit_btn" onClick={() => this.props.sitDown(this.props.game.id)} className="nes-btn is-primary smaller-btn">
-                            Sit
-                        </button>
-                    // </div>
+                        <SoundButton 
+                            id="sit_btn" 
+                            clickHandler={() => this.props.sitDown(this.props.game.id)} 
+                            className="nes-btn is-primary smaller-btn"
+                            value="Sit" 
+                            sound="click"/>
+                        // {/* <button id="sit_btn" onClick={this.handleSitClick} className="nes-btn is-primary smaller-btn"> */}
+                            // {/* Sit */}
+                        // {/* </button> */}
+                    // {/* // </div> */}
                 )
             }
         } 
