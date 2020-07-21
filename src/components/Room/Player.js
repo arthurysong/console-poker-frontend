@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux';
 function Player(props) {
     //redux hooks
     const loggedInUser = useSelector(state => state.user);
-    const round = useSelector(state => state.round);
+    const round = useSelector(state => state.game.active_round);
     // const gameId = useSelector(state => state.game.id);
     const colorHash = useSelector(state => state.colorHash);
     // const dispatch = useDispatch();
@@ -42,15 +42,10 @@ function Player(props) {
         }
     }
 
-    // const renderLeave = (user) => {
-        // if (user.username === loggedInUser.username) {
-            // return <button id="leave_button" onClick={() => dispatch(leaveTable(gameId))} className="nes-btn is-error smaller-btn">Leave</button>
-            // return <button onClick={() => dispatch(leaveTable(gameId))} className="nes-btn is-error smaller-btn">Leave</button>
-        // }
-    // }
-
     return (
         <div className="board_user">
+            {console.log('hello?????')}
+            {console.log(round)}
             {renderDealerButton(props.user)}
             <span className="round_bet chips">
                 {props.user.round_bet === 0 ? '' : props.user.round_bet}
