@@ -4,7 +4,10 @@ Style the Stripe Elements with Font.
 When a person leaves their cards should be blanked out.
 state.chips
 Make sure all buttons with disabled css is disabled using attribute.
+Players cannot have same color as table green?
+
 Create POSTwithToken?
+Make Marley a Pokemon
 Style the UL in RoomsList so it stays centered when browser width decreases..
 Justify center board_user so center of height
 Error when logging out, subscription not found...

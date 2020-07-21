@@ -14,10 +14,16 @@ const importAll = r => {
 
 const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
-
 class GameBoard extends React.Component {
+    // audio = new Audio()
     // play = useSound(click);
-    
+    componentDidUpdate(prevProps) {
+        console.log('gameboard');
+        console.log(prevProps)
+        console.log(this.props);
+
+    }
+
     componentWillUnmount() {
         this.updateChips();
     }

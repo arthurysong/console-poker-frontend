@@ -9,7 +9,7 @@ const importAll = r => {
 
 const sounds = importAll(require.context('../sounds', false, /\.wav$/));
 
-// props: sound, value, clickHandler, className, id
+// props: sound, value, clickHandler, className, id, type
 function SoundButton (props) {
     const [play] = useSound(sounds[`${props.sound}.wav`])
     const clickHandler= () => {
@@ -18,7 +18,7 @@ function SoundButton (props) {
     }
 
     return (
-        <button onClick={clickHandler} id={props.id} className={props.className}>{props.value}</button>
+        <button type={props.type} onClick={clickHandler} id={props.id} className={props.className}>{props.value}</button>
     )
 }
 

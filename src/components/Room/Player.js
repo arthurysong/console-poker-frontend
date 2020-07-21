@@ -44,8 +44,8 @@ function Player(props) {
 
     return (
         <div className="board_user">
-            {console.log('hello?????')}
-            {console.log(round)}
+            {/* {console.log('hello?????')} */}
+            {/* {console.log(round)} */}
             {renderDealerButton(props.user)}
             <span className="round_bet chips">
                 {props.user.round_bet === 0 ? '' : props.user.round_bet}
