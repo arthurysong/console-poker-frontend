@@ -16,6 +16,7 @@ function NewRoundButton (props) {
     return (
         <button 
             className={`nes-btn ${props.startable ? 'is-primary' : 'is-disabled'}`}
+            disabled={!props.startable}
             onClick={clickHandler}>New Round</button>
     )
 }

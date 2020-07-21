@@ -8,6 +8,8 @@ Players cannot have same color as table green?
 
 Create POSTwithToken?
 Make Marley a Pokemon
+Play error when clicking disabled button
+Make sure to clear raise form on submit for GameButtons
 Style the UL in RoomsList so it stays centered when browser width decreases..
 Justify center board_user so center of height
 Error when logging out, subscription not found...

@@ -136,7 +136,11 @@ switch (action.type) {
     case 'SET_CHIPS': // only for use on deposit page.
         return {
             ...state,
-            chips: action.chips
+            chips: action.chips,
+            user: {
+                ...state.user,
+                chips: action.chips
+            }
 
         }
     case 'UNSET_CHIPS':

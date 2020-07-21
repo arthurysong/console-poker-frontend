@@ -3,6 +3,9 @@ import Players from './Players';
 // import useSound from 'use-sound';
 // import click from '../../sounds/click.wav';
 import chips from '../../sounds/chips.wav';
+import lose from '../../sounds/lose.wav';
+import winning from '../../sounds/winning.wav';
+import coin from '../../sounds/coin.wav';
 import SoundButton from '../SoundButton';
 // import board from '../../pictures/table.png'
 // import pokerTable from '../../pictures/poker-table.png'
@@ -16,13 +19,27 @@ const importAll = r => {
 const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
 class GameBoard extends React.Component {
-    audio = new Audio(chips)
+    chips = new Audio(chips)
+    lose = new Audio(lose);
+    winning = new Audio(winning);
+    coin = new Audio(coin);
     // play = useSound(click);
     componentDidUpdate(prevProps) {
-        // this.audio.play();
-        // console.log('gameboard');
+        // this.chips.play();
+        console.log('gameboard');
+        console.log(prevProps);
+        console.log(this.props);
         if (this.props.round && prevProps.round && this.props.round.pot > prevProps.round.pot) {
-            this.audio.play();
+            this.chips.play();
+        } else if (this.props.round && prevProps.round && !this.props.round.is_playing && prevProps.round.is_playing) {
+            this.updateChips();
+        } else if (this.props.user && prevProps.user && this.props.user.chips !== prevProps.user.chips) {
+            if (this.props.user.chips < prevProps.user.chips){
+                this.lose.play();
+            } else {
+                this.winning.play();
+                this.coin.play();
+            }
         }
     }
 
