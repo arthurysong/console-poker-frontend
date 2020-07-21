@@ -2,6 +2,7 @@ import React from 'react';
 import Players from './Players';
 // import useSound from 'use-sound';
 // import click from '../../sounds/click.wav';
+import chips from '../../sounds/chips.wav';
 import SoundButton from '../SoundButton';
 // import board from '../../pictures/table.png'
 // import pokerTable from '../../pictures/poker-table.png'
@@ -15,13 +16,14 @@ const importAll = r => {
 const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
 class GameBoard extends React.Component {
-    // audio = new Audio()
+    audio = new Audio(chips)
     // play = useSound(click);
     componentDidUpdate(prevProps) {
-        console.log('gameboard');
-        console.log(prevProps)
-        console.log(this.props);
-
+        // this.audio.play();
+        // console.log('gameboard');
+        if (this.props.round && prevProps.round && this.props.round.pot > prevProps.round.pot) {
+            this.audio.play();
+        }
     }
 
     componentWillUnmount() {
