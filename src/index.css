@@ -196,11 +196,22 @@ input[type="password"]{
     display: inline-block !important;
     position: relative;
     background: rgba(0,0,0, .6);
+    box-shadow: 0px 0px 10px black;
     height: 130px;
     padding: 10px;
     margin: 0px 20px;
     border-radius: 10px;
 }
+
+.board_user.turn {
+    background: white;
+    box-shadow: 0px 0px 30px white;
+}
+
+.board_user.turn .board_user_chips{
+    color: black;
+}
+
 #poker_table {
     height: 552px;
     width: 900px;
