@@ -1,5 +1,6 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
+import playSound from './playSound';
 
 export default function cableMiddleware() {
   // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
@@ -93,6 +94,11 @@ export default function cableMiddleware() {
       const received = result => {
         console.log(result);
         switch (result.type) {
+          case 'new_move':
+            dispatch({ type: 'SET_GAME', game: result.game });
+            console.log(result.command);
+            playSound(result.command);
+            break;
           case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
             break;

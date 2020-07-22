@@ -6,6 +6,7 @@ import chips from '../../sounds/chips.wav';
 import lose from '../../sounds/lose.wav';
 import winning from '../../sounds/winning.wav';
 import coin from '../../sounds/coin.wav';
+import pot from '../../pictures/pot.png';
 import SoundButton from '../SoundButton';
 // import board from '../../pictures/table.png'
 // import pokerTable from '../../pictures/poker-table.png'
@@ -29,9 +30,9 @@ class GameBoard extends React.Component {
         console.log('gameboard');
         console.log(prevProps);
         console.log(this.props);
-        if (this.props.round && prevProps.round && this.props.round.pot > prevProps.round.pot) {
-            this.chips.play();
-        } else if (this.props.round && prevProps.round && !this.props.round.is_playing && prevProps.round.is_playing) {
+        // if (this.props.round && prevProps.round && this.props.round.pot > prevProps.round.pot) {
+        //     this.chips.play();
+        if (this.props.round && prevProps.round && !this.props.round.is_playing && prevProps.round.is_playing) {
             this.updateChips();
         } else if (this.props.user && prevProps.user && this.props.user.chips !== prevProps.user.chips) {
             if (this.props.user.chips < prevProps.user.chips){
@@ -65,9 +66,10 @@ class GameBoard extends React.Component {
                 // <div id="board">
                 <>
                     {this.props.round.access_community_cards === "" ? "" : this.renderBoardCards()}<br/><br/>
+                    <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
                     <span className="chips">
                         {this.props.round.pot}
-                    </span><i className="nes-icon coin is-small"></i>
+                    </span>
                 </>
                 // </div>
             )

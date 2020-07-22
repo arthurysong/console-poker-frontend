@@ -38,7 +38,13 @@ function Player(props) {
 
     const renderDealerButton = user => {
         if (user.dealer) {
-            return <img className="dealer_chip" alt='dealerChip' src={dealerChip}/>
+            return <img id="dealer_chip" alt='dealerChip' src={dealerChip}/>
+        }
+    }
+
+    const renderWinnings = user => {
+        if (user.winnings > 0) {
+            return <span id="winnings">+{user.winnings}</span>
         }
     }
 
@@ -47,6 +53,7 @@ function Player(props) {
             {/* {console.log('hello?????')} */}
             {/* {console.log(round)} */}
             {renderDealerButton(props.user)}
+            {renderWinnings(props.user)}
             <span className="round_bet chips">
                 {props.user.round_bet === 0 ? '' : props.user.round_bet}
             </span>

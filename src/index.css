@@ -125,7 +125,14 @@ input[type="password"]{
     image-rendering: pixelated;
 }
 
-.dealer_chip {
+#winnings {
+    position: absolute;
+    right: 0px;
+    top: -20px;
+    color: yellow;
+}
+
+#dealer_chip {
     width: 40px;
     image-rendering: pixelated;
     position: absolute;
@@ -194,6 +201,15 @@ input[type="password"]{
     image-rendering: pixelated;
     background-repeat: no-repeat;
 }
+
+/* #board {
+    position: relative;
+}
+
+#pot {
+    position: absolute;
+    top: -200px;
+} */
 
 #leave_button {
     position: absolute;
