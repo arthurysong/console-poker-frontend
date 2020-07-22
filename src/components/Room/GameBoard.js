@@ -58,19 +58,22 @@ class GameBoard extends React.Component {
         }
     }
 
-    renderBoardCards = () => (this.props.round.access_community_cards.split(" ").map((c, index) => <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>))
-
+    renderCommunityCards = () => (this.props.round.access_community_cards.split(" ").map((c, index) => 
+                    <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>))
+        
     renderCardsAndPot = () => {
         if (this.props.round) {
             return (
                 // <div id="board">
-                <>
-                    {this.props.round.access_community_cards === "" ? "" : this.renderBoardCards()}<br/><br/>
-                    <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
-                    <span className="chips">
+                <div id="cards_and_pot">
+                    <div id="community_cards">
+                    {this.props.round.access_community_cards === "" ? "" : this.renderCommunityCards()}
+                    </div>
+                    <div id="pot">
+                        <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
                         {this.props.round.pot}
-                    </span>
-                </>
+                    </div>  
+                </div>
                 // </div>
             )
         }

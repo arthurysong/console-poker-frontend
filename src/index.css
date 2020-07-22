@@ -168,10 +168,36 @@ input[type="password"]{
 /* #sit_btn { */
     /* position: absolute; */
 /* } */
+#cards_and_pot {
+    height: 120px;
+}
+
+#pot {
+    position: relative;
+    color: white;
+    background: rgba(0,0,0, .4);
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 12px;
+    /* white-space: nowrap; */
+    display: inline-block;
+
+}
+
+#pot_image {
+    position: absolute;
+    /* position: relative; */
+    bottom: 5px;
+    left: -30px;
+}
+
+#community_cards {
+    height: 55.7px;
+}
 
 #players_container {
     text-align: center;
-    margin-top: 120px;
+    margin-top: 80px;
 }
 
 #buttons{
@@ -288,7 +314,7 @@ input[type="password"]{
 
 #community_and_players {
     position: relative;
-    top: 100px;
+    top: 80px;
 }
 
 /* .user_item { */
