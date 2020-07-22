@@ -48,6 +48,12 @@ function Player(props) {
         }
     }
 
+    const renderRoundBet = () => {
+        if (props.user.round_bet !== 0) {
+            return (<span className="round_bet chips">{props.user.round_bet}</span>)
+        }
+    }
+
     const renderPlayer = () => {
         if (round) {
             return (
@@ -55,11 +61,10 @@ function Player(props) {
                 <div className={props.user.id === round.turn.id ? 'board_user turn' : 'board_user' }>
                     {console.log('hello?????')}
                     {console.log(round)}
+                    {console.log(props.user)}
                     {renderDealerButton(props.user)}
                     {renderWinnings(props.user)}
-                    <span className="round_bet chips">
-                        {props.user.round_bet === 0 ? '' : props.user.round_bet}
-                    </span>
+                    {renderRoundBet()}
                     {/* {console.log(loggedInUser)} */}
                     {renderPlayerCards(props.user)}
                     <span style={{color: "grey"}}>
