@@ -15,22 +15,22 @@ function Player(props) {
 
     const renderPlayerCards = user => {
         if (user.cards === "" || !user.playing) {
-            return <span style={{height: "53.7px"}} />
+            return <div className="cards_container"><span style={{height: "53.7px"}} /></div>
         } else {
             if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return (
-                    <>
+                    <div className="cards_container">
                         {user.cards.split(" ").map((c, index) => {
                             return <img key={index} className="cards" alt={c} src={props.images[`${c}.png`]}/>
                             })}
-                    </>
+                    </div>
                 )
             } else {
                 return (
-                    <>
+                    <div className="cards_container"> 
                         <img className="cards" alt='facedown_card' src={props.images[`CARD.png`]}/>
                         <img className="cards" alt='facedown_card' src={props.images[`CARD.png`]}/>
-                    </>
+                    </div>
                 )
             } 
         }
@@ -48,27 +48,39 @@ function Player(props) {
         }
     }
 
+    const renderPlayer = () => {
+        if (round) {
+            return (
+                // <div className="board_user">
+                <div className={props.user.id === round.turn.id ? 'board_user turn' : 'board_user' }>
+                    {console.log('hello?????')}
+                    {console.log(round)}
+                    {renderDealerButton(props.user)}
+                    {renderWinnings(props.user)}
+                    <span className="round_bet chips">
+                        {props.user.round_bet === 0 ? '' : props.user.round_bet}
+                    </span>
+                    {/* {console.log(loggedInUser)} */}
+                    {renderPlayerCards(props.user)}
+                    <span style={{color: "grey"}}>
+                    {/* <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}> */}
+                        {props.user.username}
+                    </span><br/>
+
+                    <span className="board_user_chips">
+                        {props.user.chips}<i className="nes-icon coin is-small"></i>
+                    </span><br/>
+                    {/* {renderLeave(props.user)}  */}
+
+                </div>
+            )
+        }
+    }
+
     return (
-        <div className="board_user">
-            {/* {console.log('hello?????')} */}
-            {/* {console.log(round)} */}
-            {renderDealerButton(props.user)}
-            {renderWinnings(props.user)}
-            <span className="round_bet chips">
-                {props.user.round_bet === 0 ? '' : props.user.round_bet}
-            </span>
-            {/* {console.log(loggedInUser)} */}
-            {renderPlayerCards(props.user)}<br/>
-            <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}>
-                {props.user.username}
-            </span><br/>
-
-            <span className="board_user_chips">
-                {props.user.chips}<i className="nes-icon coin is-small"></i>
-            </span><br/>
-            {/* {renderLeave(props.user)}  */}
-
-        </div>
+        <>
+            {renderPlayer()}
+        </>
     )
 }
 

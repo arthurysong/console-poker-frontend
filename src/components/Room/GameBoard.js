@@ -27,9 +27,9 @@ class GameBoard extends React.Component {
     // play = useSound(click);
     componentDidUpdate(prevProps) {
         // this.chips.play();
-        console.log('gameboard');
-        console.log(prevProps);
-        console.log(this.props);
+        // console.log('gameboard');
+        // console.log(prevProps);
+        // console.log(this.props);
         // if (this.props.round && prevProps.round && this.props.round.pot > prevProps.round.pot) {
         //     this.chips.play();
         if (this.props.round && prevProps.round && !this.props.round.is_playing && prevProps.round.is_playing) {
