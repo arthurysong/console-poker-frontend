@@ -13,14 +13,14 @@ function Player(props) {
     const colorHash = useSelector(state => state.colorHash);
     // const dispatch = useDispatch();
 
-    const renderPlayerCards = user => {
-        if (user.cards === "" || !user.playing) {
+    const renderPlayerCards = () => {
+        if (props.user.cards === "" || !props.user.playing) {
             return <div className="cards_container"><span style={{height: "53.7px"}} /></div>
         } else {
-            if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
+            if (props.user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return (
                     <div className="cards_container">
-                        {user.cards.split(" ").map((c, index) => {
+                        {props.user.cards.split(" ").map((c, index) => {
                             return <img key={index} className="cards" alt={c} src={props.images[`${c}.png`]}/>
                             })}
                     </div>
@@ -36,15 +36,15 @@ function Player(props) {
         }
     }
 
-    const renderDealerButton = user => {
-        if (user.dealer) {
+    const renderDealerButton = () => {
+        if (props.user.dealer) {
             return <img id="dealer_chip" alt='dealerChip' src={dealerChip}/>
         }
     }
 
-    const renderWinnings = user => {
-        if (user.winnings > 0) {
-            return <span id="winnings">+{user.winnings}</span>
+    const renderWinnings = () => {
+        if (props.user.winnings > 0) {
+            return <span id="winnings">+{props.user.winnings}</span>
         }
     }
 
@@ -62,11 +62,10 @@ function Player(props) {
                     {console.log('hello?????')}
                     {console.log(round)}
                     {console.log(props.user)}
-                    {renderDealerButton(props.user)}
-                    {renderWinnings(props.user)}
+                    {renderDealerButton()}
+                    {renderWinnings()}
                     {renderRoundBet()}
-                    {/* {console.log(loggedInUser)} */}
-                    {renderPlayerCards(props.user)}
+                    {renderPlayerCards()}
                     <span style={{color: "grey"}}>
                     {/* <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}> */}
                         {props.user.username}
