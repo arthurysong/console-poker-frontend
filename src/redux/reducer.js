@@ -9,6 +9,7 @@ export default function resourceReducer (state = {
     rooms: [],
     messages: [],
     game: {},
+    // gamePlayers: [],
     gameErrors: undefined, //this will be used by gameboard
     // status: [] //this will be used by gameconsole, I need them separate becaue I don't want the console to
     chips: undefined
@@ -101,6 +102,30 @@ switch (action.type) {
             ...state,
             game: action.game
         }
+    case 'SET_MOVE':
+        // const user = state.game.active_round.ordered_users.find(u => u.id === this.props.user.id);
+        const ordered_users = state.game.ordered_users
+        ordered_users[action.turn_index] = action.turn_user
+        console.log('in reducer set_move');
+        console.log({
+            ...state,
+            game: {
+                ...state.game,
+                ordered_users: ordered_users
+            }
+        });
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                ordered_users: ordered_users
+            }
+        }
+    // case 'SET_GAME_PLAYERS':
+    //     return {
+    //         ...state,
+    //         gamePlayers: action.players
+    //     }
     case 'DELETE_GAME':
         return {
             ...state,

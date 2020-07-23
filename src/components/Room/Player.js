@@ -59,9 +59,9 @@ function Player(props) {
             return (
                 // <div className="board_user">
                 <div className={(round.turn && props.user.id === round.turn.id) ? 'board_user turn' : 'board_user' }>
-                    {console.log('hello?????')}
-                    {console.log(round)}
-                    {console.log(props.user)}
+                    {/* {console.log('hello?????')} */}
+                    {/* {console.log(round)} */}
+                    {/* {console.log(props.user)} */}
                     {renderDealerButton()}
                     {renderWinnings()}
                     {renderRoundBet()}

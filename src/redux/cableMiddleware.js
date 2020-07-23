@@ -95,12 +95,18 @@ export default function cableMiddleware() {
         console.log(result);
         switch (result.type) {
           case 'new_move':
-            dispatch({ type: 'SET_GAME', game: result.game });
-            console.log(result.command);
+            // console.log(result.user);
+            dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
             playSound(result.command);
+
+            setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
+            // dispatch({ type: 'SET_GAME', game: result.game });
+            // console.log(result.command);
+            // setTimeout(() => dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users }), 1000);
             break;
           case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
+            dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users })
             break;
           case 'update_round':
             dispatch({type: 'UPDATE_ROUND', round: result.round })

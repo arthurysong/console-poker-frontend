@@ -24,7 +24,8 @@ class GameButtons extends React.Component {
     }
 
     componentDidUpdate(prevProps){
-        if (this.props.round.turn && this.props.round.is_playing && this.props.round.turn.id === 1) {
+        // make sure marley doesn't submit the same move twice..
+        if (this.props.round.turn && prevProps.round && prevProps.round.turn !== this.props.round.turn && this.props.round.is_playing && this.props.round.turn.id === 1) {
             console.log('marleys turn!');
             setTimeout(() => postMarleyMove(), 1500);
         }

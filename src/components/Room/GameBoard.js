@@ -7,6 +7,7 @@ import lose from '../../sounds/lose.wav';
 import winning from '../../sounds/winning.wav';
 import coin from '../../sounds/coin.wav';
 import pot from '../../pictures/pot.png';
+import yourTurn from '../../sounds/turn.wav';
 import SoundButton from '../SoundButton';
 // import board from '../../pictures/table.png'
 // import pokerTable from '../../pictures/poker-table.png'
@@ -24,6 +25,7 @@ class GameBoard extends React.Component {
     lose = new Audio(lose);
     winning = new Audio(winning);
     coin = new Audio(coin);
+    yourTurn = new Audio(yourTurn);
     // play = useSound(click);
     componentDidUpdate(prevProps) {
         // this.chips.play();
@@ -32,6 +34,10 @@ class GameBoard extends React.Component {
         // console.log(this.props);
         // if (this.props.round && prevProps.round && this.props.round.pot > prevProps.round.pot) {
         //     this.chips.play();
+        // need to fix this...
+        if (this.props.round && this.props.round.turn && this.props.round.turn.id === this.props.user.id) {
+            this.yourTurn.play();
+        }
         if (this.props.round && prevProps.round && !this.props.round.is_playing && prevProps.round.is_playing) {
             this.updateChips();
         } else if (this.props.user && prevProps.user && this.props.user.chips !== prevProps.user.chips) {
@@ -112,7 +118,7 @@ class GameBoard extends React.Component {
                     <div id="poker_table">
                         <div id="community_and_players">
                         {this.renderCardsAndPot()}<br/>
-                        <Players images={images}/>
+                        <Players images={images} game={this.props.game}/>
                         {this.renderSitButton()}
                         </div>
                     </div>
@@ -125,6 +131,7 @@ class GameBoard extends React.Component {
     render() {
         return (
             <>
+                {console.log(this.props.round)}
                 {this.renderBoard()}
             </>
         )

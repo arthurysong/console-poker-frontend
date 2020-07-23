@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 
 function Players (props) {
     const game = useSelector(state => state.game);
+    const gamePlayers = useSelector(state => state.gamePlayers);
 
     const renderPlayers = () => {
         if (game.ordered_users) {
+        // if (gamePlayers) {
             return (
                 // <div id="players_container" style={{position: "relative"}}>
                 <div id="players_container">
