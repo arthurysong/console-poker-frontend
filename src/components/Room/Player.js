@@ -1,5 +1,5 @@
 import React from 'react';
-import { hashStringToColor } from '../../utilities/colorHash'
+// import { hashStringToColor } from '../../utilities/colorHash'
 import dealerChip from '../../pictures/DEALER.png';
 // import blank from '../../pictures/blank.png';
 import { useSelector } from 'react-redux';
@@ -10,7 +10,7 @@ function Player(props) {
     const loggedInUser = useSelector(state => state.user);
     const round = useSelector(state => state.game.active_round);
     // const gameId = useSelector(state => state.game.id);
-    const colorHash = useSelector(state => state.colorHash);
+    // const colorHash = useSelector(state => state.colorHash);
     // const dispatch = useDispatch();
 
     const renderPlayerCards = () => {
@@ -55,10 +55,11 @@ function Player(props) {
     }
 
     const renderPlayer = () => {
-        if (round) {
+        // players should be rendered even if no round?
+        // if (round) {
             return (
                 // <div className="board_user">
-                <div className={(round.turn && props.user.id === round.turn.id) ? 'board_user turn' : 'board_user' }>
+                <div className={(round && round.turn && props.user.id === round.turn.id) ? 'board_user turn' : 'board_user' }>
                     {/* {console.log('hello?????')} */}
                     {/* {console.log(round)} */}
                     {/* {console.log(props.user)} */}
@@ -78,7 +79,7 @@ function Player(props) {
 
                 </div>
             )
-        }
+        // }
     }
 
     return (

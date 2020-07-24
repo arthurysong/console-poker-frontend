@@ -67,28 +67,35 @@ class GameBoard extends React.Component {
     renderCommunityCards = () => (this.props.round.access_community_cards.split(" ").map((c, index) => 
                     <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>))
         
-    renderCardsAndPot = () => {
+    // renderCardsAndPot = () => {
+    //     if (this.props.round) {
+    //         return (
+    //             // <div id="board">
+    //             <div id="cards_and_pot">
+    //                 <div id="community_cards">
+    //                 {this.props.round.access_community_cards === "" ? "" : this.renderCommunityCards()}
+    //                 </div>
+    //                 <div id="pot">
+    //                     <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
+    //                     {this.props.round.pot}
+    //                 </div>  
+    //             </div>
+    //             // </div>
+    //         )
+    //     }
+    // }
+
+    renderCards = () => {
         if (this.props.round) {
-            return (
-                // <div id="board">
-                <div id="cards_and_pot">
-                    <div id="community_cards">
-                    {this.props.round.access_community_cards === "" ? "" : this.renderCommunityCards()}
-                    </div>
-                    <div id="pot">
-                        <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
-                        {this.props.round.pot}
-                    </div>  
-                </div>
-                // </div>
-            )
-        }
+            return this.props.round.access_community_cards === "" ?  "" : this.renderCommunityCards()
+        } 
     }
 
-    // handleSitClick = () => {
-        // this.props.sitDown(this.props.game.id);
-        // this.play[0]();
-    // }
+    renderPot = () => {
+        // if (this.props.round) {
+            return (this.props.round && this.props.round.pot > 0 ? this.props.round.pot : 0)
+        // }
+    }
 
     renderSitButton = () => {
         if (this.props.game.users &&
@@ -117,7 +124,16 @@ class GameBoard extends React.Component {
                 <>
                     <div id="poker_table">
                         <div id="community_and_players">
-                        {this.renderCardsAndPot()}<br/>
+                            <div id="cards_and_pot">
+                                <div id="community_cards">
+                                    {this.renderCards()}
+                                </div>
+                                <div id="pot">
+                                    <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
+                                    {this.renderPot()}
+                                    
+                                </div>  
+                            </div>
                         <Players images={images} game={this.props.game}/>
                         {this.renderSitButton()}
                         </div>
