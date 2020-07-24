@@ -1,4 +1,4 @@
-import loseFile from '../sounds/lose.wav';
+// import loseFile from '../sounds/lose.wav';
 import clickFile from '../sounds/click.wav';
 import chipsFile from '../sounds/chips.wav';
 import cardHitFile from '../sounds/onecard_hit.wav';

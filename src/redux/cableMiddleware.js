@@ -1,7 +1,8 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
-import playSound from './playSound';
-
+// import playSound from './playSound';
+import { postMarleyMove } from '../utilities/fetchWithToken';
+// Move
 export default function cableMiddleware() {
   // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
   const cable = ActionCable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
@@ -96,17 +97,29 @@ export default function cableMiddleware() {
         switch (result.type) {
           case 'new_move':
             // console.log(result.user);
-            dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
-            playSound(result.command);
+            // dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
 
-            setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
+            // playSound(result.command);
+            console.log('update move first');
+            dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
+            // setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
             // dispatch({ type: 'SET_GAME', game: result.game });
             // console.log(result.command);
             // setTimeout(() => dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users }), 1000);
             break;
+          case 'update_game_after_move':
+            console.log('updating...');
+            setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
+            // dispatch({ type: })
+            break;
+          case 'start_game':
           case 'set_game':
+            
             dispatch({ type: 'SET_GAME', game: result.game });
-            dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users })
+            // dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users })
+            break;
+          case 'marleys_turn':
+            setTimeout(() => postMarleyMove(), 1500);
             break;
           case 'update_round':
             dispatch({type: 'UPDATE_ROUND', round: result.round })

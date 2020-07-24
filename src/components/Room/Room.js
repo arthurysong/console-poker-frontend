@@ -52,7 +52,7 @@ class Room extends React.Component {
     render(){
         return(
             <div>
-                {console.log(this.props.user)}
+                {/* {console.log(this.props.user)} */}
                 {this.renderRoom()}
                 
 

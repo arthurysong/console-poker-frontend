@@ -1,5 +1,5 @@
 import React from 'react';
-import { postMoveWithToken, startNewRound, postMarleyMove } from '../../utilities/fetchWithToken';
+import { postMoveWithToken, startNewRound } from '../../utilities/fetchWithToken';
 // import SoundButton from '../SoundButton';
 import NewRoundButton from './NewRoundButton';
 // import SoundButton from '../SoundButton';
@@ -23,13 +23,13 @@ class GameButtons extends React.Component {
         })
     }
 
-    componentDidUpdate(prevProps){
+    // componentDidUpdate(prevProps){
         // make sure marley doesn't submit the same move twice..
-        if (this.props.round.turn && prevProps.round && prevProps.round.turn !== this.props.round.turn && this.props.round.is_playing && this.props.round.turn.id === 1) {
-            console.log('marleys turn!');
-            setTimeout(() => postMarleyMove(), 1500);
-        }
-    }
+        // if (this.props.round.turn && prevProps.round && prevProps.round.turn !== this.props.round.turn && this.props.round.is_playing && this.props.round.turn.id === 1) {
+            // console.log('marleys turn!');
+            // setTimeout(() => postMarleyMove(), 1500);
+        // }
+    // }
 
     renderMoveButton = (move, index) => {
         if (move === 'Fold') {

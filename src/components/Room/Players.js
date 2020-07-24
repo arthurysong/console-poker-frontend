@@ -9,8 +9,8 @@ function Players (props) {
     const renderPlayers = () => {
         if (game.ordered_users) {
         // if (gamePlayers) {
-            console.log('testetestsetsetset');
-            console.log(game);
+            // console.log('testetestsetsetset');
+            // console.log(game);
             return (
                 // <div id="players_container" style={{position: "relative"}}>
                 <div id="players_container">
