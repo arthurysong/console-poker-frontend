@@ -14,7 +14,7 @@ import { setChips } from '../../redux/dispatchActions';
 
 class Game extends React.Component {
     componentDidMount() {
-        this.props.subscribeGame(this.props.gameId);
+        this.props.subscribeGame(this.props.user.id, this.props.gameId);
     }
 
     componentWillUnmount(){
@@ -95,8 +95,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         startGame: roomId => dispatch(startGame(roomId)),
-        subscribeGame: gameId => dispatch(subscribeGame(gameId)),
-        unsubscribeGame: gameId => dispatch(unsubscribeGame(gameId)),
+        subscribeGame: (userId, gameId) => dispatch(subscribeGame(userId, gameId)),
+        unsubscribeGame: (gameId) => dispatch(unsubscribeGame(gameId)),
         setChips: chips => dispatch(setChips(chips)),
         sitDown: gameId => dispatch(sitDown(gameId)),
         leaveTable: gameId =>  dispatch(leaveTable(gameId)),

@@ -44,7 +44,7 @@ class Room extends React.Component {
 
 
     renderGameComp = () => {
-        if (this.props.room) {
+        if (this.props.user && this.props.room) {
             return (<Game gameId={this.props.room.game.id} room={this.props.room} players={this.props.room.no_users}/>)
         }
     }

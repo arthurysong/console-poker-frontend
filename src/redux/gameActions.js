@@ -78,9 +78,10 @@ export const resetUser = (userId) => {
     }
 }
 
-export function subscribeGame(gameId) {
+export function subscribeGame(userId, gameId) {
     return {
       channel: 'GameChannel',
+      user: `${userId}`,
       game: `${gameId}`
     }
 }
@@ -88,7 +89,8 @@ export function subscribeGame(gameId) {
 export function unsubscribeGame(gameId) {
     return {
       channel: 'GameChannel',
-      game: `${gameId}`,
+    //   user: `${userId}`,
+      game: `${gameId}`,    
       leave: true
     }
 }   

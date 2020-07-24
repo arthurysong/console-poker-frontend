@@ -2,12 +2,16 @@
 import clickFile from '../sounds/click.wav';
 import chipsFile from '../sounds/chips.wav';
 import cardHitFile from '../sounds/onecard_hit.wav';
+import winningFile from '../sounds/winning.wav';
+import loseFile from '../sounds/lose.wav';
 
 const click = new Audio(clickFile);
 const cardHit = new Audio(cardHitFile);
 const chips = new Audio(chipsFile);
+const winning = new Audio(winningFile);
+const lose = new Audio(loseFile);
 
-export default function playSound(command) {
+export function playMoveSound(command) {
     switch(command){
         case 'check':
             click.play();
@@ -23,4 +27,12 @@ export default function playSound(command) {
         default:
             break;
     }
+}
+
+export function playGameEndSound(won) {
+    won ? winning.play() : lose.play()
+}
+
+export function playStartSound(){
+    
 }

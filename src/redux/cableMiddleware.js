@@ -1,8 +1,8 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
-// import playSound from './playSound';
+import { playMoveSound, playGameEndSound, playStartSound } from './playSound';
 import { postMarleyMove } from '../utilities/fetchWithToken';
-// Move
+
 export default function cableMiddleware() {
   // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
   const cable = ActionCable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
@@ -16,10 +16,12 @@ export default function cableMiddleware() {
       channel,
       room,
       game,
+      user,
       rooms,
       leave
     } = action;
     const token = localStorage.getItem('token')
+
     const identifier = Object.assign({}, action, { token } )
 
     if (!channel) {
@@ -102,6 +104,7 @@ export default function cableMiddleware() {
             // playSound(result.command);
             console.log('update move first');
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
+            playMoveSound(result.command);
             // setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
             // dispatch({ type: 'SET_GAME', game: result.game });
             // console.log(result.command);
@@ -112,9 +115,15 @@ export default function cableMiddleware() {
             setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
             // dispatch({ type: })
             break;
+          case 'game_end_by_showdown':
+          case 'game_end_by_fold':
+            playGameEndSound(result.winner_ids[user])
+            break;
           case 'start_game':
-          case 'set_game':
-            
+            playStartSound();
+            dispatch({ type: 'SET_GAME', game: result.game });
+            break;
+            case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
             // dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users })
             break;
@@ -132,7 +141,7 @@ export default function cableMiddleware() {
         }
       }
 
-      return cable.subscriptions.create( identifier, { received });
+      return cable.subscriptions.create( { channel, game, token }, { received });
     }
   };
 }
