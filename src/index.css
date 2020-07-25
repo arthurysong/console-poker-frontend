@@ -296,7 +296,8 @@ input[type="password"]{
 .round_bet {
     /* display: inline; */
     background-color: #FFD700;
-    color: #F0FFFF;
+    color: Cornsilk;
+    box-shadow: 1px 1px rgba(0,0,0, .2);
 
     /* width: auto; */
     position: absolute;
