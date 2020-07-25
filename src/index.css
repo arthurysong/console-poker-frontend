@@ -278,7 +278,7 @@ input[type="password"]{
 
 .card_rank {
     position: absolute;
-    left: -50px;
+    /* left: -50px; */
     background-color: coral;
     padding: 3px 5px;
     color: AliceBlue;
@@ -286,7 +286,8 @@ input[type="password"]{
     border-radius: 12px;
     left: 0px;
     right: 0px;
-    top: -10px;
+    
+    /* top: 0px; */
     margin-left: auto;
     margin-right: auto;
     box-shadow: 2px 2px rgba(0, 0, 0, .2);

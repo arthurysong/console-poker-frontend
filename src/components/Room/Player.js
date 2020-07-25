@@ -47,8 +47,9 @@ function Player(props) {
     }
 
     const renderRoundBet = () => {
-        if (props.user.round_bet !== 0) {
-            return (<span className="round_bet chips">{props.user.round_bet}</span>)
+        console.log(props.user);
+        if (props.user.round_bet !== 0 || props.user.checked) {
+            return (<span className="round_bet chips">{props.user.checked && props.user.round_bet == 0 ? 'check' : props.user.round_bet}</span>)
         }
     }
 
@@ -72,7 +73,6 @@ function Player(props) {
                     {renderRoundBet()}
                     <div className="cards_container">
                         {renderPlayerCards()}
-                        {renderRank()}
                     </div>
                     <span style={{color: "grey"}}>
                     {/* <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}> */}
@@ -82,6 +82,7 @@ function Player(props) {
                     <span className="board_user_chips">
                         {props.user.chips}<i className="nes-icon coin is-small"></i>
                     </span><br/>
+                    {renderRank()}
                     {/* {renderLeave(props.user)}  */}
 
                 </div>

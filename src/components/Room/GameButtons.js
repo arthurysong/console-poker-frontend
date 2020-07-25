@@ -1,7 +1,7 @@
 import React from 'react';
 import { postMoveWithToken, startNewRound } from '../../utilities/fetchWithToken';
 // import SoundButton from '../SoundButton';
-import NewRoundButton from './NewRoundButton';
+// import NewRoundButton from './NewRoundButton';
 // import SoundButton from '../SoundButton';
 
 class GameButtons extends React.Component {
