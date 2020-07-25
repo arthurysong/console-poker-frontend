@@ -15,22 +15,20 @@ function Player(props) {
 
     const renderPlayerCards = () => {
         if (props.user.cards === "" || !props.user.playing) {
-            return <div className="cards_container"><span style={{height: "53.7px"}} /></div>
+            return <span style={{height: "53.7px"}} />
         } else {
             if (props.user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return (
-                    <div className="cards_container">
-                        {props.user.cards.split(" ").map((c, index) => {
+                        props.user.cards.split(" ").map((c, index) => {
                             return <img key={index} className="cards" alt={c} src={props.images[`${c}.png`]}/>
-                            })}
-                    </div>
+                            })
                 )
             } else {
                 return (
-                    <div className="cards_container"> 
+                    <>
                         <img className="cards" alt='facedown_card' src={props.images[`CARD.png`]}/>
                         <img className="cards" alt='facedown_card' src={props.images[`CARD.png`]}/>
-                    </div>
+                    </>
                 )
             } 
         }
@@ -54,6 +52,12 @@ function Player(props) {
         }
     }
 
+    const renderRank = () => {
+        // console.log(props.user.current_hand);
+        if (props.user.username === loggedInUser.username && props.user.current_hand) {
+            return (<span className={"card_rank"}>{props.user.current_hand}</span>)
+        }
+    }
     const renderPlayer = () => {
         // players should be rendered even if no round?
         // if (round) {
@@ -66,7 +70,10 @@ function Player(props) {
                     {renderDealerButton()}
                     {renderWinnings()}
                     {renderRoundBet()}
-                    {renderPlayerCards()}
+                    <div className="cards_container">
+                        {renderPlayerCards()}
+                        {renderRank()}
+                    </div>
                     <span style={{color: "grey"}}>
                     {/* <span style={{color: `${hashStringToColor(props.user.username, colorHash)}`}}> */}
                         {props.user.username}

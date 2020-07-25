@@ -2,6 +2,7 @@ import React from 'react';
 // import Chatbox from './Chatbox';
 import Chatbox2 from './Chatbox2';
 import Game from './Game';
+import Menu from './Menu';
 import { connect } from 'react-redux';
 import { subscribeRoom, unsubscribeRoom } from '../../redux/roomActions';
 
@@ -28,20 +29,18 @@ class Room extends React.Component {
         }
     }
 
-    renderRoom(){
+    renderTitle(){
         if (this.props.room) {
             return (
                 <>
-                    <div className="back_button"><button className="nes-btn is-error" onClick={this.leaveRoom}>{'<'}</button></div>
-                    <div>
-                        <h1 className="title">{this.props.room.name}</h1>
-                        {this.renderMarleyMessage()}
-                    </div>
+                    <h1 className="title">{this.props.room.name}</h1>
+                    {this.renderMarleyMessage()}
                 </>
             )
         }
     }
 
+    renderBackButton = () => <button className="nes-btn is-error" onClick={this.leaveRoom}>{'<'}</button>
 
     renderGameComp = () => {
         if (this.props.user && this.props.room) {
@@ -52,18 +51,16 @@ class Room extends React.Component {
     render(){
         return(
             <div>
-                {/* {console.log(this.props.user)} */}
-                {this.renderRoom()}
-                
-
-                {/* <Chatbox user={this.props.user} messages={this.props.messages} subscription={this.subscription} colorHash={this.props.hash}/> */}
+                <div className="back_button">{this.renderBackButton()}</div>
+                <Menu  user={this.props.user}/>
+                <div>
+                    {this.renderTitle()}
+                </div>
                 {this.renderGameComp()}
                 <Chatbox2 
-                    // user={this.props.user} 
                     messages={this.props.messages} 
                     subscription={this.subscription} 
                     colorHash={this.props.colorHash}/>
-            {/* </div> */}
             </div>
         )
     }

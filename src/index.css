@@ -263,13 +263,33 @@ input[type="password"]{
     /* bottom: -20px; */
 }
 
-#lobby {
+#room_menu {
+    position: absolute;
+    top: 100px;
+}
+/* #lobby {
     position: absolute;
     right: -200px;
-}
+} */
 
 .chips {
     color: #006400;
+}
+
+.card_rank {
+    position: absolute;
+    left: -50px;
+    background-color: coral;
+    padding: 3px 5px;
+    color: AliceBlue;
+    font-size: 12px;
+    border-radius: 12px;
+    left: 0px;
+    right: 0px;
+    top: -10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 2px 2px rgba(0, 0, 0, .2);
 }
 
 .round_bet {
@@ -279,7 +299,7 @@ input[type="password"]{
 
     /* width: auto; */
     position: absolute;
-    top: -50px;
+    top: -60px;
     left: 0px;
     /* left: 50%; */
     margin-left: auto;
