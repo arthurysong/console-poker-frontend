@@ -1,7 +1,7 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
-import Lobby from '../Lobby';
+// import Lobby from '../Lobby';
 import { connect } from 'react-redux';
 import { 
     startGame, 
@@ -59,11 +59,10 @@ class Game extends React.Component {
         )
     }
 
-    renderGame = () => {
+    renderGameButtons = () => {
         if (this.props.game.active_round && this.props.user) {
             return (
                 <>
-                    {/* {this.renderResult()} */}
                     <GameButtons 
                         gameId={this.props.game.id}
                         game={this.props.game}
@@ -76,11 +75,13 @@ class Game extends React.Component {
 
     render() {
         return (
-            <div id="game_container">
-                {this.renderBoard()}
-                {this.renderGame()}
+            <>
+                <div id="game_container">
+                    {this.renderBoard()}
+                </div>
+                {this.renderGameButtons()}
                 {this.renderButton()}
-            </div>
+            </>
         )
     }
 }

@@ -49,13 +49,13 @@ function Player(props) {
     const renderRoundBet = () => {
         console.log(props.user);
         if (props.user.round_bet !== 0 || props.user.checked) {
-            return (<span className="round_bet chips">{props.user.checked && props.user.round_bet == 0 ? 'check' : props.user.round_bet}</span>)
+            return (<span className="round_bet chips">{props.user.checked && props.user.round_bet === 0 ? 'check' : props.user.round_bet}</span>)
         }
     }
 
     const renderRank = () => {
         // console.log(props.user.current_hand);
-        if (props.user.username === loggedInUser.username && props.user.current_hand || (round && round.phase === 3 && round.is_playing === false)) {
+        if ((props.user.username === loggedInUser.username && props.user.current_hand) || (round && round.phase === 3 && round.is_playing === false)) {
             return (<span className={"card_rank"}>{props.user.current_hand}</span>)
         }
     }
