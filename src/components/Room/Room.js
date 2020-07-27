@@ -25,17 +25,17 @@ class Room extends React.Component {
 
     renderMarleyMessage = () =>  {
         if (this.props.room && this.props.room.id === 1){
-            return (<>Marley is a good doge and always calls. Good luck!</>)
+            return (<span>Marley is a good doge and always calls. Good luck!</span>)
         }
     }
 
     renderTitle(){
         if (this.props.room) {
             return (
-                <>
-                    <h1 className="title">{this.props.room.name}</h1>
+                <div id="room_info">
+                    <span id="room_title">{this.props.room.name}</span><br/>
                     {this.renderMarleyMessage()}
-                </>
+                </div>
             )
         }
     }

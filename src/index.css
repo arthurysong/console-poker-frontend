@@ -59,6 +59,13 @@ input[type="password"]{
     /* width: 400px; */
 /* } */
 
+#room_info{
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
 #chatbox_container {
     /* width: 600px;
     height: 600px;
@@ -239,6 +246,8 @@ input[type="password"]{
 }
 
 #poker_table {
+    
+
     height: 552px;
     width: 900px;
     /* margin: 0 auto; */
