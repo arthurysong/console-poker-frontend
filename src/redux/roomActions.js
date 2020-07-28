@@ -2,6 +2,7 @@ import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
 export function subscribeRoom(roomId) {
+    console.log('hello, this is in subscribe room');
     return {
       channel: 'RoomChannel',
       room: `${roomId}`
@@ -49,9 +50,8 @@ export function subscribeRoom(roomId) {
   }
 
   export const sendMessage = message => dispatch => {
-    console.log(message);
-    console.log({ message })
     postWithToken(`${BASE_URL}/messages`, { message })
       .then(resp => resp.json())
-      .then(json => console.log(json));
+      .then(json => console.log(json))
+      .catch(err => console.log(err));
   }

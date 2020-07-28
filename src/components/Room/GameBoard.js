@@ -128,10 +128,10 @@ class GameBoard extends React.Component {
 
     render() {
         return (
-            <>
+            <div id="game_container">
                 {/* {console.log(this.props.round)} */}
                 {this.renderBoard()}
-            </>
+            </div>
         )
     }
 }

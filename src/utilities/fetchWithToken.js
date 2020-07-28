@@ -12,6 +12,7 @@ export function fetchWithToken(url, options = {}){
 }
 
 export function postWithToken(url, bodyHash = {}){
+    console.log(bodyHash);
     const body = JSON.stringify(bodyHash);
     const options = {
         method: "POST",

@@ -78,7 +78,7 @@ class GameButtons extends React.Component {
     renderButtons = () => {
         // console.log(this.props.user);
         if (!this.state.raiseMenu){
-            if (!this.props.round.is_playing) {
+            if (!this.props.round || !this.props.round.is_playing) {
                 return (
                     <button className={`nes-btn ${this.props.game.startable ? 'is-primary' : 'is-disabled'}`} onClick={() => startNewRound(this.props.gameId)}>New Round</button>
                 )
@@ -91,12 +91,16 @@ class GameButtons extends React.Component {
     }
 
     render() {
-        return(
-            <div id="game_buttons">
-                {this.renderButtons()}
-                <RaiseMenu toggleGameButtons={this.toggleGameButtons} raiseMenu={this.state.raiseMenu} submitHandler={this.props.submitHandler}/>
-            </div>
-        )
+        if (this.props.game.active_round && this.props.user) { 
+            return(
+                <div id="game_buttons">
+                    {this.renderButtons()}
+                    <RaiseMenu toggleGameButtons={this.toggleGameButtons} raiseMenu={this.state.raiseMenu} submitHandler={this.props.submitHandler}/>
+                </div>
+            )
+        } else {
+            return ""
+        }
     }
 }
 

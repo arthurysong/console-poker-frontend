@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Chatbox from './Chatbox';
 import Game from './Game';
 import Menu from './Menu';
@@ -13,11 +13,11 @@ function Room({ match, history }) {
     const user = useSelector(state => state.user);
 
     useEffect(() => {
-        if (room === undefined && user) dispatch(subscribeRoom(match.params.id));
+        dispatch(subscribeRoom(match.params.id));
         return () => {
-            if (room) dispatch(unsubscribeRoom(match.params.id));
-        };
-    })
+            dispatch(unsubscribeRoom(match.params.id));
+        }
+    }, [])
 
     return(
         <div>

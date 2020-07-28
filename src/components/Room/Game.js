@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { 
     startGame, 
     subscribeGame, 
@@ -11,93 +11,49 @@ import {
     resetUser } from '../../redux/gameActions';
 import { setChips } from '../../redux/dispatchActions';
 
-class Game extends React.Component {
-    componentDidMount() {
-        this.props.subscribeGame(this.props.user.id, this.props.gameId);
-    }
+function Game({ gameId }) {
+    const dispatch = useDispatch();
+    const game = useSelector(state => state.game);
+    const user = useSelector(state => state.user);
 
-    componentWillUnmount(){
-        this.props.unsubscribeGame(this.props.gameId);
-        this.props.resetUser();
-    }
-
-    renderButton = () => {
-        if (!this.props.game.active_round) {
-            return <button 
-                className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`}
-                disabled={this.props.players <= 1}
-                onClick={() => this.props.startGame(this.props.game.id)}>
-                    Start Game
-                </button>
+    useEffect(() => {
+        dispatch(subscribeGame(user.id, gameId))
+        return () => {
+            dispatch(unsubscribeGame(gameId));
+            dispatch(resetUser());
         }
-    }
+    }, [])
+
+    // const renderButton = () => {
+    //     if (!this.props.game.active_round) {
+    //         return <button 
+    //             className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`}
+    //             disabled={this.props.players <= 1}
+    //             onClick={() => this.props.startGame(this.props.game.id)}>
+    //                 Start Game
+    //             </button>
+    //     }
+    // }
     
-    renderResult = () => {
-        if (!this.props.game.active_round.is_playing) {
-            return (
-                <p className='nes-text'><span className="nes-text is-error">Not Playing</span><br/>
-                {this.props.game.active_round.result.map(r => `${r}\n`)}</p>
-            )
-        }
-    }
+    // const renderBoard = () => {
+    //     return (
+    //         <>  
+    //             <GameBoard
+    //                 sitDown={this.props.sitDown}
+    //                 game={this.props.game}
+    //                 round={this.props.game.active_round} 
+    //                 user={this.props.user} 
+    //                 setChips={this.props.setChips}/>
+    //         </>
+    //     )
+    // }
 
-    renderBoard = () => {
-        return (
-            <>  
-                <GameBoard
-                    sitDown={this.props.sitDown}
-                    game={this.props.game}
-                    round={this.props.game.active_round} 
-                    user={this.props.user} 
-                    setChips={this.props.setChips}/>
-            </>
-        )
-    }
-
-    renderGameButtons = () => {
-        if (this.props.game.active_round && this.props.user) {
-            return (
-                <>
-                    <GameButtons 
-                        gameId={this.props.game.id}
-                        game={this.props.game}
-                        round={this.props.game.active_round}
-                        user={this.props.user}/>
-                </>
-            )
-        }
-    }
-
-    render() {
-        return (
-            <>
-                <div id="game_container">
-                    {this.renderBoard()}
-                </div>
-                {this.renderGameButtons()}
-                {this.renderButton()}
-            </>
-        )
-    }
+    return (
+        <>
+            <GameBoard />
+            <GameButtons gameId={game.id} game={game} round={game.active_round} user={user} />
+        </>
+    )
 }
 
-const mapStateToProps = state => {
-    return {
-        game: state.game,
-        user: state.user,
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        startGame: roomId => dispatch(startGame(roomId)),
-        subscribeGame: (userId, gameId) => dispatch(subscribeGame(userId, gameId)),
-        unsubscribeGame: (gameId) => dispatch(unsubscribeGame(gameId)),
-        setChips: chips => dispatch(setChips(chips)),
-        sitDown: gameId => dispatch(sitDown(gameId)),
-        leaveTable: gameId =>  dispatch(leaveTable(gameId)),
-        resetUser: userId => dispatch(resetUser(userId))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Game);
+export default Game;
