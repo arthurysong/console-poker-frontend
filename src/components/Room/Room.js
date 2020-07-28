@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Chatbox from './Chatbox';
 import Game from './Game';
 import Menu from './Menu';
@@ -7,44 +7,27 @@ import RoomHeader from './RoomHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import { subscribeRoom, unsubscribeRoom } from '../../redux/roomActions';
 
-function Room({ match }) {
+function Room({ match, history }) {
     const dispatch = useDispatch();
+    const room = useSelector(state => state.room);
+    const user = useSelector(state => state.user);
+    const [connected, setConnected] = useState(false);
 
     useEffect(() => {
-        dispatch(subscribeRoom(match.params.id))
-        return function cleanup() {
-            dispatch(unsubscribeRoom(match.params.id))
-        }
+        setConnected(true);
+        if (connected) dispatch(subscribeRoom(match.params.id));
+        if (connected) return () => dispatch(unsubscribeRoom(match.params.id));
     })
 
     return(
         <div>
-            <BackButton history={this.props.history} />
-            <Menu user={this.props.user}/>
-            <RoomHeader room={this.props.room}/>
-            <Game gameId={this.props.room.game.id} room={this.props.room} players={this.props.room.no_users}/>
-            <Chatbox 
-                messages={this.props.messages} 
-                subscription={this.subscription} 
-                colorHash={this.props.colorHash}/>
+            <BackButton history={history} />
+            <Menu user={user}/>
+            <RoomHeader room={room}/>
+            {user && room && <Game room={room}/>}
+            <Chatbox />
         </div>
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        room: state.room,
-        user: state.user,
-        messages: state.messages,
-        // colorHash: state.colorHash
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        subscribeRoom: roomId => dispatch(subscribeRoom(roomId)),
-        unsubscribeRoom: roomId => dispatch(unsubscribeRoom(roomId))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Room);
+export default Room;

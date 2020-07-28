@@ -1,56 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { hashStringToColor } from '../../utilities/colorHash';
+import { useSelector } from 'react-redux';
 
-class Chatbox2 extends React.Component {
-    state = {
-        newMessage: ""
-    }
+function Chatbox() {
+    const messages = useSelector(state => state.messages);
+    const colorHash = useSelector(state => state.colorHash);
+    const [message, setMessage] = useState("");
 
-    renderMessages = () => {
-        if (this.props.messages) {
+    const renderMessages = () => {
+        if (messages) {
             return (
-                this.props.messages.map((m, index) => (
-                    <li key={index}><span style={{color: `${hashStringToColor(m.username, this.props.colorHash)}`}}>{m.username}:</span> {m.payload}</li>
+                messages.map((m, index) => (
+                    <li key={index}><span style={{color: `${hashStringToColor(m.username, colorHash)}`}}>{m.username}:</span> {m.payload}</li>
                 ))
             )
         }
     }
 
-    componentDidUpdate(prevProps){
-        // if (prevProps.messages !== this.props.messages) {
-            const scrollable = document.getElementById('messages_container');
-            scrollable.scrollTop = scrollable.scrollHeight;
-        // }
-    }
+    useEffect(() => {
+        const scrollable = document.getElementById('messages_container');
+        scrollable.scrollTop = scrollable.scrollHeight;
+    })
 
-    changeHandler = event => {
-        this.setState({
-            newMessage: event.target.value
-        })
-    }
-
-    submitHandler = event => {
+    const changeHandler = event => setMessage(event.target.value);
+    const submitHandler = event => {
         event.preventDefault();
-        this.props.subscription.sendMessage(this.state.newMessage);
-        this.setState({ newMessage: "" })
+        console.log('send message');
+        // subscription.sendMessage(message);
+        setMessage("");
     }
 
-    render() {
-        return (
-            <div id="chatbox_container">
-                <div id="messages_container">
-                    <ul>
-                    {this.renderMessages()}
-                    </ul>
-                </div>
-
-                <form onSubmit={this.submitHandler}>
-                    <input type="text" className="nes-input" onChange={this.changeHandler} value={this.state.newMessage}/>
-                    <button className="nes-btn smaller-btn hide" type="submit" value="send">Send</button>
-                </form>
+    return (
+        <div id="chatbox_container">
+            <div id="messages_container">
+                <ul>
+                {renderMessages()}
+                </ul>
             </div>
-        )
-    }
+
+            <form onSubmit={submitHandler}>
+                <input type="text" className="nes-input" onChange={changeHandler} value={message}/>
+                <button className="nes-btn smaller-btn hide" type="submit" value="send">Send</button>
+            </form>
+        </div>
+    )
 }
 
-export default Chatbox2
+export default Chatbox;

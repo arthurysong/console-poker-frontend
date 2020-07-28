@@ -1,7 +1,6 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
-// import Lobby from '../Lobby';
 import { connect } from 'react-redux';
 import { 
     startGame, 
@@ -80,6 +79,8 @@ class Game extends React.Component {
                     {this.renderButton()}
                 </>
             )
+        } else {
+            return ""
         }
     }
 }

@@ -1,4 +1,4 @@
-import { fetchWithToken } from '../utilities/fetchWithToken';
+import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
 export function subscribeRoom(roomId) {
@@ -34,45 +34,19 @@ export function subscribeRoom(roomId) {
 
   export const authenticateRoomPassword = (state, roomId, history) => {
     return dispatch => {
-      const body = JSON.stringify(state);
-      const options = {
-          method: "POST",
-          headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-          },
-          body
-      }
-
-      fetchWithToken(`${BASE_URL}/rooms/${roomId}/authenticate`, options)
-          .then(resp => resp.json())
-          .then(json => {
-            console.log('hellossss')
-              if (json.error) {
-                  document.getElementById(`dialog-dark-rounded-alert`).showModal();
-              } else {
-                  history.push(`/rooms/${roomId}`)
-              }
-          })
+      postWithToken(`${BASE_URL}/rooms/${roomId}/authenticate`, state)
+        .then(resp => resp.json())
+        .then(json => {
+          json.error ? document.getElementById(`dialog-dark-rounded-alert`).showModal() : history.push(`/rooms/${roomId}`)
+        })
     }
   }
 
   export const createRoom = (state, history) => dispatch => {
-    const body = JSON.stringify(state)
-    const options = {
-      method: "POST",
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-      },
-      body
-    }
-    fetchWithToken(`${BASE_URL}/rooms`, options)
+    postWithToken(`${BASE_URL}/rooms`, state)
       .then(resp => resp.json())
       .then(json => history.replace(`/rooms/${json.id}`));
   }
 
   export const sendMessage = message => dispatch => {
-    const token = localStorage.getItem('token')
   }
