@@ -49,4 +49,9 @@ export function subscribeRoom(roomId) {
   }
 
   export const sendMessage = message => dispatch => {
+    console.log(message);
+    console.log({ message })
+    postWithToken(`${BASE_URL}/messages`, { message })
+      .then(resp => resp.json())
+      .then(json => console.log(json));
   }

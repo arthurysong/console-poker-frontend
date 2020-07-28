@@ -58,6 +58,8 @@ export default function cableMiddleware() {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, room, token }))
         cable.subscriptions.remove(subscription);
+        console.log('in cablemiddleware');
+        console.log(cable.subscriptions);
         dispatch({ type: 'DELETE_ROOM' })
         dispatch({ type: 'CLEAR_MESSAGES' })
         return;

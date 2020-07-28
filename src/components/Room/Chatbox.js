@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { hashStringToColor } from '../../utilities/colorHash';
 import { useSelector } from 'react-redux';
+import { sendMessage } from '../../redux/roomActions';
 
 function Chatbox() {
     const messages = useSelector(state => state.messages);
     const colorHash = useSelector(state => state.colorHash);
     const [message, setMessage] = useState("");
+    const dispatch = useDispatch();
 
     const renderMessages = () => {
         if (messages) {
@@ -26,7 +29,7 @@ function Chatbox() {
     const submitHandler = event => {
         event.preventDefault();
         console.log('send message');
-        // subscription.sendMessage(message);
+        dispatch(sendMessage(message));
         setMessage("");
     }
 

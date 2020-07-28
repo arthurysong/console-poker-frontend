@@ -11,12 +11,12 @@ function Room({ match, history }) {
     const dispatch = useDispatch();
     const room = useSelector(state => state.room);
     const user = useSelector(state => state.user);
-    const [connected, setConnected] = useState(false);
 
     useEffect(() => {
-        setConnected(true);
-        if (connected) dispatch(subscribeRoom(match.params.id));
-        if (connected) return () => dispatch(unsubscribeRoom(match.params.id));
+        if (room === undefined && user) dispatch(subscribeRoom(match.params.id));
+        return () => {
+            if (room) dispatch(unsubscribeRoom(match.params.id));
+        };
     })
 
     return(

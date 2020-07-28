@@ -69,19 +69,15 @@ class Game extends React.Component {
     }
 
     render() {
-        if (this.props.room && this.props.user) {
-            return (
-                <>
-                    <div id="game_container">
-                        {this.renderBoard()}
-                    </div>
-                    {this.renderGameButtons()}
-                    {this.renderButton()}
-                </>
-            )
-        } else {
-            return ""
-        }
+        return (
+            <>
+                <div id="game_container">
+                    {this.renderBoard()}
+                </div>
+                {this.renderGameButtons()}
+                {this.renderButton()}
+            </>
+        )
     }
 }
 
