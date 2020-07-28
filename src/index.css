@@ -25,39 +25,10 @@ input[type="password"]{
     font-family: inherit;
 }
 
-.terminal,
-.terminal-output > :not(.raw),
-.cmd {
-    font-family: 'atari_classicchunky' !important;
-    font-size: 12px;
-    line-height: 15px;
-}
-
 #main {
     margin: 50px;
     text-align: center;
 }
-
-#console {
-    width: 600px;
-    height: 300px;
-    overflow: auto; 
-    text-align:justify; 
-}
-
-#jterminal {
-    height: 100%;
-}
-
-/* #room_container { */
-    /* position: relative; */
-    /* text-align: center; */
-    /* width: 1000px; */
-    /* margin: auto; */
-    /* padding: 50px 150px;  */
-    /* display: inline-block; */
-    /* width: 400px; */
-/* } */
 
 #room_info{
     text-align: right;
@@ -67,17 +38,8 @@ input[type="password"]{
 }
 
 #chatbox_container {
-    /* width: 600px;
-    height: 600px;
-    margin: 24px;
-    display: inline-block;
-    vertical-align: top; */
     position: absolute;
-    /* top: 0px; */
     bottom: 50px;
-    /* position: absolute; */
-    /* width: 640px; */
-    /* margin: auto; */
 }
 
 #messages_container {
@@ -93,7 +55,6 @@ input[type="password"]{
 
 #new_message_form {
     height: 20%;
-    /* width: 300px; */
     width: 528px;
     margin: auto;
     position: absolute;
@@ -105,13 +66,10 @@ input[type="password"]{
     word-break: break-all;
 }
 
-/* #user_list { */
-    /* display: inline-block; */
-/* } */
-
+/* 
 .nes-balloon.tight-balloon {
     padding: 10px;
-}
+} */
 
 #textarea_field {
     margin-bottom: 10px;

@@ -45,10 +45,6 @@ class Game extends React.Component {
     renderBoard = () => {
         return (
             <>  
-                {/* <Lobby  */}
-                    {/* room={this.props.room} */}
-                    {/* game={this.props.game} */}
-                    {/* user={this.props.user}/> */}
                 <GameBoard
                     sitDown={this.props.sitDown}
                     game={this.props.game}
@@ -74,15 +70,17 @@ class Game extends React.Component {
     }
 
     render() {
-        return (
-            <>
-                <div id="game_container">
-                    {this.renderBoard()}
-                </div>
-                {this.renderGameButtons()}
-                {this.renderButton()}
-            </>
-        )
+        if (this.props.room && this.props.user) {
+            return (
+                <>
+                    <div id="game_container">
+                        {this.renderBoard()}
+                    </div>
+                    {this.renderGameButtons()}
+                    {this.renderButton()}
+                </>
+            )
+        }
     }
 }
 

@@ -1,5 +1,4 @@
 import { BASE_URL } from './BASE_URL';
-// w.e
 
 export function fetchWithToken(url, options = {}){
     const token = localStorage.getItem("token");
@@ -12,8 +11,8 @@ export function fetchWithToken(url, options = {}){
     })
 }
 
-export function postMoveWithToken(commandObj, userId) {
-    const body = JSON.stringify(commandObj);
+export function postWithToken(url, bodyHash = {}){
+    const body = JSON.stringify(bodyHash);
     const options = {
         method: "POST",
         headers: {
@@ -22,28 +21,17 @@ export function postMoveWithToken(commandObj, userId) {
         },
         body
     }
-    fetchWithToken(`${BASE_URL}/users/${userId}/make_move`, options);
+    return fetchWithToken(url, options);
 }
 
-export const postMarleyMove = () => {
-    const options= {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }
-    fetchWithToken(`${BASE_URL}/users/marley_call`, options)
+export function postMoveWithToken(commandObj, userId) {
+    return postWithToken(`${BASE_URL}/users/${userId}/make_move`, commandObj)
+}
+
+export function postMarleyMove() {
+    return postWithToken(`${BASE_URL}/users/marley_call`)
 }
 
 export function startNewRound(gameId) {
-    const options = {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
-    }
-
-    fetchWithToken(`${BASE_URL}/games/${gameId}/start`, options);
+    return postWithToken(`${BASE_URL}/games/${gameId}/start`)
 }

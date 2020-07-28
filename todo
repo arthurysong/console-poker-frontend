@@ -3,8 +3,14 @@ Style the Stripe Elements with Font.
 
 When a person leaves their cards should be blanked out.
 state.chips
+Add BEM structure to CSS
+SASS
+Message should be created using controller action not subscription.
+Clean up all assets..
+Make all react components functional components with hooks.
 Make sure all buttons with disabled css is disabled using attribute.
 Players cannot have same color as table green?
+Create Responsive Web Design
 
 Create POSTwithToken?
 Make Marley a Pokemon
