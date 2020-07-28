@@ -1,19 +1,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { leaveTable } from '../../redux/gameActions';
-import SoundButton from '../SoundButton';
 
 function Menu ({ user }) {
     const dispatch = useDispatch();
 
     const renderLeave = () => {
-        if (user && user.game_id) {
-            return <SoundButton 
-                clickHandler={() => dispatch(leaveTable(user.game_id))} 
-                className="nes-btn is-primary smaller-btn"
-                value="Leave Seat"
-                sound="click"/>
-        }
+        if (user && user.game_id) return <button className="nes-btn is-primary" onClick={() => dispatch(leaveTable(user.game_id))}>Leave Seat</button>
     }
 
     return(

@@ -1,6 +1,6 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
-import { playMoveSound, playGameEndSound, playStartSound } from './playSound';
+import { playMoveSound, playGameEndSound, playStartSound, playSit } from './playSound';
 import { postMarleyMove } from '../utilities/fetchWithToken';
 
 export default function cableMiddleware() {
@@ -58,8 +58,8 @@ export default function cableMiddleware() {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, room, token }))
         if (subscription) cable.subscriptions.remove(subscription);
-        console.log('in cablemiddleware');
-        console.log(cable.subscriptions);
+        // console.log('in cablemiddleware');
+        // console.log(cable.subscriptions);
         dispatch({ type: 'DELETE_ROOM' })
         dispatch({ type: 'CLEAR_MESSAGES' })
         return;
@@ -100,22 +100,13 @@ export default function cableMiddleware() {
         console.log(result);
         switch (result.type) {
           case 'new_move':
-            // console.log(result.user);
-            // dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
-
-            // playSound(result.command);
             console.log('update move first');
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
             playMoveSound(result.command);
-            // setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
-            // dispatch({ type: 'SET_GAME', game: result.game });
-            // console.log(result.command);
-            // setTimeout(() => dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users }), 1000);
             break;
           case 'update_game_after_move':
             console.log('updating...');
             setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
-            // dispatch({ type: })
             break;
           case 'game_end_by_showdown':
           case 'game_end_by_fold':
@@ -125,9 +116,12 @@ export default function cableMiddleware() {
             playStartSound();
             dispatch({ type: 'SET_GAME', game: result.game });
             break;
-            case 'set_game':
+          case 'user_join':
+          case 'user_leave':
+            console.log('play sit sound');
+            playSit();
+          case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
-            // dispatch({ type: 'SET_GAME_PLAYERS', players: result.game.ordered_users })
             break;
           case 'marleys_turn':
             setTimeout(() => postMarleyMove(), 1500);

@@ -24,7 +24,7 @@ function Room({ match, history }) {
             <BackButton history={history} />
             <Menu user={user}/>
             <RoomHeader room={room}/>
-            {user && room && <Game room={room}/>}
+            {user && room && <Game gameId={room.game.id}/>}
             <Chatbox />
         </div>
     )

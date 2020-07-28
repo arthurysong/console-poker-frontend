@@ -21,20 +21,16 @@ function Game({ gameId }) {
         return () => {
             dispatch(unsubscribeGame(gameId));
             dispatch(resetUser());
+            updateChips();
         }
     }, [])
 
-    // const renderButton = () => {
-    //     if (!this.props.game.active_round) {
-    //         return <button 
-    //             className={`nes-btn ${this.props.players > 1 ? 'is-primary' : 'is-disabled'}`}
-    //             disabled={this.props.players <= 1}
-    //             onClick={() => this.props.startGame(this.props.game.id)}>
-    //                 Start Game
-    //             </button>
-    //     }
-    // }
-    
+    const updateChips = () => {
+        if (game.active_round) {
+            const user = this.props.round.ordered_users.find(u => u.id === this.props.user.id);
+            if (user) dispatch(setChips(user.chips));
+        }
+    }
     // const renderBoard = () => {
     //     return (
     //         <>  

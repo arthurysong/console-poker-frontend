@@ -40,3 +40,7 @@ export function playStartSound(){
     chips.play();
     newRound.play();   
 }
+
+export function playSit() {
+    click.play();
+}
