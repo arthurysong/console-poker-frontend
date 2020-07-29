@@ -4,22 +4,13 @@ import RaiseMenu from './RaiseMenu';
 
 class GameButtons extends React.Component {
     state = {
-        raiseAmount: "",
         raiseMenu: false 
     }
 
     submitHandler = event => {
         event.preventDefault();
-        // console.log('raise')
         const x = parseInt(this.state.raiseAmount);
         postMoveWithToken({ command: 'raise', amount: x }, this.props.user.id)
-        this.setState({ raiseAmount: "" })
-    }
-
-    changeHandler = event => {
-        this.setState({
-            raiseAmount: event.target.value
-        })
     }
 
     renderMoveButton = (move, index) => {
@@ -46,7 +37,6 @@ class GameButtons extends React.Component {
     }
 
     renderButtons = () => {
-        // console.log(this.props.user);
         if (!this.state.raiseMenu){
             if (!this.props.round || !this.props.round.is_playing) {
                 return (

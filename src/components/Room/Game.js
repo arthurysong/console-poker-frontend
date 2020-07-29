@@ -2,13 +2,7 @@ import React, { useEffect } from 'react';
 import GameBoard from './GameBoard';
 import GameButtons from './GameButtons';
 import { useDispatch, useSelector } from 'react-redux';
-import { 
-    startGame, 
-    subscribeGame, 
-    unsubscribeGame, 
-    sitDown, 
-    leaveTable, 
-    resetUser } from '../../redux/gameActions';
+import { subscribeGame, unsubscribeGame, resetUser } from '../../redux/gameActions';
 import { setChips } from '../../redux/dispatchActions';
 
 function Game({ gameId }) {
@@ -31,18 +25,6 @@ function Game({ gameId }) {
             if (user) dispatch(setChips(user.chips));
         }
     }
-    // const renderBoard = () => {
-    //     return (
-    //         <>  
-    //             <GameBoard
-    //                 sitDown={this.props.sitDown}
-    //                 game={this.props.game}
-    //                 round={this.props.game.active_round} 
-    //                 user={this.props.user} 
-    //                 setChips={this.props.setChips}/>
-    //         </>
-    //     )
-    // }
 
     return (
         <>

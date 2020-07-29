@@ -36,7 +36,7 @@ input[type="password"]{
 }
 
 #wallpaper {
-    background-color: purple;
+    background-image: url('./pictures/wallpaper.jpg');
     height: 100%;
     position: relative;
 }
@@ -98,15 +98,6 @@ input[type="password"]{
     margin-bottom: 10px;
 }
 
-/* #game_container { */
-    /* position: relative;  */
-    /* width: 900px; */
-    /* margin: 0 auto; */
-    /* vertical-align: top; */
-    /* display: inline-block; */
-    /* text-align: center; */
-/* } */
-
 .cards_container {
     height: 55.7px;
     width: 130px;
@@ -145,22 +136,11 @@ input[type="password"]{
     position: relative;
     top: 2px !important;
     right: -2px !important;
-
-    /* width: 30px;
-    position: relative;
-    bottom: 3px;
-    image-rendering: pixelated; */
 }
 
-/* #sit_btn { */
-    /* position: absolute; */
-/* } */
-#cards_and_pot {
+#community_and_players {
     position: relative;
-    top: 200px;
-    height: 120px;
-    /* margin: auto; */
-    text-align: center;
+    top: 180px;
 }
 
 #pot {
@@ -170,7 +150,6 @@ input[type="password"]{
     padding: 10px 20px;
     font-size: 30px;
     border-radius: 12px;
-    /* white-space: nowrap; */
     display: inline-block;
     margin: auto;
 
@@ -178,7 +157,6 @@ input[type="password"]{
 
 #pot_image {
     position: absolute;
-    /* position: relative; */
     bottom: 5px;
     left: -30px;
 }
@@ -188,10 +166,8 @@ input[type="password"]{
 }
 
 #players_container {
-    text-align: center;
     position: relative;
-    top: 300px;
-    /* margin-top: 80px; */
+    margin-top: 80px;
 }
 
 #game_buttons{
@@ -200,11 +176,9 @@ input[type="password"]{
     bottom: 0px;
     right: 0px;
     margin: 20px;
-    /* clear: left; */
 }
 
 .big_btn {
-    /* padding: 40px !important; */
     width: 180px;
     height: 120px;
 }
