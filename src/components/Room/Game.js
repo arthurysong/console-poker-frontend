@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import GameBoard from './GameBoard';
-import GameButtons from './GameButtons';
+import GameButtonsContainer from './GameButtonsContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { subscribeGame, unsubscribeGame, resetUser } from '../../redux/gameActions';
 import { setChips } from '../../redux/dispatchActions';
@@ -29,7 +29,7 @@ function Game({ gameId }) {
     return (
         <>
             <GameBoard />
-            <GameButtons gameId={game.id} game={game} round={game.active_round} user={user} />
+            <GameButtonsContainer round={game.active_round} user={user} />
         </>
     )
 }

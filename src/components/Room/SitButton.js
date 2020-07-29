@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { sitDown } from '../../redux/gameActions';
 
-function SitButton() {
+function SitButton(props) {
     const game = useSelector(state => state.game);
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -15,4 +15,4 @@ function SitButton() {
     )
 }
 
-export default SitButton();
+export default SitButton;

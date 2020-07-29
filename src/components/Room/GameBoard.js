@@ -4,6 +4,7 @@ import Players from './Players';
 import pot from '../../pictures/pot.png';
 import SitButton from './SitButton';
 
+//images are imported here, and sent to players
 const importAll = r => {
     let images = {};
     r.keys().map((item) => { return images[item.replace('./', '')] = r(item); });

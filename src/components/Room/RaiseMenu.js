@@ -9,6 +9,9 @@ function RaiseMenu (props) {
         setRaise(raise);
     }
 
+    //on submit
+    // postMoveWithToken({ command: 'raise', amount: x }, props.user.id)
+    
     const buttons = () => {
         if (props.raiseMenu) {
             return (
