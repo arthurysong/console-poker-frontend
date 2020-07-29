@@ -1,5 +1,11 @@
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'atari_classicchunky' !important;
+    text-align: center;
+    height: 100%;
     /* word-break: break-all; */
 } 
 
@@ -25,9 +31,26 @@ input[type="password"]{
     font-family: inherit;
 }
 
-#main {
-    margin: 50px;
+#root {
+    height: 100%;
+}
+
+#wallpaper {
+    background-color: purple;
+    height: 100%;
+    position: relative;
+}
+
+#table {
+    width: 1280px;
+    height: 720px;
     text-align: center;
+    background-image: url('./pictures/poker-background.png');
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
 }
 
 #room_info{
@@ -75,15 +98,14 @@ input[type="password"]{
     margin-bottom: 10px;
 }
 
-#game_container {
-    position: relative; 
-    /* so that lobby can float to the right of it */
-    width: 900px;
-    margin: 0 auto;
-    vertical-align: top;
-    display: inline-block;
-    text-align: center;
-}
+/* #game_container { */
+    /* position: relative;  */
+    /* width: 900px; */
+    /* margin: 0 auto; */
+    /* vertical-align: top; */
+    /* display: inline-block; */
+    /* text-align: center; */
+/* } */
 
 .cards_container {
     height: 55.7px;
@@ -134,7 +156,11 @@ input[type="password"]{
     /* position: absolute; */
 /* } */
 #cards_and_pot {
+    position: relative;
+    top: 200px;
     height: 120px;
+    /* margin: auto; */
+    text-align: center;
 }
 
 #pot {
@@ -146,6 +172,7 @@ input[type="password"]{
     border-radius: 12px;
     /* white-space: nowrap; */
     display: inline-block;
+    margin: auto;
 
 }
 
@@ -162,7 +189,9 @@ input[type="password"]{
 
 #players_container {
     text-align: center;
-    margin-top: 80px;
+    position: relative;
+    top: 300px;
+    /* margin-top: 80px; */
 }
 
 #game_buttons{
@@ -197,7 +226,8 @@ input[type="password"]{
     display: inline-block !important;
     position: relative;
     background: rgba(0,0,0, .6);
-    box-shadow: 0px 0px 10px black;
+    box-shadow: 0px 2px 6px 2px hsla(0, 0%, 0%, 0.4);
+    /* box-shadow: 0px 2px 6px 4px black; */
     height: 130px;
     padding: 10px;
     margin: 0px 20px;
@@ -213,16 +243,16 @@ input[type="password"]{
     color: black;
 }
 
-#poker_table {
+/* #poker_table {
     
 
     height: 552px;
     width: 900px;
     /* margin: 0 auto; */
-    background-image: url(./pictures/poker-table-resized.png);    
-    image-rendering: pixelated;
-    background-repeat: no-repeat;
-}
+    /* background-image: url(./pictures/poker-table-resized.png);     */
+    /* image-rendering: pixelated; */
+    /* background-repeat: no-repeat; */
+/* } */ 
 
 /* #board {
     position: relative;
@@ -311,10 +341,10 @@ input[type="password"]{
     /* top: 100px; */
 /* } */
 
-#community_and_players {
-    position: relative;
-    top: 80px;
-}
+/* #community_and_players { */
+    /* position: relative; */
+    /* top: 80px; */
+/* } */
 
 /* .user_item { */
     /* display: inline; */

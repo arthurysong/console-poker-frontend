@@ -40,7 +40,7 @@ function GameBoard(props){
 
     return (
         <div id="game_container">
-            <div id="poker_table">
+            {/* <div id="poker_table"> */}
                 <div id="community_and_players">
                     <div id="cards_and_pot">
                         <div id="community_cards">
@@ -54,7 +54,7 @@ function GameBoard(props){
                 <Players images={images} game={props.game}/>
                 {renderSitButton()}
                 </div>
-            </div>
+            {/* </div> */}
         </div>
     )
 }

@@ -13,6 +13,7 @@ import Register from './Register';
 import TermsAndConditions from './TermsAndConditions';
 import Connecting from './Banking/Connecting';
 import Bank from './Banking/Bank';
+import '../utilities/scale.js';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,7 +22,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="main">
+      // <div id="main">
       <Router>
         {/* {console.log(this.props.user)} */}
         <Route path="/" render={routerProps => <SetLogin {...routerProps} setLogin={this.props.setLogin}/>}/>
@@ -37,7 +38,7 @@ class App extends React.Component {
           <Route path="/register" render={routerProps => <Register {...routerProps} register={this.props.register}/>}/>
         </Switch>
       </Router>
-      </div>
+      // </div>
     )
   }
 }

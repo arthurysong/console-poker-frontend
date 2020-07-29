@@ -6,6 +6,7 @@ import BackButton from '../BackButton';
 import RoomHeader from './RoomHeader';
 import { useSelector, useDispatch } from 'react-redux';
 import { subscribeRoom, unsubscribeRoom } from '../../redux/roomActions';
+import { doResize } from '../../utilities/scale';
 
 function Room({ match, history }) {
     const dispatch = useDispatch();
@@ -14,18 +15,21 @@ function Room({ match, history }) {
 
     useEffect(() => {
         dispatch(subscribeRoom(match.params.id));
+        doResize(); // initial resizing of table
         return () => {
             dispatch(unsubscribeRoom(match.params.id));
         }
     }, [])
 
     return(
-        <div>
-            <BackButton history={history} />
-            <Menu user={user}/>
-            <RoomHeader room={room}/>
-            {user && room && <Game gameId={room.game.id}/>}
-            <Chatbox />
+        <div id="wallpaper">
+            <div id="table">
+                <BackButton history={history} />
+                <Menu user={user}/>
+                <RoomHeader room={room}/>
+                {user && room && <Game gameId={room.game.id}/>}
+                <Chatbox />
+            </div>
         </div>
     )
 }
