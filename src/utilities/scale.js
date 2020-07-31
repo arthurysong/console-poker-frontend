@@ -4,7 +4,7 @@ var $window = $(window);
 $window.resize(doResize);
 
 export function doResize(event, ui) {
-  var scale, origin;
+  var scale;
   var $el = $("#table");
   var elHeight = $el.height();
   var elWidth = $el.width();
@@ -17,9 +17,9 @@ export function doResize(event, ui) {
   $el.css("transform", "translate(-50%, -50%) " + "scale(" + scale + ")");
 }
 
-var starterData = { 
-  size: {
-    width: $window.width(),
-    height: $window.height()
-  }
-}
+// var starterData = { 
+//   size: {
+//     width: $window.width(),
+//     height: $window.height()
+//   }
+// }

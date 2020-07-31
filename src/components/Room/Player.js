@@ -62,6 +62,7 @@ function Player(props) {
     const renderPlayer = () => {
         // players should be rendered even if no round?
         // if (round) {
+        if (props.user) {
             return (
                 // <div className="board_user">
                 <div className={(round && round.turn && props.user.id === round.turn.id) ? 'board_user turn' : 'board_user' }>
@@ -87,7 +88,9 @@ function Player(props) {
 
                 </div>
             )
-        // }
+        } else {
+            return ""
+        }
     }
 
     return (

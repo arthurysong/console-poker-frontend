@@ -104,8 +104,8 @@ switch (action.type) {
         }
     case 'SET_MOVE':
         // const user = state.game.active_round.ordered_users.find(u => u.id === this.props.user.id);
-        const ordered_users = state.game.ordered_users
-        ordered_users[action.turn_index] = action.turn_user
+        const seats_as_users = state.game.seats_as_users
+        seats_as_users[action.turn_index] = action.turn_user
         // console.log('in reducer set_move');
         // console.log({
         //     ...state,
@@ -118,7 +118,7 @@ switch (action.type) {
             ...state,
             game: {
                 ...state.game,
-                ordered_users: ordered_users
+                seats_as_users: seats_as_users
             }
         }
     // case 'SET_GAME_PLAYERS':

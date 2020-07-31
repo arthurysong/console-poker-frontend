@@ -3,11 +3,11 @@ import Player from './Player';
 import { useSelector } from 'react-redux';
 
 function Players ({ images }) {
-    const ordered_users = useSelector(state => state.game.ordered_users);
+    const seats = useSelector(state => state.game.seats_as_users);
 
     const renderPlayers = () => {
-        if (ordered_users) {
-            return ordered_users.map((user,index) => 
+        if (seats) {
+            return seats.map((user,index) => 
                 <Player 
                     key={index} 
                     user={user} 
