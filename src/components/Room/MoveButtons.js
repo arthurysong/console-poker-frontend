@@ -1,7 +1,12 @@
 import React from 'react';
 import { postMoveWithToken } from '../../utilities/fetchWithToken';
 
-function MoveButtons({ raiseMenu, setRaiseMenu, round, user }) {
+function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, round, user }) {
+    const toggleRaiseMenu = () => {
+        setRaiseMenu(!raiseMenu);
+        setRaise(round.highest_bet_for_phase + round.big_blind); // minimum raise has to be set when raiseMenu is toggled on.
+    }
+
     const renderMoveButton = (move, index) => {
         switch (move) {
             case 'Fold':
@@ -9,7 +14,7 @@ function MoveButtons({ raiseMenu, setRaiseMenu, round, user }) {
             case 'Check':
                 return (<div key={index} className="move_button"><button className='nes-btn is-success big_btn' onClick={() => postMoveWithToken({ command: 'check' }, user.id)}>{move}</button></div>)
             case 'Raise':
-                return (<div key={index} className="move_button"><button onClick={() => setRaiseMenu(!raiseMenu)} className='nes-btn is-success big_btn'>{move}</button></div>)
+                return (<div key={index} className="move_button"><button onClick={toggleRaiseMenu} className='nes-btn is-success big_btn'>{move}</button></div>)
             case 'Call':
                 return (<div key={index} className="move_button"><button className='nes-btn is-success big_btn' onClick={() => postMoveWithToken({ command: 'call' }, user.id)}>{move}</button></div>)
             case 'All In':

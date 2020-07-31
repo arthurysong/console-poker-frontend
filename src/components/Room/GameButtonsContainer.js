@@ -5,13 +5,14 @@ import MoveButtons from './MoveButtons';
 
 function GameButtonsContainer({ round, user}) {
     const [raiseMenu, setRaiseMenu] = useState(false);
+    const [raise, setRaise] = useState(0);
 
     if (round && user) { 
         return(
             <div id="game_buttons">
                 <NewRoundButton round={round}/>
-                <MoveButtons raiseMenu={raiseMenu} setRaiseMenu={setRaiseMenu} round={round} user={user}/>
-                <RaiseMenu toggleGameButtons={() => setRaiseMenu(!raiseMenu)} raiseMenu={raiseMenu}/>
+                <MoveButtons setRaise={setRaise} raiseMenu={raiseMenu} setRaiseMenu={setRaiseMenu} round={round} user={user}/>
+                <RaiseMenu raise={raise} setRaise={setRaise} toggleGameButtons={() => setRaiseMenu(!raiseMenu)} raiseMenu={raiseMenu}/>
             </div>
         )
     } 

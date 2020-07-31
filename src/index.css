@@ -42,6 +42,7 @@ input[type="password"]{
 }
 
 #table {
+    padding: 10px 10px;
     width: 1280px;
     height: 720px;
     text-align: center;
@@ -51,6 +52,22 @@ input[type="password"]{
     left: 50%;
     transform: translate(-50%, -50%);
     transform-origin: center center;
+}
+
+/* #raise { */
+    /* color: white; */
+/* } */
+
+#raise_slider {
+    color: white;
+    display: inline-block;
+    width: 400px;
+}
+
+.rc-slider{
+    display: inline-block;
+    width: 75% !important;
+    margin: 0 15px;
 }
 
 #room_info{
