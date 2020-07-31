@@ -28,7 +28,7 @@ function Chatbox() {
     const changeHandler = event => setMessage(event.target.value);
     const submitHandler = event => {
         event.preventDefault();
-        console.log('send message');
+        // console.log('send message');
         dispatch(sendMessage(message));
         setMessage("");
     }
