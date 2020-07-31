@@ -42,7 +42,7 @@ input[type="password"]{
 }
 
 #table {
-    padding: 10px 10px;
+    /* padding: 10px 10px; */
     width: 1280px;
     height: 720px;
     text-align: center;
@@ -275,19 +275,14 @@ input[type="password"]{
 }
 
 .card_rank {
-    position: absolute;
-    /* left: -50px; */
     background-color: coral;
-    padding: 3px 5px;
+    /* position: absolute; */
     color: AliceBlue;
     font-size: 12px;
     border-radius: 12px;
-    left: 0px;
-    right: 0px;
-    
-    /* top: 0px; */
-    margin-left: auto;
-    margin-right: auto;
+    padding: 3px 7px;
+    left: 50%;
+    transform: translate(-50%, 0);
     box-shadow: 2px 2px rgba(0, 0, 0, .2);
 }
 
