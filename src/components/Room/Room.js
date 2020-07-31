@@ -24,11 +24,13 @@ function Room({ match, history }) {
     return(
         <div id="wallpaper">
             <div id="table">
-                <BackButton history={history} />
-                <Menu user={user}/>
-                <RoomHeader room={room}/>
-                {user && room && <Game gameId={room.game.id}/>}
-                <Chatbox />
+                <div id="padding_container">
+                    <BackButton history={history} />
+                    <Menu user={user}/>
+                    <RoomHeader room={room}/>
+                    {user && room && <Game gameId={room.game.id}/>}
+                    <Chatbox />
+                </div>
             </div>
         </div>
     )

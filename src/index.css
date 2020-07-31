@@ -54,9 +54,10 @@ input[type="password"]{
     transform-origin: center center;
 }
 
-/* #raise { */
-    /* color: white; */
-/* } */
+#padding_container {
+    /* can't add padding to the poker table itself, need to have separate padding_container */
+    padding: 20px;
+}
 
 #raise_slider {
     color: white;
@@ -73,8 +74,11 @@ input[type="password"]{
 #room_info{
     text-align: right;
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 5px;
+    right: 20px; /*same as paddding_container padding */
+    /* color: hsl(240, 100%, 25%); */
+    color: dimgrey;
+    /* color: grey; */
 }
 
 #chatbox_container {
@@ -105,11 +109,6 @@ input[type="password"]{
 .user_message {
     word-break: break-all;
 }
-
-/* 
-.nes-balloon.tight-balloon {
-    padding: 10px;
-} */
 
 #textarea_field {
     margin-bottom: 10px;
@@ -234,41 +233,14 @@ input[type="password"]{
     color: black;
 }
 
-/* #poker_table {
-    
-
-    height: 552px;
-    width: 900px;
-    /* margin: 0 auto; */
-    /* background-image: url(./pictures/poker-table-resized.png);     */
-    /* image-rendering: pixelated; */
-    /* background-repeat: no-repeat; */
-/* } */ 
-
-/* #board {
-    position: relative;
-}
-
-#pot {
-    position: absolute;
-    top: -200px;
-} */
-
 #leave_button {
     position: absolute;
-    /* bottom: -25px; */
-    /* position: relative; */
-    /* bottom: -20px; */
 }
 
 #room_menu {
     position: absolute;
     top: 100px;
 }
-/* #lobby {
-    position: absolute;
-    right: -200px;
-} */
 
 .chips {
     color: #006400;
@@ -276,7 +248,8 @@ input[type="password"]{
 
 .card_rank {
     background-color: coral;
-    /* position: absolute; */
+    position: absolute;
+    white-space: nowrap; /* keeps it to one line */
     color: AliceBlue;
     font-size: 12px;
     border-radius: 12px;
