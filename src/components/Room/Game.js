@@ -5,13 +5,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { subscribeGame, unsubscribeGame, resetUser } from '../../redux/gameActions';
 import { setChips } from '../../redux/dispatchActions';
 
-function Game({ gameId }) {
+function Game({ gameId, user }) {
     const dispatch = useDispatch();
     const game = useSelector(state => state.game);
-    const user = useSelector(state => state.user);
 
     useEffect(() => {
-        dispatch(subscribeGame(user.id, gameId))
+        console.log(gameId);
+        console.log('user', user.id)
+        // useDispatch()(subscribeGame(user.id, gameId))
+        dispatch(subscribeGame(user.id, gameId));
+        // dispatch(subscribeGame(user.id, gameId));
+        // dispatch(subscribeGame(user.id, gameId))
+        console.log('i should be subscribing');
         return () => {
             dispatch(unsubscribeGame(gameId));
             dispatch(resetUser());
@@ -28,6 +33,8 @@ function Game({ gameId }) {
 
     return (
         <>
+            {console.log(gameId)}
+            {console.log(game)}
             <GameBoard />
             <GameButtonsContainer round={game.active_round} user={user} />
         </>

@@ -25,10 +25,11 @@ function Room({ match, history }) {
         <div id="wallpaper">
             <div id="table">
                 <div id="padding_container">
+                    {console.log(room)}
                     <BackButton history={history} />
                     <Menu user={user}/>
                     <RoomHeader room={room}/>
-                    {user && room && <Game gameId={room.game.id}/>}
+                    {user && room && <Game gameId={room.game.id} user={user}/>}
                     <Chatbox />
                 </div>
             </div>

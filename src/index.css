@@ -282,40 +282,13 @@ input[type="password"]{
     margin-right: auto;
     padding: 10px 12px;
     border-radius: 20px;
-    /* right: 0; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
     white-space: nowrap;
 }
 
 .board_user_chips {
     font-size: 12px;
-    /* color: #006400; */
     color: white;
 }
-
-
-/* #phase {
-    font-size: 18px;
-    padding: 8px;
-    text-align: center;
-    /* margin: 8px auto */
-    
-/* } */ 
-/* #board { */
-    /* text-align: center; */
-    /* position: relative; */
-    /* top: 100px; */
-/* } */
-
-/* #community_and_players { */
-    /* position: relative; */
-    /* top: 80px; */
-/* } */
-
-/* .user_item { */
-    /* display: inline; */
-/* } */
 
 .room_li {
     padding: 8px;
@@ -326,7 +299,6 @@ input[type="password"]{
     margin: auto;
 }
 
-
 .roomli_container{
     text-align: center;
     width: 250px;
@@ -334,7 +306,6 @@ input[type="password"]{
     padding: 8px !important;
     margin: 14px 14px !important;
 }
-
 
 .lock_img {
     width: 18px;
@@ -354,10 +325,6 @@ input[type="password"]{
     margin: auto;
     text-align: justify;
 }
-
-/* #checkout_form .label {
-    font-size: 10px;
-} */
 
 .back_button {
     position: fixed;
@@ -394,3 +361,19 @@ input[type="password"]{
 #withdraw_statement {
     margin-top: 8px;
 }
+
+/* Main Component styling */
+#main_header {
+    background-color: #48D1CC;
+    color: white;
+    padding: 15px;
+}
+
+#main_header span:first-child{
+    font-size: 48px;
+}
+
+#main_header span:nth-child(2){
+    float: right;
+}
+

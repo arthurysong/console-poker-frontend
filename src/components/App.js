@@ -1,6 +1,6 @@
 import React from 'react';
 import SetLogin from './SetLogin';
-import RoomsList from './RoomsList/RoomsList';
+import MainContainer from './RoomsList/MainContainer';
 import NewRoomForm from './RoomsList/NewRoomForm';
 import Room from './Room/Room';
 import "nes.css/css/nes.min.css";
@@ -34,7 +34,7 @@ class App extends React.Component {
           <Route path="/connect/oauth" render={routerProps => <Connecting {...routerProps}/>}/>
           <Route path="/rooms/new" render={routerProps => <NewRoomForm {...routerProps} createRoom={this.props.createRoom}/>}/>
           <Route path={`/rooms/:id`} render={routerProps => <Room {...routerProps}/>}/>
-          <Route path="/rooms" render={routerProps => <RoomsList {...routerProps}/>}/>
+          <Route path="/rooms" render={routerProps => <MainContainer {...routerProps}/>}/>
           <Route path="/register" render={routerProps => <Register {...routerProps} register={this.props.register}/>}/>
         </Switch>
       </Router>
