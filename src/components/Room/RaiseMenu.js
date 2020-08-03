@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import Slider, { Range } from 'rc-slider';
+import React from 'react';
+import Slider from 'rc-slider';
 import { useSelector } from 'react-redux';
 import 'rc-slider/assets/index.css';
 import { postMoveWithToken } from '../../utilities/fetchWithToken';
@@ -18,8 +18,6 @@ function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
         toggleGameButtons();
     }
     
-    // min should be the minimum bet which is either one big blind greater than highest_bet_for_phase
-    // or big_blind
     const decrementFunction = () => {
         const minimum = round.highest_bet_for_phase + round.big_blind
         // console.log(minimum);

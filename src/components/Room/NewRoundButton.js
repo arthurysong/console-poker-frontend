@@ -6,6 +6,7 @@ function NewRoundButton({ round }) {
     const game = useSelector(state => state.game);
 
     if (!round || !round.is_playing) {
+        // console.log('round is null');
         return (
             <button 
                 className={`nes-btn ${game.startable ? 'is-primary' : 'is-disabled'}`} 

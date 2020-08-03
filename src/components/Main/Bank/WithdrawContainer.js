@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ConnectBank from './ConnectBank';
 import CurrencyInput from 'react-currency-input';
-import { makeWithdrawal, clearSuccess, clearErrors } from '../../redux/dispatchActions';
-import Errors from '../Errors';
+import { makeWithdrawal, clearSuccess, clearErrors } from '../../../redux/dispatchActions';
+import Errors from '../../Errors';
 
 class WithdrawContainer extends React.Component{
     state = {

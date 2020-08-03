@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import Players from './Players';
 import pot from '../../pictures/pot.png';
 import SitButton from './SitButton';
+import './GameBoard.css';
 
-//images are imported here, and sent to players
 const importAll = r => {
     let images = {};
     r.keys().map((item) => { return images[item.replace('./', '')] = r(item); });
@@ -17,13 +17,13 @@ function GameBoard(props){
     const round = useSelector(state => state.game.active_round);
 
     return (
-        <div id="community_and_players">
-            <div id="community_cards">
+        <div className="gameBoard">
+            <div className="gameBoard__communityCards">
                 {round && round.access_community_cards !== "" && round.access_community_cards.split(" ").map((c, index) => 
                     <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>)}
             </div>
-            <div id="pot">
-                <img id="pot_image" width="50px" alt='pot-icon' src={pot}/>
+            <div className="gameBoard__pot">
+                <img width="50px" alt='pot-icon' src={pot}/>
                 {(round && round.pot > 0 ? round.pot : 0)}
             </div>  
             <Players images={images} game={props.game}/>

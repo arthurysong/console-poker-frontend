@@ -1,0 +1,13 @@
+.mainHeader {
+    background-color: #48D1CC;
+    color: white;
+    padding: 15px;
+}
+
+.mainHeader span:first-child{
+    font-size: 48px;
+}
+
+.mainHeader span:nth-child(2){
+    float: right;
+}

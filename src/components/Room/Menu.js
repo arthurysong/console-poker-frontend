@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { leaveTable } from '../../redux/gameActions';
+import './Menu.css';
 
 function Menu ({ user }) {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ function Menu ({ user }) {
     }
 
     return(
-        <div id="room_menu">
+        <div className="menu">
             {renderLeave()}
         </div>
     )

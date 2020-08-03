@@ -120,6 +120,8 @@ export default function cableMiddleware() {
           case 'user_leave':
             console.log('play sit sound');
             playSit();
+            dispatch({ type: 'SET_GAME', game: result.game });
+            break;
           case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
             break;

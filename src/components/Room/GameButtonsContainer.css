@@ -1,0 +1,7 @@
+.gameButtonsContainer {
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin: 20px;
+}

@@ -1,3 +1,7 @@
+* {
+    margin: 0;
+}
+
 html {
     height: 100%;
 }
@@ -162,55 +166,27 @@ input[type="password"]{
     right: -2px !important;
 }
 
-#community_and_players {
-    position: relative;
-    top: 180px;
-}
 
-#pot {
-    position: relative;
-    color: white;
-    background: rgba(0,0,0, .4);
-    padding: 10px 20px;
-    font-size: 30px;
-    border-radius: 12px;
-    display: inline-block;
-    margin: auto;
 
-}
 
-#pot_image {
-    position: absolute;
-    bottom: 5px;
-    left: -30px;
-}
 
-#community_cards {
-    height: 55.7px;
-}
+
+
+
 
 #players_container {
     position: relative;
     margin-top: 80px;
 }
 
-#game_buttons{
-    text-align: center;
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    margin: 20px;
-}
+
 
 .big_btn {
     width: 160px;
     height: 110px;
 }
 
-.move_button {
-    display: inline-block;
-    margin: 0px 5px;
-}
+
 
 #raise_input {
     width: 150px;
@@ -245,10 +221,7 @@ input[type="password"]{
     position: absolute;
 }
 
-#room_menu {
-    position: absolute;
-    top: 100px;
-}
+
 
 .chips {
     color: #006400;
@@ -299,13 +272,13 @@ input[type="password"]{
     margin: auto;
 }
 
-.roomli_container{
+/* .roomli_container{
     text-align: center;
     width: 250px;
     display: inline-block;
     padding: 8px !important;
     margin: 14px 14px !important;
-}
+} */
 
 .lock_img {
     width: 18px;
@@ -363,17 +336,11 @@ input[type="password"]{
 }
 
 /* Main Component styling */
-#main_header {
-    background-color: #48D1CC;
-    color: white;
-    padding: 15px;
-}
 
-#main_header span:first-child{
-    font-size: 48px;
-}
 
-#main_header span:nth-child(2){
-    float: right;
-}
 
+
+#main_rooms_list {
+    display: inline-block;
+    width: 60%;
+}

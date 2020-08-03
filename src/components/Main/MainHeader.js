@@ -1,13 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from '../../redux/dispatchActions';
+import { useHistory } from 'react-router-dom';
+import './MainHeader.css';
 
-function MainHeader(history) {
+function MainHeader() {
     const user = useSelector(state => state.user);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     return (
-        <div id="main_header">
+        <div className="mainHeader">
             <span >Console-Poker</span>
             
             <span>{user && user.username}&nbsp;

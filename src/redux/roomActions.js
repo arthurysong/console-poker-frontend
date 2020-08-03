@@ -1,12 +1,11 @@
-import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken';
+import { postWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
 export function subscribeRoom(roomId) {
-    console.log('hello, this is in subscribe room');
+    // console.log('hello, this is in subscribe room');
     return {
       channel: 'RoomChannel',
       room: `${roomId}`
-    //   received: NEW_MESSAGE,
     }
   }
   

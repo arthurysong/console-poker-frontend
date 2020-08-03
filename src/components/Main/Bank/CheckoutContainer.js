@@ -2,7 +2,7 @@ import React from 'react';
 import CheckoutForm from './CheckoutForm'
 import CurrencyInput from 'react-currency-input';
 import { connect } from 'react-redux';
-import { addChips, fetchChips, unsetChips  } from '../../redux/dispatchActions';
+import { addChips, fetchChips, unsetChips  } from '../../../redux/dispatchActions';
 
 class CheckoutContainer extends React.Component{
     state = {

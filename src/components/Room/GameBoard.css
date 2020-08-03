@@ -1,0 +1,25 @@
+.gameBoard {
+    position: relative;
+    top: 180px;
+}
+
+.gameBoard__communityCards {
+    height: 55.7px;
+}
+
+.gameBoard__pot {
+    position: relative;
+    color: white;
+    background: rgba(0,0,0, .4);
+    padding: 10px 20px;
+    font-size: 30px;
+    border-radius: 12px;
+    display: inline-block;
+    margin: auto;
+}
+
+.gameBoard__pot > img {
+    position: absolute;
+    bottom: 5px;
+    left: -30px;
+}

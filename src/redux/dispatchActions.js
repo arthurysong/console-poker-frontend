@@ -66,7 +66,7 @@ export const loginUser = (state, history) => {
 export const setLogin = history => {
     return dispatch => {
         const token = localStorage.getItem("token");
-        console.log('in setlogin');
+        // console.log('in setlogin');
         if (token) {
             dispatch({type: 'AUTH_REQUEST'});
             fetch(`${BASE_URL}/set_login`, {

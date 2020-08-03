@@ -1,6 +1,6 @@
 import React from 'react';
 // import queryString from 'query-string'
-import { connectAccount } from '../../redux/dispatchActions';
+import { connectAccount } from '../../../redux/dispatchActions'
 import { connect } from 'react-redux';
 
 class Connecting extends React.Component {

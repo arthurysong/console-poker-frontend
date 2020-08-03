@@ -14,12 +14,5 @@ export function doResize(event, ui) {
     $window.height() / elHeight
   );
   
-  $el.css("transform", "translate(-50%, -50%) " + "scale(" + scale + ")");
+  $el.css("transform", "translate(-50%, -50%) scale(" + scale + ")");
 }
-
-// var starterData = { 
-//   size: {
-//     width: $window.width(),
-//     height: $window.height()
-//   }
-// }

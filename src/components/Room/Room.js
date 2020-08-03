@@ -15,17 +15,17 @@ function Room({ match, history }) {
 
     useEffect(() => {
         dispatch(subscribeRoom(match.params.id));
-        doResize(); // initial resizing of table
+        doResize(); // Initial resize of the div
         return () => {
             dispatch(unsubscribeRoom(match.params.id));
         }
-    }, [])
+    }, [dispatch])
 
     return(
         <div id="wallpaper">
             <div id="table">
                 <div id="padding_container">
-                    {console.log(room)}
+                    {/* {console.log(room)} */}
                     <BackButton history={history} />
                     <Menu user={user}/>
                     <RoomHeader room={room}/>

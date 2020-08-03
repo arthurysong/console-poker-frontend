@@ -15,6 +15,7 @@ class Bank extends React.Component {
     }
 
     render (){
+        // {console.log('ALLO??')}
         return (
             <div>
                 <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>

@@ -10,18 +10,13 @@ function Game({ gameId, user }) {
     const game = useSelector(state => state.game);
 
     useEffect(() => {
-        console.log(gameId);
-        console.log('user', user.id)
-        // useDispatch()(subscribeGame(user.id, gameId))
         dispatch(subscribeGame(user.id, gameId));
-        // dispatch(subscribeGame(user.id, gameId));
-        // dispatch(subscribeGame(user.id, gameId))
-        console.log('i should be subscribing');
         return () => {
             dispatch(unsubscribeGame(gameId));
             dispatch(resetUser());
             updateChips();
         }
+    // eslint-disable-next-line
     }, [])
 
     const updateChips = () => {
@@ -33,8 +28,6 @@ function Game({ gameId, user }) {
 
     return (
         <>
-            {console.log(gameId)}
-            {console.log(game)}
             <GameBoard />
             <GameButtonsContainer round={game.active_round} user={user} />
         </>
