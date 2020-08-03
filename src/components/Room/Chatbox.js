@@ -26,11 +26,13 @@ function Chatbox() {
 
     return (
         <div className="chatbox">
-            
             <div className="chatbox__messages" id="chatbox__messages">
                 <ul>
+                    <span className="chatbox__defaultMessage">
+                        <span className="chatbox__consolePoker">Console-Poker:</span> I invite you to <strong><u>follow us on Twitter.</u></strong> I will gladly receive your feedback there!
+                    </span>
+                    
                     {messages?.map((m, index) => (
-                    // <li key={index}><span style={{color: `${hashStringToColor(m.username, colorHash)}`}}>{m.username}:</span> {m.payload}</li>))}
                     <li key={index}><span className="chatbox__username">{m.username}:</span> {m.payload}</li>))}
                 </ul>
             </div>

@@ -14,10 +14,18 @@
     overflow-wrap: break-word;
 }
 
+.chatbox__defaultMessage {
+    color: #899696;
+}
+
 .chatbox__messages li {
     color: #899696;
 }
 
 .chatbox__username {
+    color: #696969;
+}
+
+.chatbox__consolePoker {
     color: #696969;
 }

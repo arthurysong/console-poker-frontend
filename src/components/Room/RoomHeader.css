@@ -1,0 +1,11 @@
+.roomHeader {
+    text-align: right !important;
+    position: absolute;
+    top: 5px;
+    right: 20px; 
+    color: dimgrey;
+}
+
+.roomHeader__title {
+    font-size: 14px;
+}
