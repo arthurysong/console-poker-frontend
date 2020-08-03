@@ -5,7 +5,7 @@ $window.resize(doResize);
 
 export function doResize(event, ui) {
   var scale;
-  var $el = $("#table");
+  var $el = $("#room__table");
   var elHeight = $el.height();
   var elWidth = $el.width();
     

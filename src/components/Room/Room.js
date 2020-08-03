@@ -24,16 +24,15 @@ function Room({ match, history }) {
     }, [dispatch])
 
     return(
-        <div id="wallpaper">
-            <div id="table">
-                <div id="padding_container">
-                    {/* {console.log(room)} */}
-                    <BackButton history={history} />
+        <div className="room">
+            <div className="room__table" id="room__table">
+                <div className="room__paddingContainer">
+                    {/* <BackButton history={history} /> */}
                     <Menu user={user}/>
                     <RoomHeader room={room}/>
                     {user && room && <Game gameId={room.game.id} user={user}/>}
                     {/* <ChatAndSupportContainer /> */}
-                    <div className="table__bottomLeft">
+                    <div className="room__bottomLeft">
                         <SupportMessage />
                         <Chatbox />
                     </div>

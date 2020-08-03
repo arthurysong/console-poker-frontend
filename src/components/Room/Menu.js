@@ -1,18 +1,30 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { leaveTable } from '../../redux/gameActions';
+import { useHistory } from 'react-router-dom';
+import MenuIcon from '@material-ui/icons/Menu';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import './Menu.css';
 
 function Menu ({ user }) {
     const dispatch = useDispatch();
-
-    const renderLeave = () => {
-        if (user && user.game_id) return <button className="nes-btn is-primary" onClick={() => dispatch(leaveTable(user.game_id))}>Leave Seat</button>
-    }
+    const history = useHistory();
 
     return(
         <div className="menu">
-            {renderLeave()}
+            <div className="menu__leave" onClick={() => history.push('/main')}>
+                <ExitToAppIcon fontSize="large"/>
+                <span>Leave Room</span>
+            </div>
+            <div className="menu__options">
+                <MenuIcon fontSize="large"/>
+                <span>Options</span>
+            </div >
+                {user && user.game_id && <div className="menu__leaveSeat" onClick={() => dispatch(leaveTable(user.game_id))}>
+                <DirectionsWalkIcon fontSize="large" />
+                <span>Leave Seat</span>
+            </div>}
         </div>
     )
 }

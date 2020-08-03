@@ -1,6 +1,27 @@
+.room {
+    background-image: url('../../pictures/wallpaper.jpg');
+    height: 100%;
+    position: relative;
+}
 
+.room__table {
+    width: 1280px;
+    height: 720px;
+    text-align: center;
+    background-image: url('../../pictures/poker-background.png');
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+}
 
-.table__bottomLeft {
+.room__paddingContainer {
+    /* can't add padding to the poker table itself, need to have separate padding_container */
+    padding: 20px;
+}
+
+.room__bottomLeft {
     position: absolute;
     bottom: 20px;
     text-align: justify;
