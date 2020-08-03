@@ -23,3 +23,10 @@
     bottom: 5px;
     left: -30px;
 }
+
+.gameBoard__players {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-top: 80px;
+}

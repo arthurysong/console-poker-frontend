@@ -8,7 +8,7 @@ function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
     const round = useSelector(state => state.game.active_round);
     const user = useSelector(state => state.user);
     const onSliderChange = raise => {
-        console.log(raise);
+        // console.log(raise);
         setRaise(raise);
     }
 
@@ -45,11 +45,9 @@ function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
         }
     }
 
-    return (
-        <>
-            {buttons()}
-        </>
-    )
+    return <div>
+        {buttons()}
+    </div>
 }
 
 export default RaiseMenu;

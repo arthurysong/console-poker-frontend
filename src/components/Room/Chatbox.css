@@ -1,0 +1,23 @@
+.chatbox {
+    /* position: absolute;
+    bottom: 20px; */
+    width: 450px;
+    background-color: hsla(0, 0%, 41%, 0.4);
+}
+
+.chatbox__messages {
+    padding: 0 5px;
+    height: 150px;
+    width: 100%;
+    overflow: auto;
+    text-align: justify;
+    overflow-wrap: break-word;
+}
+
+.chatbox__messages li {
+    color: #899696;
+}
+
+.chatbox__username {
+    color: #696969;
+}

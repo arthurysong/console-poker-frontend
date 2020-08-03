@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Players from './Players';
+import Player from './Player';
 import pot from '../../pictures/pot.png';
-import SitButton from './SitButton';
 import './GameBoard.css';
 
 const importAll = r => {
@@ -13,8 +12,9 @@ const importAll = r => {
 
 const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg)$/));
 
-function GameBoard(props){
+function GameBoard(){
     const round = useSelector(state => state.game.active_round);
+    const seats = useSelector(state => state.game.seats_as_users);
 
     return (
         <div className="gameBoard">
@@ -26,8 +26,9 @@ function GameBoard(props){
                 <img width="50px" alt='pot-icon' src={pot}/>
                 {(round && round.pot > 0 ? round.pot : 0)}
             </div>  
-            <Players images={images} game={props.game}/>
-            <SitButton />
+            <div className="gameBoard__players">
+                {seats?.map((user,index) => <Player key={index} user={user} images={images}/>)}
+            </div>
         </div>
     )
 }

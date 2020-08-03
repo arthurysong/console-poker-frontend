@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { hashStringToColor } from '../../utilities/colorHash';
 import { useSelector } from 'react-redux';
 import { sendMessage } from '../../redux/roomActions';
+import './Chatbox.css';
 
 function Chatbox() {
     const messages = useSelector(state => state.messages);
@@ -10,18 +11,8 @@ function Chatbox() {
     const [message, setMessage] = useState("");
     const dispatch = useDispatch();
 
-    const renderMessages = () => {
-        if (messages) {
-            return (
-                messages.map((m, index) => (
-                    <li key={index}><span style={{color: `${hashStringToColor(m.username, colorHash)}`}}>{m.username}:</span> {m.payload}</li>
-                ))
-            )
-        }
-    }
-
     useEffect(() => {
-        const scrollable = document.getElementById('messages_container');
+        const scrollable = document.getElementById('chatbox__messages');
         scrollable.scrollTop = scrollable.scrollHeight;
     })
 
@@ -34,13 +25,15 @@ function Chatbox() {
     }
 
     return (
-        <div id="chatbox_container">
-            <div id="messages_container">
+        <div className="chatbox">
+            
+            <div className="chatbox__messages" id="chatbox__messages">
                 <ul>
-                {renderMessages()}
+                    {messages?.map((m, index) => (
+                    // <li key={index}><span style={{color: `${hashStringToColor(m.username, colorHash)}`}}>{m.username}:</span> {m.payload}</li>))}
+                    <li key={index}><span className="chatbox__username">{m.username}:</span> {m.payload}</li>))}
                 </ul>
             </div>
-
             <form onSubmit={submitHandler}>
                 <input type="text" className="nes-input" onChange={changeHandler} value={message}/>
                 <button className="nes-btn smaller-btn hide" type="submit" value="send">Send</button>

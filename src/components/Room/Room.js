@@ -4,9 +4,11 @@ import Game from './Game';
 import Menu from './Menu';
 import BackButton from '../BackButton';
 import RoomHeader from './RoomHeader';
+import SupportMessage from './SupportMessage';
 import { useSelector, useDispatch } from 'react-redux';
 import { subscribeRoom, unsubscribeRoom } from '../../redux/roomActions';
 import { doResize } from '../../utilities/scale';
+import './Room.css';
 
 function Room({ match, history }) {
     const dispatch = useDispatch();
@@ -30,7 +32,11 @@ function Room({ match, history }) {
                     <Menu user={user}/>
                     <RoomHeader room={room}/>
                     {user && room && <Game gameId={room.game.id} user={user}/>}
-                    <Chatbox />
+                    {/* <ChatAndSupportContainer /> */}
+                    <div className="table__bottomLeft">
+                        <SupportMessage />
+                        <Chatbox />
+                    </div>
                 </div>
             </div>
         </div>
