@@ -16,7 +16,7 @@ class WithdrawContainer extends React.Component{
     }
 
     goToDeposit = () => {
-        this.props.history.replace(`/users/${this.props.user.id}/bank/deposit`)
+        this.props.history.replace(`/main/users/${this.props.user.id}/deposit`)
     }
 
     handleAmountChange = event => {

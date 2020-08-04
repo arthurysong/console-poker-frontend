@@ -60,14 +60,10 @@ input[type="password"]{
     margin-bottom: 10px;
 }
 
-
-
 .cards {
     width: 50px;
     image-rendering: pixelated;
 }
-
-
 
 .pixelated {
     image-rendering: pixelated;
@@ -84,13 +80,6 @@ input[type="password"]{
     height: 110px;
 }
 
-/* #raise_input {
-    width: 150px;
-    position: relative;
-    top: 5px;
-    height: 40px;
-} */
-
 #leave_button {
     position: absolute;
 }
@@ -99,34 +88,13 @@ input[type="password"]{
     color: #006400;
 }
 
-.room_li {
-    padding: 8px;
-}
-
-#rooms_ul {
-    width: 1200px;
-    margin: auto;
-}
-
-.lock_img {
+/* .lock_img {
     width: 18px;
-}
+} */
 
 .nes-btn.smaller-btn {
     padding: 2px;
 }
-
-
-.room_li_desc{
-    font-size: 12px;
-}
-
-.checkout_form{
-    width: 500px;
-    margin: auto;
-    text-align: justify;
-}
-
 
 #login_header {
     position: relative;
@@ -135,10 +103,8 @@ input[type="password"]{
 #octocat {
     position: absolute;
     left: -120px;
-    /* right: 10px; */
-    /* top: px; */
-    
 }
+
 .user_form {
     width: 500px;
     margin: auto;
@@ -155,9 +121,4 @@ input[type="password"]{
 
 #withdraw_statement {
     margin-top: 8px;
-}
-
-#main_rooms_list {
-    display: inline-block;
-    width: 60%;
 }

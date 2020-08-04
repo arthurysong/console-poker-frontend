@@ -1,0 +1,8 @@
+.checkoutForm {
+    margin: 30px 0;
+}
+
+.checkoutForm__label {
+    font-weight: 1;
+    color: rgba(0,0,0, .6);
+}

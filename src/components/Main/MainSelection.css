@@ -1,4 +1,8 @@
 .mainSelection {
     display: inline-block;
-    width: 40%;
+    width: 65%;
+}
+
+.mainSelection__container {
+    /* padding: 24px; */
 }

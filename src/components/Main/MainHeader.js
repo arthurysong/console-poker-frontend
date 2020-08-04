@@ -11,12 +11,11 @@ function MainHeader() {
 
     return (
         <div className="mainHeader">
-            <span >Console-Poker</span>
+            <span className="mainHeader__title">Console-Poker</span>
             
-            <span>{user && user.username}&nbsp;
-                <button className="nes-btn smaller-btn" onClick={() => dispatch(logOut(history))}>
-                    Log Out
-                </button>
+            <span className="mainHeader__right">
+                <span className="mainHeader__username">{user && user.username}</span>&nbsp;
+                <button className="nes-btn smaller-btn" onClick={() => dispatch(logOut(history))}>Log Out</button>
             </span>
         </div>
     )

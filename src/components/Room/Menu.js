@@ -13,7 +13,7 @@ function Menu ({ user }) {
 
     return(
         <div className="menu">
-            <div className="menu__leave" onClick={() => history.push('/main')}>
+            <div className="menu__leave" onClick={() => history.push('/main/rooms')}>
                 <ExitToAppIcon fontSize="large"/>
                 <span>Leave Room</span>
             </div>

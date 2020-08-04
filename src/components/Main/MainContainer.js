@@ -1,18 +1,18 @@
 import React from 'react';
 import SuccessMessage from '../SuccessMessage';
-import RoomsList from './RoomsList';
 import MainHeader from './MainHeader';
 import MainSelection from './MainSelection';
+import LeaderBoard from './LeaderBoard';
 import './MainContainer.css';
 
 function MainContainer () {
     return (
         <div className="mainContainer">
-            <SuccessMessage />
             <MainHeader />
-            <div className="mainBody">
+            <SuccessMessage />
+            <div className="mainContainer__mainBody">
                 <MainSelection />
-                <RoomsList />
+                <LeaderBoard />
             </div>
         </div>
     )

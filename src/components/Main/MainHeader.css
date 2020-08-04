@@ -1,13 +1,24 @@
 .mainHeader {
+    position: relative;
     background-color: #48D1CC;
     color: white;
     padding: 15px;
+    flex: 0 1 auto;
 }
 
-.mainHeader span:first-child{
+.mainHeader__title{
     font-size: 48px;
 }
 
-.mainHeader span:nth-child(2){
-    float: right;
+.mainHeader__right{
+    /* float: right; */
+    position: absolute;
+    right: 18px;
+    font-weight: 300;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.mainHeader__username {
+    text-decoration: underline;
 }

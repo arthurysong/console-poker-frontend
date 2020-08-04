@@ -1,0 +1,9 @@
+.checkoutContainer{
+    width: 100%;
+    text-align: justify;
+    /* padding: 24px; */
+}
+
+.checkoutContainer__select {
+    margin-bottom: 20px;
+}
