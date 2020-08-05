@@ -6,7 +6,8 @@
 }
 
 .checkoutForm__amount {
-    width: 39%;
+    width: 35%;
+    margin-right: 5%;
 }
 
 .checkoutForm__fullName {
