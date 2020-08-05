@@ -18,10 +18,10 @@ window.store = store;
 
 ReactDOM.render(
   <Provider store={store}>
-    <Elements stripe={stripePromise}>
+    <Elements stripe={stripePromise} fonts={[{cssSrc: 'https://db.onlinewebfonts.com/c/1481ee4d30d9e1d35c84e09e69e14e92?family=Atari+Classic'}]}>
     {/* <Elements stripe={stripePromise} options={{fonts: fonts}}> */}
       <App />
-    </Elements>
+    </Elements >
   </Provider>,
   document.getElementById('root')
 );

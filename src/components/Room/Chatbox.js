@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { hashStringToColor } from '../../utilities/colorHash';
+// import { hashStringToColor } from '../../utilities/colorHash';
 import { useSelector } from 'react-redux';
 import { sendMessage } from '../../redux/roomActions';
 import './Chatbox.css';
 
 function Chatbox() {
     const messages = useSelector(state => state.messages);
-    const colorHash = useSelector(state => state.colorHash);
+    // const colorHash = useSelector(state => state.colorHash);
     const [message, setMessage] = useState("");
     const dispatch = useDispatch();
 

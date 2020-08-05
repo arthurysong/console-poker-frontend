@@ -3,7 +3,8 @@ import './SupportMessage.css';
 
 function SupportMessage() {
     return <div className="supportMessage">
-        Help this project! ❤️
+        {/* eslint-disable-next-line  */}
+        Help this project! <span>❤️</span>
     </div>
 }
 

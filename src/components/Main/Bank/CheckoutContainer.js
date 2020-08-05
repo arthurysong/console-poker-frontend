@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import CheckoutForm from './CheckoutForm';
 import { useHistory } from 'react-router-dom';
 import { fetchChips  } from '../../../redux/dispatchActions';
+import OptionSelect from './OptionSelect';
 import './CheckoutContainer.css';
 
 function CheckoutContainer () {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
     const user = useSelector(state => state.user);
     const chips = useSelector(state => state.chips);
@@ -18,18 +19,15 @@ function CheckoutContainer () {
 
     return(
         <div className="checkoutContainer">
-            <div className="checkoutContainer__select">
-                <button onClick={() => history.replace(`/main/users/${user.id}/withdraw`)} className='nes-btn is-primary smaller-btn'>Withdraw</button>&nbsp;
-                <button className='nes-btn is-primary smaller-btn'>Deposit</button>
-            </div>
+            <OptionSelect />
+            
 
-            <h1 className="nes-text is-success">Buy More Chips!</h1> 
+            <h1 className="checkoutContainer__header nes-text is-success">Buy More Chips!</h1> 
             <div className="checkoutContainer__user">
-                {user && <>{user.username} <span className="chips">{chips}</span> <i className="nes-icon coin is-small"></i></>}
+                {user && <><span className="checkoutContainer__username">{user.username}</span> <span className="checkoutContainer__chips">{chips}</span><i className="nes-icon coin is-small"></i></>}
             </div>
 
             <CheckoutForm />
-            <p className="nes-text is-disabled checkout_agreement">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
         </div>
     )
 }

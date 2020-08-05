@@ -1,0 +1,19 @@
+.optionSelect {
+    /* padding-top: 14px; */
+    /* padding-bottom: 8px; */
+    height: 45px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e8e8e8;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.optionSelect__option {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 14px;
+}

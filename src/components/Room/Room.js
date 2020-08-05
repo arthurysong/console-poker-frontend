@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Chatbox from './Chatbox';
 import Game from './Game';
 import Menu from './Menu';
-import BackButton from '../BackButton';
 import RoomHeader from './RoomHeader';
 import SupportMessage from './SupportMessage';
 import { useSelector, useDispatch } from 'react-redux';

@@ -1,26 +1,33 @@
 import React from 'react';
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
-// import '../../fonts/stylesheet.css';
-// import '../../CardSectionStyles.css'
+// import '../../../fonts/stylesheet.css';
 import { BASE_URL } from '../../../utilities/BASE_URL';
+import './StripeForm.css';
 
-const CARD_ELEMENT_OPTIONS = {
-    style: {
-      base: {
-        color: "#32325d",
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSmoothing: "antialiased",
-        fontSize: "16px",
-        "::placeholder": {
-          color: "#aab7c4",
-        },
+const CARD_OPTIONS = {
+  iconStyle: 'solid',
+  style: {
+    base: {
+      // iconColor: '#c4f0ff',
+      // color: '#fff',
+      width: '',
+      fontWeight: 500,
+      fontFamily: 'Atari Classic',
+      fontSize: '16px',
+      fontSmoothing: 'antialiased',
+      ':-webkit-autofill': {
+        // color: '#fce883',
       },
-      invalid: {
-        color: "#fa755a",
-        iconColor: "#fa755a",
+      '::placeholder': {
+        // color: '#87bbfd',
       },
     },
-  };
+    invalid: {
+      // iconColor: '#ffc7ee',
+      // color: '#ffc7ee',
+    },
+  },
+};
 
 const StripeForm = props => {
     const stripe = useStripe();
@@ -73,19 +80,21 @@ const StripeForm = props => {
     }
     
     return(
-        <div>
-            <form onSubmit={submitHandler}>
-              <CardElement options={CARD_ELEMENT_OPTIONS}/>
-              <br/>
-                <button
-                  className={`nes-btn ${!stripe || props.name === "" || !validateAmount(props.amount) ? 'is-disabled' : 'is-primary'}`} 
-                  // className={`nes-btn`} 
-                  type="submit" 
-                  onClick={submitHandler}
-                  value="Exchange Chips!">
-                    Exchange Chips!
-                </button>
-            </form>
+        <div className="stripeForm">
+          <form onSubmit={submitHandler}>
+            <span></span>
+            <CardElement className='nes-input stripeForm__cardElement' options={CARD_OPTIONS}/>
+            <br/>
+              <button
+                className={`nes-btn stripeForm__button ${!stripe || props.name === "" || !validateAmount(props.amount) ? 'is-disabled' : 'is-primary'}`} 
+                // className={`nes-btn`} 
+                type="submit" 
+                disabled={!stripe || props.name === "" || !validateAmount(props.amount)}  
+                onClick={submitHandler}
+                value="Exchange Chips!">
+                  Exchange Chips!
+              </button>
+          </form>
         </div>
     )
     

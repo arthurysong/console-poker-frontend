@@ -4,6 +4,7 @@ import ConnectBank from './ConnectBank';
 import CurrencyInput from 'react-currency-input';
 import { makeWithdrawal, clearSuccess, clearErrors } from '../../../redux/dispatchActions';
 import Errors from '../../Errors';
+import OptionSelect from './OptionSelect';
 
 class WithdrawContainer extends React.Component{
     state = {
@@ -79,16 +80,12 @@ class WithdrawContainer extends React.Component{
         }
     }
 
-    renderConnect = () => {
-        if (this.props.user && !this.props.user.connected) {
-            return (
-                <ConnectBank 
-                user={this.props.user} 
-                history={this.props.history} />
-            )
-        } else {
-            return (
-                <>
+    render() {
+        return(
+            <div className="checkout_form">
+                <OptionSelect />
+                {this.props.user && !this.props.user.connected && <ConnectBank user={this.props.user} history={this.props.history} />}
+                {this.props.user && this.props.user.connected && <>
                     <p>Your account has been connected is ready to make withdrawals!</p>
                     <h1 className="nes-text is-success">Withdraw Money</h1> 
                     {this.renderUser()}<br/><br/>
@@ -115,19 +112,7 @@ class WithdrawContainer extends React.Component{
                         <button className={`nes-btn ${this.disableButton(this.state.amount) ? 'is-disabled' : 'is-primary'}`}>Withdraw Money!</button>
                     </form>
                     <p id="withdraw_statement" className="checkout_agreement nes-text is-disabled">By clicking the "Withdraw Money!" button above, you are agreeing to our Terms of Service.</p>
-                </>
-            )
-        }
-    }
-
-    render() {
-        return(
-            <div className="checkout_form">
-                <button className='nes-btn is-primary smaller-btn'>Withdraw</button>&nbsp;
-                <button onClick={this.goToDeposit}className='nes-btn is-primary smaller-btn'>Deposit</button><br/><br/>
-                {/* {console.log(this.props.user)} */}
-                {this.renderConnect()}
-                
+                </>}
             </div>
         )
     }

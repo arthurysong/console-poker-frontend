@@ -31,29 +31,31 @@ function CheckoutForm() {
 
     return <div className="checkoutForm">
         <span className="checkoutForm__errors nes-text is-error">{error}</span>
-        <label> 
-            <span className="checkoutForm__label">1 USD = 10000 Chips*</span><br/>
-            <CurrencyInput 
-            className={`nes-input ${amountError ? 'is-error' : ''}`} 
-            name="amount" 
-            value={amount} 
-            onChangeEvent={handleAmountChange}
-            onBlur={validateAmount}
-            />
-        </label><br/>
-        <span className="nes-text is-error">{amountError}</span> 
-        <label>
-            <span className="checkoutForm__label">Full Name*</span><br/>
-            <input 
-            className="nes-input" 
-            placeholder="Pacman"
-            type="text" 
-            name="name" 
-            value={name} 
-            onChange={e => setName(e)}/>
-        </label><br/>
-        <label>
-            <span className="checkoutForm__label">Card Details*</span><br/>
+        <span className="nes-text is-error">{amountError}</span>
+        <div>
+            <label className="checkoutForm__amount"> 
+                <span className="checkoutForm__currencyInfo">1 USD = 10000 Chips*</span><br/>
+                <CurrencyInput 
+                className={`nes-input ${amountError ? 'is-error' : ''}`} 
+                name="amount" 
+                value={amount} 
+                onChangeEvent={handleAmountChange}
+                onBlur={validateAmount}
+                />
+            </label>
+            <label className="checkoutForm__fullName">
+                <span className="checkoutForm__labelName">Full Name*</span><br/>
+                <input 
+                className="nes-input" 
+                placeholder="Pacman"
+                type="text" 
+                name="name" 
+                value={name} 
+                onChange={e => setName(e.target.value)}/>
+            </label>
+        </div>
+        <label className="checkoutForm__label">
+            <span className="checkoutForm__labelName">Card Details*</span><br/>
             <StripeForm
                 clearMessages={() => setError('')}
                 handleErrors={e => setError(e)} 
@@ -61,6 +63,7 @@ function CheckoutForm() {
                 name={name} 
                 />
         </label>
+        <p className="nes-text is-disabled checkout_agreement">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
     </div>
 }
 
