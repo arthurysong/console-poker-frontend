@@ -1,0 +1,19 @@
+.withdrawForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+}
+
+.withdrawForm__agreement {
+    margin-top: .5rem;
+    font-size: 10px;
+}
+
+.withdrawForm__button {
+    width: 98%;
+}
+
+.withdrawForm__error {
+    font-size: 12px;
+}

@@ -17,6 +17,7 @@ function MainSelection () {
                     <Route path={`/main/users/:id/withdraw`} render={routerProps => <WithdrawContainer {...routerProps}/>}/>
                     <Route path={`/main/users/:id`} render={routerProps => <UserProfile {...routerProps}/>} />
                     <Route path={`/main/rooms`} render={routerProps => <RoomsList {...routerProps}/>} />
+                    {/* <Route path={`/main/`} */}
                 </Switch>
             </div>
         </div>

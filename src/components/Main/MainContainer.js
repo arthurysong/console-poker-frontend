@@ -1,5 +1,5 @@
 import React from 'react';
-import SuccessMessage from '../SuccessMessage';
+// import Successes from '../Successes';
 import MainHeader from './MainHeader';
 import MainSelection from './MainSelection';
 import LeaderBoard from './LeaderBoard';
@@ -9,7 +9,7 @@ function MainContainer () {
     return (
         <div className="mainContainer">
             <MainHeader />
-            <SuccessMessage />
+            {/* <Successes/> */}
             <div className="mainContainer__mainBody">
                 <MainSelection />
                 <LeaderBoard />

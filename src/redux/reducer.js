@@ -4,7 +4,7 @@ export default function resourceReducer (state = {
     isLoggedIn: false,
     user: undefined,
     errors: [],
-    successMessage: "", //for ddisplaying success message when deposit is successful.
+    successMessage: "", //for displaying success message when deposit is successful.
     room: undefined,
     rooms: [],
     messages: [],

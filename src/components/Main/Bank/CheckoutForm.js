@@ -58,7 +58,7 @@ function CheckoutForm() {
             <span className="checkoutForm__labelName">Card Details*</span><br/>
             <StripeForm
                 clearMessages={() => setError('')}
-                handleErrors={e => setError(e)} 
+                setError={e => setError(e)} 
                 amount={amount} 
                 name={name} 
                 />

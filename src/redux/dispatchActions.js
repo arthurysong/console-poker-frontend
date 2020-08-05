@@ -175,7 +175,7 @@ export const connectAccount = (params, history) => {
                 // console.log(json);
                 if (json.success){
                     dispatch({ type: 'SET_USER', user: json.user })
-                    history.replace(`/users/${json.user.id}/bank/withdraw`)
+                    history.replace(`/main/users/${json.user.id}/bank/withdraw`)
                 }
             })
     }

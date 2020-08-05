@@ -1,137 +1,37 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ConnectBank from './ConnectBank';
-import CurrencyInput from 'react-currency-input';
-import { makeWithdrawal, clearSuccess, clearErrors } from '../../../redux/dispatchActions';
+import { useHistory } from 'react-router-dom';
 import Errors from '../../Errors';
 import OptionSelect from './OptionSelect';
+import WithdrawForm from './WithdrawForm';
+import Successes from '../../Successes'
+import './WithdrawContainer.css';
 
-class WithdrawContainer extends React.Component{
-    state = {
-        amount: "",
-        amountError: ""
-    }
+function WithdrawContainer () {
+    const history = useHistory();
 
-    componentWillUnmount(){
-        this.props.clearSuccess();
-    }
+    const chips = useSelector(state => state.chips);
+    const user = useSelector(state => state.user);
 
-    goToDeposit = () => {
-        this.props.history.replace(`/main/users/${this.props.user.id}/deposit`)
-    }
-
-    handleAmountChange = event => {
-        this.setState({
-            amount: event.target.value
-        })
-        this.validateAmount();
-    }
-
-    validateAmount = () => {
-        const cents = parseFloat(this.state.amount.replace(/,/g, ''))*100
-        if (cents < 50 ) {
-            this.setState({
-                amountError: 'Amount must be at least .50'
-            })
-        } else if (cents > 99999999) {
-            this.setState({
-                amountError: 'Amount must be no more than 999,999.99'
-            })
-        } else {
-            this.setState({
-                amountError: null
-            })
-        }
-    }
-
-    disableButton = amount => {
-        const cents = parseFloat(amount.replace(/,/g, ''))*100
-        if (cents >= 50 && cents <= 99999999){
-            return false
-        } 
-        return true
-    }
-
-    renderUser = () => {
-        if (this.props.user) {
-            return (
-                <>
-                    {this.props.user.username} <span className="chips">{this.props.chips}</span> <i className="nes-icon coin is-small"></i>
-                </>
-            )
-        }
-    }
-
-    submitHandler = async (event) => {
-        event.preventDefault();
-        this.props.clearSuccess();
-        this.props.clearErrors();
-        const cents = parseFloat(this.state.amount.replace(/,/g, ''))*100
-        this.props.makeWithdrawal(cents, this.props.history);
-    }
-
-    renderSuccess = () => {
-        if (this.props.successMessage) {
-            return (
-                <span className="nes-text is-success">
-                    {this.props.successMessage}<br/>
+    return(
+        <div className="withdrawContainer">
+            <OptionSelect />
+            {user && !user.connected && <ConnectBank user={user} history={history} />}
+            {user && user.connected && <> 
+                <p className='withdrawContainer__connected'>Your account has been connected is ready to make withdrawals!</p>
+                <h1 className="withdrawContainer__header nes-text is-success">Withdraw Money</h1> 
+                <span className="withdrawContainer__user">
+                    {/* <span className="withdrawContainer__username">{user.username}</span>  */}
+                    <span className="withdrawContainer__chips">{chips}</span>
+                    <span><i className="nes-icon coin is-small"></i></span>
                 </span>
-            )
-        }
-    }
-
-    render() {
-        return(
-            <div className="checkout_form">
-                <OptionSelect />
-                {this.props.user && !this.props.user.connected && <ConnectBank user={this.props.user} history={this.props.history} />}
-                {this.props.user && this.props.user.connected && <>
-                    <p>Your account has been connected is ready to make withdrawals!</p>
-                    <h1 className="nes-text is-success">Withdraw Money</h1> 
-                    {this.renderUser()}<br/><br/>
-                    {/* {this.renderErrors()} */}
-                    <Errors />
-                    {this.renderSuccess()}
-
-                    <form onSubmit={this.submitHandler}>
-                        1 USD = 10000 Chips*<br/>
-                        <label> 
-                            {/* input must be at least .50 */}
-                            {/* amount must be no more than 999,999.99 */}
-                            {/* user must have enough chips for withdrawal */}
-                            <CurrencyInput 
-                            className={`nes-input ${this.state.amountError ? 'is-error' : ''}`} 
-                            name="amount" 
-                            value={this.state.amount} 
-                            onChangeEvent={this.handleAmountChange}
-                            onBlur={this.validateAmount}
-                            />
-                        </label><br/>
-                        <div className="nes-text is-error">{this.state.amountError}</div>
-                        <br/>
-                        <button className={`nes-btn ${this.disableButton(this.state.amount) ? 'is-disabled' : 'is-primary'}`}>Withdraw Money!</button>
-                    </form>
-                    <p id="withdraw_statement" className="checkout_agreement nes-text is-disabled">By clicking the "Withdraw Money!" button above, you are agreeing to our Terms of Service.</p>
-                </>}
-            </div>
-        )
-    }
+                <Errors />
+                <Successes />
+                <WithdrawForm chips={chips}/>
+            </>}
+        </div>
+    )
 }
 
-const mapSP = state => {
-    return {
-        user: state.user,
-        chips: state.chips,
-        successMessage: state.successMessage
-    }
-}
-
-const mapDP = dispatch => {
-    return {
-        makeWithdrawal: cents => dispatch(makeWithdrawal(cents)),
-        clearSuccess: () => dispatch(clearSuccess()),
-        clearErrors: () => dispatch(clearErrors())
-    }
-}
-
-export default connect(mapSP, mapDP)(WithdrawContainer);
+export default WithdrawContainer;
