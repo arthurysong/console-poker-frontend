@@ -49,9 +49,7 @@ function WithdrawForm({ chips }) {
 
     const disabled = () => {
         const cents = parseFloat(amount.replace(/,/g, ''))*100;
-        console.log(cents * 100 > chips);
-        if (cents > chips / 100 || amount === "" || cents < 50 || cents > 99999999) return true;
-        return false;
+        return (cents > chips / 100 || amount === "" || cents < 50 || cents > 99999999)
     }
 
     return <form className="withdrawForm" onSubmit={submitHandler}>

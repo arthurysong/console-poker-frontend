@@ -58,39 +58,29 @@ const StripeForm = ({ clearMessages, setError, amount, name }) => {
         billing_details: {
         name: name,
         },
-    }
-    });
+    }});
 
     if (result.error) {
-    // Show error to your customer (e.g., insufficient funds)
       setError(result.error.message);
     } else {
-    // The payment has been processed!
     if (result.paymentIntent.status === 'succeeded') {
       dispatch(addChips(result.paymentIntent.amount*100, user.id, history));
-        // Show a success message to your customer
-        // There's a risk of the customer closing the window before callback
-        // execution. Set up a webhook or plugin to listen for the
-        // payment_intent.succeeded event that handles any business critical
-        // post-payment actions.
-    }
-    }
+    }}
   }
     
     return(
         <div className="stripeForm">
           <form onSubmit={submitHandler}>
-            <span></span>
+            {/* <span></span> */}
             <CardElement className='stripeForm__cardElement nes-input' options={CARD_OPTIONS}/>
-            <br/>
-              <button
-                className={`stripeForm__button nes-btn ${!stripe || name === "" || !validateAmount(amount) ? 'is-disabled' : 'is-primary'}`} 
-                type="submit" 
-                disabled={!stripe || name === "" || !validateAmount(amount)}  
-                onClick={submitHandler}
-                value="Exchange Chips!">
-                  Exchange Chips!
-              </button>
+            <button
+              className={`stripeForm__button nes-btn ${!stripe || name === "" || !validateAmount(amount) ? 'is-disabled' : 'is-primary'}`} 
+              type="submit" 
+              disabled={!stripe || name === "" || !validateAmount(amount)}  
+              onClick={submitHandler}
+              value="Exchange Chips!">
+                Exchange Chips!
+            </button>
           </form>
         </div>
     )

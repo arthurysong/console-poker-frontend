@@ -6,6 +6,7 @@
 
 .withdrawContainer__connected {
     text-transform: uppercase;
+    text-align: center;
     opacity: .4;
 }
 

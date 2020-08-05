@@ -3,5 +3,7 @@
 }
 
 .stripeForm__button {
+    margin-top: 18px !important;
+    /* margin-top: 0.5rem !important; */
     width: 98% !important;
 }

@@ -2,8 +2,8 @@
     display: flex;
     padding: 0 24px;
     height: 60px;
-    /* align-items: center; */
     border-bottom: 4px solid #e8e8e8;
+    /* margin-bottom: 2px; */
 }
 
 .selectionNav__link {
@@ -15,12 +15,7 @@
     color: rgba(0, 0, 0, .4);
 }
 
-/* .selectionNav__span { */
-    /* height: 60px; */
-/* } */
-
 .selectionNav__link--active {
-    /* box-sizing: border-box; */
     border-bottom: 4px solid black;
     color: black;
     font-size: 16.5px;

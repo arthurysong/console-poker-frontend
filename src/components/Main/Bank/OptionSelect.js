@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './OptionSelect.css';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export default function OptionSelect() {
     const history = useHistory();
     const user = useSelector(state => state.user);
 
-    return <div className="optionSelect">
-        <span className="optionSelect__option" onClick={() => history.replace(`/main/users/${user.id}/withdraw`)} >Withdraw</span>&nbsp;
-        <span className="optionSelect__option" onClick={() => history.replace(`/main/users/${user.id}/deposit`)}>Deposit</span>
+    if (user) return <div className="optionSelect">
+        <Link style={{textDecoration: 'none'}} to={`/main/users/${user.id}/withdraw`}>
+            <span className={`optionSelect__option ${history.location.pathname === `/main/users/${user.id}/withdraw` ? 'optionSelect__option--active' : ''}`}>
+                Withdraw
+            </span>
+        </Link>
+        <Link style={{textDecoration: 'none'}} to={`/main/users/${user.id}/deposit`}>
+            <span className={`optionSelect__option ${history.location.pathname === `/main/users/${user.id}/deposit` ? 'optionSelect__option--active' : ''}`}>
+                Deposit
+            </span>
+        </Link>
     </div>
+    return ""
 }
