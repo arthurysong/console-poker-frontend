@@ -10,23 +10,20 @@ function RoomListItem ({ room }) {
     const history = useHistory();
 
     const clickHandler = () => {
-        // console.log('clicked');
-        // console.log(room);
-        // console.log(room.no_users);
         if (room.no_users < 8) {
-            // console.log('in if');
             room.has_password ? document.getElementById(`dialog-dark-rounded-${room.id}`).showModal() : history.push(`/rooms/${room.id}`)
         } 
     }
     
     return (
-        <div className="roomListItem --green">
+        <div onClick={clickHandler} className={`roomListItem ${room.no_users < 8 ? '--green' : '--red' }`}>
             <span className="roomListItem__name">{room.name}</span>
             
             <span className="roomListItem__right">
-                {room.has_password && <LockIcon className="roomListItem__lockIcon" />}&nbsp;
-                {room.no_users}/8&nbsp;
-                <ArrowForwardIcon className="roomListItem__button" onClick={clickHandler} />
+                {room.has_password && <LockIcon className="roomListItem__lockIcon" />}
+                <span className="roomListItem__blinds">BLINDS {room.game.big_blind/2}/{room.game.big_blind}</span>
+                <span className="roomListItem__players">PLAYERS {room.no_users}/8</span>
+                {/* <ArrowForwardIcon className="roomListItem__button" onClick={clickHandler} /> */}
             </span>
 
             <RoomAuthorization room={room}/>

@@ -1,0 +1,44 @@
+.searchBar {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    border-radius: 3px;
+    /* height: 42px; */
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    width: 70%;
+    height: 40px;
+}
+
+.searchBar__input {
+    padding: 0 12px;
+    border: none;
+    background: none;
+    flex: 1;
+}
+
+.searchBar__input:focus {
+    outline: none;
+}
+
+.searchBar__button {
+    height: 40px;
+    background-color: #48D1CC !important;
+    border-image-slice: 0 !important;
+    border-image-width: 0 !important;
+    border-image-outset: 0 !important;
+    margin: 0 !important;
+    /* border-left: 2px solid black !important; */
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+}
+
+.searchBar__button:hover {
+    background-color: #43c5c1 !important;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
+}
+
+.--focused {
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.2);
+}

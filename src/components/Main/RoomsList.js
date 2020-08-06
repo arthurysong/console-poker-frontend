@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import RoomListItem from './RoomListItem';
 import { subscribeRooms, unsubscribeRooms } from '../../redux/roomActions';
+import SearchBar from './SearchBar';
 import './RoomsList.css';
 
 function RoomsList() {
@@ -17,7 +18,10 @@ function RoomsList() {
         // <div id="main_rooms_list">
         <div className="roomsList">
 
-            <h1 className="roomsList__header">Rooms</h1>
+            <div className="roomsList__top">
+                <span className="roomsList__header">Rooms</span>
+                <SearchBar />
+            </div>
             {/* <p>Make sure you have enough chips!</p> */}
             <div className="roomsList__rooms">
                 {rooms.map((room, index) => 
