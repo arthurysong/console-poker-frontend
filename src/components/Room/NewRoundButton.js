@@ -10,6 +10,7 @@ function NewRoundButton({ round }) {
         return (
             <button 
                 className={`nes-btn ${game.startable ? 'is-primary' : 'is-disabled'}`} 
+                disabled={!game.startable}
                 onClick={() => startNewRound(game.id)}>
                 New Round
             </button>
