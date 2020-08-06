@@ -3,6 +3,7 @@
     bottom: 20px; */
     width: 450px;
     background-color: hsla(0, 0%, 41%, 0.4);
+    border-radius: 6px;
 }
 
 .chatbox__messages {
