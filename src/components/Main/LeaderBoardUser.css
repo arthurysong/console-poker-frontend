@@ -1,0 +1,50 @@
+.leaderBoardUser {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.leaderBoardUser__rank {
+    /* display: flex; */
+    /* align-items: center; */
+    background-color: #f3f3f3;
+    color: rgba(0,0,0, 0.3);
+    line-height: 60px;
+    text-align: center;
+    width: 48px;
+}
+
+.leaderBoardUser__user {
+    width: calc(100% - 48px);
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    padding: 0 14px;
+}
+
+.leaderBoardUser__username {
+    flex: 3
+}
+
+.leaderBoardUser__right {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    /* align-items: flex-end; */
+}
+
+.leaderBoardUser__winnings {
+    color: green;
+    opacity: .6;
+}
+
+.leaderBoardUser__rounds {
+    font-size: 8px;
+}

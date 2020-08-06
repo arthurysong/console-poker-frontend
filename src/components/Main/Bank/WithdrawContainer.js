@@ -19,8 +19,8 @@ function WithdrawContainer () {
             <OptionSelect />
             {user && !user.connected && <ConnectBank user={user} history={history} />}
             {user && user.connected && <> 
-                <p className='withdrawContainer__connected'>Your account has been connected is ready to make withdrawals!</p>
                 <h1 className="withdrawContainer__header nes-text is-success">Withdraw Money</h1> 
+                <p className='withdrawContainer__connected'>Your account has been connected!</p>
                 <span className="withdrawContainer__user">
                     {/* <span className="withdrawContainer__username">{user.username}</span>  */}
                     <span className="withdrawContainer__chips">{chips}</span>

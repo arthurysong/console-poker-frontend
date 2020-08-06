@@ -1,0 +1,18 @@
+.nes-input {
+    border-width: 2px !important;
+}
+
+.nes-btn {
+    border-image-slice: 1.5 !important;
+    border-image-width: 1 !important;
+    border-image-outset: 1 !important;
+}
+
+.nes-btn.smaller-btn {
+    padding: 2px;
+}
+
+.big_btn {
+    width: 160px;
+    height: 110px;
+}

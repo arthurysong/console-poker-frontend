@@ -147,7 +147,7 @@ export const addChips = (amount, userId, history) => {
                 // console.log(json)
                 dispatch({ type: 'SET_CHIPS', chips: json.chips })
                 dispatch(setSuccess("Deposit Successful!"))
-                history.replace(`/rooms`)
+                history.replace(`/main/rooms`)
             });
     }
 }

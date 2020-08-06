@@ -10,7 +10,6 @@ body {
     font-family: 'atari_classicchunky' !important;
     text-align: center;
     height: 100%;
-    /* word-break: break-all; */
 } 
 
 ul {
@@ -75,31 +74,6 @@ input[type="password"]{
     right: -2px !important;
 }
 
-.big_btn {
-    width: 160px;
-    height: 110px;
-}
-
-#leave_button {
-    position: absolute;
-}
-
-.chips {
-    color: #006400;
-}
-
-/* .lock_img {
-    width: 18px;
-} */
-
-.nes-btn.smaller-btn {
-    padding: 2px;
-}
-
-#login_header {
-    position: relative;
-}
-
 #octocat {
     position: absolute;
     left: -120px;
@@ -113,12 +87,4 @@ input[type="password"]{
 
 .user_form input{
     width: 400px;
-}
-
-.checkout_agreement {
-    font-size: 10px;
-}
-
-#withdraw_statement {
-    margin-top: 8px;
 }

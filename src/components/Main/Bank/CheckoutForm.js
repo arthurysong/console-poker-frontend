@@ -37,6 +37,7 @@ function CheckoutForm() {
                 <span className="checkoutForm__currencyInfo">1 USD = 10000 Chips*</span><br/>
                 <CurrencyInput 
                 className={`nes-input ${amountError ? 'is-error' : ''}`} 
+                // className={`checkoutForm__input ${amountError ? '--error' : ''}`} 
                 name="amount" 
                 value={amount} 
                 onChangeEvent={handleAmountChange}
@@ -47,6 +48,7 @@ function CheckoutForm() {
                 <span className="checkoutForm__labelName">Full Name*</span><br/>
                 <input 
                 className="nes-input" 
+                // className="checkoutForm__input" 
                 placeholder="Pacman"
                 type="text" 
                 name="name" 

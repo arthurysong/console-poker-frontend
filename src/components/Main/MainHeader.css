@@ -2,17 +2,20 @@
     position: relative;
     background-color: #48D1CC;
     color: white;
-    padding: 15px;
-    flex: 0 1 auto;
+    display: flex;
+    height: 100px;
 }
 
 .mainHeader__title{
+    margin-left: 24px;
     font-size: 48px;
+    line-height: 100px;
 }
 
 .mainHeader__right{
     /* float: right; */
     position: absolute;
+    top: 22px;
     right: 18px;
     font-weight: 300;
     font-size: 12px;

@@ -8,8 +8,10 @@
 .checkoutContainer__header {
     text-transform: uppercase;
     font-weight: 500;
+    font-size: 22px;
+    opacity: 0.4;
     letter-spacing: 4px;
-    opacity: 0.7;
+    margin-bottom: 48px;
 }
 
 .checkoutContainer__user {

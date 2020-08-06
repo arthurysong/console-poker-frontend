@@ -12,7 +12,7 @@ const CARD_OPTIONS = {
     base: {
       // iconColor: '#c4f0ff',
       // color: '#fff',
-      width: '',
+      // width: '',
       fontWeight: 500,
       fontFamily: 'Atari Classic',
       fontSize: '16px',
@@ -38,7 +38,7 @@ const StripeForm = ({ clearMessages, setError, amount, name }) => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const validateAmount = amount => {
+  const invalidAmount = amount => {
     const cents = parseFloat(amount.replace(/,/g, ''))*100
     return (cents < 50 || cents > 99999999)
   }
@@ -68,23 +68,25 @@ const StripeForm = ({ clearMessages, setError, amount, name }) => {
     }}
   }
     
-    return(
-        <div className="stripeForm">
-          <form onSubmit={submitHandler}>
-            {/* <span></span> */}
-            <CardElement className='stripeForm__cardElement nes-input' options={CARD_OPTIONS}/>
-            <button
-              className={`stripeForm__button nes-btn ${!stripe || name === "" || !validateAmount(amount) ? 'is-disabled' : 'is-primary'}`} 
-              type="submit" 
-              disabled={!stripe || name === "" || !validateAmount(amount)}  
-              onClick={submitHandler}
-              value="Exchange Chips!">
-                Exchange Chips!
-            </button>
-          </form>
-        </div>
-    )
-    
+
+
+  return(
+      <div className="stripeForm">
+        <form onSubmit={submitHandler}>
+          <CardElement className='stripeForm__cardElement nes-input' options={CARD_OPTIONS}/>
+
+          <p className="stripeForm__dummyData">4242 4242 4242 4242, Any future Exp, Zip-code, CVC</p>
+          <button
+            className={`stripeForm__button nes-btn ${!stripe || name === "" || invalidAmount(amount) ? 'is-disabled' : 'is-primary'}`} 
+            type="submit" 
+            disabled={!stripe || name === "" || invalidAmount(amount)}  
+            onClick={submitHandler}
+            value="Exchange Chips!">
+              Exchange Chips!
+          </button>
+        </form>
+      </div>
+  )
 }
 
 export default StripeForm;

@@ -1,7 +1,9 @@
 .withdrawForm {
     display: flex;
+    margin-top: 30px;
     flex-direction: column;
     align-items: center;
+    font-size: 12px;
     width: 400px;
 }
 
