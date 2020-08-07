@@ -19,6 +19,11 @@ function Player({ position, user, images }) {
         </div>
     } else if (user) {
         return <div className={`player ${(round?.turn && user.id === round.turn.id) ? 'player--turn' : 'player' } player--${position} ${!user ? 'player--empty' : ''}`}>
+            <div className="player__cards">
+                <PlayerCards user={user} loggedInUser={loggedInUser} images={images} round={round}/>
+                <PlayerCardRank user={user} loggedInUser={loggedInUser} round={round}/>
+            </div>
+            
             {user.dealer && 
                 <img className="player__dealerChip" alt='dealerChip' src={dealerChip}/>}
             {user.winnings > 0 && 
@@ -26,12 +31,11 @@ function Player({ position, user, images }) {
             {(user.round_bet !== 0 || user.checked) && 
                 <span className="player__roundBet">{user.checked && user.round_bet === 0 ? 'check' : user.round_bet}</span>}
 
-            <PlayerCards user={user} loggedInUser={loggedInUser} images={images} round={round}/>
+            <div>
+                <div className="player__username">{user.username}</div>
+                <div className="player__chips">{user.chips}</div>
+            </div>
 
-            <span className="player__username">{user.username}</span>
-            <span className="player__chips">{user.chips}</span>
-
-            <PlayerCardRank user={user} loggedInUser={loggedInUser} round={round}/>
         </div>
     } else if (loggedInUser.game_id && !user){
         return ""

@@ -1,11 +1,12 @@
 .playerCards {
-    display: flex;
-    justify-content: center;
-    height: 55.7px;
-    width: 130px;
+    position: relative;
+    left: -16px;
+    /* top: -12px; */
 }
 
 .playerCards__card {
-    width: 50px;
-    image-rendering: pixelated;
+    display: inline-block;
+    height: 98.96px;
+    width: 92px;
+    margin: 0 -12px;
 }

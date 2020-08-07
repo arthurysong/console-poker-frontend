@@ -4,7 +4,10 @@ import './PlayerCards.css';
 function PlayerCards({ user, loggedInUser, images, round }) {
     const renderCards = () => {
         if (user.cards === "" || !user.playing) {
-            return <span style={{height: "53.7px"}} />
+            return <>
+                <div className="playerCards__card" />
+                <div className="playerCards__card" />
+            </>
         } else {
             if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return user.cards.split(" ").map((c, index) => 

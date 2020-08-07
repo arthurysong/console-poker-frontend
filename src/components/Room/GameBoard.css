@@ -12,7 +12,8 @@
 }
 
 .gameBoard__card {
-    height: 100px;
+    /* height: 100px; */
+    width: 92px;
     margin: 0 -4px;
 }
 

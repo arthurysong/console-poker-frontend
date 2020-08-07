@@ -1,24 +1,22 @@
 .player {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     position: relative;
     background: rgba(0,0,0, .6);
     box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
-    height: 130px;
-    width: 150px;
-    padding: 10px;
-    margin: 0px 20px;
+    height: 80px;
+    width: 268px;
     border-radius: 10px;
 }
 
 .player--empty {
     color: #555;
-    background: rgba(0,0,0,0.1);
+    background: rgba(255, 255, 255, .05);
     box-shadow: none;
 }
 
 .player--empty:hover {
-    background: rgba(0,0,0,0.15);
+    background: rgba(255, 255, 255, .03);
     cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
 }
 
@@ -31,43 +29,43 @@
 .player--1 {
     position: absolute;
     top: 450px;
-    right: 500px;
+    right: 700px;
 }
 
 .player--2 {
     position: absolute;
-    top: 450px;
-    right: 700px;
+    top: 300px;
+    left: 75px;
 }
 
 .player--3 {
     position: absolute;
-    top: 200px;
-    left: 100px;
+    top: 150px;
+    left: 75px;
 }
 
 .player--4 {
     position: absolute;
     top: 0px;
-    left: 350px;
+    left: 300px;
 }
 
 .player--5 {
     position: absolute;
     top: 0px;
-    left: 550px;
+    left: 700px;
 }
 
 .player--6 {
     position: absolute;
-    top: 0px;
-    left: 750px;
+    top: 150px;
+    right: 75px;
 }
 
 .player--7 {
     position: absolute;
-    top: 200px;
-    right: 100px;
+    top: 300px;
+    right: 75px;
 }
 
 .player__roundBet {
@@ -145,14 +143,11 @@
     color: black;
 }
 
-
-
 .player__roundWinnings {
     position: absolute;
-    right: 0px;
-    bottom: -18px;
+    right: 40px;
+    bottom: 0px;
     font-size: 10px;
-    /* top: -20px; */
     color: yellow;
     background-color: #32CD32;
     border-radius: 5px;
