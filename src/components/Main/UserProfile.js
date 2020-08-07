@@ -20,7 +20,7 @@ function UserProfile () {
                 </div> 
             </div>
         </div>
-        <h3 className="userProfile__header">Season 8 Games</h3> 
+        <h3 className="userProfile__header">Latest Matches</h3> 
         <div className="userProfile__table">
             <div className="userProfile__tableHeader">
                 <span className="userProfile__date">Finished At</span>

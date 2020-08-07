@@ -4,7 +4,7 @@ import LeaderBoardUser from './LeaderBoardUser';
 
 function LeaderBoard() {
     return <div className="leaderBoard">
-        <div className="leaderBoard__header">Season 8 of 2020 Rank</div>
+        <div className="leaderBoard__header">Season 8 of 2020 Rank <i class="leaderBoard__trophy nes-icon trophy is-small"></i></div>
         <div className="leaderBoard__users">
             <LeaderBoardUser rank={1} username="Sona" winnings={2654750} rounds={560} />
             <LeaderBoardUser rank={2} username="DatGuy" winnings={2301250} rounds={542} />

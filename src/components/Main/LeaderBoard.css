@@ -4,13 +4,20 @@
 }
 
 .leaderBoard__header {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* text-align: center; */
     margin-top: 18px;
     margin-bottom: 14px;
     text-transform: uppercase;
     font-size: 18px;
     font-weight: 500;
     color: rgba(0,0,0,0.2);
+}
+
+.leaderBoard__trophy {
+    margin-left: 12px !important;
 }
 
 .leaderBoard__users {
