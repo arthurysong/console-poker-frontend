@@ -1,6 +1,8 @@
 import React from 'react';
 // import lock2 from '../../pictures/lock-icon-dark.png';
+import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { toggleLogInPage } from '../../redux/dispatchActions';
 import RoomAuthorization from './RoomAuthorization';
 import LockIcon from '@material-ui/icons/Lock';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
@@ -8,9 +10,13 @@ import './RoomListItem.css';
 
 function RoomListItem ({ room }) {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
     const clickHandler = () => {
-        if (room.no_users < 8) {
+        if (!user) {
+            dispatch(toggleLogInPage());
+        } else if (room.no_users < 8) {
             room.has_password ? document.getElementById(`dialog-dark-rounded-${room.id}`).showModal() : history.push(`/rooms/${room.id}`)
         } 
     }
