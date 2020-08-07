@@ -23,10 +23,10 @@ function App() {
   return (
     <Router>
       <Route path="/" render={routerProps => <SetLogin {...routerProps}/>}/>
+      <Route path="/login" render={routerProps => <LoginForm {...routerProps}/>}/>
       <Switch>
         <Route path="/terms" render={(routerProps) => <TermsAndConditions {...routerProps}/>}/>
         
-        {/* <Route path="/login" render={routerProps => <LoginForm {...routerProps}/>}/> */}
         <Route path="/connect/oauth" render={routerProps => <Connecting {...routerProps}/>}/>
         {/* <Route path="/rooms/new" render={routerProps => <NewRoomForm {...routerProps} createRoom={this.props.createRoom}/>}/> */}
         <Route path={`/rooms/:id`} render={routerProps => <Room {...routerProps}/>}/>

@@ -25,3 +25,7 @@
 .mainHeader__username {
     text-decoration: underline;
 }
+
+.mainHeader__logIn {
+    margin-right: 8px !important;
+}

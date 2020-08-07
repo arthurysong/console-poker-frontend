@@ -13,10 +13,16 @@ function MainHeader() {
         <div className="mainHeader">
             <span className="mainHeader__title">Console-Poker</span>
             
+            {user ? 
             <span className="mainHeader__right">
                 <span className="mainHeader__username">{user && user.username}</span>&nbsp;
                 <button className="nes-btn smaller-btn" onClick={() => dispatch(logOut(history))}>Log Out</button>
-            </span>
+            </span> 
+            :
+            <span className="mainHeader__right">
+                <button className="mainHeader__logIn nes-btn smaller-btn" onClick={() => {}}>Log In</button>
+                <button className="nes-btn is-primary smaller-btn" onClick={() => {}}>Sign Up</button>
+            </span>}
         </div>
     )
 }
