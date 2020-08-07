@@ -7,13 +7,12 @@ import './CheckoutContainer.css';
 
 function CheckoutContainer () {
     const dispatch = useDispatch();
-
     const chips = useSelector(state => state.chips);
 
     useEffect(() => {
         dispatch(fetchChips());
     }, [])
-
+    console.log('hello???');
     return(
         <div className="checkoutContainer">
             <OptionSelect />

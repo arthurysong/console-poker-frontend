@@ -23,7 +23,7 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
                 // dispatch setchips use state.chips to display chips...
                 dispatch({type: 'SET_CHIPS', chips: json.user.chips })
                 localStorage.setItem("token", json.auth_token);
-                history.replace(`/main/rooms`);
+                history.replace(`/`);
             } else if (json.errors) {
                 dispatch({type: 'AUTH_FAIL'});
                 dispatch({type: 'ADD_ERRORS', errors: json.errors })
@@ -50,8 +50,9 @@ export const authenticateViaGoogle = (email, name, history) => {
                 console.log(json);
                 dispatch({type: 'AUTH_SUCCESS', user: json.user})
                 dispatch({type: 'SET_CHIPS', chips: json.user.chips })
+                dispatch(toggleLogInPage());
                 localStorage.setItem("token", json.auth_token);
-                history.replace(`/rooms`);
+                history.replace(`/`);
             })
             .catch(err => console.log(err))
     }
@@ -60,6 +61,7 @@ export const authenticateViaGoogle = (email, name, history) => {
 export const loginUser = (state, history) => {
     return dispatch => {
         authenticate_user(state, history, dispatch)
+        dispatch(toggleLogInPage());
     }
 }
 
@@ -99,7 +101,7 @@ export const logOut =  (history) => {
     // return async dispatch => {
         // await history.replace(`/login`); // need to make sure component unmounts before clearing the local storage!
         localStorage.clear();
-        dispatch({type: 'LOGOUT'})
+        dispatch({ type: 'LOGOUT' })
         // window.location.reload();
     }
 }
@@ -149,7 +151,7 @@ export const addChips = (amount, userId, history) => {
                 // console.log(json)
                 dispatch({ type: 'SET_CHIPS', chips: json.chips })
                 dispatch(setSuccess("Deposit Successful!"))
-                history.replace(`/main/rooms`)
+                history.replace(`/`)
             });
     }
 }
@@ -177,7 +179,7 @@ export const connectAccount = (params, history) => {
                 // console.log(json);
                 if (json.success){
                     dispatch({ type: 'SET_USER', user: json.user })
-                    history.replace(`/main/users/${json.user.id}/bank/withdraw`)
+                    history.replace(`/users/${json.user.id}/bank/withdraw`)
                 }
             })
     }

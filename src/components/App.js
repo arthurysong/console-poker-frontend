@@ -23,7 +23,7 @@ function App() {
         <Route path="/connect/oauth" render={routerProps => <Connecting {...routerProps}/>}/>
         {/* <Route path="/rooms/new" render={routerProps => <NewRoomForm {...routerProps} createRoom={this.props.createRoom}/>}/> */}
         <Route path={`/rooms/:id`} render={routerProps => <Room {...routerProps}/>}/>
-        <Route path="/rooms" render={routerProps => <MainContainer {...routerProps}/>}/>
+        <Route path="/" render={routerProps => <MainContainer {...routerProps}/>}/>
         <Route path="/register" render={routerProps => <Register {...routerProps}/>}/>
       </Switch>
     </Router>

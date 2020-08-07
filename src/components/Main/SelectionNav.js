@@ -10,11 +10,10 @@ import './SelectionNav.css';
 function SelectionNav () {
     const user = useSelector(state => state.user);
     const history = useHistory();
-    // const [selection, setSelection] = useState(history.location.pathname);
     
     return <div className="selectionNav">
-         <Link onClick={() => history.push('/rooms')} style={{textDecoration: 'none'}} to={`/rooms`}>
-                <span className={`selectionNav__link ${history.location.pathname === `/rooms` ? 'selectionNav__link--active' : ''}`}>
+         <Link onClick={() => history.push('/')} style={{textDecoration: 'none'}} to={`/`}>
+                <span className={`selectionNav__link ${history.location.pathname === `/` ? 'selectionNav__link--active' : ''}`}>
                     <ViewListIcon />&nbsp;Lobby</span></Link>
         {user && <>
             <Link onClick={() => history.push(`/users/${user.id}/deposit`)} style={{textDecoration: 'none'}} to={`/users/${user.id}/deposit`}>

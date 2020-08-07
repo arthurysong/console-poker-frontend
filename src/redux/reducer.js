@@ -51,7 +51,7 @@ switch (action.type) {
         return {
             ...state,
             isLoggedIn: false,
-            user: {}
+            user: undefined
         }
     case 'SET_USER':
         return {

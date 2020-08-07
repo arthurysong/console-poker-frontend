@@ -16,7 +16,7 @@ function MainSelection () {
                     <Route path={`/users/:id/deposit`} render={routerProps => <CheckoutContainer {...routerProps}/>}/>
                     <Route path={`/users/:id/withdraw`} render={routerProps => <WithdrawContainer {...routerProps}/>}/>
                     <Route path={`/users/:id`} render={routerProps => <UserProfile {...routerProps}/>} />
-                    <Route path={`/rooms`} render={routerProps => <RoomsList {...routerProps}/>} />
+                    <Route path={`/`} render={routerProps => <RoomsList {...routerProps}/>} />
                     {/* <Route path={`/`} */}
                 </Switch>
             </div>
