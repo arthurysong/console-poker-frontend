@@ -1,16 +1,129 @@
 .player {
-    /* display: inline-block !important; */
     display: flex;
-    /* align-items: center; */
     flex-direction: column;
     position: relative;
     background: rgba(0,0,0, .6);
     box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
-    /* box-shadow: 0px 2px 6px 4px black; */
     height: 130px;
+    width: 150px;
     padding: 10px;
     margin: 0px 20px;
     border-radius: 10px;
+}
+
+.player--empty {
+    color: #555;
+    background: rgba(0,0,0,0.1);
+    box-shadow: none;
+}
+
+.player--empty:hover {
+    background: rgba(0,0,0,0.15);
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
+}
+
+.player--0 {
+    position: absolute;
+    top: 450px;
+    right: 300px;
+}
+
+.player--1 {
+    position: absolute;
+    top: 450px;
+    right: 500px;
+}
+
+.player--2 {
+    position: absolute;
+    top: 450px;
+    right: 700px;
+}
+
+.player--3 {
+    position: absolute;
+    top: 200px;
+    left: 100px;
+}
+
+.player--4 {
+    position: absolute;
+    top: 0px;
+    left: 350px;
+}
+
+.player--5 {
+    position: absolute;
+    top: 0px;
+    left: 550px;
+}
+
+.player--6 {
+    position: absolute;
+    top: 0px;
+    left: 750px;
+}
+
+.player--7 {
+    position: absolute;
+    top: 200px;
+    right: 100px;
+}
+
+.player__roundBet {
+    background-color: Gold;
+    color: Cornsilk;
+    box-shadow: 1px 1px rgba(0,0,0, .2);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    position: absolute;
+}
+
+.player--0 .player__roundBet, .player--1 .player__roundBet, .player--2 .player__roundBet {
+    top: -60px;
+    left: 0px;
+}
+
+.player--4 .player__roundBet, .player--5 .player__roundBet, .player--6 .player__roundBet {
+    bottom: -60px;
+    left: 0;
+}
+
+.player--3 .player__roundBet {
+    left: 175px;
+    /* right: -90px; */
+}
+
+.player--7 .player__roundBet {
+    right: 175px;
+}
+
+.player__dealerChip {
+    width: 40px;
+    position: absolute;
+}
+
+.player--0 .player__dealerChip, .player--1 .player__dealerChip, .player--2 .player__dealerChip {
+    top: -30px;
+    left: -30px;
+}
+
+.player--4 .player__dealerChip, .player--5 .player__dealerChip, .player--6 .player__dealerChip {
+    bottom: -30px;
+    left: -30px;
+}
+
+.player--3 .player__dealerChip {
+    top: -30px;
+    right: -45px;
+}
+
+.player--7 .player__dealerChip {
+    left: -45px;
+    top: -30px;
 }
 
 .player--turn {
@@ -25,40 +138,25 @@
 
 .player__username {
     color: grey;
+    font-size: 14px;
 }
 
 .player--turn .player__chips {
     color: black;
 }
 
-.player__dealerChip {
-    width: 40px;
-    image-rendering: pixelated;
-    position: absolute;
-    top: -30px;
-    left: -30px;
-}
+
 
 .player__roundWinnings {
     position: absolute;
     right: 0px;
-    top: -20px;
+    bottom: -18px;
+    font-size: 10px;
+    /* top: -20px; */
     color: yellow;
     background-color: #32CD32;
     border-radius: 5px;
     padding: 1px 2px;
 }
 
-.player__roundBet {
-    background-color: Gold;
-    color: Cornsilk;
-    box-shadow: 1px 1px rgba(0,0,0, .2);
-    position: absolute;
-    top: -60px;
-    left: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px 12px;
-    border-radius: 20px;
-    white-space: nowrap;
-}
+

@@ -21,9 +21,11 @@ export const startGame = gameId => {
     }
 }
 
-export const sitDown = gameId => {
+export const sitDown = (gameId, index) => {
     return dispatch => {
+        const body = JSON.stringify({ index })
         const options = {
+            body, 
             method: "POST",
             headers: {
                 'Accept': 'application/json',

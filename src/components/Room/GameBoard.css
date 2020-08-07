@@ -5,7 +5,7 @@
 
 .gameBoard__communityCards {
     position: absolute;
-    top: 60px;
+    top: 140px;
     left: 50%;
     transform: translate(-50%);
     height: 55.7px;
@@ -18,7 +18,7 @@
 
 .gameBoard__pot {
     position: absolute;
-    top: 180px;
+    top: 260px;
     left: 50%;
     transform: translate(-50%);
     color: white;
@@ -34,11 +34,4 @@
     position: absolute;
     bottom: 5px;
     left: -30px;
-}
-
-.gameBoard__players {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    margin-top: 80px;
 }

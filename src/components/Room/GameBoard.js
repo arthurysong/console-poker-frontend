@@ -26,9 +26,7 @@ function GameBoard(){
                 <img width="50px" alt='pot-icon' src={pot}/>
                 {(round && round.pot > 0 ? round.pot : 0)}
             </div>  
-            <div className="gameBoard__players">
-                {seats?.map((user,index) => <Player key={index} user={user} images={images}/>)}
-            </div>
+            {seats?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)}
         </div>
     )
 }
