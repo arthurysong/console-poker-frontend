@@ -17,13 +17,13 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
     fetch(`${BASE_URL}/authenticate`, options)
         .then(resp => resp.json())
         .then(json => {
-            console.log("in loginUser action", json);
+            // console.log("in loginUser action", json);
             if (json.user) {
                 dispatch({type: 'AUTH_SUCCESS', user: json.user})
                 // dispatch setchips use state.chips to display chips...
                 dispatch({type: 'SET_CHIPS', chips: json.user.chips })
                 localStorage.setItem("token", json.auth_token);
-                history.replace(`/rooms`);
+                history.replace(`/main/rooms`);
             } else if (json.errors) {
                 dispatch({type: 'AUTH_FAIL'});
                 dispatch({type: 'ADD_ERRORS', errors: json.errors })
@@ -95,8 +95,9 @@ export const setLogin = history => {
 
 export const logOut =  (history) => {
     // I don't need to send anything to database.
-    return async dispatch => {
-        await history.replace(`/login`); // need to make sure component unmounts before clearing the local storage!
+    return dispatch => {
+    // return async dispatch => {
+        // await history.replace(`/login`); // need to make sure component unmounts before clearing the local storage!
         localStorage.clear();
         dispatch({type: 'LOGOUT'})
         // window.location.reload();

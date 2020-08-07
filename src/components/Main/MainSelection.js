@@ -13,11 +13,11 @@ function MainSelection () {
             <SelectionNav />
             <div className="mainSelection__container">
                 <Switch>
-                    <Route path={`/main/users/:id/deposit`} render={routerProps => <CheckoutContainer {...routerProps}/>}/>
-                    <Route path={`/main/users/:id/withdraw`} render={routerProps => <WithdrawContainer {...routerProps}/>}/>
-                    <Route path={`/main/users/:id`} render={routerProps => <UserProfile {...routerProps}/>} />
-                    <Route path={`/main/rooms`} render={routerProps => <RoomsList {...routerProps}/>} />
-                    {/* <Route path={`/main/`} */}
+                    <Route path={`/users/:id/deposit`} render={routerProps => <CheckoutContainer {...routerProps}/>}/>
+                    <Route path={`/users/:id/withdraw`} render={routerProps => <WithdrawContainer {...routerProps}/>}/>
+                    <Route path={`/users/:id`} render={routerProps => <UserProfile {...routerProps}/>} />
+                    <Route path={`/rooms`} render={routerProps => <RoomsList {...routerProps}/>} />
+                    {/* <Route path={`/`} */}
                 </Switch>
             </div>
         </div>

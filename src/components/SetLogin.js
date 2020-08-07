@@ -1,18 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setLogin } from '../redux/dispatchActions';
 
-class SetLogin extends React.Component {
-    // SetLogin will set login and redirect the user
-    componentDidMount(){
-        this.props.setLogin(this.props.history);
-    }
+function SetLogin({ history }) {
+    const dispatch = useDispatch();
 
-    render() {
-        return (
-            <div>
-            </div>
-        )
-    }
+    useEffect(() => {
+        dispatch(setLogin(history))
+    }, [])
 
+    return <></>
 }
 
 export default SetLogin
