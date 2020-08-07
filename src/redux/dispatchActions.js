@@ -128,7 +128,8 @@ export const register = (state, history) => {
     }
 }
 
-export const clearErrors = () => ({type: 'CLEAR_ERRORS'})
+export const toggleLogInPage = () => ({ type: 'TOGGLE_LOGIN_PAGE' })
+export const clearErrors = () => ({ type: 'CLEAR_ERRORS' })
 
 // chips
 export const addChips = (amount, userId, history) => {

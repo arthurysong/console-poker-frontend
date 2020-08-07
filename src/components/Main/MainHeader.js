@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { logOut } from '../../redux/dispatchActions';
+import { logOut, toggleLogInPage } from '../../redux/dispatchActions';
 import { useHistory } from 'react-router-dom';
 import './MainHeader.css';
 
@@ -20,7 +20,7 @@ function MainHeader() {
             </span> 
             :
             <span className="mainHeader__right">
-                <button className="mainHeader__logIn nes-btn smaller-btn" onClick={() => {}}>Log In</button>
+                <button className="mainHeader__logIn nes-btn smaller-btn" onClick={() => dispatch(toggleLogInPage())}>Log In</button>
                 <button className="nes-btn is-primary smaller-btn" onClick={() => {}}>Sign Up</button>
             </span>}
         </div>

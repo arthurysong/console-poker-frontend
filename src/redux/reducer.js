@@ -1,5 +1,5 @@
 export default function resourceReducer (state = {
-    colorHash: '',
+    // colorHash: '',
     processingAuth: false,
     isLoggedIn: false,
     user: undefined,
@@ -9,6 +9,7 @@ export default function resourceReducer (state = {
     rooms: [],
     messages: [],
     game: {},
+    logInPage: false,
     // gamePlayers: [],
     gameErrors: undefined, //this will be used by gameboard
     // status: [] //this will be used by gameconsole, I need them separate becaue I don't want the console to
@@ -16,11 +17,16 @@ export default function resourceReducer (state = {
 }, action
 ) {
 switch (action.type) {
-    case 'SET_RAND_COLORHASH':
+    case 'TOGGLE_LOGIN_PAGE':
         return {
             ...state,
-            colorHash: Math.floor(1000 + Math.random() * 9000)
+            logInPage: !state.logInPage
         }
+    // case 'SET_RAND_COLORHASH':
+    //     return {
+    //         ...state,
+    //         colorHash: Math.floor(1000 + Math.random() * 9000)
+    //     }
     //auth
     case 'AUTH_REQUEST':
         return {
