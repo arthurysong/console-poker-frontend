@@ -65,7 +65,7 @@ function CheckoutForm() {
                 name={name} 
                 />
         </label>
-        <p className="nes-text is-disabled checkout_agreement">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
+        <p className="nes-text is-disabled">By clicking the "Exchange Chips!" button above, you are agreeing to our Terms of Service.</p>
     </div>
 }
 

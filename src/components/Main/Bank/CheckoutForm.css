@@ -6,18 +6,6 @@
     font-size: 13px;
 }
 
-/* .checkoutForm__input {
-    height: 42px;
-    border-radius: 5px;
-    width: 100%;
-    padding: 0 12px;
-}
-
-.--error {
-    border: 2px solid #e76e55;
-    outline-color: #ce372b;
-} */
-
 .checkoutForm__amount {
     width: 35%;
     margin-right: 5%;

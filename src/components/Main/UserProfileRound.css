@@ -1,0 +1,28 @@
+.userProfileRound {
+    display: flex;
+    color: #aaaaaa;
+    padding: 4px 0;
+    padding-left: 16px;
+    border-top: 1px solid #555;
+    font-size: 13px;
+}
+
+.userProfileRound__date{
+    flex: 2
+}
+
+.userProfileRound__season{
+    flex: 2
+}
+
+.userProfileRound__chipDiff{
+    flex: 1
+}
+
+.chipDiff--green {
+    color: rgb(98, 196, 98);
+}
+
+.chipDiff--red {
+    color: #dd7d69;
+}

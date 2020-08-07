@@ -8,7 +8,7 @@ html {
 
 body {
     font-family: 'atari_classicchunky' !important;
-    text-align: center;
+    /* text-align: center; */
     height: 100%;
 } 
 
@@ -77,14 +77,4 @@ input[type="password"]{
 #octocat {
     position: absolute;
     left: -120px;
-}
-
-.user_form {
-    width: 500px;
-    margin: auto;
-    text-align: left;
-}
-
-.user_form input{
-    width: 400px;
 }
