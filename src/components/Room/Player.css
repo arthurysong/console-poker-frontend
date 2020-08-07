@@ -35,13 +35,13 @@
 .player--2 {
     position: absolute;
     top: 300px;
-    left: 75px;
+    left: 25px;
 }
 
 .player--3 {
     position: absolute;
     top: 150px;
-    left: 75px;
+    left: 25px;
 }
 
 .player--4 {
@@ -59,13 +59,13 @@
 .player--6 {
     position: absolute;
     top: 150px;
-    right: 75px;
+    right: 25px;
 }
 
 .player--7 {
     position: absolute;
     top: 300px;
-    right: 75px;
+    right: 25px;
 }
 
 .player__roundBet {
@@ -80,23 +80,44 @@
     position: absolute;
 }
 
-.player--0 .player__roundBet, .player--1 .player__roundBet, .player--2 .player__roundBet {
-    top: -60px;
+.player--0 .player__roundBet {
+    top: -70px;
     left: 0px;
 }
 
-.player--4 .player__roundBet, .player--5 .player__roundBet, .player--6 .player__roundBet {
-    bottom: -60px;
-    left: 0;
+.player--1 .player__roundBet {
+    top: -70px;
+    right: 0px;
+}
+
+.player--2 .player__roundBet { 
+    top: 0;
+    left: 290px;
 }
 
 .player--3 .player__roundBet {
-    left: 175px;
-    /* right: -90px; */
+    bottom: 0;
+    left: 290px;
+}
+
+.player--4 .player__roundBet {
+    right: 0;
+    bottom: -60px;
+}
+
+.player--5 .player__roundBet {
+    left: 0;
+    bottom: -60px;
+}
+
+.player--6 .player__roundBet {
+    bottom: 0;
+    right: 290px;
 }
 
 .player--7 .player__roundBet {
-    right: 175px;
+    top: 0;
+    right: 290px;
 }
 
 .player__dealerChip {
@@ -104,24 +125,44 @@
     position: absolute;
 }
 
-.player--0 .player__dealerChip, .player--1 .player__dealerChip, .player--2 .player__dealerChip {
-    top: -30px;
-    left: -30px;
+.player--0 .player__dealerChip {
+    top: -50px;
+    left: -40px;
 }
 
-.player--4 .player__dealerChip, .player--5 .player__dealerChip, .player--6 .player__dealerChip {
-    bottom: -30px;
-    left: -30px;
+.player--1 .player__dealerChip {
+    top: -50px;
+    left: 40px;
+}
+
+.player--2 .player__dealerChip {
+    top: -40px;
+    right: -40px;;
 }
 
 .player--3 .player__dealerChip {
-    top: -30px;
-    right: -45px;
+    top: -10px;
+    right: -60px;
+}
+
+.player--4 .player__dealerChip {
+    bottom: -50px;
+    left: 80px;
+}
+
+.player--5 .player__dealerChip {
+    bottom: -50px;
+    left: -40px;
+}
+
+.player--6 .player__dealerChip {
+    top: -20px;
+    left: -60px;
 }
 
 .player--7 .player__dealerChip {
-    left: -45px;
-    top: -30px;
+    top: -40px;
+    left: -60px;
 }
 
 .player--turn {
