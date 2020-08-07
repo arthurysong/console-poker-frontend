@@ -23,6 +23,7 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
                 // dispatch setchips use state.chips to display chips...
                 dispatch({type: 'SET_CHIPS', chips: json.user.chips })
                 localStorage.setItem("token", json.auth_token);
+                dispatch(toggleLogInPage());
                 history.replace(`/`);
             } else if (json.errors) {
                 dispatch({type: 'AUTH_FAIL'});
@@ -61,7 +62,6 @@ export const authenticateViaGoogle = (email, name, history) => {
 export const loginUser = (state, history) => {
     return dispatch => {
         authenticate_user(state, history, dispatch)
-        dispatch(toggleLogInPage());
     }
 }
 

@@ -38,7 +38,7 @@ switch (action.type) {
             ...state,
             processingAuth: false,
             isLoggedIn: false,
-            user: {}
+            user: undefined
         }
     case 'AUTH_SUCCESS':
         return {

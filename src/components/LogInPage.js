@@ -49,6 +49,7 @@ function LogInPage ({ history }) {
                             />
                         <form onSubmit={submitHandler}>
                             <Errors />
+                            <div className="logInPage__test">TEST: sona@gmail.com | 123456</div>
                             <label>
                                 Email*<br/>
                             <input className="nes-input" onChange={e => setEmail(e.target.value)} type="text" name="email" value={email}/>
