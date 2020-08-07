@@ -100,6 +100,7 @@ export const logOut =  (history) => {
     return dispatch => {
     // return async dispatch => {
         // await history.replace(`/login`); // need to make sure component unmounts before clearing the local storage!
+        history.replace('/');
         localStorage.clear();
         dispatch({ type: 'LOGOUT' })
         // window.location.reload();
