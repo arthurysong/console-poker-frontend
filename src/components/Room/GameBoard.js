@@ -20,7 +20,7 @@ function GameBoard(){
         <div className="gameBoard">
             <div className="gameBoard__communityCards">
                 {round && round.access_community_cards !== "" && round.access_community_cards.split(" ").map((c, index) => 
-                    <img key={index} className="cards" alt={c} src={images[`${c}.png`]}/>)}
+                    <img key={index} className="gameBoard__card" alt={c} src={images[`${c}.png`]}/>)}
             </div>
             <div className="gameBoard__pot">
                 <img width="50px" alt='pot-icon' src={pot}/>

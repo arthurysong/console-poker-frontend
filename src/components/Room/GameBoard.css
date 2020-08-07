@@ -1,21 +1,33 @@
 .gameBoard {
     position: relative;
-    top: 180px;
+    /* top: 180px; */
 }
 
 .gameBoard__communityCards {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%);
     height: 55.7px;
 }
 
+.gameBoard__card {
+    height: 100px;
+    margin: 0 -4px;
+}
+
 .gameBoard__pot {
-    position: relative;
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translate(-50%);
     color: white;
     background: rgba(0,0,0, .4);
     padding: 10px 20px;
     font-size: 30px;
     border-radius: 12px;
     display: inline-block;
-    margin: auto;
+    /* margin: auto; */
 }
 
 .gameBoard__pot > img {
