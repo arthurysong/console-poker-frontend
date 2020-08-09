@@ -31,7 +31,7 @@ function Player({ position, user, images }) {
             {(user.round_bet !== 0 || user.checked) && 
                 <span className="player__roundBet">{user.checked && user.round_bet === 0 ? 'check' : user.round_bet}</span>}
 
-            <div>
+            <div className="player__info">
                 <div className="player__username">{user.username}</div>
                 <div className="player__chips">{user.chips}</div>
             </div>

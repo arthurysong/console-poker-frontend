@@ -2,6 +2,7 @@ Copyright?
 
 When user submits a move, e.g. new round, sit, or anything, the buttons menu should be taken away. so that they can't submit a crazy amount of moves
 while the website is loading
+When it's your turn sound should play
 Add replays to UserProfile??
 
 Style the Stripe Elements with Font.

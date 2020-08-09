@@ -6,7 +6,8 @@
 
 .playerCards__card {
     display: inline-block;
-    height: 98.96px;
-    width: 92px;
-    margin: 0 -12px;
+    width: 80px;
+    /* height: 98.96px; */
+    /* width: 92px; */
+    margin: 0 -10px;
 }

@@ -7,6 +7,7 @@
     height: 80px;
     width: 268px;
     border-radius: 10px;
+    /* overflow: hidden; */
 }
 
 .player--empty {
@@ -19,6 +20,8 @@
     background: rgba(255, 255, 255, .03);
     cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
 }
+
+
 
 .player--0 {
     position: absolute;
@@ -171,13 +174,13 @@
 }
 
 .player__chips {
-    font-size: 12px;
+    font-size: 10px;
     color: white;
 }
 
 .player__username {
     color: grey;
-    font-size: 14px;
+    font-size: 11px;
 }
 
 .player--turn .player__chips {

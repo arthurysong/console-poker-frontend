@@ -109,17 +109,8 @@ switch (action.type) {
             game: action.game
         }
     case 'SET_MOVE':
-        // const user = state.game.active_round.ordered_users.find(u => u.id === this.props.user.id);
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
-        // console.log('in reducer set_move');
-        // console.log({
-        //     ...state,
-        //     game: {
-        //         ...state.game,
-        //         ordered_users: ordered_users
-        //     }
-        // });
         return {
             ...state,
             game: {
