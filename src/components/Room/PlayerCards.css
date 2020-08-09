@@ -1,13 +1,11 @@
 .playerCards {
     position: relative;
-    left: -16px;
-    /* top: -12px; */
+    top: -12px;
 }
 
 .playerCards__card {
     display: inline-block;
     width: 80px;
-    /* height: 98.96px; */
-    /* width: 92px; */
+    height: calc(1.076 * 80px); 
     margin: 0 -10px;
 }
