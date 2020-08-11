@@ -24,6 +24,6 @@ export function postWithToken(url, bodyHash = {}){
     return fetchWithToken(url, options);
 }
 
-export function startNewRound(gameId) {
-    return postWithToken(`${BASE_URL}/games/${gameId}/start`)
-}
+// export function startNewRound(gameId) {
+//     return postWithToken(`${BASE_URL}/games/${gameId}/start`)
+// }

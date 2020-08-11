@@ -95,95 +95,82 @@ export const setLogin = history => {
     }
 }
 
-export const logOut =  (history) => {
-    // I don't need to send anything to database.
-    return dispatch => {
-    // return async dispatch => {
-        // await history.replace(`/login`); // need to make sure component unmounts before clearing the local storage!
+export const logOut =  (history) => dispatch => {
         history.replace('/');
         localStorage.clear();
         dispatch({ type: 'LOGOUT' })
         // window.location.reload();
-    }
 }
 
-export const register = (state, history) => {
-    return dispatch => {
-        const body = JSON.stringify(state);
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body
-        }
-        fetch(`${BASE_URL}/users`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log("in register action ", json);
-                if (json.user) {
-                    authenticate_user(state, history, dispatch);
-                } else {
-                    dispatch({type: 'ADD_ERRORS', errors: json.errors })
-                }
-            })
+export const register = (state, history) => dispatch => {
+    const body = JSON.stringify(state);
+    const options = {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body
     }
+    fetch(`${BASE_URL}/users`, options)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log("in register action ", json);
+            if (json.user) {
+                authenticate_user(state, history, dispatch);
+            } else {
+                dispatch({type: 'ADD_ERRORS', errors: json.errors })
+            }
+        })
 }
 
 export const toggleLogInPage = () => ({ type: 'TOGGLE_LOGIN_PAGE' })
 export const clearErrors = () => ({ type: 'CLEAR_ERRORS' })
 
 // chips
-export const addChips = (amount, userId, history) => {
-    return dispatch => {
-        const body = JSON.stringify({ amount })
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body
-        }
-        fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json)
-                dispatch({ type: 'SET_CHIPS', chips: json.chips })
-                dispatch(setSuccess("Deposit Successful!"))
-                history.replace(`/`)
-            });
+export const addChips = (amount, userId, history) => dispatch => {
+    const body = JSON.stringify({ amount })
+    const options = {
+        method: "POST",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body
     }
+    fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json)
+            dispatch({ type: 'SET_CHIPS', chips: json.chips })
+            dispatch(setSuccess("Deposit Successful!"))
+            history.replace(`/`)
+        });
 }
 
-export const fetchChips = userId => {
-    return dispatch => {
-        fetchWithToken(`${BASE_URL}/users/${userId}/get_chips`)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json)
-                dispatch({ type: 'SET_CHIPS', chips: json.chips })
-            })
-    }
+export const fetchChips = userId => dispatch => {
+    fetchWithToken(`${BASE_URL}/users/${userId}/get_chips`)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json)
+            dispatch({ type: 'SET_CHIPS', chips: json.chips })
+        })
 }
 
 export const setChips = chips => ({ type: 'SET_CHIPS', chips })
 export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 
 // withdrawals
-export const connectAccount = (params, history) => {
-    return dispatch => {
-        fetchWithToken(`${BASE_URL}/connect/oauth${params}`)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json);
-                if (json.success){
-                    dispatch({ type: 'SET_USER', user: json.user })
-                    history.replace(`/users/${json.user.id}/bank/withdraw`)
-                }
-            })
-    }
+export const connectAccount = (params, history) => dispatch => {
+    fetchWithToken(`${BASE_URL}/connect/oauth${params}`)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json);
+            if (json.success){
+                dispatch({ type: 'SET_USER', user: json.user })
+                history.replace(`/users/${json.user.id}/bank/withdraw`)
+            }
+        })
 }
 
 export const makeWithdrawal = (cents) => {
@@ -191,7 +178,7 @@ export const makeWithdrawal = (cents) => {
         fetchWithToken(`${BASE_URL}/transfer_secret/${cents.toString()}`)
             .then(resp => resp.json())
             .then(json => {
-                console.log(json);
+                // console.log(json);
                 if (json.error){
                     dispatch({type: 'ADD_ERRORS', errors: [json.error] })
                     // console.log(json.error);

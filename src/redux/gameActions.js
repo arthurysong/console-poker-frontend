@@ -3,8 +3,6 @@ import { BASE_URL } from '../utilities/BASE_URL';
 
 export const startGame = gameId => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/start`)
-        .then(resp => resp.json())
-        .then(json => dispatch({ type: 'SET_GAME', game: json }));
 }
 
 export const sitDown = (gameId, index) => dispatch => {
