@@ -13,7 +13,7 @@ const cardHit = new Audio(cardHitFile);
 const chips = new Audio(chipsFile);
 const winning = new Audio(winningFile);
 const lose = new Audio(loseFile);
-const newRound = new Audio(newRoundFile);
+// const newRound = new Audio(newRoundFile);
 const shuffle = new Audio(shuffleFile);
 const turn = new Audio(turnFile);
 

@@ -37,7 +37,7 @@ function Chatbox() {
                 </ul>
             </div>
             <form onSubmit={submitHandler}>
-                <input type="text" className="nes-input" onChange={changeHandler} value={message}/>
+                <input type="text" className="chatbox__input nes-input" onChange={changeHandler} value={message}/>
                 <button className="nes-btn smaller-btn hide" type="submit" value="send">Send</button>
             </form>
         </div>

@@ -1,14 +1,14 @@
 .chatbox {
     /* position: absolute;
     bottom: 20px; */
-    width: 450px;
+    width: 500px;
     background-color: hsla(0, 0%, 41%, 0.4);
     border-radius: 6px;
 }
 
 .chatbox__messages {
     padding: 0 5px;
-    height: 150px;
+    height: 90px;
     width: 100%;
     overflow: auto;
     text-align: justify;
@@ -29,4 +29,8 @@
 
 .chatbox__consolePoker {
     color: #696969;
+}
+
+.chatbox__input {
+    padding: 2px !important;
 }

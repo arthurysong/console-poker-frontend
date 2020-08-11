@@ -8,7 +8,7 @@
     width: 1280px;
     height: 720px;
     text-align: center;
-    background-image: url('../../pictures/poker_background.webp');
+    background-image: url('../../pictures/poker_background2.webp');
     position: relative;
     top: 50%;
     left: 50%;
@@ -24,5 +24,5 @@
     position: absolute;
     bottom: 20px;
     text-align: justify;
-    font-size: 12px;
+    font-size: 10px;
 }
