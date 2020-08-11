@@ -1,7 +1,7 @@
 .player {
     display: flex;
     align-items: center;
-    background: rgba(0,0,0, .6);
+    background: rgba(0,0,0, .5);
     box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
     height: 80px;
     width: 268px;

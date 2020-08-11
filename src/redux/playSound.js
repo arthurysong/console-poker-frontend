@@ -1,11 +1,11 @@
 // import loseFile from '../sounds/lose.wav';
-import clickFile from '../sounds/click.wav';
-import chipsFile from '../sounds/chips.wav';
-import cardHitFile from '../sounds/onecard_hit.wav';
-import winningFile from '../sounds/winning.wav';
-import loseFile from '../sounds/lose.wav';
-import newRoundFile from '../sounds/new_round.wav';
-
+import clickFile from '../sounds/click.mp3';
+import chipsFile from '../sounds/chips.mp3';
+import cardHitFile from '../sounds/onecard_hit.mp3';
+import winningFile from '../sounds/winning.mp3';
+import loseFile from '../sounds/lose.mp3';
+import newRoundFile from '../sounds/new_round.mp3';
+import shuffleFile from '../sounds/shuffle.mp3';
 
 const click = new Audio(clickFile);
 const cardHit = new Audio(cardHitFile);
@@ -13,6 +13,7 @@ const chips = new Audio(chipsFile);
 const winning = new Audio(winningFile);
 const lose = new Audio(loseFile);
 const newRound = new Audio(newRoundFile);
+const shuffle = new Audio(shuffleFile);
 
 export function playMoveSound(command) {
     switch(command){
@@ -38,7 +39,8 @@ export function playGameEndSound(won) {
 
 export function playStartSound(){
     chips.play();
-    newRound.play();   
+    shuffle.play();
+    // newRound.play();   
 }
 
 export function playSit() {
