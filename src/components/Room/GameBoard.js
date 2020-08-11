@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Player from './Player';
-import pot from '../../pictures/pot.png';
+import pot from '../../pictures/pot_icon.webp';
 import './GameBoard.css';
 
 const importAll = r => {

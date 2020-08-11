@@ -1,5 +1,5 @@
 import React from 'react';
-import dealerChip from '../../pictures/DEALER.png';
+import dealerChip from '../../pictures/dealer_chip.webp';
 import { useSelector, useDispatch } from 'react-redux';
 import { sitDown } from '../../redux/gameActions';
 import './Player.css';
