@@ -116,13 +116,6 @@ switch (action.type) {
     case 'SET_MOVE':
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
-        console.log({
-            ...state,
-            game: {
-                ...state.game,
-                seats_as_users: seats_as_users
-            }
-        })
         return {
             ...state,
             game: {

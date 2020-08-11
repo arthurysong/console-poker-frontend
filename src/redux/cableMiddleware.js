@@ -37,7 +37,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log(result);
+        // console.log(result);
         switch(result.type) {
           case 'current_rooms':
             dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
@@ -62,7 +62,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log(result)
+        // console.log(result)
         switch (result.type) {
             case 'current_room':
               dispatch({ type: 'SET_ROOM', room: result.room });
@@ -116,16 +116,12 @@ export default function cableMiddleware() {
             break;
           case 'user_join':
           case 'user_leave':
-            // console.log('play sit sound');
             playSitSound();
             dispatch({ type: 'SET_GAME', game: result.game });
             break;
           case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
             break;
-          // case 'marleys_turn':
-          //   setTimeout(() => postMarleyMove(), 1500);
-          //   break;
           case 'update_round':
             dispatch({type: 'UPDATE_ROUND', round: result.round })
             break;

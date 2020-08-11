@@ -8,14 +8,14 @@
     display: flex;
     align-items: center;
     display: inline-block;
-    width: 400px;
+    width: 375px;
     /* margin-right: 6px; */
 }
 
 .rc-slider{
     display: inline-block;
     width: 75% !important;
-    margin: 0 15px;
+    margin: 0 12px;
 }
 
 .raiseMenu__moveButton {

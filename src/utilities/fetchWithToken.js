@@ -12,7 +12,6 @@ export function fetchWithToken(url, options = {}){
 }
 
 export function postWithToken(url, bodyHash = {}){
-    console.log(bodyHash);
     const body = JSON.stringify(bodyHash);
     const options = {
         method: "POST",
@@ -24,10 +23,6 @@ export function postWithToken(url, bodyHash = {}){
     }
     return fetchWithToken(url, options);
 }
-
-// export function postMarleyMove() {
-//     return postWithToken(`${BASE_URL}/users/marley_call`)
-// }
 
 export function startNewRound(gameId) {
     return postWithToken(`${BASE_URL}/games/${gameId}/start`)
