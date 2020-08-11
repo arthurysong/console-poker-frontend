@@ -1,4 +1,4 @@
-import {fetchWithToken} from '../utilities/fetchWithToken'
+import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken'
 import { BASE_URL } from '../utilities/BASE_URL';
 
 export const startGame = gameId => {
@@ -35,8 +35,6 @@ export const sitDown = (gameId, index) => {
         fetchWithToken(`${BASE_URL}/games/${gameId}/join`, options)
             .then(resp => resp.json())
             .then(json => {
-                // console.log(json);
-                console.log(json);
                 dispatch({ type: 'SET_USER', user: json.user })
             })
     }
@@ -54,8 +52,6 @@ export const leaveTable = gameId => {
         fetchWithToken(`${BASE_URL}/games/${gameId}/leave`, options)
             .then(resp => resp.json())
             .then(json => {
-
-                console.log(json);
                 dispatch({ type: 'SET_USER', user: json.user })
             })
     }
@@ -80,6 +76,11 @@ export const resetUser = (userId) => {
     }
 }
 
+export const postMoveWithToken = (commandObj, userId) => dispatch => {
+    dispatch({ type: 'PROCESS_MOVE' });
+    postWithToken(`${BASE_URL}/users/${userId}/make_move`, commandObj)
+}
+
 export function subscribeGame(userId, gameId) {
     return {
       channel: 'GameChannel',
@@ -91,7 +92,6 @@ export function subscribeGame(userId, gameId) {
 export function unsubscribeGame(gameId) {
     return {
       channel: 'GameChannel',
-    //   user: `${userId}`,
       game: `${gameId}`,    
       leave: true
     }

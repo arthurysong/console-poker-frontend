@@ -2,16 +2,18 @@ import React from 'react';
 import Slider from 'rc-slider';
 import { useSelector } from 'react-redux';
 import 'rc-slider/assets/index.css';
-import { postMoveWithToken } from '../../utilities/fetchWithToken';
+import { postMoveWithToken } from '../../redux/gameActions';
+import { useDispatch } from 'react-redux';
+// import { postMoveWithToken } from '../../utilities/fetchWithToken';
 import './RaiseMenu.css';
 
 function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
+    const dispatch = useDispatch();
     const round = useSelector(state => state.game.active_round);
     const user = useSelector(state => state.user);
-    // const minimum = round.highest_bet_for_phase + round.big_blind
 
     const raiseSubmit = () => {
-        postMoveWithToken({ command: 'raise', amount: raise }, user.id)
+        dispatch(postMoveWithToken({ command: 'raise', amount: raise }, user.id));
         toggleGameButtons();
     }
     

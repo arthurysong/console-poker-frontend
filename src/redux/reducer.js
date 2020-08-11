@@ -10,6 +10,7 @@ export default function resourceReducer (state = {
     messages: [],
     game: {},
     logInPage: false,
+    processingMove: false,
     // gamePlayers: [],
     gameErrors: undefined, //this will be used by gameboard
     // status: [] //this will be used by gameconsole, I need them separate becaue I don't want the console to
@@ -22,12 +23,6 @@ switch (action.type) {
             ...state,
             logInPage: !state.logInPage
         }
-    // case 'SET_RAND_COLORHASH':
-    //     return {
-    //         ...state,
-    //         colorHash: Math.floor(1000 + Math.random() * 9000)
-    //     }
-    //auth
     case 'AUTH_REQUEST':
         return {
             ...state,
@@ -103,6 +98,16 @@ switch (action.type) {
             ...state,
             messages: []
         }
+    case 'PROCESS_MOVE':
+        return {
+            ...state,
+            processingMove: true
+        }
+    case 'FINISHED_MOVE':
+        return {
+            ...state,
+            processingMove: false
+        }
     case 'SET_GAME':
         return {
             ...state,
@@ -111,6 +116,13 @@ switch (action.type) {
     case 'SET_MOVE':
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
+        console.log({
+            ...state,
+            game: {
+                ...state.game,
+                seats_as_users: seats_as_users
+            }
+        })
         return {
             ...state,
             game: {
@@ -118,11 +130,6 @@ switch (action.type) {
                 seats_as_users: seats_as_users
             }
         }
-    // case 'SET_GAME_PLAYERS':
-    //     return {
-    //         ...state,
-    //         gamePlayers: action.players
-    //     }
     case 'DELETE_GAME':
         return {
             ...state,
@@ -143,18 +150,6 @@ switch (action.type) {
                 active_round: action.round
             }
         }
-    // was using this for console...
-    // case 'GAME_ERRORS':
-    //     return {
-    //         ...state,
-    //         gameErrors: action.error
-    //     }
-    // case 'CLEAR_GAME_ERRORS':
-    //     return {
-    //         ...state,
-    //         gameErrors: undefined
-    //     }
-
     case 'SET_CHIPS': // only for use on deposit page.
         return {
             ...state,

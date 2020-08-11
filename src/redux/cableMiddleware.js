@@ -93,17 +93,15 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log(result);
-        console.log('in cable middleware, userId: ', user);
+        // console.log(result);
         switch (result.type) {
           case 'new_move':
-            console.log('update move first');
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
             playMoveSound(result.command);
             break;
           case 'update_game_after_move':
-            console.log('updating...');
             setTimeout(() => {
+              dispatch({ type: 'FINISHED_MOVE' });
               dispatch({ type: 'SET_GAME', game: result.game });
               playTurnSound(result.game, user);
             }, 1000);

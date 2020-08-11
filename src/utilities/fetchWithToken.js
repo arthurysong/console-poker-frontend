@@ -25,10 +25,6 @@ export function postWithToken(url, bodyHash = {}){
     return fetchWithToken(url, options);
 }
 
-export function postMoveWithToken(commandObj, userId) {
-    return postWithToken(`${BASE_URL}/users/${userId}/make_move`, commandObj)
-}
-
 // export function postMarleyMove() {
 //     return postWithToken(`${BASE_URL}/users/marley_call`)
 // }

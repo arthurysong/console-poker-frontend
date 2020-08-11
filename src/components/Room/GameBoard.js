@@ -14,7 +14,8 @@ const images = importAll(require.context('../../pictures/cards', false, /\.(png|
 
 function GameBoard(){
     const round = useSelector(state => state.game.active_round);
-    const seats = useSelector(state => state.game.seats_as_users);
+    // const seats = useSelector(state => state.game.seats_as_users);
+    const game = useSelector(state => state.game);
 
     return (
         <div className="gameBoard">
@@ -26,7 +27,9 @@ function GameBoard(){
                 <img width="50px" alt='pot-icon' src={pot}/>
                 {(round && round.pot > 0 ? round.pot : 0)}
             </div>  
-            {seats?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)}
+            {/* {console.log('in gameBoard seats_as_users ', seats)} */}
+            {/* {seats?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)} */}
+            {game.seats_as_users?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)}
         </div>
     )
 }
