@@ -108,7 +108,7 @@ export default function cableMiddleware() {
             break;
           case 'game_end_by_showdown':
           case 'game_end_by_fold':
-            setTimeout(() => playGameEndSound(result.winner_ids[user]), 1000);
+            setTimeout(() => playGameEndSound(result.winner_id[user]), 1000);
             break;
           case 'start_game':
             playStartSound();
