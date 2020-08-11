@@ -10,7 +10,7 @@ const importAll = r => {
     return images;
 }
 
-const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg)$/));
+const images = importAll(require.context('../../pictures/cards', false, /\.(png|jpe?g|svg|webp)$/));
 
 function GameBoard(){
     const round = useSelector(state => state.game.active_round);
@@ -20,7 +20,7 @@ function GameBoard(){
         <div className="gameBoard">
             <div className="gameBoard__communityCards">
                 {round && round.access_community_cards !== "" && round.access_community_cards.split(" ").map((c, index) => 
-                    <img key={index} className="gameBoard__card" alt={c} src={images[`${c}.png`]}/>)}
+                    <img key={index} className="gameBoard__card" alt={c} src={images[`${c}.webp`]}/>)}
             </div>
             <div className="gameBoard__pot">
                 <img width="50px" alt='pot-icon' src={pot}/>

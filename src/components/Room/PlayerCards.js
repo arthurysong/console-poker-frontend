@@ -11,11 +11,11 @@ function PlayerCards({ user, loggedInUser, images, round }) {
         } else {
             if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
                 return user.cards.split(" ").map((c, index) => 
-                (<img key={index} className="playerCards__card" alt={c} src={images[`${c}.png`]}/>))
+                (<img key={index} className="playerCards__card" alt={c} src={images[`${c}.webp`]}/>))
             } else {
                 return <>
-                    <img className="playerCards__card" alt='facedown_card' src={images[`CARD.png`]}/>
-                    <img className="playerCards__card" alt='facedown_card' src={images[`CARD.png`]}/>
+                    <img className="playerCards__card" alt='facedown_card' src={images[`CARD.webp`]}/>
+                    <img className="playerCards__card" alt='facedown_card' src={images[`CARD.webp`]}/>
                 </>
             } 
         }
