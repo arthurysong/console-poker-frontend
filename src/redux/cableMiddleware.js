@@ -1,6 +1,6 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
-import { playMoveSound, playGameEndSound, playStartSound, playSit } from './playSound';
+import { playMoveSound, playGameEndSound, playStartSound, playSitSound, playTurnSound } from './playSound';
 import { postMarleyMove } from '../utilities/fetchWithToken';
 
 export default function cableMiddleware() {
@@ -94,6 +94,7 @@ export default function cableMiddleware() {
 
       const received = result => {
         console.log(result);
+        console.log('in cable middleware, userId: ', user);
         switch (result.type) {
           case 'new_move':
             console.log('update move first');
@@ -102,7 +103,10 @@ export default function cableMiddleware() {
             break;
           case 'update_game_after_move':
             console.log('updating...');
-            setTimeout(() => dispatch({ type: 'SET_GAME', game: result.game }), 1000);
+            setTimeout(() => {
+              dispatch({ type: 'SET_GAME', game: result.game });
+              playTurnSound(result.game, user);
+            }, 1000);
             break;
           case 'game_end_by_showdown':
           case 'game_end_by_fold':
@@ -115,15 +119,15 @@ export default function cableMiddleware() {
           case 'user_join':
           case 'user_leave':
             // console.log('play sit sound');
-            playSit();
+            playSitSound();
             dispatch({ type: 'SET_GAME', game: result.game });
             break;
           case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
             break;
-          case 'marleys_turn':
-            setTimeout(() => postMarleyMove(), 1500);
-            break;
+          // case 'marleys_turn':
+          //   setTimeout(() => postMarleyMove(), 1500);
+          //   break;
           case 'update_round':
             dispatch({type: 'UPDATE_ROUND', round: result.round })
             break;
