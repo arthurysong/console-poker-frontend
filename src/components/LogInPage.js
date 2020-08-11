@@ -61,7 +61,7 @@ function LogInPage ({ history }) {
                             <button className="logInPage__button nes-btn" type="submit" value="login">Log In</button><br/>
                             <div className="logInPage__register">Don't have an account? <Link to="/register">REGISTER!</Link></div>
                         </form>
-                        <div className="logInPage__agreement">By continuing, you agree to our <a target="_blank" href={`${DOMAIN}/terms`}>Terms &#38; Conditions</a></div>
+                        <div className="logInPage__agreement">By continuing, you agree to our <a target="_blank" rel="noopener noreferrer" href={`${DOMAIN}/terms`}>Terms &#38; Conditions</a></div>
                     </div>
                 </div>
             </div>

@@ -12,7 +12,7 @@ function RoomsList() {
     useEffect(() => {
         dispatch(subscribeRooms());
         return () => dispatch(unsubscribeRooms());
-    }, [])
+    }, [dispatch])
 
     return (
         // <div id="main_rooms_list">

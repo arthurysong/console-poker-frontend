@@ -1,7 +1,7 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
 import { playMoveSound, playGameEndSound, playStartSound, playSitSound, playTurnSound } from './playSound';
-import { postMarleyMove } from '../utilities/fetchWithToken';
+// import { postMarleyMove } from '../utilities/fetchWithToken';
 
 export default function cableMiddleware() {
   // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);

@@ -1,10 +1,9 @@
-// import loseFile from '../sounds/lose.wav';
 import clickFile from '../sounds/click.mp3';
 import chipsFile from '../sounds/chips.mp3';
 import cardHitFile from '../sounds/onecard_hit.mp3';
 import winningFile from '../sounds/winning.mp3';
 import loseFile from '../sounds/lose.mp3';
-import newRoundFile from '../sounds/new_round.mp3';
+// import newRoundFile from '../sounds/new_round.mp3';
 import shuffleFile from '../sounds/shuffle.mp3';
 import turnFile from '../sounds/turn.mp3';
 

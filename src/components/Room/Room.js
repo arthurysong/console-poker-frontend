@@ -20,17 +20,15 @@ function Room({ match, history }) {
         return () => {
             dispatch(unsubscribeRoom(match.params.id));
         }
-    }, [dispatch])
+    }, [dispatch, match.params.id])
 
     return(
         <div className="room">
             <div className="room__table" id="room__table">
                 <div className="room__paddingContainer">
-                    {/* <BackButton history={history} /> */}
                     <Menu user={user}/>
                     <RoomHeader room={room}/>
                     {user && room && <Game gameId={room.game.id} user={user}/>}
-                    {/* <ChatAndSupportContainer /> */}
                     <div className="room__bottomLeft">
                         <SupportMessage />
                         <Chatbox />

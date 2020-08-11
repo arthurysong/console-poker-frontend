@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './OptionSelect.css';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';

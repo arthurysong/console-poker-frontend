@@ -7,7 +7,7 @@ function SetLogin({ history }) {
 
     useEffect(() => {
         dispatch(setLogin(history))
-    }, [])
+    }, [dispatch, history])
 
     return <></>
 }
