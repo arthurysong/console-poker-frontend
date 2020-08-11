@@ -4,6 +4,7 @@ When user submits a move, e.g. new round, sit, or anything, the buttons menu sho
 while the website is loading
 When it's your turn sound should play
 Add replays to UserProfile??
+Refactor Reducer
 
 Style the Stripe Elements with Font.
 

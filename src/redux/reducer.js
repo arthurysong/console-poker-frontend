@@ -151,7 +151,6 @@ switch (action.type) {
                 ...state.user,
                 chips: action.chips
             }
-
         }
     case 'UNSET_CHIPS':
         return {

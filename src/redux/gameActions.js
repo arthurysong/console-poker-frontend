@@ -1,79 +1,28 @@
-import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken'
+import { postWithToken } from '../utilities/fetchWithToken'
 import { BASE_URL } from '../utilities/BASE_URL';
 
-export const startGame = gameId => {
-    return dispatch => {
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/games/${gameId}/start`, options )
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json);
-                // set game
-                // set status
-                dispatch({ type: 'SET_GAME', game: json })
-            })
-    }
+export const startGame = gameId => dispatch => {
+    postWithToken(`${BASE_URL}/games/${gameId}/start`)
+        .then(resp => resp.json())
+        .then(json => dispatch({ type: 'SET_GAME', game: json }));
 }
 
-export const sitDown = (gameId, index) => {
-    return dispatch => {
-        const body = JSON.stringify({ index })
-        const options = {
-            body, 
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/games/${gameId}/join`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                dispatch({ type: 'SET_USER', user: json.user })
-            })
-    }
+export const sitDown = (gameId, index) => dispatch => {
+    postWithToken(`${BASE_URL}/games/${gameId}/join`, { index })
+        .then(resp => resp.json())
+        .then(json => dispatch({ type: 'SET_USER', user: json.user }))
 }
 
-export const leaveTable = gameId => {
-    return dispatch => {
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/games/${gameId}/leave`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                dispatch({ type: 'SET_USER', user: json.user })
-            })
-    }
+export const leaveTable = gameId => dispatch => {
+    postWithToken(`${BASE_URL}/games/${gameId}/leave`)
+        .then(resp => resp.json())
+        .then(json => dispatch({ type: 'SET_USER', user: json.user }));
 }
 
-// reset user game info once they leave or stand up
-export const resetUser = (userId) => {
-    return dispatch => {
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-        fetchWithToken(`${BASE_URL}/users/${userId}/reset_user`, options)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json);
-                dispatch({ type: 'SET_USER', user: json.user });
-            })
-    }
+export const resetUser = userId => dispatch => {
+    postWithToken(`${BASE_URL}/users/${userId}/reset_user`)
+        .then(resp => resp.json())
+        .then(json => dispatch({ type: 'SET_USER', user: json.user }));
 }
 
 export const postMoveWithToken = (commandObj, userId) => dispatch => {
