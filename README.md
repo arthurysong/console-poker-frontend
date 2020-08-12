@@ -6,7 +6,7 @@
 
 ## Description
 
-Some time ago, I wanted to set up a simple online cash poker game with my friends. My poker background: I never really played online poker before and occassionally play poker when my friends and I hung out with little amounts of cash. 
+Some time ago, I wanted to set up a simple online cash poker game with my friends. My poker background: I never really played online poker before and occassionally play poker when my friends and I hang out with little amounts of cash. 
 
 I decided to try to find a website where we can easily set up a game and begin playing with real money, but it was such a hassle. Many online poker sites require you to download clients to play a simple poker game. Also, there are so many different types of poker to choose from i.e. "Omaha", Stud", and "Razz" that I don't care for. And on top of that, the UI's for these websites look so busy and complicated.
 
