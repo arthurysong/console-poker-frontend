@@ -27,8 +27,8 @@ Built using React.js. Stylesheet used [Nes.css](https://nostalgic-css.github.io/
 Currently, the application is still being built out. The Stripe API is not accepting real USD transactions and only accepting test data. 
 
 ### To do: 
-- Support split-pots (currently, when someone goes all-in, no more bets are accepted for the round)
-- Keep data on a users' wins and rounds played
+- Support split-pots (Currently, when someone goes all-in, no more bets are accepted for the round.)
+- Keep data on a users' winnings, losses, and rounds played
 - Using player data on winnings, compute 'leaderboards' for a 'season'
 
 ## Features
@@ -50,4 +50,4 @@ Currently, the application is still being built out. The Stripe API is not accep
 - Start the react server: `npm start`
 
 ## Inspirations
-- [Poker Now](https://www.pokernow.club/) Poker Now is a great website, where you can easily set up Hold'em games with your friends. Poker now features Sit and Go tournaments, and also many other cool features using Discord bots including USD wallets.
+- [Poker Now](https://www.pokernow.club/) is a great website, where you can easily set up Hold'em games with your friends. Poker now features Sit and Go tournaments, and also many other cool features using Discord bots including USD wallets.
