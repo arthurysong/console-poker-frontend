@@ -1,5 +1,9 @@
 # Console-Poker
 
+## Screenshot
+
+![screenshot](console-poker.webp)
+
 ## Description
 
 Some time ago, I wanted to set up a simple online cash poker game with my friends. My poker background: I never really played online poker before and occassionally play poker when my friends and I hung out with little amounts of cash. 
