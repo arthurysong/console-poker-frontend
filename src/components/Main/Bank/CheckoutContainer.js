@@ -7,7 +7,7 @@ import './CheckoutContainer.css';
 
 function CheckoutContainer () {
     const dispatch = useDispatch();
-    const chips = useSelector(state => state.chips);
+    const chips = useSelector(state => state.user?.chips);
 
     useEffect(() => {
         dispatch(fetchChips());

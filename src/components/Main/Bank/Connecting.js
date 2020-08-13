@@ -17,10 +17,10 @@ class Connecting extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        connectAccount: (params, history) => dispatch(connectAccount(params, history))
-    }
-}
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         connectAccount: (params, history) => dispatch(connectAccount(params, history))
+//     }
+// }
 
-export default connect(null, mapDispatchToProps)(Connecting);
+export default connect(null, { connectAccount })(Connecting);

@@ -11,7 +11,7 @@ import './WithdrawContainer.css';
 function WithdrawContainer () {
     const history = useHistory();
 
-    const chips = useSelector(state => state.chips);
+    const chips = useSelector(state => state.user?.chips);
     const user = useSelector(state => state.user);
 
     return(

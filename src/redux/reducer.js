@@ -12,7 +12,7 @@ export default function resourceReducer (state = {
     // gamePlayers: [],
     gameErrors: undefined, //this will be used by gameboard
     // status: [] //this will be used by gameconsole, I need them separate becaue I don't want the console to
-    chips: undefined
+    // chips: undefined
 }, action
 ) {
 switch (action.type) {
@@ -118,13 +118,13 @@ switch (action.type) {
             game: {}
         }
     case 'UPDATE_ROUND':
-        console.log({
-            ...state,
-            game: {
-                ...state.game,
-                active_round: action.round
-            }
-        })
+        // console.log({
+        //     ...state,
+        //     game: {
+        //         ...state.game,
+        //         active_round: action.round
+        //     }
+        // })
         return {
             ...state,
             game: {
@@ -135,7 +135,7 @@ switch (action.type) {
     case 'SET_CHIPS': // only for use on deposit page.
         return {
             ...state,
-            chips: action.chips,
+            // chips: action.chips,
             user: {
                 ...state.user,
                 chips: action.chips

@@ -91,16 +91,17 @@ export const clearErrors = () => ({ type: 'CLEAR_ERRORS' })
 
 // chips
 export const addChips = (amount, userId, history) => dispatch => {
-    const body = JSON.stringify({ amount })
-    const options = {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body
-    }
-    fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
+    postWithToken(`${BASE_URL}/users/${userId}/add_chips`, { amount })
+    // const body = JSON.stringify({ amount })
+    // const options = {
+    //     method: "POST",
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body
+    // }
+    // fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
         .then(resp => resp.json())
         .then(json => {
             // console.log(json)
