@@ -42,6 +42,14 @@ switch (action.type) {
             ...state,
             user: action.user
         }
+    case 'SET_USER_CONNECTED':
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                connected: true
+            }
+        }
     case 'ADD_ERRORS':
         return {
             ...state,

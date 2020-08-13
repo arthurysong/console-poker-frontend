@@ -109,8 +109,6 @@ export const fetchChips = userId => dispatch => {
         })
 }
 
-// export const setChips = chips => ({ type: 'SET_CHIPS', chips })
-// export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 
 // withdrawals
 export const connectAccount = (params, history) => dispatch => {
@@ -119,8 +117,8 @@ export const connectAccount = (params, history) => dispatch => {
         .then(json => {
             // console.log(json);
             if (json.success){
-                dispatch({ type: 'SET_USER', user: json.user })
-                history.replace(`/users/${json.user.id}/bank/withdraw`)
+                dispatch({ type: 'SET_USER_CONNECTED' })
+                history.replace(`/users/${json.user_id}/bank/withdraw`)
             }
         })
 }
