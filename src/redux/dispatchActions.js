@@ -48,9 +48,9 @@ export const authenticateViaGoogle = (email, name, history) => dispatch => {
     // fetch(`${DOMAIN}/auth/google_oauth2`)
         .then(resp => resp.json())
         .then(json => {
-            // console.log(json);
-            dispatch({type: 'AUTH_SUCCESS', user: json.user})
-            dispatch({type: 'SET_CHIPS', chips: json.user.chips })
+            console.log(json);
+            dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
+            dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
             dispatch(toggleLogInPage());
             localStorage.setItem("token", json.auth_token);
             history.replace(`/`);
