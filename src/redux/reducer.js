@@ -141,6 +141,14 @@ switch (action.type) {
                 chips: action.chips
             }
         }
+    case 'SUBTRACT_CHIPS':
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                chips: state.user.chips - action.chips
+            }
+        }
     case 'UNSET_CHIPS':
         return {
             ...state,

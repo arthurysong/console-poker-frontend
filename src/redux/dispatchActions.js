@@ -10,7 +10,7 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
             // console.log("in loginUser action", json);
             if (json.user) {
                 dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
-                dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
+                // dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
                 localStorage.setItem("token", json.auth_token);
                 dispatch(toggleLogInPage());
                 history.replace(`/`);
@@ -27,7 +27,7 @@ export const authenticateViaGoogle = (email, name, history) => dispatch => {
         .then(json => {
             console.log(json);
             dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
-            dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
+            // dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
             dispatch(toggleLogInPage());
             localStorage.setItem("token", json.auth_token);
             history.replace(`/`);
@@ -38,8 +38,6 @@ export const authenticateViaGoogle = (email, name, history) => dispatch => {
 export const loginUser = (state, history) => dispatch => { authenticate_user(state, history, dispatch) }
 
 export const setLogin = history => dispatch => {
-    // console.log(localStorage.getItem('token'));
-    // console.log('hello??')
     if (!localStorage.getItem('token')) { return handleAuthRedirect(false, history)}
     fetchWithToken(`${BASE_URL}/set_login`)
         .then(resp => resp.json())
@@ -50,7 +48,7 @@ export const setLogin = history => dispatch => {
                 handleAuthRedirect(false, history);
             } else {
                 dispatch({type: 'AUTH_SUCCESS', user: json.data.attributes })
-                dispatch({type: 'SET_CHIPS', chips: json.data.attributes.chips })
+                // dispatch({type: 'SET_CHIPS', chips: json.data.attributes.chips })
                 
                 handleAuthRedirect(true, history);  // created function to control for different routes for redirects
             } 
@@ -65,16 +63,17 @@ export const logOut = (history) => dispatch => {
 }
 
 export const register = (state, history) => dispatch => {
-    const body = JSON.stringify(state);
-    const options = {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body
-    }
-    fetch(`${BASE_URL}/users`, options)
+    postWithToken(`${BASE_URL}/users`, state)
+    // const body = JSON.stringify(state);
+    // const options = {
+    //     method: "POST",
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body
+    // }
+    // fetch(`${BASE_URL}/users`, options)
         .then(resp => resp.json())
         .then(json => {
             // console.log("in register action ", json);
@@ -92,16 +91,6 @@ export const clearErrors = () => ({ type: 'CLEAR_ERRORS' })
 // chips
 export const addChips = (amount, userId, history) => dispatch => {
     postWithToken(`${BASE_URL}/users/${userId}/add_chips`, { amount })
-    // const body = JSON.stringify({ amount })
-    // const options = {
-    //     method: "POST",
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body
-    // }
-    // fetchWithToken(`${BASE_URL}/users/${userId}/add_chips`, options)
         .then(resp => resp.json())
         .then(json => {
             // console.log(json)
@@ -120,8 +109,8 @@ export const fetchChips = userId => dispatch => {
         })
 }
 
-export const setChips = chips => ({ type: 'SET_CHIPS', chips })
-export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
+// export const setChips = chips => ({ type: 'SET_CHIPS', chips })
+// export const unsetChips = () => ({ type: 'UNSET_CHIPS' })
 
 // withdrawals
 export const connectAccount = (params, history) => dispatch => {
@@ -136,24 +125,18 @@ export const connectAccount = (params, history) => dispatch => {
         })
 }
 
-export const makeWithdrawal = (cents) => {
-    return dispatch => {
-        fetchWithToken(`${BASE_URL}/transfer_secret/${cents.toString()}`)
-            .then(resp => resp.json())
-            .then(json => {
-                // console.log(json);
-                if (json.error){
-                    dispatch({type: 'ADD_ERRORS', errors: [json.error] })
-                    // console.log(json.error);
-                } else {
-                    dispatch({ type: 'SET_USER', user: json.user });
-                    dispatch({ type: 'SET_CHIPS', chips: json.user.chips })
-                    dispatch(setSuccess(json.message))
-                }
-            })
-
-        
-    }
+export const makeWithdrawal = (cents) => dispatch => {
+    fetchWithToken(`${BASE_URL}/transfer_secret/${cents.toString()}`)
+        .then(resp => resp.json())
+        .then(json => {
+            console.log(json);
+            if (json.error){
+                dispatch({type: 'ADD_ERRORS', errors: [json.error] })
+            } else {
+                dispatch({ type: 'SUBTRACT_CHIPS', chips: json.chip_change })
+                dispatch(setSuccess(json.message))
+            }
+        })
 }
 
 // setting and clearing successful messages from withdrawals/deposit?
