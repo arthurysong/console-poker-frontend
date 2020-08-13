@@ -17,11 +17,11 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
     fetch(`${BASE_URL}/authenticate`, options)
         .then(resp => resp.json())
         .then(json => {
-            // console.log("in loginUser action", json);
+            console.log("in loginUser action", json);
             if (json.user) {
-                dispatch({type: 'AUTH_SUCCESS', user: json.user})
+                dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
                 // dispatch setchips use state.chips to display chips...
-                dispatch({type: 'SET_CHIPS', chips: json.user.chips })
+                dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
                 localStorage.setItem("token", json.auth_token);
                 dispatch(toggleLogInPage());
                 history.replace(`/`);
