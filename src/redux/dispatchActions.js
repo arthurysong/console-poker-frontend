@@ -1,23 +1,24 @@
 import handleAuthRedirect from './handleAuthRedirect';
-import { fetchWithToken } from '../utilities/fetchWithToken';
+import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
 //authenticating...
 const authenticate_user = (state, history, dispatch) => { // abstracted this out because I also need in my register action
-    const body = JSON.stringify(state)
-    const options = {
-        method: "POST",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body
-    }
-    dispatch({type: 'AUTH_REQUEST'})
-    fetch(`${BASE_URL}/authenticate`, options)
+    // const body = JSON.stringify(state)
+    // const options = {
+    //     method: "POST",
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //     },
+    //     body
+    // }
+    postWithToken(`${BASE_URL}/authenticate`, state)
+    // dispatch({type: 'AUTH_REQUEST'})
+    // fetch(`${BASE_URL}/authenticate`, options)
         .then(resp => resp.json())
         .then(json => {
-            console.log("in loginUser action", json);
+            // console.log("in loginUser action", json);
             if (json.user) {
                 dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
                 // dispatch setchips use state.chips to display chips...
@@ -32,45 +33,39 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
         })
 }
 
-export const authenticateViaGoogle = (email, name, history) => {
-    return dispatch => {
-        const body = JSON.stringify({ email, username: name })
-        const options = {
-            method: "POST",
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body
-        }
-
-        fetch(`${BASE_URL}/auth/google`, options)
-        // fetch(`${DOMAIN}/auth/google_oauth2`)
-            .then(resp => resp.json())
-            .then(json => {
-                console.log(json);
-                dispatch({type: 'AUTH_SUCCESS', user: json.user})
-                dispatch({type: 'SET_CHIPS', chips: json.user.chips })
-                dispatch(toggleLogInPage());
-                localStorage.setItem("token", json.auth_token);
-                history.replace(`/`);
-            })
-            .catch(err => console.log(err))
-    }
+export const authenticateViaGoogle = (email, name, history) => dispatch => {
+        // const body = JSON.stringify({ email, username: name })
+        // const options = {
+        //     method: "POST",
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body
+        // }
+    postWithToken(`${BASE_URL}/auth/google`, { email, username: name })
+    // fetch(`${BASE_URL}/auth/google`, options)
+    // fetch(`${DOMAIN}/auth/google_oauth2`)
+        .then(resp => resp.json())
+        .then(json => {
+            // console.log(json);
+            dispatch({type: 'AUTH_SUCCESS', user: json.user})
+            dispatch({type: 'SET_CHIPS', chips: json.user.chips })
+            dispatch(toggleLogInPage());
+            localStorage.setItem("token", json.auth_token);
+            history.replace(`/`);
+        })
+        .catch(err => console.log(err))
 }
 
-export const loginUser = (state, history) => {
-    return dispatch => {
-        authenticate_user(state, history, dispatch)
-    }
-}
+export const loginUser = (state, history) => dispatch => { authenticate_user(state, history, dispatch) }
 
 export const setLogin = history => {
     return dispatch => {
         const token = localStorage.getItem("token");
         // console.log('in setlogin');
         if (token) {
-            dispatch({type: 'AUTH_REQUEST'});
+            // dispatch({type: 'AUTH_REQUEST'});
             fetch(`${BASE_URL}/set_login`, {
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -78,7 +73,7 @@ export const setLogin = history => {
             })
                 .then(resp => resp.json())
                 .then(json => {
-                    console.log("in setLogin action", json.data);
+                    // console.log("in setLogin action", json.data);
                     if (json.data.id) {
                         dispatch({type: 'AUTH_SUCCESS', user: json.data.attributes })
                         dispatch({type: 'SET_CHIPS', chips: json.data.attributes.chips })
@@ -95,7 +90,7 @@ export const setLogin = history => {
     }
 }
 
-export const logOut =  (history) => dispatch => {
+export const logOut = (history) => dispatch => {
         history.replace('/');
         localStorage.clear();
         dispatch({ type: 'LOGOUT' })

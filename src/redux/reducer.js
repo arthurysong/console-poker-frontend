@@ -1,7 +1,5 @@
 export default function resourceReducer (state = {
     // colorHash: '',
-    // processingAuth: false,
-    // isLoggedIn: false,
     user: undefined,
     errors: [],
     successMessage: "", //for displaying success message when deposit is successful.
@@ -23,23 +21,14 @@ switch (action.type) {
             ...state,
             logInPage: !state.logInPage
         }
-    // case 'AUTH_REQUEST':
-    //     return {
-    //         ...state,
-    //         processingAuth: true
-    //     }
     case 'AUTH_FAIL':
         return {
             ...state,
-            // processingAuth: false,
-            // isLoggedIn: false,
             user: undefined
         }
     case 'AUTH_SUCCESS':
         return {
             ...state,
-            // processingAuth: false,
-            // isLoggedIn: true,
             user: action.user
         }
     case 'LOGOUT':

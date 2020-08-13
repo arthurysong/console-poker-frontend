@@ -12,7 +12,7 @@ function CheckoutContainer () {
     useEffect(() => {
         dispatch(fetchChips());
     }, [dispatch])
-    console.log('hello???');
+
     return(
         <div className="checkoutContainer">
             <OptionSelect />
