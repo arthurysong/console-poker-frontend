@@ -20,12 +20,12 @@ function GameBoard(){
     return (
         <div className="gameBoard">
             <div className="gameBoard__communityCards">
-                {round && round.access_community_cards !== "" && round.access_community_cards.split(" ").map((c, index) => 
+                {round?.access_community_cards !== "" && round?.access_community_cards.split(" ").map((c, index) => 
                     <img key={index} className="gameBoard__card" alt={c} src={images[`${c}.webp`]}/>)}
             </div>
             <div className="gameBoard__pot">
                 <img width="50px" alt='pot-icon' src={pot}/>
-                {(round && round.pot > 0 ? round.pot : 0)}
+                {(round?.pot > 0 ? round.pot : 0)}
             </div>  
             {/* {console.log('in gameBoard seats_as_users ', seats)} */}
             {/* {seats?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)} */}
