@@ -83,6 +83,10 @@ switch (action.type) {
                 chips: action.chips
             }
         }
+
+// ERRORS AND SUCCESSES =========
+// ==============================
+
     case 'ADD_ERRORS':
         return {
             ...state,
@@ -93,6 +97,20 @@ switch (action.type) {
             ...state,
             errors: []
         }
+    case 'SET_SUCCESS':
+        return {
+            ...state,
+            successMessage: action.success
+        }
+    case 'CLEAR_SUCCESS':
+        return {
+            ...state,
+            successMessage: ""
+        }
+
+// LOBBY CASES ==========
+// ======================
+
     case 'SET_ROOMS':
         return {
             ...state,
@@ -108,6 +126,10 @@ switch (action.type) {
             ...state,
             rooms: []
         }
+
+// ROOM CASES ================
+// ===========================
+
     case 'SET_ROOM':
         return {
             ...state,
@@ -128,6 +150,30 @@ switch (action.type) {
             ...state,
             messages: []
         }
+
+// GAME CASES ============
+// =======================
+
+    case 'SET_GAME':
+        return {
+            ...state,
+            game: action.game
+        }
+    case 'DELETE_GAME':
+        return {
+            ...state,
+            game: {}
+        }    
+    case 'USER_JOIN':
+        const s = state.game.seats_as_users
+        s[action.seat_index] = action.user
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                seats_as_users: s
+            }
+        }
     case 'PROCESS_MOVE':
         return {
             ...state,
@@ -138,11 +184,7 @@ switch (action.type) {
             ...state,
             processingMove: false
         }
-    case 'SET_GAME':
-        return {
-            ...state,
-            game: action.game
-        }
+    
     case 'SET_MOVE':
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
@@ -153,37 +195,14 @@ switch (action.type) {
                 seats_as_users: seats_as_users
             }
         }
-    case 'DELETE_GAME':
-        return {
-            ...state,
-            game: {}
-        }
+    
     case 'UPDATE_ROUND':
-        // console.log({
-        //     ...state,
-        //     game: {
-        //         ...state.game,
-        //         active_round: action.round
-        //     }
-        // })
         return {
             ...state,
             game: {
                 ...state.game,
                 active_round: action.round
             }
-        }
-    
-
-    case 'SET_SUCCESS':
-        return {
-            ...state,
-            successMessage: action.success
-        }
-    case 'CLEAR_SUCCESS':
-        return {
-            ...state,
-            successMessage: ""
         }
     default:
         return state;

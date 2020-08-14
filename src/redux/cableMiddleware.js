@@ -117,6 +117,11 @@ export default function cableMiddleware() {
             dispatch({ type: 'SET_GAME', game: result.game });
             break;
           case 'user_join':
+            // user has joined
+            // result.user
+            playSitSound();
+            dispatch({ type: 'USER_JOIN', user: result.user, seat_index: result.seat_index });
+            break;
           case 'user_leave':
             playSitSound();
             dispatch({ type: 'SET_GAME', game: result.game });
