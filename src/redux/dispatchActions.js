@@ -31,7 +31,7 @@ export const authenticateViaGoogle = (email, name) => dispatch => {
         .catch(err => console.log(err))
 }
 
-export const loginUser = (state, history) => dispatch => { authenticate_user(state, history, dispatch) }
+export const loginUser = state => dispatch => { authenticate_user(state, dispatch) }
 
 export const setLogin = history => dispatch => {
     if (!localStorage.getItem('token')) { return handleAuthRedirect(false, history)}
