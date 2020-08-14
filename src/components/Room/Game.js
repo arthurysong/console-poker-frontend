@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import GameBoard from './GameBoard';
 import GameButtonsContainer from './GameButtonsContainer';
 import { useDispatch, useSelector } from 'react-redux';
-import { subscribeGame, unsubscribeGame, fetchGame } from '../../redux/gameActions';
+import { subscribeGame, unsubscribeGame, fetchGame, clearGame } from '../../redux/gameActions';
 // import { setChips } from '../../redux/dispatchActions';
 
 function Game({ gameId, user }) {
@@ -22,6 +22,7 @@ function Game({ gameId, user }) {
         dispatch(subscribeGame(user.id, gameId));
         return () => {
             dispatch(unsubscribeGame(gameId));
+            dispatch(clearGame())
             // dispatch(resetUser());
             // updateChips();
         }

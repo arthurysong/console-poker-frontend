@@ -10,6 +10,7 @@ export const fetchGame = gameId => dispatch => {
         });
 }
 
+export const clearGame = () => ({ type: 'DELETE_GAME' });
 export const startGame = gameId => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/start`)
 }
