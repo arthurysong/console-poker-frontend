@@ -109,13 +109,21 @@ export default function cableMiddleware() {
             // }, 1000);
             break;
           case 'game_end_by_showdown':
-
+            dispatch({ type: 'ROUND_OVER', startable: result.startable })
+            dispatch({ type: 'UPDATE_WINNERS', winner_indices: result.winner_indices, winnings: result.winnings })
+            playGameEndSound(result.winner_ids[user])
+            // round_over
+            // update_winners
+            // play end game sound
+            // setTimeout(() => playGameEndSound(result.winner_ids[user]), 800);
+            break;
           case 'game_end_by_fold':
             // we need to make sure round.is_playing is false
             // we need to update the chips of winner + the winnings of winner
             dispatch({ type: 'ROUND_OVER', startable: result.startable })
             dispatch({ type: 'UPDATE_WINNER', winner_index: result.winner_index, winnings: result.winnings })
-            setTimeout(() => playGameEndSound(result.winner_ids[user]), 800);
+            playGameEndSound(result.winner_ids[user])
+            // setTimeout(() => playGameEndSound(result.winner_ids[user]), 800);
             break;
           case 'start_game':
             playStartSound();
@@ -135,9 +143,13 @@ export default function cableMiddleware() {
           case 'round_ended_due_to_leaver':
             dispatch({ type: 'ROUND_OVER' });
             break;
-          case 'set_game':
+          case 'subscribed':
             dispatch({ type: 'SET_GAME', game: result.game });
+            // dispatch({ type: 'RESET_USER_GAME' })
             break;
+          case 'unsubscribed':
+            dispatch({ type: 'SET_GAME', game: result.game });
+            dispatch({ type: 'RESET_USER_GAME' })
           case 'update_round':
             dispatch({type: 'UPDATE_ROUND', round: result.round })
             break;

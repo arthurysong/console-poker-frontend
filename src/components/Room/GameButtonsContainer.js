@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 // import SitButton from './SitButton';
 import './GameButtonsContainer.css'
 
-function GameButtonsContainer({ round, user}) {
+function GameButtonsContainer({ round, user }) {
     const processingMove = useSelector(state => state.processingMove);
     const [raiseMenu, setRaiseMenu] = useState(false);
     const [raise, setRaise] = useState(0);

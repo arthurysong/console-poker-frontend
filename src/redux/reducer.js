@@ -163,15 +163,33 @@ switch (action.type) {
 // =======================
 
     case 'SET_GAME':
+        // const sg = Object.assign({} , action.game.active_round);
+        // console.log(state.game.active_round);
+        // console.log(action.game.active_round);
+        // console.log(Object.assign({}, action.game.active_round))
+        // const sg = (state.game.active_round === undefined ? Object.assign({}, action.game.active_round) : Object.assign(state.game.active_round, action.game.active_round))
         return {
             ...state,
             game: action.game
+            
+            // game: {
+            //     ...action.game,
+            //     active_round: Object.assign(state.game.active_round, action.game.active_round)
+            // }
         }
     case 'DELETE_GAME':
         return {
             ...state,
             game: {}
         }    
+    case 'RESET_USER_GAME':
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                game_id: null
+            }
+        }
     case 'USER_JOIN':
         const s = state.game.seats_as_users
         s[action.seat_index] = action.user
@@ -216,6 +234,19 @@ switch (action.type) {
             game: {
                 ...state.game,
                 seats_as_users: u
+            }
+        }
+    case 'UPDATE_WINNERS':
+        const us = state.game.seats_as_users
+        action.winner_indices.forEach(i => {
+            us[i].data.attributes.chips += action.winnings
+            us[i].data.attributes.winnings += action.winnings
+        })
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                seats_as_users: us
             }
         }
     case 'PROCESS_MOVE':

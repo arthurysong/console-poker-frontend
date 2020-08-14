@@ -19,7 +19,7 @@ function Player({ position, user, images }) {
                 <>Sit</>
         </div>
     } else if (user) {
-        return <div className={`player ${(round?.turn && user.id === round.turn.id) ? 'player--turn' : 'player' } player--${position} ${!user ? 'player--empty' : ''}`}>
+        return <div className={`player ${(user.id === round?.turn_as_json?.id && round.is_playing) ? 'player--turn' : 'player' } player--${position} ${!user ? 'player--empty' : ''}`}>
             <div className="player__cards">
                 <PlayerCards user={user} loggedInUser={loggedInUser} images={images} round={round}/>
                 <PlayerCardRank user={user} loggedInUser={loggedInUser} round={round}/>
