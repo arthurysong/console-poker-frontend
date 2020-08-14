@@ -117,7 +117,7 @@ export const makeWithdrawal = (cents) => dispatch => {
             if (json.error){
                 dispatch({type: 'ADD_ERRORS', errors: [json.error] })
             } else {
-                dispatch({ type: 'SUBTRACT_CHIPS', chips: json.chip_change })
+                dispatch({ type: 'SET_CHIPS', chips: json.chips })
                 dispatch(setSuccess(json.message))
             }
         })

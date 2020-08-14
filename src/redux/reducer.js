@@ -17,6 +17,10 @@ export default function resourceReducer (state = {
 }, action
 ) {
 switch (action.type) {
+
+// TOGGLING PAGES =====
+//=====================
+
     case 'TOGGLE_LOGIN_PAGE':
         return {
             ...state,
@@ -27,6 +31,10 @@ switch (action.type) {
             ...state,
             registerPage: !state.registerPage
         }
+
+// AUTHENTICATION==========
+// ========================
+
     case 'AUTH_FAIL':
         return {
             ...state,
@@ -40,9 +48,12 @@ switch (action.type) {
     case 'LOGOUT':
         return {
             ...state,
-            isLoggedIn: false,
             user: undefined
         }
+
+// USER CASES======
+//=================
+
     case 'SET_USER':
         return {
             ...state,
@@ -54,6 +65,22 @@ switch (action.type) {
             user: {
                 ...state.user,
                 connected: true
+            }
+        }
+    case 'SET_USER_GAME':
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                game_id: action.game_id
+            }
+        }
+    case 'SET_CHIPS': // only for use on deposit page.
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                chips: action.chips
             }
         }
     case 'ADD_ERRORS':
@@ -146,28 +173,8 @@ switch (action.type) {
                 active_round: action.round
             }
         }
-    case 'SET_CHIPS': // only for use on deposit page.
-        return {
-            ...state,
-            // chips: action.chips,
-            user: {
-                ...state.user,
-                chips: action.chips
-            }
-        }
-    case 'SUBTRACT_CHIPS':
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                chips: state.user.chips - action.chips
-            }
-        }
-    case 'UNSET_CHIPS':
-        return {
-            ...state,
-            chips: undefined
-        }
+    
+
     case 'SET_SUCCESS':
         return {
             ...state,
