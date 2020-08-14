@@ -100,7 +100,7 @@ export default function cableMiddleware() {
             playMoveSound(result.command);
             break;
           case 'update_turn':
-            dispatch({ type: 'FINISHED_MOVE' });
+            // dispatch({ type: 'FINISHED_MOVE' });
             dispatch({ type: 'UPDATE_TURN', turn_as_json: result.turn_as_json });
             playTurnSound(result.turn_as_json, user);
             break;

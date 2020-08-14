@@ -247,11 +247,11 @@ switch (action.type) {
             ...state,
             processingMove: true
         }
-    case 'FINISHED_MOVE':
-        return {
-            ...state,
-            processingMove: false
-        }
+    // case 'FINISHED_MOVE':
+    //     return {
+    //         ...state,
+    //         processingMove: false
+    //     }
     case 'SET_MOVE':
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
@@ -265,6 +265,7 @@ switch (action.type) {
     case 'UPDATE_TURN':
         return {
             ...state,
+            processingMove: false,
             game: {
                 ...state.game,
                 active_round: {
