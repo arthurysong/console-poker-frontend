@@ -1,6 +1,12 @@
 import { postWithToken } from '../utilities/fetchWithToken'
 import { BASE_URL } from '../utilities/BASE_URL';
 
+export const fetchGame = gameId => dispatch => {
+    postWithToken(`${BASE_URL}/games/${gameId}`)
+        .then(resp => resp.json())
+        .then(json => console.log(json));
+}
+
 export const startGame = gameId => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/start`)
 }
@@ -16,11 +22,11 @@ export const leaveTable = gameId => dispatch => {
         .then(() => dispatch({ type: 'SET_USER_GAME_NULL' }));
 }
 
-export const resetUser = userId => dispatch => {
-    postWithToken(`${BASE_URL}/users/${userId}/reset_user`)
-        .then(resp => resp.json())
-        .then(json => dispatch({ type: 'SET_USER', user: json.user }));
-}
+// export const resetUser = userId => dispatch => {
+//     postWithToken(`${BASE_URL}/users/${userId}/reset_user`)
+//         .then(resp => resp.json())
+//         .then(json => dispatch({ type: 'SET_USER', user: json.user }));
+// }
 
 export const postMoveWithToken = (commandObj, userId) => dispatch => {
     dispatch({ type: 'PROCESS_MOVE' });

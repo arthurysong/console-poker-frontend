@@ -151,10 +151,10 @@ export default function cableMiddleware() {
           case 'round_ended_due_to_leaver':
             dispatch({ type: 'ROUND_OVER' });
             break;
-          case 'subscribed':
-            dispatch({ type: 'SET_GAME', game: result.game });
-            // dispatch({ type: 'RESET_USER_GAME' })
-            break;
+          // case 'subscribed':
+          //   dispatch({ type: 'SET_GAME', game: result.game });
+          //   // dispatch({ type: 'RESET_USER_GAME' })
+          //   break;
           case 'unsubscribed':
             dispatch({ type: 'SET_GAME', game: result.game });
             dispatch({ type: 'RESET_USER_GAME' })
