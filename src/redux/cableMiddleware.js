@@ -158,9 +158,9 @@ export default function cableMiddleware() {
           case 'unsubscribed':
             dispatch({ type: 'SET_GAME', game: result.game });
             dispatch({ type: 'RESET_USER_GAME' })
-          case 'update_round':
-            dispatch({type: 'UPDATE_ROUND', round: result.round })
-            break;
+          // case 'update_round':
+          //   dispatch({type: 'UPDATE_ROUND', round: result.round })
+          //   break;
           case 'errors':
             dispatch({type: 'GAME_ERRORS', error: result.error })
             break;

@@ -305,14 +305,14 @@ switch (action.type) {
                 }
             }
         }
-    case 'UPDATE_ROUND':
-        return {
-            ...state,
-            game: {
-                ...state.game,
-                active_round: action.round
-            }
-        }
+    // case 'UPDATE_ROUND':
+    //     return {
+    //         ...state,
+    //         game: {
+    //             ...state.game,
+    //             active_round: action.round
+    //         }
+    //     }
     default:
         return state;
 }
