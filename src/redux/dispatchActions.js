@@ -38,7 +38,7 @@ export const setLogin = history => dispatch => {
     fetchWithToken(`${BASE_URL}/set_login`)
         .then(resp => resp.json())
         .then(json => {
-            console.log("in setLogin action", json);
+            // console.log("in setLogin action", json);
             if (json.error) {
                 dispatch({type: 'AUTH_FAIL'});
                 handleAuthRedirect(false, history);

@@ -4,13 +4,11 @@ import { BASE_URL } from '../utilities/BASE_URL';
 export const fetchGame = gameId => dispatch => {
     fetchWithToken(`${BASE_URL}/games/${gameId}`)
         .then(resp => resp.json())
-        .then(json => {
-            console.log(json)
-            dispatch({ type: 'SET_GAME', game: json });
-        });
+        .then(json => dispatch({ type: 'SET_GAME', game: json }));
 }
 
 export const clearGame = () => ({ type: 'DELETE_GAME' });
+
 export const startGame = gameId => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/start`)
 }
