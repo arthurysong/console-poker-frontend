@@ -3,17 +3,15 @@ import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
 //authenticating...
-const authenticate_user = (state, history, dispatch) => { // abstracted this out because I also need in my register action
+const authenticate_user = (state, dispatch) => { // abstracted this out because I also need in my register action
     postWithToken(`${BASE_URL}/authenticate`, state)
         .then(resp => resp.json())
         .then(json => {
             // console.log("in loginUser action", json);
             if (json.user) {
                 dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
-                // dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
                 localStorage.setItem("token", json.auth_token);
                 dispatch(toggleLogInPage());
-                history.replace(`/`);
             } else if (json.errors) {
                 dispatch({type: 'AUTH_FAIL'});
                 dispatch({type: 'ADD_ERRORS', errors: json.errors })
@@ -21,16 +19,14 @@ const authenticate_user = (state, history, dispatch) => { // abstracted this out
         })
 }
 
-export const authenticateViaGoogle = (email, name, history) => dispatch => {
+export const authenticateViaGoogle = (email, name) => dispatch => {
     postWithToken(`${BASE_URL}/auth/google`, { email, username: name })
         .then(resp => resp.json())
         .then(json => {
             console.log(json);
             dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
-            // dispatch({type: 'SET_CHIPS', chips: json.user.data.attributes.chips })
             dispatch(toggleLogInPage());
             localStorage.setItem("token", json.auth_token);
-            history.replace(`/`);
         })
         .catch(err => console.log(err))
 }
@@ -48,8 +44,6 @@ export const setLogin = history => dispatch => {
                 handleAuthRedirect(false, history);
             } else {
                 dispatch({type: 'AUTH_SUCCESS', user: json.data.attributes })
-                // dispatch({type: 'SET_CHIPS', chips: json.data.attributes.chips })
-                
                 handleAuthRedirect(true, history);  // created function to control for different routes for redirects
             } 
         })
@@ -59,33 +53,25 @@ export const logOut = (history) => dispatch => {
         history.replace('/');
         localStorage.clear();
         dispatch({ type: 'LOGOUT' })
-        // window.location.reload();
 }
 
-export const register = (state, history) => dispatch => {
+export const register = state => dispatch => {
     postWithToken(`${BASE_URL}/users`, state)
-    // const body = JSON.stringify(state);
-    // const options = {
-    //     method: "POST",
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body
-    // }
-    // fetch(`${BASE_URL}/users`, options)
         .then(resp => resp.json())
         .then(json => {
             // console.log("in register action ", json);
             if (json.user) {
-                authenticate_user(state, history, dispatch);
+                dispatch({type: 'AUTH_SUCCESS', user: json.user.data.attributes})
+                dispatch(toggleRegisterPage());
+                localStorage.setItem("token", json.auth_token);
             } else {
-                dispatch({type: 'ADD_ERRORS', errors: json.errors })
+                dispatch ({ type: 'ADD_ERRORS', errors: json.errors })
             }
         })
 }
 
 export const toggleLogInPage = () => ({ type: 'TOGGLE_LOGIN_PAGE' })
+export const toggleRegisterPage = () => ({ type: 'TOGGLE_REGISTER_PAGE' })
 export const clearErrors = () => ({ type: 'CLEAR_ERRORS' })
 
 // chips

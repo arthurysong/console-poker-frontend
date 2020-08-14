@@ -8,6 +8,7 @@ export default function resourceReducer (state = {
     messages: [],
     game: {},
     logInPage: false,
+    registerPage: false,
     processingMove: false,
     // gamePlayers: [],
     gameErrors: undefined, //this will be used by gameboard
@@ -20,6 +21,11 @@ switch (action.type) {
         return {
             ...state,
             logInPage: !state.logInPage
+        }
+    case 'TOGGLE_REGISTER_PAGE':
+        return {
+            ...state,
+            registerPage: !state.registerPage
         }
     case 'AUTH_FAIL':
         return {

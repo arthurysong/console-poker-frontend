@@ -8,7 +8,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { DOMAIN } from '../utilities/BASE_URL';
 import './LogInPage.css';
 
-function LogInPage ({ history }) {
+function LogInPage () {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const logInPage = useSelector(state => state.logInPage);
@@ -16,11 +16,11 @@ function LogInPage ({ history }) {
 
     const submitHandler = event => {
         event.preventDefault();
-        dispatch(loginUser({ email, password }, history));
+        dispatch(loginUser({ email, password }));
     }
 
     const responseGoogle = googleAuth => {
-        dispatch(authenticateViaGoogle(googleAuth.profileObj.email, googleAuth.profileObj.name, history));
+        dispatch(authenticateViaGoogle(googleAuth.profileObj.email, googleAuth.profileObj.name));
     }
 
     if (logInPage) {
@@ -59,7 +59,7 @@ function LogInPage ({ history }) {
                             <input className="nes-input" onChange={e => setPassword(e.target.value)} type="password" name="password" value={password}/>
                             </label><br/>
                             <button className="logInPage__button nes-btn" type="submit" value="login">Log In</button><br/>
-                            <div className="logInPage__register">Don't have an account? <Link to="/register">REGISTER!</Link></div>
+                            <div className="logInPage__register">Don't have an account? <Link to="/">REGISTER!</Link></div>
                         </form>
                         <div className="logInPage__agreement">By continuing, you agree to our <a target="_blank" rel="noopener noreferrer" href={`${DOMAIN}/terms`}>Terms &#38; Conditions</a></div>
                     </div>

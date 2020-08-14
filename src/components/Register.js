@@ -1,60 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Errors from './Errors';
 import { Link } from 'react-router-dom';
+import CloseIcon from '@material-ui/icons/Close';
+import { DOMAIN } from '../utilities/BASE_URL'
+import { register, toggleRegisterPage } from '../redux/dispatchActions';
+import { useSelector, useDispatch } from 'react-redux';
+import './Register.css';
 
-class Register extends React.Component {
-    state = {
-        username: "",
-        password: "",
-        password_confirmation: "",
-        email: ""
+function Register() {
+    const registerPage = useSelector(state => state.registerPage);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [passwordConfirmation, setPasswordConfirmation] = useState('');
+    const [email, setEmail] = useState('');
+    const dispatch = useDispatch();
+    const submitHandler = e => {
+        e.preventDefault();
+        dispatch(register({ username, password, passwordConfirmation, email }));
     }
 
-    changeHandler = event => {
-        this.setState({
-            [event.target.name]: event.target.value
-        })
-    }
-
-    submitHandler = event => {
-        event.preventDefault();
-        this.props.register(this.state, this.props.history);
-    }
-    
-    goBack = () => {
-        this.props.history.goBack();
-    }
-
-    render() {
-        return (
-            <div className="user_form">
-                <Errors />
-                <h1>Registration!</h1>
-                <form onSubmit={this.submitHandler} >
-                    <label>
-                        Username*<br/>
-                    <input className="nes-input" type="text" name="username" value={this.state.username} onChange={this.changeHandler}/>
-                    </label><br/>
-                    <label>
-                        Email*<br/>
-                    <input className="nes-input" type="text" name="email" value={this.state.email} onChange={this.changeHandler}/>
-                    </label><br/>
-                    <label>
-                        Password*<br/>
-                    <input className="nes-input" type="password" name="password" value={this.state.password} onChange={this.changeHandler}/>
-                    </label><br/>
-                    <label>
-                        Password Confirmation*<br/>
-                    <input className="nes-input" type="password" name="password_confirmation" value={this.state.password_confirmation} onChange={this.changeHandler}/>
-                    </label><br/>
-                    <button className="nes-btn is-primary" type="submit" value="Create Account">Register!</button><br/>
-                </form>
-                <p><span className="nes-text is-disabled">By registering, you agree to Console-Poker's <Link to="/terms">Terms &#38; Conditions</Link></span></p>
-                <div className="back_button"><button className="nes-btn is-error" onClick={this.goBack}>{'<'}</button></div>
+    if (registerPage) {
+        return(
+            <div className="register">
+                <div className="register__window">
+                    <i className="nes-octocat animate" id="octocat"></i>
+                    <div className="register__container">
+                        <div className="register__exitButton" onClick={() => dispatch(toggleRegisterPage())}><CloseIcon /></div>
+                        <h1 className="register__header">Register</h1>
+                        <p className="register__description">Chat and Play Holdem with Your Friends!</p><br/>
+                        
+                            
+                        <form onSubmit={submitHandler}>
+                            <Errors />
+                            {/* <div className="register__test">TEST: sona@gmail.com | 123456</div> */}
+                            <label>
+                                Username<small style={{color: '#e76e55'}}>*</small><br/>
+                            <input className="nes-input" onChange={e => setUsername(e.target.value)} type="text" name="password" value={username}/>
+                            </label><br/>
+                            <label>
+                                Email<small style={{color: '#e76e55'}}>*</small><br/>
+                            <input className="nes-input" onChange={e => setEmail(e.target.value)} type="text" name="email" value={email}/>
+                            </label>
+                            <label>
+                                Password<small style={{color: '#e76e55'}}>*</small><br/>
+                            <input className="nes-input" onChange={e => setPassword(e.target.value)} type="password" name="password" value={password}/>
+                            </label><br/>
+                            <label>
+                                Password Confirmation<small style={{color: '#e76e55'}}>*</small><br/>
+                            <input className="nes-input" onChange={e => setPasswordConfirmation(e.target.value)} type="password" name="password" value={passwordConfirmation}/>
+                            </label><br/>
+                            <button className="register__button nes-btn" type="submit" value="login">Create Account</button><br/>
+                            <div className="register__login">Already have an account? <Link to="/">SIGNIN!</Link></div>
+                            {/* <div className="register__register">Don't have an account? <Link to="/register">REGISTER!</Link></div> */}
+                        </form>
+                        <div className="register__agreement">By continuing, you agree to our <a target="_blank" rel="noopener noreferrer" href={`${DOMAIN}/terms`}>Terms &#38; Conditions</a></div>
+                    </div>
+                </div>
             </div>
         )
     }
-
+    return ""
 }
-
 export default Register;
