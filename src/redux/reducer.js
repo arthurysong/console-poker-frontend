@@ -283,12 +283,14 @@ switch (action.type) {
         //         user.data.attributes.checked = false;
         //     }
         // })
-        state.game.seats_as_users.forEach(user => {
+        state.game.seats_as_users.forEach((user, i) => {
             if (user !== null) {
                 user.data.attributes.round_bet = 0;
                 user.data.attributes.checked = false;
+                user.data.attributes.current_hand = action.seats_current_hand[i]
             }
         })
+
         return {
             ...state,
             processingMove: false,

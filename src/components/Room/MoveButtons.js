@@ -31,7 +31,7 @@ function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, user }) {
     }
 
     return <div className="moveButtons">
-        {console.log('allo?', round)}
+        {/* {console.log('allo?', round)} */}
         {!raiseMenu && round?.turn_as_json?.id === user.id && round.turn_as_json.possible_moves.map((move, index) => (
             renderMoveButton(move, index)
         ))}
