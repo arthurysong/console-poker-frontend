@@ -167,6 +167,7 @@ switch (action.type) {
     case 'SET_GAME':
         return {
             ...state,
+            processingMove: false,
             game: action.game
         }
     case 'DELETE_GAME':
@@ -289,6 +290,7 @@ switch (action.type) {
         })
         return {
             ...state,
+            processingMove: false,
             game: {
                 ...state.game,
                 active_round: {

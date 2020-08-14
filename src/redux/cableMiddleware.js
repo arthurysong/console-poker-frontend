@@ -113,7 +113,7 @@ export default function cableMiddleware() {
             // }, 1000);
             // break;
           case 'next_betting_phase':
-            dispatch({ type: 'FINISHED_MOVE' });
+            // dispatch({ type: 'FINISHED_MOVE' });
             dispatch({ type: 'NEW_BETTING_PHASE', access_community_cards: result.access_community_cards, phase: result.phase, pot: result.pot, turn_as_json: result.turn_as_json })
             break;
           case 'game_end_by_showdown':
