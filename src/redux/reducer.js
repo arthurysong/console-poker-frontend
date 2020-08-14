@@ -171,7 +171,8 @@ switch (action.type) {
             ...state,
             game: {
                 ...state.game,
-                seats_as_users: s
+                seats_as_users: s,
+                startable: action.startable
             }
         }
     case 'PROCESS_MOVE':

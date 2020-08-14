@@ -120,7 +120,7 @@ export default function cableMiddleware() {
             // user has joined
             // result.user
             playSitSound();
-            dispatch({ type: 'USER_JOIN', user: result.user, seat_index: result.seat_index });
+            dispatch({ type: 'USER_JOIN', startable: result.startable, user: result.user, seat_index: result.seat_index });
             break;
           case 'user_leave':
             playSitSound();
