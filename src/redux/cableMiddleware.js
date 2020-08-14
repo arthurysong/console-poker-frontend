@@ -101,9 +101,11 @@ export default function cableMiddleware() {
             break;
           case 'update_game_after_move':
             setTimeout(() => {
-              dispatch({ type: 'FINISHED_MOVE' });
-              dispatch({ type: 'SET_GAME', game: result.game });
-              playTurnSound(result.game, user);
+              if (getState().game.active_round.is_playing) { // this is so when a person folds in between the delay the update doesn't happen.
+                dispatch({ type: 'FINISHED_MOVE' });
+                dispatch({ type: 'SET_GAME', game: result.game }); 
+                playTurnSound(result.game, user);
+              }
             }, 1000);
             break;
           case 'game_end_by_showdown':

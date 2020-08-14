@@ -21,7 +21,7 @@ function Game({ gameId, user }) {
         dispatch(subscribeGame(user.id, gameId));
         return () => {
             dispatch(unsubscribeGame(gameId));
-            dispatch(resetUser());
+            // dispatch(resetUser());
             // updateChips();
         }
     }, [dispatch, gameId, user.id])
