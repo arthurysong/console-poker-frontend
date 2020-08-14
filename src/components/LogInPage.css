@@ -102,3 +102,8 @@
 .logInPage__google:active {
     background-color: #1d8eda;
 }
+
+.logInPage__octocat {
+    position: absolute;
+    left: -120px;
+}

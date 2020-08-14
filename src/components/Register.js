@@ -23,7 +23,7 @@ function Register() {
         return(
             <div className="register">
                 <div className="register__window">
-                    <i className="nes-octocat animate" id="octocat"></i>
+                    <i className="nes-octocat animate register__octocat"></i>
                     <div className="register__container">
                         <div className="register__exitButton" onClick={() => dispatch(toggleRegisterPage())}><CloseIcon /></div>
                         <h1 className="register__header">Register</h1>

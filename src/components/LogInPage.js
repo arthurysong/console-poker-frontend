@@ -27,7 +27,7 @@ function LogInPage () {
         return(
             <div className="logInPage">
                 <div className="logInPage__window">
-                    <i className="nes-octocat animate" id="octocat"></i>
+                    <i className="nes-octocat animate logInPage__octocat" ></i>
                     <div className="logInPage__container">
                         <div className="logInPage__exitButton" onClick={() => dispatch(toggleLogInPage())}><CloseIcon /></div>
                         <h1 className="logInPage__header">Login</h1>

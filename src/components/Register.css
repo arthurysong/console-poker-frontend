@@ -90,3 +90,8 @@
 .register__google:active {
     background-color: #1d8eda;
 } */
+
+.register__octocat {
+    position: absolute;
+    left: -120px;
+}

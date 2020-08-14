@@ -9,7 +9,7 @@ import { subscribeRoom, unsubscribeRoom } from '../../redux/roomActions';
 import { doResize } from '../../utilities/scale';
 import './Room.css';
 
-function Room({ match, history }) {
+function Room({ match }) {
     const dispatch = useDispatch();
     const room = useSelector(state => state.room);
     const user = useSelector(state => state.user);

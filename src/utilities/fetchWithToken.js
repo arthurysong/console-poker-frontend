@@ -1,5 +1,3 @@
-// import { BASE_URL } from './BASE_URL';
-
 export function fetchWithToken(url, options = {}){
     const token = localStorage.getItem("token");
     return fetch(url, {
@@ -23,7 +21,3 @@ export function postWithToken(url, bodyHash = {}){
     }
     return fetchWithToken(url, options);
 }
-
-// export function startNewRound(gameId) {
-//     return postWithToken(`${BASE_URL}/games/${gameId}/start`)
-// }
