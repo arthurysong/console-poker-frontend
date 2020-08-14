@@ -99,14 +99,22 @@ export default function cableMiddleware() {
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
             playMoveSound(result.command);
             break;
-          case 'update_game_after_move':
+          case 'update_turn':
+            dispatch({ type: 'FINISHED_MOVE' });
+            dispatch({ type: 'UPDATE_TURN', turn_as_json: result.turn_as_json });
+            playTurnSound(result.turn_as_json, user);
+            break;
+          // case 'update_game_after_move':
             // setTimeout(() => {
               // if (getState().game.active_round.is_playing) { // this is so when a person folds in between the delay the update doesn't happen.
-                dispatch({ type: 'FINISHED_MOVE' });
-                dispatch({ type: 'SET_GAME', game: result.game }); 
-                playTurnSound(result.game, user);
+                // dispatch({ type: 'FINISHED_MOVE' });
+                // dispatch({ type: 'SET_GAME', game: result.game }); 
               // }
             // }, 1000);
+            // break;
+          case 'next_betting_phase':
+            dispatch({ type: 'FINISHED_MOVE' });
+            dispatch({ type: 'NEW_BETTING_PHASE', access_community_cards: result.access_community_cards, phase: result.phase, pot: result.pot, turn_as_json: result.turn_as_json })
             break;
           case 'game_end_by_showdown':
             dispatch({ type: 'ROUND_OVER', startable: result.startable })

@@ -3,7 +3,9 @@ import { postMoveWithToken } from '../../redux/gameActions'
 import { useDispatch, useSelector } from 'react-redux';
 import './MoveButtons.css';
 
-function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, round, user }) {
+function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, user }) {
+// function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, round, user }) {
+    const round = useSelector(state => state.game.active_round)
     const game = useSelector(state => state.game); // this is just so the component updates when new game is set.
     const dispatch = useDispatch();
     const toggleRaiseMenu = () => {
@@ -29,6 +31,7 @@ function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, round, user }) {
     }
 
     return <div className="moveButtons">
+        {console.log('allo?', round)}
         {!raiseMenu && round?.turn_as_json?.id === user.id && round.turn_as_json.possible_moves.map((move, index) => (
             renderMoveButton(move, index)
         ))}

@@ -48,6 +48,6 @@ export function playSitSound() {
     click.play();
 }
 
-export function playTurnSound(game, user) {
-    if (game.active_round.turn?.id === parseInt(user)) turn.play();
+export function playTurnSound(turn_as_json, user) {
+    if (turn_as_json.id === parseInt(user)) turn.play();
 }

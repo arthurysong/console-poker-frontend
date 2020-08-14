@@ -1,3 +1,5 @@
+import { result } from "underscore"
+
 export default function resourceReducer (state = {
     // colorHash: '',
     user: undefined,
@@ -163,19 +165,9 @@ switch (action.type) {
 // =======================
 
     case 'SET_GAME':
-        // const sg = Object.assign({} , action.game.active_round);
-        // console.log(state.game.active_round);
-        // console.log(action.game.active_round);
-        // console.log(Object.assign({}, action.game.active_round))
-        // const sg = (state.game.active_round === undefined ? Object.assign({}, action.game.active_round) : Object.assign(state.game.active_round, action.game.active_round))
         return {
             ...state,
             game: action.game
-            
-            // game: {
-            //     ...action.game,
-            //     active_round: Object.assign(state.game.active_round, action.game.active_round)
-            // }
         }
     case 'DELETE_GAME':
         return {
@@ -259,7 +251,6 @@ switch (action.type) {
             ...state,
             processingMove: false
         }
-    
     case 'SET_MOVE':
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
@@ -270,7 +261,45 @@ switch (action.type) {
                 seats_as_users: seats_as_users
             }
         }
-    
+    case 'UPDATE_TURN':
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                active_round: {
+                    ...state.game.active_round,
+                    turn_as_json: action.turn_as_json
+                }
+            }
+        }
+    case 'NEW_BETTING_PHASE':
+        // need to reset all the round_bets
+        // const nbp = state.game.seats_as_users;
+        // nbp.forEach(user => {
+        //     if (user !== null) {
+        //         user.data.attributes.round_bet = 0;
+        //         user.data.attributes.checked = false;
+        //     }
+        // })
+        state.game.seats_as_users.forEach(user => {
+            if (user !== null) {
+                user.data.attributes.round_bet = 0;
+                user.data.attributes.checked = false;
+            }
+        })
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                active_round: {
+                    ...state.game.active_round,
+                    access_community_cards: action.access_community_cards,
+                    pot: action.pot,
+                    phase: action.phase,
+                    turn_as_json: action.turn_as_json
+                }
+            }
+        }
     case 'UPDATE_ROUND':
         return {
             ...state,
