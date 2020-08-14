@@ -1,10 +1,13 @@
-import { postWithToken } from '../utilities/fetchWithToken'
+import { fetchWithToken, postWithToken } from '../utilities/fetchWithToken'
 import { BASE_URL } from '../utilities/BASE_URL';
 
 export const fetchGame = gameId => dispatch => {
-    postWithToken(`${BASE_URL}/games/${gameId}`)
+    fetchWithToken(`${BASE_URL}/games/${gameId}`)
         .then(resp => resp.json())
-        .then(json => console.log(json));
+        .then(json => {
+            console.log(json)
+            dispatch({ type: 'SET_GAME', game: json });
+        });
 }
 
 export const startGame = gameId => dispatch => {
