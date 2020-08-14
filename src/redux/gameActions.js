@@ -13,8 +13,7 @@ export const sitDown = (gameId, index) => dispatch => {
 
 export const leaveTable = gameId => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/leave`)
-        .then(resp => resp.json())
-        .then(json => dispatch({ type: 'SET_USER', user: json.user }));
+        .then(() => dispatch({ type: 'SET_USER_GAME_NULL' }));
 }
 
 export const resetUser = userId => dispatch => {

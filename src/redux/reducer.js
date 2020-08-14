@@ -75,6 +75,14 @@ switch (action.type) {
                 game_id: action.game_id
             }
         }
+    case 'SET_USER_GAME_NULL':
+        return {
+            ...state,
+            user: {
+                ...state.user,
+                game_id: null
+            }
+        }
     case 'SET_CHIPS': // only for use on deposit page.
         return {
             ...state,
@@ -173,6 +181,41 @@ switch (action.type) {
                 ...state.game,
                 seats_as_users: s,
                 startable: action.startable
+            }
+        }
+    case 'USER_LEAVE':
+        const x = state.game.seats_as_users
+        x[action.seat_index] = null
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                seats_as_users: x,
+                startable: action.startable
+            }
+        }
+    case 'ROUND_OVER':
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                startable: action.startable,
+                active_round: {
+                    ...state.game.active_round,
+                    is_playing: false,
+                    turn: null
+                }
+            }
+        }
+    case 'UPDATE_WINNER':
+        const u = state.game.seats_as_users
+        u[action.winner_index].data.attributes.chips += action.winnings
+        u[action.winner_index].data.attributes.winnings = action.winnings
+        return {
+            ...state,
+            game: {
+                ...state.game,
+                seats_as_users: u
             }
         }
     case 'PROCESS_MOVE':

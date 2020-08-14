@@ -100,17 +100,22 @@ export default function cableMiddleware() {
             playMoveSound(result.command);
             break;
           case 'update_game_after_move':
-            setTimeout(() => {
-              if (getState().game.active_round.is_playing) { // this is so when a person folds in between the delay the update doesn't happen.
+            // setTimeout(() => {
+              // if (getState().game.active_round.is_playing) { // this is so when a person folds in between the delay the update doesn't happen.
                 dispatch({ type: 'FINISHED_MOVE' });
                 dispatch({ type: 'SET_GAME', game: result.game }); 
                 playTurnSound(result.game, user);
-              }
-            }, 1000);
+              // }
+            // }, 1000);
             break;
           case 'game_end_by_showdown':
+
           case 'game_end_by_fold':
-            setTimeout(() => playGameEndSound(result.winner_id[user]), 1000);
+            // we need to make sure round.is_playing is false
+            // we need to update the chips of winner + the winnings of winner
+            dispatch({ type: 'ROUND_OVER', startable: result.startable })
+            dispatch({ type: 'UPDATE_WINNER', winner_index: result.winner_index, winnings: result.winnings })
+            setTimeout(() => playGameEndSound(result.winner_ids[user]), 800);
             break;
           case 'start_game':
             playStartSound();
@@ -124,7 +129,11 @@ export default function cableMiddleware() {
             break;
           case 'user_leave':
             playSitSound();
-            dispatch({ type: 'SET_GAME', game: result.game });
+            dispatch({ type: 'USER_LEAVE', startable: result.startable, seat_index: result.seat_index })
+            // dispatch({ type: 'SET_GAME', game: result.game });
+            break;
+          case 'round_ended_due_to_leaver':
+            dispatch({ type: 'ROUND_OVER' });
             break;
           case 'set_game':
             dispatch({ type: 'SET_GAME', game: result.game });
