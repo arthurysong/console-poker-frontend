@@ -13,6 +13,7 @@ function Player({ position, user, images }) {
     const game = useSelector(state => state.game);
 
     // console.log(position)
+    console.log('in Player', user);
     if (!loggedInUser.game_id && !user) {
         return <div onClick={() => dispatch(sitDown(game.id, position))} className={`player player--${position} ${!user ? 'player--empty' : ''}`}>
                 <>Sit</>

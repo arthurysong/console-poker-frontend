@@ -29,7 +29,7 @@ function GameBoard(){
             </div>  
             {/* {console.log('in gameBoard seats_as_users ', seats)} */}
             {/* {seats?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)} */}
-            {game.seats_as_users?.map((user,index) => <Player key={index} position={index} user={user} images={images}/>)}
+            {game.seats_as_users?.map((user, index) => <Player key={index} position={index} user={user?.data?.attributes} images={images}/>)}
         </div>
     )
 }

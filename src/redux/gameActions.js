@@ -8,7 +8,6 @@ export const startGame = gameId => dispatch => {
 export const sitDown = (gameId, index) => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/join`, { index })
         .then(resp => resp.json())
-        // .then(json => dispatch({ type: 'SET_USER', user: json.user }))
         .then(json => dispatch({ type: 'SET_USER_GAME', game_id: json.game_id }))
 }
 
