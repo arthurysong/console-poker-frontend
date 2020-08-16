@@ -21,6 +21,11 @@ function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
         const minimum = round.highest_bet_for_phase + round.big_blind
         setRaise((raise - (round.big_blind)) < minimum ? minimum : raise - round.big_blind)
     }
+
+    const incrementFunction = () => {
+        const maximum = user.chips
+        setRaise((raise + round.big_blind) > maximum ? maximum : raise + round.big_blind)
+    }
         // console.log(minimum);
 
     return <div className="raiseMenu">
@@ -35,7 +40,7 @@ function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
                     max={user.chips}
                     value={raise}
                     onChange={raise => setRaise(raise)}/>
-                <button onClick={() => setRaise(raise + round.big_blind)}>+</button>
+                <button onClick={incrementFunction}>+</button>
             </div>
             {/* // <div className="move_button"><button onClick={raiseSubmit} className="nes-btn is-success big_btn">Bet</button></div> */}
             {/* // <div className="move_button"><button onClick={toggleGameButtons} className="nes-btn big_btn">Back</button></div>} */}
