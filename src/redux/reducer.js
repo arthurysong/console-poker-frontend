@@ -173,6 +173,10 @@ switch (action.type) {
     case 'DELETE_GAME':
         return {
             ...state,
+            user: {
+                ...state.user,
+                game_id: null
+            },
             game: {}
         }    
     case 'RESET_USER_GAME':
