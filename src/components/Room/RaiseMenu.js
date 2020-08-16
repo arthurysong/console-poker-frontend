@@ -39,8 +39,8 @@ function RaiseMenu ({ toggleGameButtons, raiseMenu, raise, setRaise }) {
             </div>
             {/* // <div className="move_button"><button onClick={raiseSubmit} className="nes-btn is-success big_btn">Bet</button></div> */}
             {/* // <div className="move_button"><button onClick={toggleGameButtons} className="nes-btn big_btn">Back</button></div>} */}
-            <div className="raiseMenu__moveButton"><button onClick={raiseSubmit} className="nes-btn is-success big_btn">Bet</button></div>
-            <div className="raiseMenu__moveButton"><button onClick={toggleGameButtons} className="nes-btn big_btn">Back</button></div></>}
+            <div className="raiseMenu__moveButton"><div onClick={raiseSubmit} className="raiseMenu__button --green"><div>Bet</div></div></div>
+            <div className="raiseMenu__moveButton"><div onClick={toggleGameButtons} className="raiseMenu__button"><div>Back</div></div></div></>}
     </div>
 }
 
