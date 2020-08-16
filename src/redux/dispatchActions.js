@@ -113,7 +113,7 @@ export const makeWithdrawal = (cents) => dispatch => {
     fetchWithToken(`${BASE_URL}/transfer_secret/${cents.toString()}`)
         .then(resp => resp.json())
         .then(json => {
-            console.log(json);
+            // console.log(json);
             if (json.error){
                 dispatch({type: 'ADD_ERRORS', errors: [json.error] })
             } else {

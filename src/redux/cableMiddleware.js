@@ -1,7 +1,6 @@
 import ActionCable from 'actioncable';
 import { WS_URL } from '../utilities/BASE_URL';
 import { playMoveSound, playGameEndSound, playStartSound, playSitSound, playTurnSound } from './playSound';
-// import { postMarleyMove } from '../utilities/fetchWithToken';
 
 export default function cableMiddleware() {
   // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
@@ -93,7 +92,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        // console.log(result);
+        console.log(result);
         switch (result.type) {
           case 'new_move':
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
@@ -108,7 +107,7 @@ export default function cableMiddleware() {
             break;
           case 'game_end_by_showdown':
             dispatch({ type: 'ROUND_OVER', startable: result.startable })
-            dispatch({ type: 'UPDATE_WINNERS', winner_indices: result.winner_indices, winnings: result.winnings })
+            dispatch({ type: 'UPDATE_WINNERS_AND_ROUND', winner_indices: result.winner_indices, winnings: result.winnings, access_community_cards: result.access_community_cards, seats_current_hand: result.seats_current_hand })
             playGameEndSound(result.winner_ids[user])
             break;
           case 'game_end_by_fold':

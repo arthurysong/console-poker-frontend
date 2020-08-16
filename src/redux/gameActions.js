@@ -24,12 +24,6 @@ export const leaveTable = gameId => dispatch => {
         .then(() => dispatch({ type: 'SET_USER_GAME_NULL' }));
 }
 
-// export const resetUser = userId => dispatch => {
-//     postWithToken(`${BASE_URL}/users/${userId}/reset_user`)
-//         .then(resp => resp.json())
-//         .then(json => dispatch({ type: 'SET_USER', user: json.user }));
-// }
-
 export const postMoveWithToken = (commandObj, userId) => dispatch => {
     dispatch({ type: 'PROCESS_MOVE' });
     postWithToken(`${BASE_URL}/users/${userId}/make_move`, commandObj)

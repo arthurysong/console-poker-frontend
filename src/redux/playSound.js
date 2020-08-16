@@ -41,7 +41,6 @@ export function playGameEndSound(won) {
 export function playStartSound(){
     chips.play();
     shuffle.play();
-    // newRound.play();   
 }
 
 export function playSitSound() {

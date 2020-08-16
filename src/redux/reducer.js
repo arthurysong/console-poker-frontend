@@ -229,17 +229,26 @@ switch (action.type) {
                 seats_as_users: u
             }
         }
-    case 'UPDATE_WINNERS':
-        const us = state.game.seats_as_users
+    case 'UPDATE_WINNERS_AND_ROUND':
         action.winner_indices.forEach(i => {
-            us[i].data.attributes.chips += action.winnings
-            us[i].data.attributes.winnings += action.winnings
+            state.game.seats_as_users[i].data.attributes.chips += action.winnings
+            state.game.seats_as_users[i].data.attributes.winnings += action.winnings
+        })
+        state.game.seats_as_users.forEach((user, i) => {
+            if (user !== null) {
+                user.data.attributes.current_hand = action.seats_current_hand[i]
+            }
         })
         return {
             ...state,
             game: {
                 ...state.game,
-                seats_as_users: us
+                seats_as_users: state.game.seats_as_users,
+                active_round: {
+                    ...state.game.active_round,
+                    phase: 3,
+                    access_community_cards: action.access_community_cards
+                }
             }
         }
     case 'PROCESS_MOVE':
@@ -247,11 +256,6 @@ switch (action.type) {
             ...state,
             processingMove: true
         }
-    // case 'FINISHED_MOVE':
-    //     return {
-    //         ...state,
-    //         processingMove: false
-    //     }
     case 'SET_MOVE':
         const seats_as_users = state.game.seats_as_users
         seats_as_users[action.turn_index] = action.turn_user
