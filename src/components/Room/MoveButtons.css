@@ -2,3 +2,38 @@
     display: inline-block;
     margin: 0px 5px;
 }
+
+.moveButtons__button {
+    /* background-color: rgba(61, 61, 61, 0) !important; */
+    /* box-shadow: inset -4px -4px rgb(30, 30, 30) !important; */
+    width: 140px;
+    height: 100px;
+    border-radius: 6px;
+    border: 2px solid rgb(0, 119, 0);
+    display: flex;
+    align-items: center;
+    color: rgb(0, 119, 0);
+}
+
+.moveButtons__button div {
+    margin: auto;
+}
+
+.moveButtons__button:hover {
+    background-color: rgb(0, 119, 0);
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC) 14 0,pointer;
+    color: white;
+}
+
+.moveButtons__button:active {
+    background-color: rgb(0, 89, 0);
+}
+
+.big_btn {
+    width: 140px;
+    height: 100px;
+}
+
+.is-success {
+    background-color: rgba()
+}

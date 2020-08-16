@@ -13,28 +13,46 @@ function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, user }) {
         setRaise(round.highest_bet_for_phase + round.big_blind); // minimum raise has to be set when raiseMenu is toggled on.
     }
 
+    // const renderMoveButton = (move, index) => {
+    //     switch (move) {
+    //         case 'Fold':
+    //             return (<div key={index}><button className='nes-btn big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'fold' }, user.id))}>{move}</button></div>)
+    //         case 'Check':
+    //             return (<div key={index}><button className='nes-btn big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'check' }, user.id))}>{move}</button></div>)
+    //         case 'Raise':
+    //             return (<div key={index}><button onClick={toggleRaiseMenu} className='nes-btn big_btn'>{move}</button></div>)
+    //         case 'Call':
+    //             return (<div key={index}><button className='nes-btn big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'call' }, user.id))}>{move}</button></div>)
+    //         case 'All In':
+    //             return (<div key={index}><button className='nes-btn big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'allin' }, user.id))}>{move}</button></div>)
+    //         default:
+    //             break;
+    //     }
+    // }
+
     const renderMoveButton = (move, index) => {
         switch (move) {
             case 'Fold':
-                return (<div key={index}><button className='nes-btn is-success big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'fold' }, user.id))}>{move}</button></div>)
+                return (<div key={index}><div className='moveButtons__button' onClick={() => dispatch(postMoveWithToken({ command: 'fold' }, user.id))}><div>{move}</div></div></div>)
             case 'Check':
-                return (<div key={index}><button className='nes-btn is-success big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'check' }, user.id))}>{move}</button></div>)
+                return (<div key={index}><div className='moveButtons__button' onClick={() => dispatch(postMoveWithToken({ command: 'check' }, user.id))}><div>{move}</div></div></div>)
             case 'Raise':
-                return (<div key={index}><button onClick={toggleRaiseMenu} className='nes-btn is-success big_btn'>{move}</button></div>)
+                return (<div key={index}><div onClick={toggleRaiseMenu} className='moveButtons__button'><div>{move}</div></div></div>)
             case 'Call':
-                return (<div key={index}><button className='nes-btn is-success big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'call' }, user.id))}>{move}</button></div>)
+                return (<div key={index}><div className='moveButtons__button' onClick={() => dispatch(postMoveWithToken({ command: 'call' }, user.id))}><div>{move}</div></div></div>)
             case 'All In':
-                return (<div key={index}><button className='nes-btn is-error big_btn' onClick={() => dispatch(postMoveWithToken({ command: 'allin' }, user.id))}>{move}</button></div>)
+                return (<div key={index}><div className='moveButtons__button' onClick={() => dispatch(postMoveWithToken({ command: 'allin' }, user.id))}><div>{move}</div></div></div>)
             default:
                 break;
         }
     }
 
     return <div className="moveButtons">
-        {/* {console.log('allo?', round)} */}
-        {!raiseMenu && round?.turn_as_json?.id === user.id && round.turn_as_json.possible_moves.map((move, index) => (
+        {/* {!raiseMenu && round?.turn_as_json?.id === user.id && round.turn_as_json.possible_moves.map((move, index) => (
             renderMoveButton(move, index)
-        ))}
+        ))} */}
+        {["Fold", "Raise", "Check", "All In"].map((move, index) => (
+            renderMoveButton(move, index)))}
     </div>
 }
 
