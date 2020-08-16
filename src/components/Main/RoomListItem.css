@@ -24,11 +24,11 @@
     margin-right: 32px;
 }
 
-.--green {
+.--open {
     border-left: 6px solid #92cc41;
 }
 
-.--red {
+.--closed {
     border-left: 6px solid #e76e55;
 }
 

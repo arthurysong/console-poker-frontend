@@ -20,8 +20,8 @@ export const sitDown = (gameId, index) => dispatch => {
 }
 
 export const leaveTable = gameId => dispatch => {
+    dispatch({ type: 'SET_USER_GAME_NULL' });
     postWithToken(`${BASE_URL}/games/${gameId}/leave`)
-        .then(() => dispatch({ type: 'SET_USER_GAME_NULL' }));
 }
 
 export const postMoveWithToken = (commandObj, userId) => dispatch => {

@@ -1,5 +1,3 @@
-import { result } from "underscore"
-
 export default function resourceReducer (state = {
     // colorHash: '',
     user: undefined,
@@ -206,7 +204,11 @@ switch (action.type) {
             game: {
                 ...state.game,
                 seats_as_users: x,
-                startable: action.startable
+                startable: action.startable,
+                active_round: {
+                    ...state.game.active_round
+                    // turn_as_json: null
+                }
             }
         }
     case 'ROUND_OVER':
@@ -218,7 +220,7 @@ switch (action.type) {
                 active_round: {
                     ...state.game.active_round,
                     is_playing: false,
-                    turn: null
+                    turn_as_json: null
                 }
             }
         }

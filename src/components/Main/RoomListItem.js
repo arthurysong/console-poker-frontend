@@ -20,7 +20,7 @@ function RoomListItem ({ room }) {
     }
     
     return (
-        <div onClick={clickHandler} className={`roomListItem ${room.no_users < 8 ? '--green' : '--red' }`}>
+        <div onClick={clickHandler} className={`roomListItem ${room.no_users < 8 ? '--open' : '--closed' }`}>
             <span className="roomListItem__name">{room.name}</span>
             
             <span className="roomListItem__right">

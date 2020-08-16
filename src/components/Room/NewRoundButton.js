@@ -8,13 +8,14 @@ function NewRoundButton({ round }) {
     const game = useSelector(state => state.game);
     const dispatch = useDispatch();
 
+
     if (!round || !round.is_playing) {
         // console.log('round is null');
         return (
             <div 
                 className={`newRoundButton__button ${game.startable ? '' : '--disabled'}`} 
                 disabled={!game.startable}
-                onClick={() => dispatch(startGame(game.id))}>
+                onClick={() => game.startable ? dispatch(startGame(game.id)) : null}>
                 <div>Start</div>
             </div>
         )

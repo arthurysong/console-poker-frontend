@@ -126,6 +126,7 @@ export default function cableMiddleware() {
           case 'user_leave':
             playSitSound();
             dispatch({ type: 'USER_LEAVE', startable: result.startable, seat_index: result.seat_index })
+      
             break;
           case 'round_ended_due_to_leaver':
             dispatch({ type: 'ROUND_OVER' });
