@@ -10,6 +10,7 @@ import Register from './Register';
 import TermsAndConditions from './TermsAndConditions';
 import Connecting from './Main/Bank/Connecting';
 import '../utilities/scale.js';
+import RoomAssetsLoader from './Room/RoomAssetsLoader';
 
 function App() {
   return (
@@ -19,9 +20,9 @@ function App() {
       <Route path="/" component={SetLogin} />
       <Switch>
         <Route path="/terms" component={TermsAndConditions} />
-        
         <Route path="/connect/oauth" component={Connecting} />
-        <Route path={`/rooms/:id`} component={Room} />
+        {/* <Route path={`/rooms/:id/loading`} component={RoomAssetsLoader} /> */}
+        <Route path={`/rooms/:id`} component={RoomAssetsLoader} />
         <Route path="/" component={MainContainer} />
         <Route path="/register" component={Register} />
       </Switch>
