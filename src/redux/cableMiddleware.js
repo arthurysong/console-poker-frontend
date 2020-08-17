@@ -62,8 +62,11 @@ export default function cableMiddleware() {
       const received = result => {
         console.log(result)
         switch (result.type) {
-            case 'current_room':
-              dispatch({ type: 'SET_ROOM', room: result.room });
+            case 'user_has_joined':
+              dispatch({ type: 'ROOM_USER_JOIN' });
+              break;
+            case 'user_has_left':
+              dispatch({ type: 'ROOM_USER_LEAVE' })
               break;
             case 'new_message':
               dispatch({ type: 'NEW_MESSAGE', message: result.message });
@@ -85,14 +88,13 @@ export default function cableMiddleware() {
     if (game) { // game subscription.
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, game, token }))
-        console.log(cable.subscriptions);
         cable.subscriptions.remove(subscription);
         dispatch({ type: 'DELETE_GAME' })
         return;
       }
 
       const received = result => {
-        // console.log(result);
+        console.log(result);
         switch (result.type) {
           case 'new_move':
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
