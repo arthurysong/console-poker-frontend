@@ -2,7 +2,7 @@
 
 ## Screenshot
 
-![screenshot](console-poker.webp)
+![screenshot](https://console-poker.s3.us-east-2.amazonaws.com/screenshot.png)
 
 ## Description
 
