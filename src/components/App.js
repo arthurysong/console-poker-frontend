@@ -2,7 +2,7 @@ import React from 'react';
 import SetLogin from './SetLogin';
 import MainContainer from './Main/MainContainer';
 // import NewRoomForm from './Main/NewRoomForm';
-import Room from './Room/Room';
+// import Room from './Room/Room';
 import "nes.css/css/nes.min.css";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LogInForm from './LogInPage';

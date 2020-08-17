@@ -1,20 +1,10 @@
-import clickFile from '../sounds/click.mp3';
-import chipsFile from '../sounds/chips.mp3';
-import cardHitFile from '../sounds/onecard_hit.mp3';
-import winningFile from '../sounds/winning.mp3';
-import loseFile from '../sounds/lose.mp3';
-// import newRoundFile from '../sounds/new_round.mp3';
-import shuffleFile from '../sounds/shuffle.mp3';
-import turnFile from '../sounds/turn.mp3';
-
-const click = new Audio(clickFile);
-const cardHit = new Audio(cardHitFile); 
-const chips = new Audio(chipsFile);
-const winning = new Audio(winningFile);
-const lose = new Audio(loseFile);
-// const newRound = new Audio(newRoundFile);
-const shuffle = new Audio(shuffleFile);
-const turn = new Audio(turnFile);
+const click = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/click.mp3');
+const cardHit = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/onecard_hit.mp3'); 
+const chips = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/chips.mp3');
+const winning = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/winning.mp3');
+const lose = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/lose.mp3');
+const shuffle = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/shuffle.mp3');
+const turn = new Audio('https://console-poker.s3.us-east-2.amazonaws.com/sounds/turn.mp3');
 
 export function playMoveSound(command) {
     switch(command){
