@@ -1,5 +1,6 @@
 .room {
-    background-image: url('../../pictures/wallpaper.webp');
+    /* background-image: url('../../pictures/wallpaper.webp'); */
+    background-image: url('https://console-poker.s3.us-east-2.amazonaws.com/wallpaper.png');
     height: 100%;
     position: relative;
 }
@@ -8,7 +9,8 @@
     width: 1280px;
     height: 720px;
     text-align: center;
-    background-image: url('../../pictures/poker_background.webp');
+    /* background-image: url('../../pictures/poker_background.webp'); */
+    background-image: url('https://console-poker.s3.us-east-2.amazonaws.com/console-poker.png');
     position: relative;
     top: 50%;
     left: 50%;
