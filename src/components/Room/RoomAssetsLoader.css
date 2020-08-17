@@ -7,12 +7,14 @@
 
 .roomAssetsLoader__divs {
     position: relative;
-    top: 50%;
+    top: 32%;
     transform: translate(0, -50%);
 }
 .roomAssetsLoader__loading {
     text-transform: uppercase;
     margin-bottom: 24px;
+    font-size: 36px;
+    /* color: #d9d9d9; */
 }
 
 .nes-progress {

@@ -71,20 +71,20 @@ function RoomAssetsLoader({ match }) {
             'https://console-poker.s3.us-east-2.amazonaws.com/wallpaper.png',
         ];
 
-        cacheImages(imgs);
+        setTimeout(() => cacheImages(imgs), 300);
     }, []);
 
     // return <div className="roomAssetsLoader">
     //     <div className="roomAssetsLoader__divs">
-    //         <div className="roomAssetsLoader__loading">Loading</div>
+    //         <div className="roomAssetsLoader__loading">Connecting</div>
     //         <progress class="nes-progress" value={numLoaded} max="54"></progress>
     //     </div>
     // </div>
     if (numLoaded < 54) {
         return <div className="roomAssetsLoader">
             <div className="roomAssetsLoader__divs">
-                <div className="roomAssetsLoader__loading">Loading</div>
-                <progress class="nes-progress" value={numLoaded} max="54"></progress>
+                <div className="roomAssetsLoader__loading">Connecting...</div>
+                {/* <progress class="nes-progress" value={numLoaded} max="54"></progress> */}
             </div>
         </div>
     } else { return <Room match={match} /> }
