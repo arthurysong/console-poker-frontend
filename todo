@@ -1,55 +1,9 @@
 Copyright?
-
 Leaving room when seated, should remove the person from the seat..
-When user submits a move, e.g. new round, sit, or anything, the buttons menu should be taken away. so that they can't submit a crazy amount of moves
-while the website is loading
-When it's your turn sound should play
 Add replays to UserProfile??
 Refactor Reducer
-
 Style the Stripe Elements with Font.
-
-When a person leaves their cards should be blanked out.
-state.chips
-Add BEM structure to CSS
-SASS
-Message should be created using controller action not subscription.
-Clean up all assets..
-Make all react components functional components with hooks.
-Make sure all buttons with disabled css is disabled using attribute.
-Players cannot have same color as table green?
 Create Responsive Web Design
-
-Create POSTwithToken?
-Make Marley a Pokemon
-If round is over make sure no one's turn is glowing
-rankings??
-
-Seats for people not just sitting on table
+Rankings??
 Play error when clicking disabled button
-Make sure to clear raise form on submit for GameButtons
-Style the UL in RoomsList so it stays centered when browser width decreases..
-Justify center board_user so center of height
-Error when logging out, subscription not found...
-Validate cents amount for withdrawals and Make successful transfer
-Make Room LI elements float left
-When you join a room, you first are only in the room? Then if you want to play you can sit in a seat?
-Make sure to configure going back when connecting stripe account.
-Do I even need chips state, why don't I just use chips in user?
-Make withdrawal button disabled unless valid amount
-
 Maybe make a button like a README.md that shows how to use your website?
-
-Sound Icon for when turn is changed? or when It's your turn?
-Sound Icon for when game is over?
-Add Turn icon for user's turn?
-
-When User joins a room they're put on the board with their money amount? So that everyone can see before a round 
-has started how much money everyone has.
-
-How can I make the game state more accessible...
-
-Are you sure you want to leave the room?
-
-Think about presenting your application and why you made certain features...
-Think about why you added features you did, your thought process.
