@@ -1,5 +1,5 @@
 import React from 'react';
-import dealerChip from '../../pictures/dealer_chip.webp';
+// import dealerChip from '../../pictures/dealer_chip.webp';
 import { useSelector, useDispatch } from 'react-redux';
 import { sitDown } from '../../redux/gameActions';
 import './Player.css';
@@ -26,7 +26,9 @@ function Player({ position, user, images }) {
             </div>
             
             {user.dealer && 
-                <img className="player__dealerChip" alt='dealerChip' src={dealerChip}/>}
+            // 'https://console-poker.s3.us-east-2.amazonaws.com/console-poker.png'
+                <img className="player__dealerChip" alt='dealerChip' src='https://console-poker.s3.us-east-2.amazonaws.com/DEALER.png'/>}
+                {/* <img className="player__dealerChip" alt='dealerChip' src={dealerChip}/>} */}
             {user.winnings > 0 && 
                 <span className="player__roundWinnings">+{user.winnings}</span>}
             {(user.round_bet !== 0 || user.checked) && 

@@ -13,6 +13,13 @@ function RoomAssetsLoader({ match }) {
         })
     }
 
+    const cacheSounds = sndArray => {
+        sndArray.forEach(src => {
+            const sound = new Audio(src);
+            sound.addEventListener('canplaythrough', () => setNumLoaded(numLoaded => numLoaded + 1))
+        })
+    }
+
     useEffect(() => {
         const imgs = [
             'https://console-poker.s3.us-east-2.amazonaws.com/cards/2c.png',
@@ -69,9 +76,30 @@ function RoomAssetsLoader({ match }) {
             'https://console-poker.s3.us-east-2.amazonaws.com/cards/As.png',
             'https://console-poker.s3.us-east-2.amazonaws.com/console-poker.png',
             'https://console-poker.s3.us-east-2.amazonaws.com/wallpaper.png',
+            'https://console-poker.s3.us-east-2.amazonaws.com/DEALER.png',
         ];
 
-        setTimeout(() => cacheImages(imgs), 300);
+        const sounds = [
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/chips.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/click.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/coin.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/disabled_button.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/error.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/lose.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/message_sound.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/new_round.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/onecard_hit.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/shuffle.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/success_deposit.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/success_withdrawal.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/turn.mp3',
+            'https://console-poker.s3.us-east-2.amazonaws.com/sounds/winning.mp3',
+        ]
+
+        setTimeout(() => {
+            cacheImages(imgs);
+            cacheSounds(sounds);
+        }, 300);
     }, []);
 
     // return <div className="roomAssetsLoader">
@@ -80,7 +108,8 @@ function RoomAssetsLoader({ match }) {
     //         <progress class="nes-progress" value={numLoaded} max="54"></progress>
     //     </div>
     // </div>
-    if (numLoaded < 54) {
+    // console.log(numLoaded)
+    if (numLoaded < 69) {
         return <div className="roomAssetsLoader">
             <div className="roomAssetsLoader__divs">
                 <div className="roomAssetsLoader__loading">Connecting...</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import Player from './Player';
-import pot from '../../pictures/pot_icon.webp';
+// import pot from '../../pictures/pot_icon.webp';
 import './GameBoard.css';
 
 // const importAll = r => {
@@ -34,7 +34,7 @@ function GameBoard(){
                     <img key={index} className="gameBoard__card" alt={c} src={`https://console-poker.s3.us-east-2.amazonaws.com/cards/${c}.png`}/>)}
             </div>
             <div className="gameBoard__pot">
-                <img width="50px" alt='pot-icon' src={pot}/>
+                {/* <img width="50px" alt='pot-icon' src={pot}/> */}
                 {(round?.pot > 0 ? round.pot : 0)}
             </div>  
             {/* {console.log('in gameBoard seats_as_users ', seats)} */}
