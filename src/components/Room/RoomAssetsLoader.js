@@ -74,11 +74,18 @@ function RoomAssetsLoader({ match }) {
         cacheImages(imgs);
     }, []);
 
-    
+    // return <div className="roomAssetsLoader">
+    //     <div className="roomAssetsLoader__divs">
+    //         <div className="roomAssetsLoader__loading">Loading</div>
+    //         <progress class="nes-progress" value={numLoaded} max="54"></progress>
+    //     </div>
+    // </div>
     if (numLoaded < 54) {
         return <div className="roomAssetsLoader">
-            Loading
-            <progress class="nes-progress" value="90" max="100"></progress>
+            <div className="roomAssetsLoader__divs">
+                <div className="roomAssetsLoader__loading">Loading</div>
+                <progress class="nes-progress" value={numLoaded} max="54"></progress>
+            </div>
         </div>
     } else { return <Room match={match} /> }
 }
