@@ -12,7 +12,8 @@ function RoomHeader({ room }) {
         </span><br/>
         {/* {renderTitle}<br/> */}
         <span className="roomHeader__blinds">
-            {room && room.game && `BLINDS ${room.game.big_blind/2}/${room.game.big_blind}`}
+            {`BLINDS ${room?.big_blind/2}/${room?.big_blind}`}
+            {/* {room && room.game && `BLINDS ${room.big_blind/2}/${room.big_blind}`} */}
         </span>
     </div>
 }

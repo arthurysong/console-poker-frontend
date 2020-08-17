@@ -28,7 +28,7 @@ function Room({ match }) {
                 <div className="room__paddingContainer">
                     <Menu user={user}/>
                     <RoomHeader room={room}/>
-                    {user && room && <Game gameId={room.game.id} user={user}/>}
+                    {user && room && <Game gameId={room.game_id} user={user}/>}
                     <div className="room__bottomLeft">
                         <SupportMessage />
                         <Chatbox />

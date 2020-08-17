@@ -25,7 +25,8 @@ function RoomListItem ({ room }) {
             
             <span className="roomListItem__right">
                 {room.has_password && <LockIcon className="roomListItem__lockIcon" />}
-                <span className="roomListItem__blinds">BLINDS {room.game.big_blind/2}/{room.game.big_blind}</span>
+                {/* <span className="roomListItem__blinds">BLINDS {room.game.big_blind/2}/{room.game.big_blind}</span> */}
+                <span className="roomListItem__blinds">BLINDS {room.big_blind/2}/{room.big_blind}</span>
                 <span className="roomListItem__players">PLAYERS {room.no_users}/8</span>
             </span>
 
