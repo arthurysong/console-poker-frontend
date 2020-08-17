@@ -15,7 +15,6 @@ export default function cableMiddleware() {
       channel,
       room,
       game,
-      user,
       rooms,
       leave
     } = action;
@@ -61,7 +60,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        // console.log(result)
+        console.log(result)
         switch (result.type) {
             case 'current_room':
               dispatch({ type: 'SET_ROOM', room: result.room });
@@ -86,6 +85,7 @@ export default function cableMiddleware() {
     if (game) { // game subscription.
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, game, token }))
+        console.log(cable.subscriptions);
         cable.subscriptions.remove(subscription);
         dispatch({ type: 'DELETE_GAME' })
         return;
@@ -100,7 +100,7 @@ export default function cableMiddleware() {
             break;
           case 'update_turn':
             dispatch({ type: 'UPDATE_TURN', turn_as_json: result.turn_as_json });
-            playTurnSound(result.turn_as_json, user);
+            playTurnSound(result.turn_as_json, getState().user.id);
             break;
           case 'next_betting_phase':
             dispatch({ type: 'NEW_BETTING_PHASE', access_community_cards: result.access_community_cards, phase: result.phase, pot: result.pot, turn_as_json: result.turn_as_json, seats_current_hand: result.seats_current_hand })
@@ -108,12 +108,12 @@ export default function cableMiddleware() {
           case 'game_end_by_showdown':
             dispatch({ type: 'ROUND_OVER', startable: result.startable })
             dispatch({ type: 'UPDATE_WINNERS_AND_ROUND', winner_indices: result.winner_indices, winnings: result.winnings, access_community_cards: result.access_community_cards, seats_current_hand: result.seats_current_hand })
-            playGameEndSound(result.winner_ids[user])
+            playGameEndSound(result.winner_ids[getState().user.id])
             break;
           case 'game_end_by_fold':
             dispatch({ type: 'ROUND_OVER', startable: result.startable })
             dispatch({ type: 'UPDATE_WINNER', winner_index: result.winner_index, winnings: result.winnings })
-            playGameEndSound(result.winner_ids[user])
+            playGameEndSound(result.winner_ids[getState().user.id])
             break;
           case 'start_game':
             playStartSound();

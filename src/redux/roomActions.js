@@ -1,4 +1,4 @@
-import { postWithToken } from '../utilities/fetchWithToken';
+import { postWithToken, fetchWithToken } from '../utilities/fetchWithToken';
 import { BASE_URL } from '../utilities/BASE_URL';
 
 export function subscribeRoom(roomId) {
@@ -31,10 +31,19 @@ export function subscribeRoom(roomId) {
     }
   }
 
+  export const fetchRoom = id => dispatch => {
+    fetchWithToken(`${BASE_URL}/rooms/${id}`)
+      .then(resp => resp.json())
+      .then(json => {
+        // console.log(json);
+        dispatch({ type: 'SET_ROOM', room: json })
+      });
+  }
+
   export const authenticateRoomPassword = (state, roomId, history) => dispatch => {
-      postWithToken(`${BASE_URL}/rooms/${roomId}/authenticate`, state)
-        .then(resp => resp.json())
-        .then(json => json.error ? document.getElementById(`dialog-dark-rounded-alert`).showModal() : history.push(`/rooms/${roomId}`));
+    postWithToken(`${BASE_URL}/rooms/${roomId}/authenticate`, state)
+      .then(resp => resp.json())
+      .then(json => json.error ? document.getElementById(`dialog-dark-rounded-alert`).showModal() : history.push(`/rooms/${roomId}`));
   }
 
   export const createRoom = (state, history) => dispatch => {

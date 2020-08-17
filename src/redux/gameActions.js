@@ -7,8 +7,6 @@ export const fetchGame = gameId => dispatch => {
         .then(json => dispatch({ type: 'SET_GAME', game: json }));
 }
 
-export const clearGame = () => ({ type: 'DELETE_GAME' });
-
 export const startGame = gameId => dispatch => {
     postWithToken(`${BASE_URL}/games/${gameId}/start`)
 }
@@ -29,10 +27,9 @@ export const postMoveWithToken = (commandObj, userId) => dispatch => {
     postWithToken(`${BASE_URL}/users/${userId}/make_move`, commandObj)
 }
 
-export function subscribeGame(userId, gameId) {
+export function subscribeGame(gameId) {
     return {
       channel: 'GameChannel',
-      user: `${userId}`,
       game: `${gameId}`
     }
 }

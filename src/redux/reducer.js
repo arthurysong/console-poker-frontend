@@ -6,12 +6,12 @@ export default function resourceReducer (state = {
     room: undefined,
     rooms: [],
     messages: [],
-    game: {},
+    game: undefined,
     logInPage: false,
     registerPage: false,
     processingMove: false,
     // gamePlayers: [],
-    gameErrors: undefined, //this will be used by gameboard
+    // gameErrors: undefined, //this will be used by gameboard
     // status: [] //this will be used by gameconsole, I need them separate becaue I don't want the console to
     // chips: undefined
 }, action
@@ -175,7 +175,7 @@ switch (action.type) {
                 ...state.user,
                 game_id: null
             },
-            game: {}
+            game: undefined
         }    
     case 'RESET_USER_GAME':
         return {

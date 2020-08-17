@@ -15,7 +15,7 @@ function RoomListItem ({ room }) {
         if (!user) {
             dispatch(toggleLogInPage());
         } else if (room.no_users < 8) {
-            room.has_password ? document.getElementById(`dialog-dark-rounded-${room.id}`).showModal() : history.push(`/rooms/${room.id}`)
+            room.has_password ? document.getElementById(`dialog-dark-rounded-${room.id}`).showModal() : history.push(`/rooms/${room.id}/${room.game_id}`)
         } 
     }
     
