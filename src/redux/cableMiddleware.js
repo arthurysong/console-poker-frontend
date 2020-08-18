@@ -35,11 +35,8 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log('rooms sub', result);
+        // console.log('rooms sub', result);
         switch(result.type) {
-          // case 'current_rooms':
-          //   dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
-          //   break;
           case 'user_has_joined':
             dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
             break;
@@ -66,7 +63,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log('room sub', result)
+        // console.log('room sub', result)
         switch (result.type) {
             case 'user_has_joined':
               dispatch({ type: 'ROOM_USER_JOIN' });

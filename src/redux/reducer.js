@@ -1,3 +1,5 @@
+import produce from "immer"
+
 export default function resourceReducer (state = {
     // colorHash: '',
     user: undefined,
@@ -120,28 +122,19 @@ switch (action.type) {
 // ======================
 
     case 'SET_ROOMS':
-        const roomsHash = {};
-        action.rooms.forEach(r => {
-            roomsHash[r.id] = r
-        })
         return {
             ...state,
-            rooms: roomsHash
+            rooms: produce(state.rooms, draft => { action.rooms.forEach(r => draft[r.id] = r )})
         }
     case 'INCREMENT_NO_USERS':
-        // console.log('in reducer', action.roomId);
-        const roomsHash2 = { ...state.rooms };
-        roomsHash2[action.roomId].no_users = roomsHash2[action.roomId].no_users + 1;
         return {
             ...state,
-            rooms: roomsHash2
+            rooms: produce(state.rooms, draft => { draft[action.roomId].no_users += 1})
         }
     case 'DECREMENT_NO_USERS':
-        const roomsHash3 = { ...state.rooms };
-        roomsHash3[action.roomId].no_users = roomsHash3[action.roomId].no_users - 1;
         return {
             ...state,
-            rooms: roomsHash3
+            rooms: produce(state.rooms, draft => { draft[action.roomId].no_users -= 1 })
         }
     case 'ADD_ROOM':
         return {
