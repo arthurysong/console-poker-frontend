@@ -63,19 +63,21 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        // console.log('room sub', result)
-        switch (result.type) {
-            case 'user_has_joined':
-              dispatch({ type: 'ROOM_USER_JOIN' });
-              break;
-            case 'user_has_left':
-              dispatch({ type: 'ROOM_USER_LEAVE' })
-              break;
-            case 'new_message':
-              dispatch({ type: 'NEW_MESSAGE', message: result.message });
-              break;
-            default:
-              break;
+        console.log('room sub', result)
+        if (getState().room) {
+          switch (result.type) {
+              case 'user_has_joined':
+                dispatch({ type: 'ROOM_USER_JOIN' });
+                break;
+              case 'user_has_left':
+                dispatch({ type: 'ROOM_USER_LEAVE' })
+                break;
+              case 'new_message':
+                dispatch({ type: 'NEW_MESSAGE', message: result.message });
+                break;
+              default:
+                break;
+          }
         }
       }
 

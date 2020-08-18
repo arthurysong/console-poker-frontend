@@ -168,18 +168,12 @@ switch (action.type) {
     case 'ROOM_USER_LEAVE':
         return {
             ...state,
-            room: {
-                ...state.room,
-                no_users: state.room.no_users - 1
-            }
+            room: produce(state.room, draft => { draft.no_users -= 1 })
         }
     case 'ROOM_USER_JOIN':
         return {
             ...state,
-            room: {
-                ...state.room,
-                no_users: state.room?.no_users + 1
-            }
+            room: produce(state.room, draft => { draft.no_users += 1 })
         }
 
 // GAME CASES ============
