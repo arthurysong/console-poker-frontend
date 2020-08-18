@@ -188,69 +188,42 @@ switch (action.type) {
     case 'DELETE_GAME':
         return {
             ...state,
-            user: {
-                ...state.user,
-                game_id: null
-            },
+            user: produce(state.user, draft => { draft.game_id =  undefined }),
             game: undefined
         }    
-    case 'RESET_USER_GAME':
-        return {
-            ...state,
-            user: {
-                ...state.user,
-                game_id: null
-            }
-        }
     case 'USER_JOIN':
-        const s = state.game.seats_as_users
-        s[action.seat_index] = action.user
         return {
             ...state,
-            game: {
-                ...state.game,
-                seats_as_users: s,
-                startable: action.startable
-            }
+            game: produce(state.game, draft => {
+                draft.seats_as_users[action.seat_index] = action.user;
+                draft.startable = action.startable;
+            })
         }
     case 'USER_LEAVE':
-        const x = state.game.seats_as_users
-        x[action.seat_index] = null
         return {
             ...state,
-            game: {
-                ...state.game,
-                seats_as_users: x,
-                startable: action.startable,
-                active_round: {
-                    ...state.game.active_round
-                    // turn_as_json: null
-                }
-            }
+            game: produce(state.game, draft => {
+                draft.seats_as_users[action.seat_index] = null;
+                draft.startable = action.startable;
+                draft.active_round.turn_as_json = null
+            })
         }
     case 'ROUND_OVER':
         return {
             ...state,
-            game: {
-                ...state.game,
-                startable: action.startable,
-                active_round: {
-                    ...state.game.active_round,
-                    is_playing: false,
-                    turn_as_json: null
-                }
-            }
+            game: produce(state.game, draft => {
+                draft.startable = action.startable;
+                draft.active_round.is_playing = false;
+                draft.active_round.turn_as_json = undefined;
+            })
         }
     case 'UPDATE_WINNER':
-        const u = state.game.seats_as_users
-        u[action.winner_index].data.attributes.chips += action.winnings
-        u[action.winner_index].data.attributes.winnings = action.winnings
         return {
             ...state,
-            game: {
-                ...state.game,
-                seats_as_users: u
-            }
+            game: produce(state.game, draft => {
+                draft.seats_as_users[action.winner_index].data.attributes.chips += action.winnings;
+                draft.seats_as_users[action.winner_index].data.attributes.winnings = action.winnings
+            })
         }
     case 'UPDATE_WINNERS_AND_ROUND':
         action.winner_indices.forEach(i => {
