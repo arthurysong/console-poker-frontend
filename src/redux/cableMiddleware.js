@@ -64,7 +64,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log('room sub', result)
+        // console.log('room sub', result)
         if (getState().room) {
           switch (result.type) {
               case 'user_has_joined':
@@ -100,7 +100,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log(result);
+        // console.log(result);
         switch (result.type) {
           case 'new_move':
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })
