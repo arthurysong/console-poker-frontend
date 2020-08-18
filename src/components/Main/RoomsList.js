@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import RoomListItem from './RoomListItem';
-import { subscribeRooms, unsubscribeRooms } from '../../redux/roomActions';
+import { subscribeRooms, unsubscribeRooms, fetchRooms } from '../../redux/roomActions';
 import SearchBar from './SearchBar';
 import './RoomsList.css';
 
@@ -10,6 +10,8 @@ function RoomsList() {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        // dispatch fetch intial rooms
+        dispatch(fetchRooms());
         dispatch(subscribeRooms());
         return () => dispatch(unsubscribeRooms());
     }, [dispatch])
@@ -24,8 +26,9 @@ function RoomsList() {
             </div>
             {/* <p>Make sure you have enough chips!</p> */}
             <div className="roomsList__rooms">
-                {rooms.map((room, index) => 
-                    <RoomListItem key={index} index={index} room={room} />)}
+                {Object.keys(rooms).map((key, index) => <RoomListItem key={index} index={index} room={rooms[key]} />)}
+                {/* {rooms.map((room, index) => 
+                    <RoomListItem key={index} index={index} room={room} />)} */}
             </div>
         </div>
     )

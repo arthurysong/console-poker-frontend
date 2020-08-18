@@ -37,9 +37,9 @@ export default function cableMiddleware() {
       const received = result => {
         // console.log(result);
         switch(result.type) {
-          case 'current_rooms':
-            dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
-            break;
+          // case 'current_rooms':
+          //   dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
+          //   break;
           case 'new_rooms':
             dispatch({ type: 'ADD_ROOM', room: result.room })
             break;
@@ -60,7 +60,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log(result)
+        // console.log(result)
         switch (result.type) {
             case 'user_has_joined':
               dispatch({ type: 'ROOM_USER_JOIN' });
@@ -94,7 +94,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        console.log(result);
+        // console.log(result);
         switch (result.type) {
           case 'new_move':
             dispatch({ type: 'SET_MOVE', turn_index: result.turn_index, turn_user: result.moved_user })

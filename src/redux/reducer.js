@@ -4,7 +4,7 @@ export default function resourceReducer (state = {
     errors: [],
     successMessage: "", //for displaying success message when deposit is successful.
     room: undefined,
-    rooms: [],
+    rooms: {},
     messages: [],
     game: undefined,
     logInPage: false,
@@ -120,9 +120,13 @@ switch (action.type) {
 // ======================
 
     case 'SET_ROOMS':
+        const roomsHash = {};
+        action.rooms.forEach(r => {
+            roomsHash[r.id] = r
+        })
         return {
             ...state,
-            rooms: action.rooms
+            rooms: roomsHash
         }
     case 'ADD_ROOM':
         return {

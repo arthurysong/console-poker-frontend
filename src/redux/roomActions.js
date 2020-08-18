@@ -52,6 +52,15 @@ export function subscribeRoom(roomId) {
       .then(json => history.replace(`/rooms/${json.id}`));
   }
 
+  export const fetchRooms = () => dispatch => {
+    fetchWithToken(`${BASE_URL}/rooms`)
+      .then(resp => resp.json())
+      .then(json => {
+        console.log('rooms', json);
+        dispatch({ type: 'SET_ROOMS', rooms: json })
+      })
+  }
+
   export const sendMessage = message => dispatch => {
     postWithToken(`${BASE_URL}/messages`, { message })
       .then(resp => resp.json())
