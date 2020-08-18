@@ -55,7 +55,7 @@ export function subscribeRoom(roomId) {
   export const fetchRooms = () => dispatch => {
     fetchWithToken(`${BASE_URL}/rooms`)
       .then(resp => resp.json())
-      .then(json => dispatch({ type: 'SET_ROOMS', rooms: json }))
+      .then(json => { if (!json.error) dispatch({ type: 'SET_ROOMS', rooms: json })})
   }
 
   export const sendMessage = message => dispatch => {

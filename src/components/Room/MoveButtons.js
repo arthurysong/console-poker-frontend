@@ -29,7 +29,6 @@ function MoveButtons({ raiseMenu, setRaiseMenu, setRaise, user }) {
                 break;
         }
     }
-
     return <div className="moveButtons">
         {!raiseMenu && user.game_id && round?.turn_as_json?.id === user.id && round?.turn_as_json?.possible_moves?.map((move, index) => (
             renderMoveButton(move, index)
