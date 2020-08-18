@@ -21,7 +21,7 @@ function RoomListItem ({ room }) {
     
     return (
         <div onClick={clickHandler} className={`roomListItem ${room.no_users < 8 ? '--open' : '--closed' }`}>
-            <span className="roomListItem__name">{room.name}</span>
+            <span className="roomListItem__name">{room.name}{room.id === 1 ? <small style={{color: 'rgba(0, 0, 0, 0.3)'}}>&nbsp;(Computer)</small> : ""}</span>
             
             <span className="roomListItem__right">
                 {room.has_password && <LockIcon className="roomListItem__lockIcon" />}

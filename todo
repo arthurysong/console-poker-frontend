@@ -1,6 +1,6 @@
 Copyright?
 Add description for Marley's room to play with a bot
-Make sure User is subscribed to Room and GameChannel before connector loads room
+Pressing disabled button does disabled sound.
 Add replays to UserProfile??
 Refactor Reducer
 Style the Stripe Elements with Font.
