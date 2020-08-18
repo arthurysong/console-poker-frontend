@@ -30,18 +30,21 @@ export default function cableMiddleware() {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, rooms }))
         cable.subscriptions.remove(subscription);
-        dispatch({ type: 'CLEAR_ROOMS' })
+        // dispatch({ type: 'CLEAR_ROOMS' })
         return;
       }
 
       const received = result => {
-        console.log(result);
+        console.log('rooms sub', result);
         switch(result.type) {
           // case 'current_rooms':
           //   dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
           //   break;
           case 'user_has_joined':
             dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
+            break;
+          case 'user_has_left':
+            dispatch({ type: 'DECREMENT_NO_USERS', roomId: result.room_id });
             break;
           case 'new_rooms':
             dispatch({ type: 'ADD_ROOM', room: result.room })
@@ -63,7 +66,7 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        // console.log(result)
+        console.log('room sub', result)
         switch (result.type) {
             case 'user_has_joined':
               dispatch({ type: 'ROOM_USER_JOIN' });

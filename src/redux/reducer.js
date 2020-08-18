@@ -136,16 +136,17 @@ switch (action.type) {
             ...state,
             rooms: roomsHash2
         }
-
+    case 'DECREMENT_NO_USERS':
+        const roomsHash3 = { ...state.rooms };
+        roomsHash3[action.roomId].no_users = roomsHash3[action.roomId].no_users - 1;
+        return {
+            ...state,
+            rooms: roomsHash3
+        }
     case 'ADD_ROOM':
         return {
             ...state,
             rooms: [...state.rooms, action.room]
-        }
-    case 'CLEAR_ROOMS':
-        return {
-            ...state,
-            rooms: []
         }
 
 // ROOM CASES ================
