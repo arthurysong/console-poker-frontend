@@ -1,6 +1,45 @@
 import produce from "immer"
+import { createReducer } from '@reduxjs/toolkit'
 
-export default function resourceReducer (state = {
+const initialState = {
+    user: undefined,
+    errors: [],
+    successMessage: "", //for displaying success message when deposit is successful.
+    room: undefined,
+    rooms: {},
+    messages: [],
+    game: undefined,
+    logInPage: false,
+    registerPage: false,
+    processingMove: false,
+}
+
+export default createReducer(initialState, {
+
+// TOGGLING LOGIN & REGISTER
+    TOGGLE_LOGIN_PAGE: state => { state.logInPage = !state.logInPage },
+    TOGGLE_REGISTER_PAGE: state => { state.registerPage = !state.registerPage },
+
+// AUTHENTICATION
+    AUTH_FAIL: state => { state.user = undefined },
+    AUTH_SUCCESS: (state, action) => { state.user = action.user },
+    LOGOUT: state => { state.user = undefined },
+
+// USER CASES
+    SET_USER: (state, action) => { state.user = action.user },
+    SET_USER_CONNECTED: state => { state.user.connected = true },
+    SET_USER_GAME: (state, action) => { state.user.game_id = action.game_id },
+    SET_USER_GAME_NULL: state => { state.user.game_id = undefined },
+    SET_CHIPS: (state, action) => { state.user.chips = action.chips }, 
+
+// ERRORS AND SUCCESSES
+    ADD_ERRORS: (state, action) => { state.errors = action.errors },
+    CLEAR_ERRORS: state => { state.errors = [] },
+    SET_SUCCESS: (state, action) => { state.successMessage = action.success },
+    CLEAR_SUCCESS: state => { state.successMessage = "" },
+})
+
+export function resourceReducer (state = {
     user: undefined,
     errors: [],
     successMessage: "", //for displaying success message when deposit is successful.

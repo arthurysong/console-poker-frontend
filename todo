@@ -1,6 +1,6 @@
 Copyright?
 Add description for Marley's room to play with a bot
-Leaving room when seated, should remove the person from the seat..
+Make sure User is subscribed to Room and GameChannel before connector loads room
 Add replays to UserProfile??
 Refactor Reducer
 Style the Stripe Elements with Font.
