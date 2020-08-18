@@ -35,7 +35,7 @@ export default function cableMiddleware() {
 
       const received = result => {
         // console.log('rooms sub', result);
-        if (getState().rooms) { // this needed when subscription happens before initial fetch.
+        // if (getState().rooms) { // this needed when subscription happens before initial fetch.
           switch(result.type) {
             case 'user_has_joined':
               dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
@@ -49,7 +49,7 @@ export default function cableMiddleware() {
             default:
               break;
           }
-        }
+        // }
       }
 
       return cable.subscriptions.create({ channel, rooms }, { received });
@@ -82,13 +82,13 @@ export default function cableMiddleware() {
         }
       }
 
-      const sendMessage = function(message) {
-          this.perform('create_message', {
-              content: message
-          });
+      const connected = () => {
+        console.log('room subscription connected!')
+        // set roomSubscribed: true
       }
+      const disconnected = () => {console.log('room subscription disconnected!')}
 
-      return cable.subscriptions.create( identifier, { received, sendMessage });
+      return cable.subscriptions.create( identifier, { connected, disconnected, received });
     }
 
     if (game) { // game subscription.
@@ -147,7 +147,9 @@ export default function cableMiddleware() {
         }
       }
 
-      return cable.subscriptions.create( { channel, game, token }, { received });
+      const connected = () => console.log('game subscription connected!')
+      const disconnected = () => console.log('game subscription disconnected!')
+      return cable.subscriptions.create( { channel, game, token }, { connected, disconnected, received });
     }
   };
 }

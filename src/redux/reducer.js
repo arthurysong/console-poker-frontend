@@ -5,9 +5,11 @@ const initialState = {
     errors: [],
     successMessage: "", //for displaying success message when deposit is successful.
     room: undefined,
+    roomSubscribed: false,
     rooms: {},
     messages: [],
     game: undefined,
+    gameSubscribed: false,
     logInPage: false,
     registerPage: false,
     processingMove: false,
@@ -40,11 +42,13 @@ export default createReducer(initialState, {
 
 // LOBBY
     SET_ROOMS: (state, action) => { action.rooms.forEach(r => state.rooms[r.id] = r )},
-    INCREMENT_NO_USERS: (state, action) => { state.rooms[action.roomId].no_users += 1 },
-    DECREMENT_NO_USERS: (state, action) => { state.rooms[action.roomId].no_users -= 1 },
+    INCREMENT_NO_USERS: (state, action) => { if (JSON.stringify(state.rooms) !== '{}') state.rooms[action.roomId].no_users += 1 },
+    DECREMENT_NO_USERS: (state, action) => { if (JSON.stringify(state.rooms) !== '{}') state.rooms[action.roomId].no_users -= 1 },
     // ADD_ROOM: (state, action) => { state.rooms[action.room.id] = action.room } // not being used currently
 
 // ROOM
+    ROOMSUB_CONNECTED: state => { state.roomSubscribed = true },
+    ROOMSUB_DISCONNECTED: state => { state.roomSubscribed = false },
     SET_ROOM: (state, action) => { state.room = action.room },
     DELETE_ROOM: state => { state.room = undefined},
     NEW_MESSAGE: (state, action) => { state.messages.push(action.message) },
@@ -53,6 +57,8 @@ export default createReducer(initialState, {
     ROOM_USER_JOIN: state => { state.room.no_users += 1},
 
 // GAME
+    GAMESUB_CONNECTED: state => { state.gameSubscribed = true },
+    GAMESUB_DISCONNECTED: state => { state.gameSubscribed = false },
     SET_GAME: (state, action) => {
         state.processingMove = false;
         state.game = action.game;
