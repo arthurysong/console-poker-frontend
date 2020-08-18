@@ -74,7 +74,6 @@ export default createReducer(initialState, {
     USER_LEAVE: (state, action) => {
         state.game.seats_as_users[action.seat_index] = undefined;
         state.game.startable = action.startable;
-        state.game.active_round.turn_as_json = undefined
     },
     ROUND_OVER: (state, action) => {
         state.game.startable = action.startable;

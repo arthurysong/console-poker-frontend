@@ -18,14 +18,13 @@ export default function cableMiddleware() {
       leave
     } = action;
     const token = localStorage.getItem('token')
-
     const identifier = Object.assign({}, action, { token } )
 
     if (!channel) {
       return next(action);
     }
 
-    if (rooms) {
+    if (rooms) { // rooms subscription
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, rooms }))
         cable.subscriptions.remove(subscription);
@@ -52,7 +51,7 @@ export default function cableMiddleware() {
 
       return cable.subscriptions.create({ channel, rooms }, { received });
 
-    } else if (room) {
+    } else if (room) { // room subscription
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, room, token }))
         if (subscription) cable.subscriptions.remove(subscription);
@@ -81,7 +80,7 @@ export default function cableMiddleware() {
         }
       }
 
-      const connected = () => {dispatch({ type: 'ROOMSUB_CONNECTED'})}
+      const connected = () => { dispatch({ type: 'ROOMSUB_CONNECTED'}) }
       return cable.subscriptions.create( identifier, { connected, received });
     }
 
@@ -142,7 +141,7 @@ export default function cableMiddleware() {
         }
       }
 
-      const connected = () => {dispatch({ type: 'GAMESUB_CONNECTED'})}
+      const connected = () => { dispatch({ type: 'GAMESUB_CONNECTED'}) }
       return cable.subscriptions.create( { channel, game, token }, { connected, received });
     }
   };
