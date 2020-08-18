@@ -3,7 +3,6 @@ import { WS_URL } from '../utilities/BASE_URL';
 import { playMoveSound, playGameEndSound, playStartSound, playSitSound, playTurnSound } from './playSound';
 
 export default function cableMiddleware() {
-  // const cable = ActionCable.createConsumer(`ws://127.0.0.1:3001/cable?token=${localStorage.getItem('token')}`);
   const cable = ActionCable.createConsumer(`${WS_URL}/cable?token=${localStorage.getItem('token')}`);
 
   return ({ dispatch, getState }) => next => (action) => {
@@ -36,18 +35,20 @@ export default function cableMiddleware() {
 
       const received = result => {
         // console.log('rooms sub', result);
-        switch(result.type) {
-          case 'user_has_joined':
-            dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
-            break;
-          case 'user_has_left':
-            dispatch({ type: 'DECREMENT_NO_USERS', roomId: result.room_id });
-            break;
-          case 'new_rooms':
-            dispatch({ type: 'ADD_ROOM', room: result.room })
-            break;
-          default:
-            break;
+        if (getState().rooms) { // this needed when subscription happens before initial fetch.
+          switch(result.type) {
+            case 'user_has_joined':
+              dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
+              break;
+            case 'user_has_left':
+              dispatch({ type: 'DECREMENT_NO_USERS', roomId: result.room_id });
+              break;
+            case 'new_rooms':
+              dispatch({ type: 'ADD_ROOM', room: result.room })
+              break;
+            default:
+              break;
+          }
         }
       }
 

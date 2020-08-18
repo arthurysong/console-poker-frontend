@@ -1,7 +1,6 @@
 import produce from "immer"
 
 export default function resourceReducer (state = {
-    // colorHash: '',
     user: undefined,
     errors: [],
     successMessage: "", //for displaying success message when deposit is successful.
@@ -12,10 +11,6 @@ export default function resourceReducer (state = {
     logInPage: false,
     registerPage: false,
     processingMove: false,
-    // gamePlayers: [],
-    // gameErrors: undefined, //this will be used by gameboard
-    // status: [] //this will be used by gameconsole, I need them separate becaue I don't want the console to
-    // chips: undefined
 }, action
 ) {
 switch (action.type) {
@@ -64,34 +59,22 @@ switch (action.type) {
     case 'SET_USER_CONNECTED':
         return {
             ...state,
-            user: {
-                ...state.user,
-                connected: true
-            }
+            user: produce(state.user, draft => { draft.connected = true })
         }
     case 'SET_USER_GAME':
         return {
             ...state,
-            user: {
-                ...state.user,
-                game_id: action.game_id
-            }
+            user: produce(state.user, draft => { draft.game_id = action.game_id })
         }
     case 'SET_USER_GAME_NULL':
         return {
             ...state,
-            user: {
-                ...state.user,
-                game_id: null
-            }
+            user: produce(state.user, draft => { draft.game_id = null })
         }
     case 'SET_CHIPS': // only for use on deposit page.
         return {
             ...state,
-            user: {
-                ...state.user,
-                chips: action.chips
-            }
+            user: produce(state.user, draft => { draft.chips = action.chips })
         }
 
 // ERRORS AND SUCCESSES =========
