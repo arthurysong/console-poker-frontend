@@ -128,6 +128,15 @@ switch (action.type) {
             ...state,
             rooms: roomsHash
         }
+    case 'INCREMENT_NO_USERS':
+        // console.log('in reducer', action.roomId);
+        const roomsHash2 = { ...state.rooms };
+        roomsHash2[action.roomId].no_users = roomsHash2[action.roomId].no_users + 1;
+        return {
+            ...state,
+            rooms: roomsHash2
+        }
+
     case 'ADD_ROOM':
         return {
             ...state,

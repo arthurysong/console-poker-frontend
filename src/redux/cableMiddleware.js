@@ -35,11 +35,14 @@ export default function cableMiddleware() {
       }
 
       const received = result => {
-        // console.log(result);
+        console.log(result);
         switch(result.type) {
           // case 'current_rooms':
           //   dispatch({ type: 'SET_ROOMS', rooms: result.rooms })
           //   break;
+          case 'user_has_joined':
+            dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
+            break;
           case 'new_rooms':
             dispatch({ type: 'ADD_ROOM', room: result.room })
             break;
