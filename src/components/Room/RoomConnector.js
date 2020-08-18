@@ -10,6 +10,8 @@ function RoomConnector({ match }) {
     const [numLoaded, setNumLoaded] = useState(0);
     const game = useSelector(state => state.game);
     const room = useSelector(state => state.room);
+    const gameSubscribed = useSelector(state => state.gameSubscribed);
+    const roomSubscribed = useSelector(state => state.roomSubscribed);
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -31,7 +33,7 @@ function RoomConnector({ match }) {
     }, [dispatch, match.params.gameId, match.params.id]);
 
     // actual code
-    if (!room || !game || numLoaded < (imgs.length + sounds.length)) {
+    if (!gameSubscribed || !roomSubscribed || !room || !game || numLoaded < (imgs.length + sounds.length)) {
         return <div className="roomConnector">
             <div className="roomConnector__divs">
                 <div className="roomConnector__loading">Connecting...</div>

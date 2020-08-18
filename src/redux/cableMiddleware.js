@@ -29,13 +29,12 @@ export default function cableMiddleware() {
       if(leave) {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, rooms }))
         cable.subscriptions.remove(subscription);
-        // dispatch({ type: 'CLEAR_ROOMS' })
+        dispatch({ type: 'CLEAR_ROOMS' })
         return;
       }
 
       const received = result => {
         // console.log('rooms sub', result);
-        // if (getState().rooms) { // this needed when subscription happens before initial fetch.
           switch(result.type) {
             case 'user_has_joined':
               dispatch({ type: 'INCREMENT_NO_USERS', roomId: result.room_id });
@@ -49,7 +48,6 @@ export default function cableMiddleware() {
             default:
               break;
           }
-        // }
       }
 
       return cable.subscriptions.create({ channel, rooms }, { received });
@@ -60,6 +58,7 @@ export default function cableMiddleware() {
         if (subscription) cable.subscriptions.remove(subscription);
         dispatch({ type: 'DELETE_ROOM' })
         dispatch({ type: 'CLEAR_MESSAGES' })
+        dispatch({ type: 'ROOMSUB_DISCONNECTED' })
         return;
       }
 
@@ -82,13 +81,8 @@ export default function cableMiddleware() {
         }
       }
 
-      const connected = () => {
-        console.log('room subscription connected!')
-        // set roomSubscribed: true
-      }
-      const disconnected = () => {console.log('room subscription disconnected!')}
-
-      return cable.subscriptions.create( identifier, { connected, disconnected, received });
+      const connected = () => {dispatch({ type: 'ROOMSUB_CONNECTED'})}
+      return cable.subscriptions.create( identifier, { connected, received });
     }
 
     if (game) { // game subscription.
@@ -96,6 +90,7 @@ export default function cableMiddleware() {
         const subscription = cable.subscriptions.subscriptions.find(sub => sub.identifier === JSON.stringify({ channel, game, token }))
         cable.subscriptions.remove(subscription);
         dispatch({ type: 'DELETE_GAME' })
+        dispatch({ type: 'GAMESUB_DISCONNECTED'})
         return;
       }
 
@@ -147,9 +142,8 @@ export default function cableMiddleware() {
         }
       }
 
-      const connected = () => console.log('game subscription connected!')
-      const disconnected = () => console.log('game subscription disconnected!')
-      return cable.subscriptions.create( { channel, game, token }, { connected, disconnected, received });
+      const connected = () => {dispatch({ type: 'GAMESUB_CONNECTED'})}
+      return cable.subscriptions.create( { channel, game, token }, { connected, received });
     }
   };
 }
