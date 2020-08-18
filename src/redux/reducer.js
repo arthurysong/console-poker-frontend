@@ -203,9 +203,9 @@ switch (action.type) {
         return {
             ...state,
             game: produce(state.game, draft => {
-                draft.seats_as_users[action.seat_index] = null;
+                draft.seats_as_users[action.seat_index] = undefined;
                 draft.startable = action.startable;
-                draft.active_round.turn_as_json = null
+                draft.active_round.turn_as_json = undefined
             })
         }
     case 'ROUND_OVER':
@@ -226,26 +226,15 @@ switch (action.type) {
             })
         }
     case 'UPDATE_WINNERS_AND_ROUND':
-        action.winner_indices.forEach(i => {
-            state.game.seats_as_users[i].data.attributes.chips += action.winnings
-            state.game.seats_as_users[i].data.attributes.winnings += action.winnings
-        })
-        state.game.seats_as_users.forEach((user, i) => {
-            if (user !== null) {
-                user.data.attributes.current_hand = action.seats_current_hand[i]
-            }
-        })
         return {
             ...state,
-            game: {
-                ...state.game,
-                seats_as_users: state.game.seats_as_users,
-                active_round: {
-                    ...state.game.active_round,
-                    phase: 3,
-                    access_community_cards: action.access_community_cards
-                }
-            }
+            game: produce(state.game, draft => {
+                action.winner_indices.forEach(i => {
+                    draft.seats_as_users[i].data.attributes.chips += action.winnings
+                    draft.seats_as_users[i].data.attributes.winnings += action.winnings
+                })
+                draft.seats_as_users.forEach((user, i) => { if (user) { user.data.attributes.current_hand = action.seats_current_hand[i] }});
+            })
         }
     case 'PROCESS_MOVE':
         return {
@@ -253,66 +242,34 @@ switch (action.type) {
             processingMove: true
         }
     case 'SET_MOVE':
-        const seats_as_users = state.game.seats_as_users
-        seats_as_users[action.turn_index] = action.turn_user
         return {
             ...state,
-            game: {
-                ...state.game,
-                seats_as_users: seats_as_users
-            }
+            game: produce(state.game, draft => { draft.seats_as_users[action.turn_index] = action.turn_user })
         }
     case 'UPDATE_TURN':
         return {
             ...state,
             processingMove: false,
-            game: {
-                ...state.game,
-                active_round: {
-                    ...state.game.active_round,
-                    turn_as_json: action.turn_as_json
-                }
-            }
+            game: produce(state.game, draft => { draft.active_round.turn_as_json = action.turn_as_json })
         }
     case 'NEW_BETTING_PHASE':
-        // need to reset all the round_bets
-        // const nbp = state.game.seats_as_users;
-        // nbp.forEach(user => {
-        //     if (user !== null) {
-        //         user.data.attributes.round_bet = 0;
-        //         user.data.attributes.checked = false;
-        //     }
-        // })
-        state.game.seats_as_users.forEach((user, i) => {
-            if (user !== null) {
-                user.data.attributes.round_bet = 0;
-                user.data.attributes.checked = false;
-                user.data.attributes.current_hand = action.seats_current_hand[i]
-            }
-        })
-
         return {
             ...state,
             processingMove: false,
-            game: {
-                ...state.game,
-                active_round: {
-                    ...state.game.active_round,
-                    access_community_cards: action.access_community_cards,
-                    pot: action.pot,
-                    phase: action.phase,
-                    turn_as_json: action.turn_as_json
-                }
-            }
+            game: produce(state.game, draft => {
+                draft.seats_as_users.forEach((user, i) => {
+                    if (user) {
+                        user.data.attributes.round_bet = 0;
+                        user.data.attributes.checked = false;
+                        user.data.attributes.current_hand = action.seats_current_hand[i]
+                    }
+                })
+                draft.active_round.access_community_cards = action.access_community_cards;
+                draft.active_round.pots = action.pots
+                draft.active_round.phase = action.phase
+                draft.active_round.turn_as_json = action.turn_as_json
+            })
         }
-    // case 'UPDATE_ROUND':
-    //     return {
-    //         ...state,
-    //         game: {
-    //             ...state.game,
-    //             active_round: action.round
-    //         }
-    //     }
     default:
         return state;
 }
