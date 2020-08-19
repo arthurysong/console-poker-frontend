@@ -12,11 +12,9 @@ function Player({ position, user, images }) {
     const round = useSelector(state => state.game.active_round);
     const game = useSelector(state => state.game);
 
-    // console.log(position)
-    // console.log('in Player', user);
     if (!loggedInUser.game_id && !user) {
         return <div onClick={() => dispatch(sitDown(game.id, position))} className={`player player--${position} ${!user ? 'player--empty' : ''}`}>
-                <>Sit</>
+                <span className="player__sit">Sit</span>
         </div>
     } else if (user) {
         return <div className={`player ${(user.id === round?.turn_as_json?.id && round.is_playing) ? 'player--turn' : 'player' } player--${position} ${!user ? 'player--empty' : ''}`}>
@@ -26,9 +24,7 @@ function Player({ position, user, images }) {
             </div>
             
             {user.dealer && 
-            // 'https://console-poker.s3.us-east-2.amazonaws.com/console-poker.png'
                 <img className="player__dealerChip" alt='dealerChip' src='https://console-poker.s3.us-east-2.amazonaws.com/DEALER.png'/>}
-                {/* <img className="player__dealerChip" alt='dealerChip' src={dealerChip}/>} */}
             {user.winnings > 0 && 
                 <span className="player__roundWinnings">+{user.winnings}</span>}
             {(user.round_bet !== 0 || user.checked) && 
