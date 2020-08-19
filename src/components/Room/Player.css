@@ -4,7 +4,8 @@
     background: rgba(0,0,0, .5);
     box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
     height: 80px;
-    width: 268px;
+    /* width: 268px; */
+    width: 238px;
     border-radius: 10px;
 }
 
@@ -80,10 +81,12 @@
 .player__roundBet {
     background-color: Gold;
     color: Cornsilk;
+    /* color: rgba(0, 0, 0, 0.25); */
     box-shadow: 1px 1px rgba(0,0,0, .2);
     margin-left: auto;
     margin-right: auto;
-    padding: 10px 12px;
+    font-size: 12px;
+    padding: 8px 8px;
     border-radius: 20px;
     white-space: nowrap;
     position: absolute;

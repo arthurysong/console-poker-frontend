@@ -14,7 +14,7 @@
 .gameBoard__card {
     /* height: 100px; */
     width: 92px;
-    margin: 0 -4px;
+    margin: 0 -10px;
 }
 
 .gameBoard__pot {
@@ -25,7 +25,7 @@
     color: white;
     background: rgba(0,0,0, .4);
     padding: 10px 20px;
-    font-size: 30px;
+    font-size: 22px;
     border-radius: 12px;
     display: inline-block;
     /* margin: auto; */
