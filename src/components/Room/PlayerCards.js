@@ -9,7 +9,7 @@ function PlayerCards({ user, loggedInUser, images, round }) {
                 <div className="playerCards__card" />
             </>
         } else {
-            if (user.username === loggedInUser.username || (round && round.phase === 3 && round.is_playing === false)){
+            if (user.username === loggedInUser.username || (round && round.phase === 4 && round.is_playing === false)){
                 return user.cards.split(" ").map((c, index) => 
                 // (<img key={index} className="playerCards__card" alt={c} src={images[`${c}.webp`]}/>))
                 (<img key={index} className="playerCards__card" alt={c} src={`https://console-poker.s3.us-east-2.amazonaws.com/cards/${c}.png`}/>))

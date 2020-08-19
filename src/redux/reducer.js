@@ -90,6 +90,8 @@ export default createReducer(initialState, {
             state.game.seats_as_users[i].data.attributes.winnings += action.winnings
         })
         state.game.seats_as_users.forEach((user, i) => { if (user) { user.data.attributes.current_hand = action.seats_current_hand[i] }});
+        state.game.active_round.access_community_cards = action.access_community_cards;
+        state.game.active_round.phase = 4;
     },
     PROCESS_MOVE: state => { state.processingMove = true },
     SET_MOVE: (state, action) => { state.game.seats_as_users[action.turn_index] = action.turn_user },
